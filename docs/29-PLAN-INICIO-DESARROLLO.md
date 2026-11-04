@@ -98,3 +98,6 @@ flowchart LR
 - **Listo para planificar Sprint 1 técnico:** repositorio y documentación arquitectónica.
 - **Pendiente para ejecutar en equipo local:** comprobar Docker/Git y configurar conexión Codex.
 - **Pendiente para implementación de negocio:** decidir licencias, MVP, identidad, XP, YitCoins, canjes, pedidos y aceptación.
+
+## Vinculación formal de la primera tarea (2026-11-03)
+La **planificación** de S01 fue solicitada y aprobada por el usuario. [Planificación S01](sprints/S01-PLANIFICACION-TECNICA.md), [especificación T01](codex/TAREA-T01-CONTENEDORES.md) e [Issue #1](https://github.com/JoseB-H/Sistema-EcomerceGeneral/issues/1) contienen alcance, criterios y pruebas. Todavía no se han definido fechas ni demostrado código funcional.
