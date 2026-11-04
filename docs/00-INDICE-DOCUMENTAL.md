@@ -32,6 +32,12 @@
 ## Documentos previstos pero aún no publicados
 Contratos API, plan detallado de implementación, plan de pruebas, manuales operativos y plantillas avanzadas. Sus nombres anteriores eran un plan, no enlaces vigentes.
 
+
+## Sprint 1 técnico — planificación autorizada
+- [Planificación S01](sprints/S01-PLANIFICACION-TECNICA.md): objetivo, alcance, aceptación y pendientes de calendario.
+- [Tarea T01 para Codex](codex/TAREA-T01-CONTENEDORES.md): especificación ejecutable, pruebas y entregables.
+- [GitHub Issue #1](https://github.com/JoseB-H/Sistema-EcomerceGeneral/issues/1): seguimiento compartido del desarrollo.
+
 ## Regla de autoridad
 - **Confirmado:** decisiones dichas por el usuario en el proyecto y recogidas en [alineación entre chats](ALINEACION-ENTRE-CHATS.md).
 - **Propuesto:** alternativa técnica sujeta a revisión y aprobación antes de escribir código.
