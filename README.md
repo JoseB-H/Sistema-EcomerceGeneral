@@ -25,3 +25,10 @@ Proyecto académico **Servicios Cloud**. Este repositorio es el punto de referen
 4. El chat «Servicios Cloud» decide criterios académicos que se registran en `docs/ALINEACION-ENTRE-CHATS.md`.
 
 > El repositorio es **público**. No subir secretos, `.env`, datos personales, bases de datos reales ni diapositivas de clase sin verificar permisos de publicación.
+
+## Bóveda Obsidian del proyecto
+Para consultar y mantener la documentación con Obsidian Desktop, abrir **una copia/clon separado** del repositorio como bóveda y comenzar en [00 - YitVerse.md](00%20-%20YitVerse.md).
+
+Consultar la [guía de sincronización Obsidian ↔ GitHub ↔ Codex](docs/30-OBSIDIAN-GITHUB-SINCRONIZACION.md). La preparación del repositorio está publicada, pero **la sincronización local sigue pendiente** de configurarse y probarse en Windows.
+
+Evitar abrir como bóveda la misma carpeta activa de desarrollo de Codex para que los commits automáticos no incluyan código a medio escribir.
