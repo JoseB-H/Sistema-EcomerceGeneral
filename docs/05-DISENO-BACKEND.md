@@ -52,3 +52,7 @@ Modelo de autenticación, sesiones, roles, reglas del comercio, endpoints concre
 Autorización de implementación recibida el 2026-11-04. `Backend/src/app.js` exporta `createApp({checkDatabase, logger})`, sin abrir puertos ni crear conexiones globales. `GET /api/health` espera una comprobación por petición y responde 200 `{status: "ok", database: "ok"}` o 503 `{status: "degraded", database: "unavailable"}`. Ambas respuestas usan `Cache-Control: no-store`. Rutas desconocidas: 404 JSON; error inesperado: 500 JSON saneado. Los logs solo contienen eventos técnicos. No hay endpoints de negocio.
 
 Tarea 1: `npm --prefix Backend test` ejecutó 5 pruebas aprobadas, después del fallo inicial por app ausente. Conexión PostgreSQL real y contenedores todavía pendientes. Esta sección sustituye únicamente el estado previo del endpoint técnico; el diseño comercial sigue pendiente.
+
+### Tarea 2 — runtime y conexión
+
+`src/config.js` valida PORT/PGPORT (1–65535), PGHOST y PGUSER/PGPASSWORD/PGDATABASE antes de escuchar; no altera la contraseña. `src/server.js` escucha en 0.0.0.0:3000, compone Express y pool, y cierra HTTP/pool ante SIGTERM/SIGINT con límite de 10 s. `src/database.js` ejecuta `SELECT 1 AS ok` por solicitud, comprueba el resultado y utiliza max=5, timeouts de conexión/consulta/statement=1500 ms e idle=10000 ms. Un error idle produce un evento saneado y no derriba el proceso. `npm --prefix Backend test`: 26/26 aprobadas; la reconexión contra PostgreSQL real se comprobará en Docker.

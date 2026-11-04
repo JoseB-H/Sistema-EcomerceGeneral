@@ -9,3 +9,5 @@ Fecha de inicio: 2026-11-04. Rama: `feat/s01-infraestructura-docker`; base: `b32
 ## Casos T01
 
 T01-01 a T01-11: NO EJECUTADOS todavía; se completarán tras construir la pila.
+
+- Tarea 2: ROJO por config/database ausentes; VERDE `npm --prefix Backend test`, 26/26, sin omitidas. Validación de variables, SELECT 1 y saneamiento de errores; DB real pendiente.

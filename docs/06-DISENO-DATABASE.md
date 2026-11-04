@@ -49,3 +49,7 @@ Un volumen conserva datos al recrear el contenedor, pero no reemplaza un respald
 
 ## Pendientes
 Entidades, campos, reglas de integridad, políticas de retención, transacciones e identificadores. Definirlas junto a [Requisitos](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md) antes de generar SQL.
+
+## S01 — comprobación técnica
+
+Backend usa `pg` y `SELECT 1 AS ok`; no crea tablas del dominio. La configuración usa PGHOST/PGPORT/PGUSER/PGPASSWORD/PGDATABASE inyectadas por Compose. Las pruebas unitarias cubren error y resultado inesperado; persistencia y reconexión real siguen pendientes de la pila Docker.
