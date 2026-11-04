@@ -61,3 +61,6 @@ Con cada implementación, actualizar RF/HU/RNF aplicables, evidencias y estado d
 
 ## Inicio técnico del desarrollo
 Ver `docs/29-PLAN-INICIO-DESARROLLO.md` para preparación del equipo y Sprint 1 propuesto. El primer incremento se limita a verificar Frontend ↔ Backend ↔ PostgreSQL con Compose y pruebas reproducibles; no crear módulos comerciales ni licencias o XP por suposición. La inclusión real de historias en sprint requiere aceptación.
+
+## Tarea de arranque S01 / T01
+El usuario aprobó **la planificación** del sprint técnico. Consultar `docs/sprints/S01-PLANIFICACION-TECNICA.md`, `docs/codex/TAREA-T01-CONTENEDORES.md` y el [Issue #1](https://github.com/JoseB-H/Sistema-EcomerceGeneral/issues/1). Usar HU-T01/HU-T02/HU-T03 para preparar la integración de tres contenedores, sin módulos de negocio. Las fechas y compromiso formal del Sprint Backlog siguen pendientes; no representar como ejecutadas pruebas que no se realizaron.
