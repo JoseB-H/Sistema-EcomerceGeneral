@@ -56,3 +56,14 @@ Los módulos de YitVerse no están aprobados automáticamente para implementaci�
 - [ ] Resultados reales de pruebas recibidos y validados.
 
 **Estado actual:** preparación documental completada; código y pruebas siguen pendientes. No confundir la autorización de la planificación con la ejecución del sprint.
+
+## Bóveda de documentación de YitVerse — preparación (2026-11-03)
+- [x] Creado archivo de inicio `00 - YitVerse.md`.
+- [x] Creado `.gitignore` para excluir configuración local, secretos y archivos académicos.
+- [x] Publicada `docs/30-OBSIDIAN-GITHUB-SINCRONIZACION.md`.
+- [ ] Instalar y verificar Git for Windows / Git Credential Manager localmente.
+- [ ] Clonar repositorio en una carpeta exclusiva de Obsidian, separada de Codex.
+- [ ] Abrir bóveda y habilitar Obsidian Git.
+- [ ] Comprobar push y pull reales desde el equipo del usuario.
+
+**Importante:** la configuración remota de GitHub no habilita automáticamente sincronización en Obsidian Desktop.
