@@ -1,67 +1,58 @@
-# Levantamiento de requisitos y alcance funcional
+# Requisitos funcionales — levantamiento inicial YitVerse
 
-**Objetivo:** evitar que Codex implemente módulos inventados antes de validar necesidades y reglas del negocio.
+**Versión:** 0.1 — 2026-11-03  
+**Estado:** intenciones confirmadas de alto nivel; reglas, casos alternos y aceptación **en refinamiento**. No tratar esta matriz como autorización de desarrollo.
 
-## Entrevista de descubrimiento — decisiones obligatorias
+## Requisitos de intención confirmada
+| ID | Intención funcional expresada | Criterio todavía por definir |
+|---|---|---|
+| RF-01 | Mostrar un catálogo de obras manga/manhwa y categorías asociadas | Filtros, fuentes, derechos, metadatos |
+| RF-02 | Ofrecer cuenta registrada para experiencia, biblioteca personal y progreso | Forma de registro, privacidad, sesiones |
+| RF-03 | Permitir marcar obras favoritas | Duplicados, comportamiento y visibilidad |
+| RF-04 | Conservar historial y seguimiento de lectura | Granularidad, categorías, retención |
+| RF-05 | Registrar el avance de lectura del usuario | Lectura integrada vs externa autorizada |
+| RF-06 | Otorgar XP por lectura válida | Definición de evento, abuso y cantidad |
+| RF-07 | Mostrar nivel alcanzado | Curva y umbrales |
+| RF-08 | Asignar YitCoins en hitos de nivel | Frecuencia, cantidad, control de una concesión |
+| RF-09 | Mostrar saldo y canjear YitCoins por mercancía exclusiva o físico elegible | Economía, transacciones, stock y entregas |
+| RF-10 | Ofrecer ediciones físicas y accesorios especiales para coleccionistas | Precios, presentación, logística |
+| RF-11 | Ampliar más adelante el catálogo a otras lecturas | Taxonomía extensible |
 
-| ID | Pregunta | Estado |
-| --- | --- | --- |
-| D-01 | ¿Quién utiliza el e-commerce y qué puede hacer cada actor? | PENDIENTE |
-| D-02 | ¿Qué se comercializa: productos físicos, digitales o servicios? | PENDIENTE |
-| D-03 | ¿Qué operación debe demostrar el MVP de inicio a fin? | PENDIENTE |
-| D-04 | ¿Habrá catálogo, inventario y variantes de producto? ¿Con qué reglas? | PENDIENTE |
-| D-05 | ¿Habrá carrito y pedidos? ¿Qué estados y validaciones tendrán? | PENDIENTE |
-| D-06 | ¿Existirán pagos en línea, pagos externos o simulación académica? | PENDIENTE |
-| D-07 | ¿Se requiere autenticación, cuentas o roles? | PENDIENTE |
-| D-08 | ¿Qué datos personales se guardarán y por cuánto tiempo? | PENDIENTE |
-| D-09 | ¿Qué operaciones administrativas deben realizarse? | PENDIENTE |
-| D-10 | ¿El profesor exige despliegue en nube pública, costos o demostración local? | PENDIENTE |
-| D-11 | ¿Cuál es la fecha y el criterio de evaluación? | PENDIENTE |
-| D-12 | ¿Qué alcance queda expresamente excluido para la primera entrega? | PENDIENTE |
+**No confirmado:** roles administrativos, carrito, pasarelas de pago, cuentas de vendedor, valor monetario de YitCoins, monedas canjeables por efectivo, políticas de envío o lectura de obras sin autorización.
 
-Estas preguntas se convierten en decisiones documentadas antes de aceptar historias de usuario.
+## Reglas y restricciones esenciales
+1. Mostrar capítulos completos solo si la plataforma tiene derecho legítimo de ofrecerlos.
+2. XP y YitCoins deben acreditarse desde Backend con registro verificable, nunca confiando en cálculos del navegador.
+3. El mismo evento y el mismo hito de recompensa no deben premiarse varias veces.
+4. Los canjes deben verificar saldo y elegibilidad antes del débito y cuidar concurrencia.
+5. No almacenar datos personales adicionales sin finalidad definida.
+6. Las funcionalidades comerciales operativas requieren condiciones y políticas aprobadas.
 
-## Catálogo candidato — no son requisitos aprobados
+## No funcionales técnicos propuestos
+- Arranque local reproducible con Compose.
+- Integridad y persistencia en PostgreSQL.
+- Separación de cliente, API y base de datos.
+- Seguridad de credenciales y validación en Backend.
+- Diseño accesible, sencillo y adecuado a lectura prolongada.
+- Pruebas de integración y documentación sincronizada con GitHub.
 
-| Posible módulo | Función por evaluar | Prioridad |
-| --- | --- | --- |
-| Catálogo | Mostrar información de productos o servicios | Sin definir |
-| Gestión de datos | Alta, edición o baja lógica de registros | Sin definir |
-| Carrito | Preparación de solicitudes de compra | Sin definir |
-| Pedidos | Registro y seguimiento de transacciones | Sin definir |
-| Identidad | Registro, sesión y autorización | Sin definir |
-| Inventario | Disponibilidad y movimientos de stock | Sin definir |
-| Pagos | Registro de modalidad o comprobación de pago | Sin definir |
-| Administración | Gestión y monitoreo de operaciones | Sin definir |
+## Trazabilidad
+- [Épicas e historias de usuario](24-PRODUCT-BACKLOG-SCRUM.md)
+- [Visión del producto](20-VISION-FUNCIONAL-YITVERSE.md)
+- [Reglas de progreso](22-REGLAS-XP-YITCOINS.md)
+- [Modelo conceptual](23-MODELO-CONCEPTUAL.md)
+- [Decisiones pendientes](25-DECISIONES-PENDIENTES.md)
 
-Ninguna fila de esta tabla autoriza a Codex a crear una pantalla, entidad ni endpoint.
+## Plantilla de refinamiento
+- ID RF / HU:
+- Objetivo y actor:
+- Precondición y regla:
+- Flujo principal y excepciones:
+- Datos requeridos:
+- Reglas de seguridad/permiso:
+- Aceptación dada/cuando/entonces:
+- Prioridad, dependencias y estimación:
+- Aprobación y sprint asignado:
+- Commit/PR y evidencia de prueba:
 
-## Formato de requisito funcional (RF)
-- **ID:** RF-XXX.
-- **Nombre y propósito:** acción observable.
-- **Actor:** aprobado por el usuario.
-- **Disparador y precondiciones:** cómo comienza el flujo.
-- **Flujo principal:** pasos verificables.
-- **Flujos alternos y errores:** condiciones de negocio.
-- **Datos tratados:** datos de entrada, salida y validaciones.
-- **Prioridad y dependencia:** relación con otros requisitos.
-- **Criterios de aceptación:** Given/When/Then o ejemplos probables.
-- **Estado:** Borrador / En revisión / Aprobado / Implementado / Verificado.
-- **Trazabilidad:** diseño, API, datos, pruebas y PR.
-
-## Requisitos no funcionales técnicos (propuestas)
-- RNF-T01: arranque reproducible con Docker Compose.
-- RNF-T02: persistencia de PostgreSQL mediante volumen.
-- RNF-T03: acceso a BD únicamente desde Backend.
-- RNF-T04: documentación de variables de entorno y configuración.
-- RNF-T05: captura de errores, registro técnico y endpoints de salud.
-- RNF-T06: pruebas de integración para los flujos aprobados.
-- RNF-T07: ausencia de secretos y datos reales en repositorio.
-- RNF-T08: instrucciones para reconstruir el entorno local.
-
-**Importante:** son objetivos técnicos propuestos; falta fijar criterios específicos de medición y aprobarlos. No asignar tiempos ni SLO arbitrarios.
-
-## Gestión de cambios
-Una nueva funcionalidad debe incorporarse al backlog con ID, definición, criterio de aceptación y aprobación. Luego Codex podrá diseñarla, implementarla y documentarla. Los cambios en reglas de negocio se reflejan en frontend, backend, base de datos y pruebas cuando afecten a esas capas.
-
-Véase [Plantillas](13-PLANTILLAS-DE-TRABAJO.md) y [Backlog](14-BACKLOG-DE-DEFINICION.md).
+No programar una historia solo porque aparece en esta lista. Es necesario refinarla y seleccionarla mediante Scrum.
