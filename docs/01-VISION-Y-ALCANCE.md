@@ -1,49 +1,49 @@
-# Visión, alcance y objetivos
+# Visión y alcance — Sistema-EcomerceGeneral / YitVerse
 
-**Proyecto:** Sistema-EcomerceGeneral | **Curso:** Servicios Cloud | **Estado:** elaboración documental.
+**Actualizado:** 2026-11-03  
+**Estado:** visión funcional inicial declarada por el usuario; reglas detalladas, MVP y operación real pendientes de aprobación.  
+**Nombre de la plataforma:** YitVerse, **propuesta provisional** (repositorio sigue siendo Sistema-EcomerceGeneral).
 
-## Problema y visión
-Se diseñará una aplicación web de comercio electrónico general como ejercicio de integración de servicios y contenedores. La visión es demostrar una arquitectura separada en **Frontend, Backend y Database**, integrados y ejecutables mediante Docker Compose, con trazabilidad entre requisitos, diseño, código y pruebas.
+## Propósito
 
-El nombre «e-commerce» no autoriza a inventar flujos de cobro, entregas, usuarios o inventario. La operación del negocio aún está pendiente de definición.
+Construir como proyecto de **Servicios Cloud** una aplicación web de lectura y comercio electrónico centrada inicialmente en **mangas, manhwas y lecturas relacionadas con anime**, con expansión futura a otros tipos de lectura. Permitirá mostrar obras, llevar una biblioteca personal y vender ediciones físicas coleccionables y accesorios únicos de la tienda.
 
-## Objetivos técnicos confirmados
-- Separar interfaz, lógica de servidor y base de datos.
-- Contenerizar cada servicio y orquestarlos con Docker Compose.
-- Permitir comunicación navegador → Frontend/API → Backend → PostgreSQL sin acceso directo del navegador a la base de datos.
-- Persistir datos en PostgreSQL.
-- Conservar documentación técnica sincronizable con GitHub/Obsidian.
-- Usar herramientas gratuitas para el desarrollo local y evitar servicios de pago obligatorios.
+La diferenciación propuesta por el usuario es que **lecturas válidas proporcionen XP**, la XP eleve el nivel de la cuenta y determinados hitos otorguen **YitCoins**, canjeables por productos elegibles. «Cada diez niveles» fue presentado **como ejemplo** y requiere especificación.
 
-## Límite del sistema
+## Funcionalidades solicitadas como visión
+- Explorar y consultar obras/editoriales por formatos, inicialmente manga y manhwa.
+- Registrarse para conservar favoritos, historial, seguimiento y progreso de lectura.
+- Leer digitalmente contenidos **solamente cuando existan derechos de acceso y distribución**.
+- Acumular XP por lectura válida, alcanzar niveles y recibir YitCoins en hitos.
+- Usar YitCoins para canjear mercancía exclusiva y ediciones físicas elegibles.
+- Comercializar productos físicos de interés para coleccionistas.
+- Ampliar categorías y experiencias en futuras versiones.
 
-**Dentro del alcance técnico inicial:** aplicación web, API y almacenamiento relacional; integración entre servicios; demostración local reproducible; documentación y pruebas.
+Las funcionalidades anteriores son **intención de producto**, no historias suficientemente refinadas ni funciones implementadas. Los detalles se encuentran en [Visión funcional v0.1](20-VISION-FUNCIONAL-YITVERSE.md).
 
-**Fuera de alcance por ahora:** despliegue de producción real; pasarela de pagos; facturación legal; integración de mensajería externa; proveedores cloud pagos; cuentas comerciales; políticas comerciales; roles; módulos concretos. Pueden incorporarse si el usuario los aprueba.
+## Arquitectura técnica ya acordada
+- `Frontend/`: React + Vite.
+- `Backend/`: Node.js + Express.
+- `Database/`: PostgreSQL.
+- Docker Compose para conectar los tres contenedores.
+- Base de datos persistente y accesible desde el Backend, no desde navegador.
+- Herramientas gratuitas; no introducir servicios pagos obligatorios.
 
-## Actores por confirmar
-No se conocen todavía los actores de negocio. Las categorías «visitante», «cliente», «administrador», «vendedor» u otras serán **hipótesis de entrevista**, no roles implementables hasta confirmar.
+## Límites aún pendientes de definir
+- El catálogo puede mostrar metadatos; lectura de capítulos dentro de la aplicación requiere licencia/permiso.
+- Mecanismos de compra real, envío, pagos, inventario, devoluciones y obligaciones fiscales requieren reglas.
+- Umbrales XP, equilibrio de niveles, valor de YitCoins y política de canjes están sin determinar.
+- Autenticación, datos personales y roles operativos se deben especificar.
+- Despliegue cloud real, escala y fecha de evaluación académica aún se deben confirmar.
+- La primera versión debe ser un MVP alcanzable, no todos los módulos en un único sprint.
 
-## Indicadores de éxito propuestos
-- Los tres contenedores pueden arrancar desde un mismo archivo Compose en un equipo limpio.
-- La interfaz puede solicitar una respuesta verificable al backend.
-- El backend puede guardar y recuperar datos de prueba desde PostgreSQL con persistencia.
-- Las verificaciones de salud y las pruebas mínimas quedan registradas.
-- Un tercero puede reproducir el laboratorio siguiendo el README.
-- Cada cambio de diseño tiene su requisito, decisión y evidencia.
+## Objetivo de éxito técnico
+Demostrar tres servicios ejecutados con Docker Compose y datos persistentes, conectados con una funcionalidad de negocio **aprobada**. Documentar criterios de aceptación y pruebas verificables.
 
-Los umbrales de rendimiento, disponibilidad, usuarios concurrentes y fechas de entrega **no están fijados**.
+## Gestión de implementación
+- [Backlog Scrum](24-PRODUCT-BACKLOG-SCRUM.md)
+- [Reglas XP/YitCoins](22-REGLAS-XP-YITCOINS.md)
+- [UX](21-EXPERIENCIA-USUARIO.md)
+- [Decisiones por cerrar](25-DECISIONES-PENDIENTES.md)
 
-## Restricciones y supuestos
-- El repositorio de GitHub es público al momento de redactar; no publicar datos ni materiales académicos con restricciones.
-- React/Vite, Node/Express, PostgreSQL y Compose son la línea tecnológica confirmada, no una lista de versiones cerradas.
-- Trabajo dividido: Codex desarrolla; chat Servicios Cloud define contexto académico; Obsidian/Vaultcraft organiza conocimiento; GitHub versiona.
-
-## Requisitos de aprobación antes del MVP
-1. Confirmar objetivo de negocio y quién utilizará el sistema.
-2. Priorizar funcionalidades para la primera demostración.
-3. Aprobar reglas de negocio, datos necesarios y actores.
-4. Aprobar criterios medibles de aceptación.
-5. Definir si la evaluación exige ejecución local, cloud o ambas.
-
-Continuar en [Requisitos](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md) y [Fases](08-FASES-DE-DESARROLLO.md).
+**Codex no debe implementar todas las intenciones sin requisitos aprobados y sin Sprint Backlog definido.**
