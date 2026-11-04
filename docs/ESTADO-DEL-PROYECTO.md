@@ -45,3 +45,14 @@ Los módulos de YitVerse no están aprobados automáticamente para implementaci�
 - [ ] Verificar instalación funcional de Git y Docker Compose en el entorno de Codex/Windows.
 - [ ] Aprobar Sprint Goal, fechas y alcance de Sprint 1.
 - [ ] Implementar y probar tres contenedores. **No hay implementación confirmada.**
+
+## Sprint 1 — autorización de planificación (2026-11-03)
+- [x] El usuario aprobó **iniciar la planificación** del Sprint 1 técnico sin desarrollar módulos comerciales.
+- [x] Se publicó la [planificación S01](sprints/S01-PLANIFICACION-TECNICA.md).
+- [x] Se publicó la [tarea T01 para Codex](codex/TAREA-T01-CONTENEDORES.md).
+- [x] Se abrió [Issue #1](https://github.com/JoseB-H/Sistema-EcomerceGeneral/issues/1) para seguimiento.
+- [ ] Determinar calendario, capacidad y compromiso formal del Sprint Backlog.
+- [ ] Implementación de Frontend, Backend y Database realizada.
+- [ ] Resultados reales de pruebas recibidos y validados.
+
+**Estado actual:** preparación documental completada; código y pruebas siguen pendientes. No confundir la autorización de la planificación con la ejecución del sprint.
