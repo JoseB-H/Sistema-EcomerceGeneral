@@ -27,3 +27,14 @@
 | 2026-11-03 | Coordinación | Preparación del contexto para Codex y Obsidian | Archivos de coordinación en GitHub |
 
 **Regla:** marcar tareas completadas solo después de verificarlas. No confundir planes o prototipos fuera del repositorio con código publicado en este repositorio.
+
+
+## Requisitos RF/RNF — versión 2026-11-03
+- [x] Documentados **28 RF** en `docs/02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md`.
+- [x] Documentados **30 RNF** en `docs/27-REQUISITOS-NO-FUNCIONALES.md`.
+- [x] Publicada matriz RF ↔ HU ↔ RNF en `docs/28-MATRIZ-TRAZABILIDAD.md`.
+- [ ] Aceptación de los criterios definitivos y decisiones críticas por Product Owner.
+- [ ] Asignación de historias refinadas a un sprint.
+- [ ] Pruebas o implementación verificadas: **ninguna acreditada por esta documentación**.
+
+Los módulos de YitVerse no están aprobados automáticamente para implementación. Los próximos acuerdos sobre legalidad del lector, XP, YitCoins, pedidos y MVP deben reflejarse primero en los RF/HU.
