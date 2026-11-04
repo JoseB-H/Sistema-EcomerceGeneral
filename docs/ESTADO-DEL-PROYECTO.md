@@ -67,3 +67,7 @@ Los módulos de YitVerse no están aprobados automáticamente para implementaci�
 - [ ] Comprobar push y pull reales desde el equipo del usuario.
 
 **Importante:** la configuración remota de GitHub no habilita automáticamente sincronización en Obsidian Desktop.
+
+## Implementación técnica S01 autorizada — 2026-11-04
+
+Trabajo en rama `feat/s01-infraestructura-docker`, desde `main` `b32ee01`. Tarea 1 implementada: contrato HTTP técnico probado con 5 pruebas unitarias aprobadas. DB real, frontend, Docker, integración y persistencia pendientes. La aceptación del sprint/PR sigue pendiente del usuario; no hay funcionalidades comerciales. Evidencia incremental en `docs/sprints/S01-REPORTE-PRUEBAS.md`.

@@ -46,3 +46,9 @@ Si el tamaño inicial es pequeño, Codex puede simplificar esta estructura sin m
 
 ## Pendientes
 Modelo de autenticación, sesiones, roles, reglas del comercio, endpoints concretos, estructura de errores definitiva, estrategia de logging y límites de uso. No implementar esos elementos por conjetura.
+
+## S01 — Backend técnico implementado en la rama de desarrollo
+
+Autorización de implementación recibida el 2026-11-04. `Backend/src/app.js` exporta `createApp({checkDatabase, logger})`, sin abrir puertos ni crear conexiones globales. `GET /api/health` espera una comprobación por petición y responde 200 `{status: "ok", database: "ok"}` o 503 `{status: "degraded", database: "unavailable"}`. Ambas respuestas usan `Cache-Control: no-store`. Rutas desconocidas: 404 JSON; error inesperado: 500 JSON saneado. Los logs solo contienen eventos técnicos. No hay endpoints de negocio.
+
+Tarea 1: `npm --prefix Backend test` ejecutó 5 pruebas aprobadas, después del fallo inicial por app ausente. Conexión PostgreSQL real y contenedores todavía pendientes. Esta sección sustituye únicamente el estado previo del endpoint técnico; el diseño comercial sigue pendiente.
