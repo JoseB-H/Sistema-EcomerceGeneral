@@ -1,0 +1,40 @@
+# Alineación entre Servicios Cloud, Codex y Obsidian
+
+**Proyecto compartido:** [Sistema-EcomerceGeneral](https://github.com/JoseB-H/Sistema-EcomerceGeneral)
+
+## Objetivo
+Establecer un único contexto técnico y documental para trabajar en **chats separados** sin que cada espacio invente requisitos diferentes. La coordinación entre chats se produce leyendo y actualizando **este repositorio**; las conversaciones de ChatGPT no se sincronizan entre sí en tiempo real.
+
+## Responsabilidades por entorno
+
+| Entorno | Trabajo |
+| --- | --- |
+| Chat «Servicios Cloud» | Arquitectura cloud, teoría y requisitos académicos del curso |
+| Codex | Construcción del sistema, pruebas, configuración de contenedores y refactorizaciones |
+| Chat con Vaultcraft | Documentación en Obsidian, notas, manuales, diagramas y registros de decisiones |
+| GitHub | Historial y archivos compartidos entre todos los entornos |
+
+## Acuerdos confirmados
+- Proyecto académico de Servicios Cloud y sistema de e-commerce general.
+- Tres carpetas de servicio: `Frontend/`, `Backend/`, `Database/`.
+- Tecnologías base: React + Vite, Node.js + Express, PostgreSQL.
+- Contenerización con Docker y orquestación local con Docker Compose.
+- Tráfico de aplicación desde Frontend a Backend; conexión a PostgreSQL solo desde Backend.
+- Documentación del código junto a las modificaciones que la afecten.
+- Mantener en Obsidian los apuntes del curso S04–S11, separados de los detalles de implementación.
+- Priorizar herramientas gratuitas, evitar exponer secretos o datos reales.
+
+## Decisiones pendientes
+- Funciones, pantallas, roles y reglas de negocio específicas del e-commerce.
+- Endpoints y estructura SQL concretos.
+- Diseño visual y estrategia de pruebas.
+- Despliegue remoto: **no decidido**. Compose local es la referencia inicial.
+- Sincronización de la bóveda local mediante Obsidian Git: **pendiente de configurar en el equipo**.
+
+## Cómo compartir el contexto entre chats
+Al empezar un nuevo chat o tarea de Codex, señalar este repositorio y pedir: «Revisa `AGENTS.md`, `docs/ALINEACION-ENTRE-CHATS.md` y `docs/ESTADO-DEL-PROYECTO.md` antes de proponer cambios».
+
+Cuando haya un acuerdo relevante en el chat de Servicios Cloud, registrarlo aquí; cuando Codex entregue un módulo, actualizar Estado del proyecto y documentación técnica. Esto mantiene el contexto disponible para todos, incluso si no pueden leer literalmente el otro chat.
+
+## Nota de publicación
+El repositorio es público. Las diapositivas de clase y la bóveda completa **no deben subirse automáticamente**: revisar derechos de publicación y datos privados antes de incluirlas.
