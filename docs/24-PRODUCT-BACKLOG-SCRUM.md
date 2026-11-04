@@ -97,3 +97,13 @@ Los incrementos **no son sprints automáticos**. Duración propuesta de sprint: 
 - ¿Qué interfaces y datos se consideran imprescindibles para la primera demo?
 
 Referencias: [visión](20-VISION-FUNCIONAL-YITVERSE.md), [gamificación](22-REGLAS-XP-YITCOINS.md), [decisiones](25-DECISIONES-PENDIENTES.md).
+
+
+## Relación con la especificación RF/RNF (2026-11-03)
+La visión se ha descompuesto en 28 RF y 30 RNF. Las prioridades de esta tabla son orientativas; algunas historias existentes deberán ampliarse, otras dividirse y otras crearse en refinamiento, **no automáticamente**.
+
+- [Requisitos funcionales](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md).
+- [Requisitos no funcionales](27-REQUISITOS-NO-FUNCIONALES.md).
+- [Matriz RF/HU/RNF](28-MATRIZ-TRAZABILIDAD.md).
+
+Ejemplo: HU-008 se vincula con RF-14/15/19 y RNF-16/17/20, pero sigue sin entrar a un sprint hasta definir lectura válida y cantidad XP. HU-013 se vincula con RF-21/22/23 y RNF-17/18/19, bloqueada por economía del canje. No marcar ninguna historia como implementada por actualizar estos documentos.
