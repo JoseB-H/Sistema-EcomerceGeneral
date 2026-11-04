@@ -57,3 +57,7 @@ Antes de diseñar o cambiar módulos, consultar:
 **No implementar por el mero hecho de aparecer en la documentación**. Seleccionar historias en Sprint Planning con sus decisiones cerradas, criterios aprobados y RNF aplicables. Requerimientos marcados como propuesta, bloqueado o futuro **no autorizan código**. No usar material editorial sin derechos; no asignar cantidades de XP/YitCoins sin aprobación.
 
 Con cada implementación, actualizar RF/HU/RNF aplicables, evidencias y estado del proyecto. La bóveda Obsidian local sigue sin sincronización verificada; GitHub es la copia común para Codex.
+
+
+## Inicio técnico del desarrollo
+Ver `docs/29-PLAN-INICIO-DESARROLLO.md` para preparación del equipo y Sprint 1 propuesto. El primer incremento se limita a verificar Frontend ↔ Backend ↔ PostgreSQL con Compose y pruebas reproducibles; no crear módulos comerciales ni licencias o XP por suposición. La inclusión real de historias en sprint requiere aceptación.
