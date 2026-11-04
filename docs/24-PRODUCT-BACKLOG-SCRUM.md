@@ -107,3 +107,8 @@ La visión se ha descompuesto en 28 RF y 30 RNF. Las prioridades de esta tabla s
 - [Matriz RF/HU/RNF](28-MATRIZ-TRAZABILIDAD.md).
 
 Ejemplo: HU-008 se vincula con RF-14/15/19 y RNF-16/17/20, pero sigue sin entrar a un sprint hasta definir lectura válida y cantidad XP. HU-013 se vincula con RF-21/22/23 y RNF-17/18/19, bloqueada por economía del canje. No marcar ninguna historia como implementada por actualizar estos documentos.
+
+## S01 — trabajo técnico candidato (2026-11-03)
+El usuario autorizó iniciar la **planificación** del primer sprint. HU-T01, HU-T02 y HU-T03 son los ítems técnicos propuestos. Se encuentran detallados en [planificación S01](sprints/S01-PLANIFICACION-TECNICA.md) y [tarea para Codex](codex/TAREA-T01-CONTENEDORES.md), con seguimiento en [Issue #1](https://github.com/JoseB-H/Sistema-EcomerceGeneral/issues/1).
+
+**No se ha aprobado un calendario ni cerrado el compromiso del Sprint Backlog.** Las historias de negocio HU-001 a HU-014 continúan fuera de este sprint hasta su refinamiento.
