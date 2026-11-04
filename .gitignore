@@ -1,0 +1,59 @@
+# Sistema-EcomerceGeneral — archivos locales y privados
+# Atención: este repositorio es público.
+
+# Configuración personal de Obsidian, plugins y preferencias
+.obsidian/
+
+# Configuración secreta y local
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.secrets/
+secrets/
+
+# Dependencias, compilaciones y cachés
+node_modules/
+dist/
+build/
+coverage/
+.vite/
+.next/
+.cache/
+*.log
+npm-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# Bases de datos locales, exportaciones y respaldos
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.backup
+*.bak
+*.sql.gz
+backups/
+dumps/
+
+# Material académico o privado: mantenerlo fuera de este repositorio
+*.pdf
+Private/
+Privado/
+_privado/
+_personal/
+Academico-Privado/
+Material-Clase-Privado/
+
+# Sistema operativo / herramientas
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
