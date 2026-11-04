@@ -27,6 +27,8 @@
 17. [Riesgos y controles](26-RIESGOS-Y-CONTROLES.md)
 18. [Plantilla de solicitud](solicitudes/PLANTILLA-SOLICITUD.md)
 
+- [Plan de inicio del desarrollo y Sprint 1 propuesto](29-PLAN-INICIO-DESARROLLO.md): requisitos de equipo, primera integración y criterios de aceptación.
+
 ## Documentos previstos pero aún no publicados
 Contratos API, plan detallado de implementación, plan de pruebas, manuales operativos y plantillas avanzadas. Sus nombres anteriores eran un plan, no enlaces vigentes.
 
