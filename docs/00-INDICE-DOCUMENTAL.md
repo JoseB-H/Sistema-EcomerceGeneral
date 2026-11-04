@@ -2,6 +2,11 @@
 
 > Estado: **línea base de diseño propuesta**, no funcionalidad implementada. Última revisión: 2026-11-03.
 
+## Documentación actualmente publicada
+- [Marco Scrum](16-MARCO-SCRUM.md): sprints, backlog y eventos.
+- [Puente Codex ↔ Obsidian](18-PUENTE-CODEX-OBSIDIAN.md): contexto compartido y sincronización.
+- [Plantilla de solicitud](solicitudes/PLANTILLA-SOLICITUD.md): registrar mejoras sin crear sprints innecesarios.
+
 ## Para empezar
 1. [Visión y alcance](01-VISION-Y-ALCANCE.md): propósito, límites y definiciones pendientes.
 2. [Requisitos y preguntas de descubrimiento](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md): qué debe aprobarse antes de programar.
@@ -39,3 +44,5 @@
 5. Mantener un mismo lenguaje técnico en las notas de Obsidian y en GitHub.
 
 **Nota:** el repositorio es público; no incluir diapositivas protegidas, contraseñas, capturas privadas, datos reales ni la bóveda académica completa sin autorización.
+
+> Algunos archivos enumerados como plan futuro aún deben redactarse y publicarse. Verifica enlaces antes de asumir que existen.
