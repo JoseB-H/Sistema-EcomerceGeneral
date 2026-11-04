@@ -29,3 +29,18 @@ Trabajamos en `JoseB-H/Sistema-EcomerceGeneral`, proyecto académico de **Servic
 - **GitHub:** fuente compartida; no hay sincronización automática de las conversaciones de ChatGPT.
 
 Ante decisiones técnicas nuevas o un conflicto entre chat y código, registrar una decisión pendiente en `docs/ALINEACION-ENTRE-CHATS.md` antes de cambiar supuestos esenciales.
+
+
+## Lectura obligatoria de Obsidian y Scrum (actualizado 2026-11-03)
+**Codex no puede asumir acceso a la bóveda local de Obsidian.** La documentación compartida reside en GitHub bajo `docs/`; debe leer estos archivos antes de planificar y antes de codificar:
+- `docs/00-INDICE-DOCUMENTAL.md`
+- `docs/16-MARCO-SCRUM.md`
+- `docs/18-PUENTE-CODEX-OBSIDIAN.md`
+- `docs/ESTADO-DEL-PROYECTO.md`
+- El RF/HU y la solicitud en `docs/solicitudes/` asociados al Issue elegido.
+
+No desarrollar una historia únicamente porque existe una nota: comprobar su estado y aprobación en Product Backlog/Sprint Backlog. Las notas nuevas se refinan antes de asignarse a un sprint. Una nota nueva **no crea un sprint nuevo automáticamente**.
+
+Al modificar Frontend, Backend, Database, Docker o API, actualizar la documentación correspondiente en el mismo cambio y registrar pruebas/commit. En caso de conflicto entre notas antiguas y documentos vigentes, detener la decisión afectada y solicitar resolución, sin sobrescribir la bóveda académica.
+
+La sincronización Obsidian ↔ GitHub depende de Git configurado en la computadora del usuario; no afirmar que está activada hasta verificarlo.
