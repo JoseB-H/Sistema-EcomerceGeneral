@@ -7,22 +7,28 @@
 - [Puente Codex ↔ Obsidian](18-PUENTE-CODEX-OBSIDIAN.md): contexto compartido y sincronización.
 - [Plantilla de solicitud](solicitudes/PLANTILLA-SOLICITUD.md): registrar mejoras sin crear sprints innecesarios.
 
-## Para empezar
-1. [Visión y alcance](01-VISION-Y-ALCANCE.md): propósito, límites y definiciones pendientes.
-2. [Requisitos y preguntas de descubrimiento](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md): qué debe aprobarse antes de programar.
-3. [Arquitectura y contenedores](03-ARQUITECTURA-Y-CONTENEDORES.md): estructura y comunicación entre Frontend, Backend y Database.
-4. [Diseño del Frontend](04-DISENO-FRONTEND.md): propuesta de capas y decisiones de interfaz.
-5. [Diseño del Backend](05-DISENO-BACKEND.md): propuesta de API y responsabilidades.
-6. [Diseño de Database](06-DISENO-DATABASE.md): esquema, migraciones y persistencia.
-7. [Contratos API y flujos](07-CONTRATOS-API-Y-FLUJOS.md): cómo documentar comunicación entre componentes.
-8. [Plan de implementación](08-FASES-DE-DESARROLLO.md): orden de trabajo, entradas, salidas y criterios de cierre.
-9. [Calidad y pruebas](09-PLAN-DE-PRUEBAS.md): matriz de verificación.
-10. [Seguridad y operación](10-SEGURIDAD-Y-OPERACION.md): controles, secretos y recuperación.
-11. [Obsidian ↔ GitHub](11-SINCRONIZACION-OBSIDIAN-GITHUB.md): flujo de trabajo documental seguro.
-12. [Decisiones técnicas y ADR](12-DECISIONES-TECNICAS.md): confirmadas, propuestas y pendientes.
-13. [Plantillas de requisitos y entregas](13-PLANTILLAS-DE-TRABAJO.md): RF, HU, endpoint, PR y ADR.
-14. [Backlog de decisiones](14-BACKLOG-DE-DEFINICION.md): preguntas para cerrar con el usuario.
-15. [Guía para Codex](15-GUIA-DE-ENTREGAS-CODEX.md): órdenes de trabajo por fase.
+## Documentos publicados y vigentes
+1. [Visión y alcance de YitVerse](01-VISION-Y-ALCANCE.md)
+2. [28 requisitos funcionales (RF)](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md)
+3. [30 requisitos no funcionales (RNF)](27-REQUISITOS-NO-FUNCIONALES.md)
+4. [Matriz de trazabilidad RF/HU/RNF](28-MATRIZ-TRAZABILIDAD.md)
+5. [Arquitectura de los tres contenedores](03-ARQUITECTURA-Y-CONTENEDORES.md)
+6. [Diseño de Frontend](04-DISENO-FRONTEND.md)
+7. [Diseño de Backend](05-DISENO-BACKEND.md)
+8. [Diseño de Database](06-DISENO-DATABASE.md)
+9. [Scrum y cambios](16-MARCO-SCRUM.md)
+10. [Puente Obsidian y Codex](18-PUENTE-CODEX-OBSIDIAN.md)
+11. [Visión funcional detallada](20-VISION-FUNCIONAL-YITVERSE.md)
+12. [Experiencia de usuario](21-EXPERIENCIA-USUARIO.md)
+13. [XP, niveles y YitCoins](22-REGLAS-XP-YITCOINS.md)
+14. [Modelo conceptual del dominio](23-MODELO-CONCEPTUAL.md)
+15. [Product Backlog Scrum](24-PRODUCT-BACKLOG-SCRUM.md)
+16. [Decisiones pendientes](25-DECISIONES-PENDIENTES.md)
+17. [Riesgos y controles](26-RIESGOS-Y-CONTROLES.md)
+18. [Plantilla de solicitud](solicitudes/PLANTILLA-SOLICITUD.md)
+
+## Documentos previstos pero aún no publicados
+Contratos API, plan detallado de implementación, plan de pruebas, manuales operativos y plantillas avanzadas. Sus nombres anteriores eran un plan, no enlaces vigentes.
 
 ## Regla de autoridad
 - **Confirmado:** decisiones dichas por el usuario en el proyecto y recogidas en [alineación entre chats](ALINEACION-ENTRE-CHATS.md).
