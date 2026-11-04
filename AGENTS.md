@@ -9,7 +9,7 @@ Trabajamos en `JoseB-H/Sistema-EcomerceGeneral`, proyecto académico de **Servic
 - Comunicación: navegador → Frontend → Backend → Database. Solo Backend accede directamente a Database.
 - Los datos de PostgreSQL deben persistir al reiniciar contenedores.
 - Priorizar tecnologías y herramientas gratuitas. No incorporar servicios de pago obligatorios.
-- El nombre del repositorio sugiere e-commerce general, pero **los módulos de negocio aún no están definidos**; no inventar funcionalidades, permisos, medios de pago ni políticas comerciales. No importar requisitos de proyectos ajenos.
+- La visión de YitVerse ya está definida en `docs/20-VISION-FUNCIONAL-YITVERSE.md`: manga/manhwa, biblioteca del lector, seguimiento, XP, niveles, YitCoins, artículos físicos y accesorios. **Las reglas detalladas y el MVP aún requieren refinamiento**. No inventar funcionalidades, permisos, medios de pago ni políticas comerciales. No importar requisitos de proyectos ajenos.
 
 ## Normas de implementación
 1. El usuario desarrollará el sistema con **Codex**, de forma incremental. No asumir que un prototipo anterior está desplegado o probado en este repositorio.
@@ -44,3 +44,16 @@ No desarrollar una historia únicamente porque existe una nota: comprobar su est
 Al modificar Frontend, Backend, Database, Docker o API, actualizar la documentación correspondiente en el mismo cambio y registrar pruebas/commit. En caso de conflicto entre notas antiguas y documentos vigentes, detener la decisión afectada y solicitar resolución, sin sobrescribir la bóveda académica.
 
 La sincronización Obsidian ↔ GitHub depende de Git configurado en la computadora del usuario; no afirmar que está activada hasta verificarlo.
+
+
+## Especificaciones RF y RNF — lectura obligatoria (2026-11-03)
+Antes de diseñar o cambiar módulos, consultar:
+1. `docs/02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md` — 28 RF, estatus, prioridades propuestas y criterios de aceptación iniciales.
+2. `docs/27-REQUISITOS-NO-FUNCIONALES.md` — 30 RNF, verificación prevista y parámetros aún por aprobar.
+3. `docs/28-MATRIZ-TRAZABILIDAD.md` — relación RF ↔ HU ↔ RNF.
+4. `docs/24-PRODUCT-BACKLOG-SCRUM.md` — historias de usuario candidatas, sin sprint asignado.
+5. `docs/25-DECISIONES-PENDIENTES.md` — decisiones que bloquean el refinamiento.
+
+**No implementar por el mero hecho de aparecer en la documentación**. Seleccionar historias en Sprint Planning con sus decisiones cerradas, criterios aprobados y RNF aplicables. Requerimientos marcados como propuesta, bloqueado o futuro **no autorizan código**. No usar material editorial sin derechos; no asignar cantidades de XP/YitCoins sin aprobación.
+
+Con cada implementación, actualizar RF/HU/RNF aplicables, evidencias y estado del proyecto. La bóveda Obsidian local sigue sin sincronización verificada; GitHub es la copia común para Codex.
