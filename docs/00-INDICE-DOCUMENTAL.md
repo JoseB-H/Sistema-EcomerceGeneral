@@ -7,6 +7,10 @@
 - [Puente Codex ↔ Obsidian](18-PUENTE-CODEX-OBSIDIAN.md): contexto compartido y sincronización.
 - [Plantilla de solicitud](solicitudes/PLANTILLA-SOLICITUD.md): registrar mejoras sin crear sprints innecesarios.
 
+## Centro Obsidian
+- [Inicio de la bóveda (YitVerse)](../00%20-%20YitVerse.md)
+- [Guía Obsidian ↔ GitHub ↔ Codex](30-OBSIDIAN-GITHUB-SINCRONIZACION.md) — instalación y verificación, sin subir la bóveda académica.
+
 ## Documentos publicados y vigentes
 1. [Visión y alcance de YitVerse](01-VISION-Y-ALCANCE.md)
 2. [28 requisitos funcionales (RF)](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md)
