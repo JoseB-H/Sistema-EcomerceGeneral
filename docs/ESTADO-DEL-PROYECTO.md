@@ -38,3 +38,10 @@
 - [ ] Pruebas o implementación verificadas: **ninguna acreditada por esta documentación**.
 
 Los módulos de YitVerse no están aprobados automáticamente para implementación. Los próximos acuerdos sobre legalidad del lector, XP, YitCoins, pedidos y MVP deben reflejarse primero en los RF/HU.
+
+
+## Preparación del desarrollo — 2026-11-03
+- [x] Plan técnico de arranque y Sprint 1 **propuesto** documentado en `docs/29-PLAN-INICIO-DESARROLLO.md`.
+- [ ] Verificar instalación funcional de Git y Docker Compose en el entorno de Codex/Windows.
+- [ ] Aprobar Sprint Goal, fechas y alcance de Sprint 1.
+- [ ] Implementar y probar tres contenedores. **No hay implementación confirmada.**
