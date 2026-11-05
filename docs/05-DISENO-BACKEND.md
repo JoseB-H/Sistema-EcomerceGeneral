@@ -68,3 +68,7 @@ DB detenida: respuesta 503 exacta vía Nginx. Al iniciar DB, retorna 200 sin cam
 ## Catálogo sintético del prototipo local
 
 HU-001/HU-002 autorizadas para demostración local. `createApp` acepta `catalogRepository` opcional: sin él conserva S01. `GET /api/works?q=&format=` lista/busca (q string, máx. 100 caracteres; formato manga/manhwa); `GET /api/works/:id` devuelve detalle o 404. Entrada inválida → 400; proveedor fallido → 503 saneado. Todas las respuestas usan no-store. `source={kind:synthetic,persisted:false}` identifica la procedencia. Los seis registros y sus sinopsis son ficticios, solo lectura y aislados en `src/catalog`; no hay SQL comercial ni persistencia. Suite Backend: 40/40 aprobada; salud DB permanece independiente.
+
+### Runtime nativo temporal
+
+`npm --prefix Backend run dev` ejecuta Node 24 con --watch y --env-file-if-exists=.env en Backend; no lee el .env raíz de Compose. `src/dev-server.js` escucha 127.0.0.1:3000, permite DB ausente y sirve siempre catálogo sintético. Sin PGUSER/PGPASSWORD/PGDATABASE, salud devuelve 503 y no se crea pool; configuración parcial falla de forma explícita. Con los tres valores se usa pg y SELECT 1 real, con host local predeterminado. El catálogo no se vuelve persistente por configurar DB. `src/server.js` y configuración S01 quedan intactos. Cierre SIGINT/SIGTERM; se verificó el proceso nativo real en Linux. Suite Backend 45/45.

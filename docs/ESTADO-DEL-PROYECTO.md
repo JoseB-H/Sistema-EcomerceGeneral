@@ -91,3 +91,5 @@ Revisión independiente realizada sobre el incremento inicial. Sus dos hallazgos
 ## Modalidad local temporal — HU-001/HU-002
 
 Autorizada por el usuario en `feat/local-dev-catalogo`, desde Sprint 1 e672e2e. Docker temporalmente pausado para este desarrollo, sin ejecutar sus comandos ni modificar PR #3/main. Primer avance: adapter y API de catálogo sintético solo lectura, con búsqueda/filtro, detalle, 404/validación/errores; 40 pruebas Backend aprobadas. Ejecución nativa/UI/evidencia final se registrarán en la misma rama. No hay autenticación, lectura digital, XP, YitCoins ni transacciones comerciales.
+
+Runtime nativo añadido: Express puede iniciarse sin PostgreSQL y mantiene salud 503; la configuración parcial se rechaza sin exponer valores. Vite queda fijo en localhost:5173, strictPort y proxy a 127.0.0.1:3000. 45 pruebas Backend y las 11 originales Frontend aprobadas; no se usó Docker. Windows/D: aún sin verificación directa.
