@@ -67,3 +67,11 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 **Estado:** respaldo y clonación nueva pendientes de verificación con salida de terminal del usuario.
 
 **Prioridad del proyecto sin cambios:** diseñar YitVerse visual V2 en Figma; Codex implementa después del acuerdo visual.
+
+### Actualización del incidente — 2026-11-05 18:14 (hora Perú)
+
+El primer respaldo `robocopy` desde `D:\Proyectos\YitVerse\YitVerse-Desarrollo` hacia `D:\Proyectos\YitVerse-Respaldo-Seguro` **falló** con `ERROR 5 (0x00000005): Acceso denegado al crear carpeta de destino`. Por tanto, **no hay respaldo verificado**.
+
+Se indicó un destino alternativo bajo `%USERPROFILE%\YitVerse-Respaldo-Seguro`, con `mkdir`, `robocopy ... /E /XD .git node_modules dist build .next /R:1 /W:1` y comprobación mediante `dir` y resumen de Robocopy. **Pendiente** confirmar salida del usuario; no asumir éxito.
+
+La recuperación del Git local debe esperar a que la copia de seguridad se complete. Las ramas del remoto siguen verificadas en GitHub, pero los cambios sin commit solo pueden protegerse copiando el trabajo local.
