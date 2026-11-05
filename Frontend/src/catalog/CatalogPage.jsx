@@ -8,10 +8,12 @@ export default function CatalogPage({ api, search }) {
     const params = new URLSearchParams(search);
     return { query: params.get('q') ?? '', format: params.get('format') ?? '' };
   });
+  const [draft, setDraft] = useState(filters);
   const load = useCallback(signal => api.list({ ...filters, signal }), [api, filters]);
   const resource = useResource(load);
   const changeSearch = (query, format) => {
     window.history.replaceState({}, '', `/${catalogQuery(query, format)}`);
+    setDraft({ query, format });
     setFilters({ query, format });
   };
   return <main id="contenido" tabIndex={-1} className="catalog-main">
@@ -19,7 +21,7 @@ export default function CatalogPage({ api, search }) {
       <div><p className="section-kicker">Tu siguiente descubrimiento</p><h1>Historias para<br /><em>dejarte llevar.</em></h1><p className="intro-copy">Explora nuevas ideas entre mangas y manhwas.<br className="desktop-break" /> Un pequeño universo de historias por descubrir.</p></div>
       <div className="intro-emblem" aria-hidden="true"><span className="emblem-orbit" /><span className="emblem-star">✳</span><span className="emblem-caption">YITVERSE<br />EXPLORA / DESCUBRE</span></div>
     </section>
-    <SearchForm key={`${filters.query}:${filters.format}`} {...filters} onSearch={changeSearch} />
+    <SearchForm {...draft} onChange={setDraft} onSearch={changeSearch} />
     <section aria-labelledby="catalog-heading" className="catalog-results">
       <div className="results-heading"><h2 id="catalog-heading">Explorar el catálogo</h2>{resource.status === 'ready' && <p aria-live="polite">{resource.data.items.length} {resource.data.items.length === 1 ? 'obra de demostración' : 'obras de demostración'}</p>}</div>
       {resource.status === 'loading' && <LoadingState />}

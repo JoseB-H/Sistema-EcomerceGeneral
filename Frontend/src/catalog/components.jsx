@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { catalogQuery } from './catalog-client.js';
 
 export const formatLabel = value => value === 'manga' ? 'Manga' : 'Manhwa';
@@ -26,12 +25,10 @@ export function WorkCard({ work, query, format }) {
     </a>
   </article>;
 }
-export function SearchForm({ query, format, onSearch }) {
-  const [draft, setDraft] = useState(query);
-  const [selected, setSelected] = useState(format);
-  return <form className="catalog-search" role="search" onSubmit={event => { event.preventDefault(); onSearch(draft.trim(), selected); }}>
-    <div className="search-field"><label htmlFor="catalog-query">Buscar obras</label><input id="catalog-query" type="search" maxLength={100} value={draft} onChange={event => setDraft(event.target.value)} placeholder="Título, género o una nueva historia…" /></div>
-    <div className="format-field"><label htmlFor="catalog-format">Formato</label><select id="catalog-format" value={selected} onChange={event => setSelected(event.target.value)}><option value="">Todos los formatos</option><option value="manga">Manga</option><option value="manhwa">Manhwa</option></select></div>
+export function SearchForm({ query, format, onChange, onSearch }) {
+  return <form className="catalog-search" role="search" onSubmit={event => { event.preventDefault(); onSearch(query.trim(), format); }}>
+    <div className="search-field"><label htmlFor="catalog-query">Buscar obras</label><input id="catalog-query" type="search" maxLength={100} value={query} onChange={event => onChange({ query: event.target.value, format })} placeholder="Título, género o una nueva historia…" /></div>
+    <div className="format-field"><label htmlFor="catalog-format">Formato</label><select id="catalog-format" value={format} onChange={event => onChange({ query, format: event.target.value })}><option value="">Todos los formatos</option><option value="manga">Manga</option><option value="manhwa">Manhwa</option></select></div>
     <button className="button-primary" type="submit">Buscar <ArrowIcon /></button>
   </form>;
 }

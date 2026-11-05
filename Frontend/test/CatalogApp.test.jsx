@@ -37,6 +37,24 @@ test('empty results can clear the search', async () => {
   fireEvent.click(screen.getByRole('button', { name: /Limpiar búsqueda/ }));
   await screen.findByRole('link', { name: /Ver ficha de Archivo Aurora/ });
   expect(window.location.search).toBe('');
+  expect(screen.getByRole('searchbox')).toHaveValue('');
+});
+
+test('submitting changed filters preserves the focused search control', async () => {
+  render(<CatalogApp api={api} />);
+  await screen.findByRole('link', { name: /Ver ficha de Archivo Aurora/ });
+  const input = screen.getByRole('searchbox');
+  const button = screen.getByRole('button', { name: /^Buscar/ });
+  input.focus();
+  fireEvent.change(input, { target: { value: 'Aurora' } });
+  fireEvent.submit(screen.getByRole('search'));
+  await act(async () => {});
+  expect(input).toHaveFocus();
+  button.focus();
+  fireEvent.change(screen.getByRole('combobox'), { target: { value: 'manga' } });
+  fireEvent.submit(screen.getByRole('search'));
+  await act(async () => {});
+  expect(button).toHaveFocus();
 });
 
 test('catalog error is controlled and retry recovers', async () => {
