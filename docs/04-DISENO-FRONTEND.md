@@ -53,3 +53,7 @@ Véase [Contratos API](07-CONTRATOS-API-Y-FLUJOS.md) y [Requisitos](02-REQUISITO
 ## S01 — pantalla técnica implementada
 
 `Frontend/src/App.jsx` presenta únicamente diagnóstico, sin módulos comerciales. El cliente usa `/api/health` relativo, no-store, valida HTTP 200 y JSON sano. Carga, éxito y error accesibles con status/alert; reintento deshabilitado durante carga. Cancelación al desmontar, límite de 4000 ms e ignorar respuestas obsoletas evitan éxitos tardíos. `npm --prefix Frontend test`: 11/11; `npm --prefix Frontend run build` aprobado. No se ha validado aún en contenedores/navegador real.
+
+### Docker S01
+
+Build multi-stage Vite y Nginx oficial fijado; sin node_modules de desarrollo en runtime. `/api/` mantiene la ruta y no entra al fallback SPA. Healthcheck wget usa `-Y off` solo para loopback, porque BusyBox heredaba el proxy HTTP cloud y devolvía 403 sin alcanzar Nginx; el proxy externo y CA siguen activos.

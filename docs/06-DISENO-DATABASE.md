@@ -53,3 +53,7 @@ Entidades, campos, reglas de integridad, políticas de retención, transacciones
 ## S01 — comprobación técnica
 
 Backend usa `pg` y `SELECT 1 AS ok`; no crea tablas del dominio. La configuración usa PGHOST/PGPORT/PGUSER/PGPASSWORD/PGDATABASE inyectadas por Compose. Las pruebas unitarias cubren error y resultado inesperado; persistencia y reconexión real siguen pendientes de la pila Docker.
+
+### Docker S01
+
+Imagen oficial PostgreSQL 17 fijada por digest; volumen nombrado por proyecto y montado en `/var/lib/postgresql/data`. Únicamente red `data` interna, sin puerto al host; autenticación por contraseña y pg_isready como sonda local. No existe SQL de inicialización comercial. El helper verifica propietario de volumen y montaje antes de operar.

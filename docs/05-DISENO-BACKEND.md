@@ -56,3 +56,7 @@ Tarea 1: `npm --prefix Backend test` ejecutó 5 pruebas aprobadas, después del 
 ### Tarea 2 — runtime y conexión
 
 `src/config.js` valida PORT/PGPORT (1–65535), PGHOST y PGUSER/PGPASSWORD/PGDATABASE antes de escuchar; no altera la contraseña. `src/server.js` escucha en 0.0.0.0:3000, compone Express y pool, y cierra HTTP/pool ante SIGTERM/SIGINT con límite de 10 s. `src/database.js` ejecuta `SELECT 1 AS ok` por solicitud, comprueba el resultado y utiliza max=5, timeouts de conexión/consulta/statement=1500 ms e idle=10000 ms. Un error idle produce un evento saneado y no derriba el proceso. `npm --prefix Backend test`: 26/26 aprobadas; la reconexión contra PostgreSQL real se comprobará en Docker.
+
+### Docker S01
+
+Runtime no root (`node`), manifiestos y src de su propiedad; instalación `npm ci --omit=dev`. Solo escucha 3000 dentro de redes Compose, sin mapeo al host. La prueba real verifica que ese usuario lee package.json.

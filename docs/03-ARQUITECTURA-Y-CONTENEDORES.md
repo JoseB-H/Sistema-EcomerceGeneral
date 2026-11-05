@@ -66,3 +66,11 @@ Compose demuestra orquestación **local de múltiples contenedores**; no equival
 Referencias oficiales: [Docker Compose Specification](https://docs.docker.com/reference/compose-file/).
 
 Relaciones: [Frontend](04-DISENO-FRONTEND.md), [Backend](05-DISENO-BACKEND.md), [Database](06-DISENO-DATABASE.md).
+
+## S01 — topología implementada y validada en cloud
+
+Tres servicios: React compilado/Nginx (`frontend`), Express (`backend`) y PostgreSQL 17 (`database`). Frontend/backend comparten `app`; backend/database comparten `data`, interna. Solo frontend publica 127.0.0.1:8080, configurable con FRONTEND_PORT; DB y Backend no publican puertos. Nginx conserva `/api/health`, resuelve Backend mediante DNS Docker con valid=1s y aplica timeouts de 3 s. PostgreSQL usa `postgres_data` en `/var/lib/postgresql/data`. Healthchecks/dependencias esperan salud; no reinician automáticamente servicios caídos.
+
+`docker-compose.yml` es portable; el helper añade etiquetas de prueba y override CA local cuando corresponde. Registro de propiedad enlaza UUID, daemon, proyecto y ruta real. La inspección de montajes y etiquetas falla cerrada ante recursos ajenos; exclusión compartida impide suites simultáneas. Se prohíben overrides de identidad, down/prune y borrado de volúmenes.
+
+Bases oficiales fijadas: Node sha256:c86ecead9e55a5210ac1727de38a4ca840bf03dcaf34dc9749addbf383b1920c; PostgreSQL sha256:839fbb5a4942a7758dd93e18b42ea5649807491a0545b5eeeb8f0b8bb11857a5; Nginx sha256:0e52bd054126cdc040b1276c0af347aeb02a41b9cfe305d6094767ac30e97949. TLS conservado en npm con CA BuildKit opcional. Build/up verificados y tres servicios saludables; las pruebas de caída y persistencia siguen en tareas 5/6.
