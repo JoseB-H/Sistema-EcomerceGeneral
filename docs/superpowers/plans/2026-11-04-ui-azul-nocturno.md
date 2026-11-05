@@ -22,6 +22,7 @@ Base `feat/local-dev-catalogo` `4794803`; trabajar solo en `feat/ui-azul-nocturn
 - Modificar `WorkDetailPage.jsx`: presentación y regreso, sin modificar datos ni carga.
 - Modificar `components.jsx`: portada SVG, marca/iconos decorativos/estados; firmas de formularios y acciones intactas.
 - Reemplazar `catalog.css`: tokens, composición, tarjetas3:4, responsive, salud local y reduced-motion.
+- Crear `Frontend/test/browser/dark-catalog-smoke.py`: comprobaciones Chromium reproducibles, opcionales para ejecutar el prototipo, con Playwright del entorno. Crear capturas propias en `docs/assets/ui-azul-nocturno/` durante la entrega.
 - Ampliar `Frontend/test/CatalogApp.test.jsx`: accesos header/hero/footer conservan el único buscador y las rutas.
 - Actualizar documentación Frontend, UX, estado, backlog/trazabilidad/RNF y guía local; crear `docs/UI-AZUL-NOCTURNO.md` con pruebas/limitaciones y enlaces de revisión.
 

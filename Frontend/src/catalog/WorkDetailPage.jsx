@@ -11,7 +11,7 @@ export default function WorkDetailPage({ api, id, search }) {
   if (resource.error?.code === 'not_found') return <NotFound work back={back} />;
   const work = resource.data?.item;
   return <main id="contenido" tabIndex={-1} className="catalog-main detail-main">
-    <a className="back-link" href={back}><span aria-hidden="true">← </span>Volver al catálogo</a>
+    <a className="back-link" href={back}><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M20 12H4m7-7-7 7 7 7" /></svg>Volver al catálogo</a>
     {resource.status === 'loading' && <LoadingState detail />}
     {resource.status === 'error' && <ErrorState detail retry={resource.retry} />}
     {resource.status === 'ready' && <article className="work-detail">

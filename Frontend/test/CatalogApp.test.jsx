@@ -1,12 +1,46 @@
 import React from 'react';
 import { test, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, act, within } from '@testing-library/react';
 import CatalogApp from '../src/catalog/CatalogApp.jsx';
 import { collection, detail, source } from './catalog-fixtures.js';
 
 const api = { list: async () => collection, detail: async () => detail };
 beforeEach(() => window.history.replaceState({}, '', '/'));
 afterEach(() => vi.useRealTimers());
+
+test('header search reaches the single existing field without resetting catalog filters', async () => {
+  window.history.replaceState({}, '', '/?q=Aurora&format=manga');
+  render(<CatalogApp api={api} />);
+  const header = within(screen.getByRole('banner'));
+  expect(header.getByRole('link', { name: 'Buscar en el catálogo' })).toHaveAttribute('href', '#catalog-query');
+  expect(screen.getAllByRole('searchbox')).toHaveLength(1);
+  expect(screen.getByRole('searchbox')).toHaveValue('Aurora');
+  expect(screen.getByRole('combobox')).toHaveValue('manga');
+  await screen.findByRole('link', { name: /Ver ficha de Archivo Aurora/ });
+});
+
+test('header search is reachable from a direct detail route', async () => {
+  window.history.replaceState({}, '', '/obras/archivo-aurora?q=Aurora');
+  render(<CatalogApp api={api} />);
+  expect(within(screen.getByRole('banner')).getByRole('link', { name: 'Buscar en el catálogo' })).toHaveAttribute('href', '/#catalog-query');
+  await screen.findByRole('heading', { name: 'Archivo Aurora' });
+});
+
+test('arriving through a search fragment focuses the field after React mounts', async () => {
+  window.history.replaceState({}, '', '/#catalog-query');
+  render(<CatalogApp api={api} />);
+  expect(screen.getByRole('searchbox')).toHaveFocus();
+  await screen.findByRole('link', { name: /Ver ficha de Archivo Aurora/ });
+});
+
+test('hero and footer lead only to implemented destinations', async () => {
+  render(<CatalogApp api={api} />);
+  expect(screen.getByRole('link', { name: 'Explorar catálogo' })).toHaveAttribute('href', '#catalog-query');
+  const footer = within(screen.getByRole('navigation', { name: 'Enlaces de YitVerse' }));
+  expect(footer.getByRole('link', { name: 'Explorar' })).toHaveAttribute('href', '/');
+  expect(footer.getByRole('link', { name: 'Estado de conexión' })).toHaveAttribute('href', '/estado');
+  await screen.findByRole('link', { name: /Ver ficha de Archivo Aurora/ });
+});
 
 test('catalog announces loading and then identifies synthetic works', async () => {
   let complete;

@@ -69,3 +69,11 @@ En `npm run dev` o `npm run build:local` se muestra catálogo sintético en `/`,
 Las composiciones gráficas CSS/SVG son marcadores propios de demostración, no portadas reales. Fuente sintética y ausencia de persistencia se declaran en catálogo y ficha. Sin enlaces a autenticación, lector, tienda o gamificación. Diseño móvil/escritorio y salto de teclado al contenido verificados en Chromium; 30 pruebas Frontend aprobadas. La compilación predeterminada sigue mostrando S01; build:local usa internamente modo prototype porque Vite reserva el nombre local para archivos .env.local.
 
 Revisión final local: el formulario conserva su instancia y foco al enviar filtros; borrador y filtros aplicados se controlan por separado. Regresión observada RED→GREEN, 31 pruebas Frontend aprobadas. Así el teclado no vuelve al inicio de la página después de buscar.
+
+## Rediseño azul nocturno — HU-001/HU-002
+
+Autorizado el 2026-11-04 en `feat/ui-azul-nocturno`, desde catálogo `4794803`. Sustituye la apariencia verde provisional por fondo `#0B1020`, superficies `#131D30` y azul `#2563EB`, con cian/azul claro/violeta de acento. `NightArtwork` y `CoverArtwork` son composiciones SVG originales con `useId` para evitar gradientes compartidos.
+
+Header y hero acceden al mismo buscador; footer enlaza solo rutas existentes. Al llegar mediante `#catalog-query`, el campo recibe foco después del montaje dinámico de React. Portadas 3:4, grid 6/3/2/1 según anchura, foco visible y movimiento reducido. CSS de salud local se acota a `.catalog-shell`: `App.css` y el build S01 se conservan. Cliente, hooks, estados, API, datos y navegación mantienen su comportamiento.
+
+Cuatro pruebas nuevas de acceso/navegación/foco: **35 Frontend aprobadas**. Chromium verificó 1440/768/390/320 px, teclado, proporción, contraste, búsqueda/ficha/historial y estados sin errores JavaScript. `Frontend/test/browser/dark-catalog-smoke.py` permite repetir la comprobación con Playwright opcional y servidores nativos activos. Evidencia y límites en [reporte del rediseño](UI-AZUL-NOCTURNO.md).
