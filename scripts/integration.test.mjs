@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { setTimeout as delay } from 'node:timers/promises';
 import { createHelper } from './compose-helper.mjs';
 
 test('compose_has_three_isolated_services', async () => {
@@ -16,6 +17,87 @@ test('compose_has_three_isolated_services', async () => {
     assert.equal(model.services.frontend.ports[0].host_ip, '127.0.0.1');
     assert.equal(model.services.database.volumes[0].target, '/var/lib/postgresql/data');
     assert.equal(Object.keys(model.services.frontend.environment ?? {}).some(k => /^(PG|POSTGRES_)/.test(k)), false);
+  });
+});
+
+test('S01 operational integration', { concurrency: false }, async t => {
+  const helper = createHelper();
+  await helper.withLock(async () => {
+    const healthy = () => {
+      const response = helper.httpViaProxy('/api/health');
+      assert.equal(response.status, 200);
+      assert.deepEqual(JSON.parse(response.body), { status: 'ok', database: 'ok' });
+    };
+    const recover = async () => {
+      const until = Date.now() + 60000;
+      let lastError;
+      do {
+        try { healthy(); return; } catch (error) { lastError = error; }
+        await delay(500);
+      } while (Date.now() < until);
+      throw lastError;
+    };
+    const resource = name => helper.assertTestEnvironmentOwned().resources.find(r => r.kind === 'container' && r.labels['com.docker.compose.service'] === name);
+    // This first request also ensures the probe exists before any service is stopped.
+    healthy();
+    await t.test('root_serves_compiled_react', () => {
+      const response = helper.httpViaProxy('/');
+      assert.equal(response.status, 200);
+      assert.match(response.body, /id="root"/);
+      const asset = response.body.match(/src="([^"]+\.js)"/)[1];
+      assert.equal(helper.httpViaProxy(asset).status, 200);
+    });
+    await t.test('health_uses_real_database', () => {
+      const response = helper.httpViaProxy('/api/health');
+      assert.equal(response.headers['cache-control'], 'no-store');
+      healthy();
+    });
+    await t.test('unknown_api_is_not_spa', () => {
+      const response = helper.httpViaProxy('/api/unknown');
+      assert.equal(response.status, 404);
+      assert.deepEqual(JSON.parse(response.body), { error: 'not_found' });
+    });
+    await t.test('database_restart_recovers', async () => {
+      const backendBefore = resource('backend').id;
+      try {
+        helper.compose(['stop', '-t', '15', 'database']);
+        const response = helper.httpViaProxy('/api/health');
+        assert.equal(response.status, 503);
+        assert.deepEqual(JSON.parse(response.body), { status: 'degraded', database: 'unavailable' });
+      } finally {
+        helper.compose(['start', 'database']);
+        await recover();
+      }
+      assert.equal(resource('backend').id, backendBefore);
+    });
+    await t.test('backend_stop_closes_cleanly', async () => {
+      try {
+        const before = Date.now();
+        helper.compose(['stop', '-t', '15', 'backend']);
+        assert.ok(Date.now() - before < 10000, 'Backend must close before its shutdown deadline');
+        assert.equal(resource('backend').state.ExitCode, 0);
+        const response = helper.compose(['exec', '-T', 'frontend', 'wget', '-Y', 'off', '-S', '-O', '/dev/null', 'http://127.0.0.1/api/health'], { allowFailure: true });
+        assert.notEqual(response.status, 0);
+        assert.match(response.stderr, /HTTP\/1\.[01] 50[24]/);
+      } finally {
+        helper.compose(['start', 'backend']);
+        await recover();
+      }
+    });
+    await t.test('backend_recreate_recovers_proxy', async () => {
+      const before = resource('backend');
+      const frontendId = resource('frontend').id;
+      try {
+        helper.compose(['up', '-d', '--no-deps', '--force-recreate', '--wait', '--wait-timeout', '120', 'backend']);
+        await recover();
+        assert.notEqual(resource('backend').id, before.id);
+        assert.equal(resource('frontend').id, frontendId);
+        t.diagnostic(`Backend IP before/after: ${before.networks[`${helper.project}_app`].IPAddress} / ${resource('backend').networks[`${helper.project}_app`].IPAddress}`);
+      } finally {
+        helper.compose(['start', 'backend']);
+        await recover();
+      }
+    });
   });
 });
 

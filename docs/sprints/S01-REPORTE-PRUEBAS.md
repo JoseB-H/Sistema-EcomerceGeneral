@@ -17,3 +17,5 @@ T01-01 a T01-11: NO EJECUTADOS todavía; se completarán tras construir la pila.
 - Tarea 4: 8/8 tests de helper y 3/3 de estructura/runtime/salud. Config válido, build y up con tres servicios saludables. Primer runtime falló por package.json con permisos restrictivos: regresión ROJO→VERDE con COPY --chown=node:node. Segundo fallo: BusyBox enviaba loopback al proxy (403); regresión de salud ROJO→VERDE y wget -Y off en sonda local. Sin desactivar TLS ni cambiar red. Node contenedor 24.22.2, Nginx 1.30.6; digests en Dockerfiles/arquitectura.
 
 Los tests node --test requieren la ruta de ejecución escalada del entorno: el sandbox normal reportó solo un archivo wrapper; se verificaron los nombres/conteos reales con ejecución escalada. No se usa ese wrapper como evidencia.
+
+- Tarea 5: sonda HTTP inicialmente ausente (ROJO); `node --test scripts/integration.test.mjs`: 10/10 VERDE, cero omitidas. Casos: assets React, salud dependiente de SQL, 404 API, DB caída→503→200 sin recrear Backend, Backend detenido→502/504, cierre exit 0 <10 s, recreación Backend con Frontend conservado. IP Backend antes/después 172.18.0.2: Docker la reutilizó; no se afirma cambio de IP.

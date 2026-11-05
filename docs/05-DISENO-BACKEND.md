@@ -60,3 +60,7 @@ Tarea 1: `npm --prefix Backend test` ejecutó 5 pruebas aprobadas, después del 
 ### Docker S01
 
 Runtime no root (`node`), manifiestos y src de su propiedad; instalación `npm ci --omit=dev`. Solo escucha 3000 dentro de redes Compose, sin mapeo al host. La prueba real verifica que ese usuario lee package.json.
+
+### Integración real S01
+
+DB detenida: respuesta 503 exacta vía Nginx. Al iniciar DB, retorna 200 sin cambiar ID de Backend. SIGTERM cierra antes de 10 s con exit 0; la recuperación y recreación de Backend conservan el frontend activo. Las seis comprobaciones HTTP/operativas están automatizadas en `scripts/integration.test.mjs`.

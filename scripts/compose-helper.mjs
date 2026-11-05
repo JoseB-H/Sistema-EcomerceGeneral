@@ -182,9 +182,10 @@ export function createHelper({ root = resolve(import.meta.dirname, '..'), env = 
     try { return await fn(); } finally { release(); }
   };
   const httpViaProxy = path => {
-    if (!path.startsWith('/') || path.startsWith('//')) throw new Error('Invalid HTTP probe path');
-    const code = 'const r=await fetch("http://frontend"+process.argv[1],{signal:AbortSignal.timeout(6000)}); console.log(JSON.stringify({status:r.status,headers:Object.fromEntries(r.headers),body:await r.text()}));';
-    return JSON.parse(compose(['exec', '-T', 'backend', 'node', '--input-type=module', '-e', code, path]).stdout);
+    if (!path.startsWith('/') || path.startsWith('//')) throw new Error('Invalid probe path');
+    const script = 'const response = await fetch(new URL(process.argv[1], "http://frontend"), {signal: AbortSignal.timeout(6000)}); console.log(JSON.stringify({status:response.status,headers:Object.fromEntries(response.headers),body:await response.text()}));';
+    const result = compose(['exec', '-T', 'backend', 'node', '--input-type=module', '-e', script, path]);
+    return JSON.parse(result.stdout);
   };
   return { root, project, compose, prepareTestEnvironment, assertTestEnvironmentOwned, withLock, httpViaProxy };
 }
