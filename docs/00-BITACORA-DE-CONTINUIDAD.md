@@ -54,3 +54,16 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 | 2026-11-05 | Respaldo | Iniciada esta bitácora y la especificación visual V2 en GitHub | Notas Markdown versionadas |
 
 **Próxima acción:** terminar las cinco pantallas visuales editables, registrar el resultado aquí y presentar el enlace de Figma al usuario.
+
+
+## Incidente Git local — 2026-11-05
+
+**Impacto:** En Windows, el usuario abrió `D:\Proyectos\YitVerse` (repositorio distinto, sin commits, sin remoto), mientras la carpeta `D:\Proyectos\YitVerse\YitVerse-Desarrollo` reportó errores al leer un objeto pack: `pack-0af6505694ef663f35e7a45f800f9b871bcf23c7.pack is far too short to be a packfile` y `bad tree object HEAD`.
+
+**Confirmación externa:** GitHub conserva estas ramas en `JoseB-H/Sistema-EcomerceGeneral`: `main`, `feat/local-dev-catalogo`, `feat/s01-infraestructura-docker`, `feat/ui-azul-nocturno` y `docs/s01-plan-tecnico`. Esto no prueba que los cambios *sin commit* de Windows estén respaldados.
+
+**Recuperación segura indicada:** salir del paginador con `q`, hacer copia de la carpeta de desarrollo excluyendo `.git` y directorios generados, clonar el remoto **en una ruta nueva y separada**, comprobar `git branch -a`, y trasladar manualmente solo los cambios no versionados que existan en el respaldo. No usar `reset --hard`, `clean -fdx` ni eliminar carpetas originales durante el diagnóstico.
+
+**Estado:** respaldo y clonación nueva pendientes de verificación con salida de terminal del usuario.
+
+**Prioridad del proyecto sin cambios:** diseñar YitVerse visual V2 en Figma; Codex implementa después del acuerdo visual.
