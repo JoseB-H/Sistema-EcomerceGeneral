@@ -2,6 +2,8 @@
 
 **Modalidad autorizada:** HU-001/HU-002 en `feat/local-dev-catalogo`, desde `feat/s01-infraestructura-docker` (`e672e2e`). Docker está pausado para este incremento; se conserva el laboratorio S01 y no se modifica ni fusiona `main` o el PR #3. [Diseño](superpowers/specs/2026-11-04-local-dev-catalogo-design.md), [plan](superpowers/plans/2026-11-04-local-dev-catalogo.md) y [pruebas](LOCAL-DEV-CATALOGO-PRUEBAS.md).
 
+Esta rama añade el [rediseño azul nocturno](UI-AZUL-NOCTURNO.md). Los comandos de checkout siguientes apuntan a `feat/ui-azul-nocturno`, derivada de la rama de catálogo original; no la sustituyen ni modifican PR #3.
+
 ## Requisitos y copia de trabajo
 
 Git y Node.js **24 LTS** con npm. Todas las dependencias utilizadas son gratuitas; no hay servicios externos obligatorios. No instalar Docker ni PostgreSQL para probar el catálogo sintético. PostgreSQL sigue siendo la tecnología prevista para persistencia.
@@ -11,7 +13,7 @@ La ubicación prevista en Windows es `D:\Proyectos\YitVerse\YitVerse-Desarrollo`
 Para **un destino que todavía no existe**, PowerShell:
 
 ```powershell
-git clone --branch feat/local-dev-catalogo --single-branch https://github.com/JoseB-H/Sistema-EcomerceGeneral.git 'D:\Proyectos\YitVerse\YitVerse-Desarrollo'
+git clone --branch feat/ui-azul-nocturno --single-branch https://github.com/JoseB-H/Sistema-EcomerceGeneral.git 'D:\Proyectos\YitVerse\YitVerse-Desarrollo'
 Set-Location 'D:\Proyectos\YitVerse\YitVerse-Desarrollo'
 node --version
 npm --version
@@ -21,15 +23,15 @@ Para una copia existente, revisar primero `git status --short --branch`. Conserv
 
 ```powershell
 Set-Location 'D:\Proyectos\YitVerse\YitVerse-Desarrollo'
-git fetch origin refs/heads/feat/local-dev-catalogo:refs/remotes/origin/feat/local-dev-catalogo
+git fetch origin refs/heads/feat/ui-azul-nocturno:refs/remotes/origin/feat/ui-azul-nocturno
 # Si la rama local aún no existe:
-git switch --track origin/feat/local-dev-catalogo
+git switch --no-track --create feat/ui-azul-nocturno origin/feat/ui-azul-nocturno
 # Si ya existe, usar en su lugar:
-# git switch feat/local-dev-catalogo
-# git merge --ff-only origin/feat/local-dev-catalogo
+# git switch feat/ui-azul-nocturno
+# git merge --ff-only origin/feat/ui-azul-nocturno
 ```
 
-Estos comandos no requieren cambiar `main` ni la rama del PR #3.
+La creación local usa `--no-track` para funcionar también en clones previos de una sola rama; las actualizaciones se hacen con el fetch y merge explícitos anteriores. Estos comandos no requieren cambiar `main` ni la rama del PR #3.
 
 ## Arranque en dos terminales PowerShell
 

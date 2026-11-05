@@ -11,6 +11,8 @@ Proyecto académico **Servicios Cloud**. Este repositorio es el punto de referen
 
 **Estado actual:** prototipo local HU-001/HU-002 con catálogo y detalle de seis obras ficticias, búsqueda y estados de interfaz. Express/Vite se ejecutan directamente; PostgreSQL aún no está instalado localmente y su diagnóstico indica indisponibilidad. Se conserva el incremento técnico S01; revisión/aceptación del PR #3 y del sprint pendiente. No hay transacciones comerciales.
 
+El catálogo local incluye ahora el [rediseño azul nocturno](docs/UI-AZUL-NOCTURNO.md), con capturas y pruebas para revisión en `feat/ui-azul-nocturno`, derivada de la rama del prototipo.
+
 ## Antes de empezar
 
 - [Instrucciones para Codex](AGENTS.md)

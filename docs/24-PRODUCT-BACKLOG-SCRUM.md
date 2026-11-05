@@ -118,3 +118,7 @@ Ejemplo: HU-008 se vincula con RF-14/15/19 y RNF-16/17/20, pero sigue sin entrar
 El usuario autorizó iniciar la **planificación** del primer sprint. HU-T01, HU-T02 y HU-T03 son los ítems técnicos propuestos. Se encuentran detallados en [planificación S01](sprints/S01-PLANIFICACION-TECNICA.md) y [tarea para Codex](codex/TAREA-T01-CONTENEDORES.md), con seguimiento en [Issue #1](https://github.com/JoseB-H/Sistema-EcomerceGeneral/issues/1).
 
 **No se ha aprobado un calendario ni cerrado el compromiso del Sprint Backlog.** Las historias de negocio HU-001 a HU-014 continúan fuera de este sprint hasta su refinamiento.
+
+## Refinamiento visual de HU-001/HU-002 — 2026-11-04
+
+El usuario autorizó reemplazar el verde provisional por una interfaz editorial azul oscura, sobre el mismo prototipo sintético. Implementado en `feat/ui-azul-nocturno` para revisión: [capturas, pruebas y límites](UI-AZUL-NOCTURNO.md). No amplía RF comerciales, modifica los seis registros ni crea un nuevo sprint. Criterios funcionales y aceptación del usuario siguen vigentes; revisión estética pendiente.

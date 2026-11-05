@@ -35,6 +35,8 @@
 
 ## Modalidad local actual — Docker pausado
 
+- [Rediseño azul nocturno: capturas y pruebas](UI-AZUL-NOCTURNO.md).
+
 - [Guía Windows del catálogo/detalle](LOCAL-DEV-CATALOGO.md).
 - [Resultados de pruebas nativas](LOCAL-DEV-CATALOGO-PRUEBAS.md).
 - [Diseño autorizado acotado](superpowers/specs/2026-11-04-local-dev-catalogo-design.md).

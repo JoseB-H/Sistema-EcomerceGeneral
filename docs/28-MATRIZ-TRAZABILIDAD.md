@@ -71,3 +71,11 @@ Los RF comerciales anteriores siguen sin implementar. HU-T01 → build/config/ar
 | Regresión de teclado | HU-001 | 23, 27 | Se conserva foco al enviar búsqueda/filtro, RED→GREEN | `63dd783` |
 
 [Resultados completos](LOCAL-DEV-CATALOGO-PRUEBAS.md): 45 Backend y 31 Frontend; HTTP y Chromium nativos. No acredita persistencia de obras, rendimiento/capacidad, Windows ni aceptación humana. RNF Docker siguen en el reporte S01 sin ejecutarse en esta modalidad.
+
+## Rediseño azul nocturno de HU-001/HU-002
+
+| Cambio | RF/HU | RNF | Evidencia | Estado |
+| --- | --- | --- | --- | --- |
+| Presentación editorial, portada propia, ficha y estados oscuros | RF-01/02/03, HU-001/002 | 14,21,22,23,26,27,29,30 | `96e91b8`; 35 Frontend/45 Backend, builds y Chromium; [reporte](UI-AZUL-NOCTURNO.md) | Implementado; aceptación del usuario pendiente |
+
+Conserva el alcance sintético y las restricciones anteriores, sin cambios de API/SQL ni nuevos módulos comerciales.

@@ -31,7 +31,7 @@ Base `feat/local-dev-catalogo` `4794803`; trabajar solo en `feat/ui-azul-nocturn
 **Interfaces:** consumir `work{id,title,format,genres,synopsis}`, `SearchForm({query,format,onChange,onSearch})`, estados/hook actuales. Producir los mismos enlaces y nombres accesibles de catálogo/ficha, más accesos reales a búsqueda y footer. Arte solo decorativo.
 
 - [ ] Verificar base limpia: `npm --prefix Backend test` y `npm --prefix Frontend test`; esperado45/45 y31/31.
-- [ ] TDD: añadir tests de header hacia `#catalog-query` en catálogo (un único searchbox), header hacia `/#catalog-query` en ficha, hero hacia el único campo y footer con `/` y `/estado`. Conservar todas las pruebas originales.
+- [ ] TDD: añadir tests de header hacia `#catalog-query` en catálogo (un único searchbox), header hacia `/#catalog-query` en ficha, hero hacia el único campo y footer con `/` y `/estado`. Añadir regresión para el foco al llegar por fragmento tras el montaje dinámico. Conservar todas las pruebas originales.
 - [ ] Ejecutar Frontend; esperado RED por enlaces todavía ausentes.
 - [ ] Implementar componentes/arte/CSS conforme al diseño. No cambiar lógica de búsqueda/API; mantener mensajes y etiquetas. Gradientes con `useId`; portadas3:4; colores y movimiento reducido del diseño.
 - [ ] Ejecutar Frontend; esperado todos verdes. Arrancar exclusivamente servidores nativos propios (Backend sin watch para evitar incidencia previa del observador) y Vite; verificar visualmente catálogo/ficha/estados y todos los viewport indicados, corrigiendo presentación si procede. Esperado sin desbordamiento, foco estable y contraste comprobado.
