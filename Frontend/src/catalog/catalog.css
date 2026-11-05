@@ -182,7 +182,7 @@ main.catalog-main { max-width: 1328px; width: 100%; margin: 0 auto; padding: 2re
   .catalog-intro h1 { font-size: 2.65rem; }
   .hero-art { width: 90%; opacity: .65; right: -15%; }
   .hero-art-label { display: none; }
-  .catalog-search { grid-template-columns: minmax(0, 1fr) 145px; }
+  .catalog-search { grid-template-columns: minmax(0, 1fr) 170px; }
   .catalog-search > button { grid-column: 1 / -1; }
   .works-grid { gap: 1.2rem; }
   .cover-title { font-size: 1.65rem; }

@@ -62,6 +62,17 @@ with sync_playwright() as p:
             bounds = link.bounding_box()
             assert bounds['height'] >= 44 and bounds['width'] >= 44, (name, bounds)
         assert page.get_by_role('searchbox').count() == 1
+        selected_label = page.get_by_role('combobox').evaluate('''node => {
+          const style = getComputedStyle(node);
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+          context.font = style.font;
+          return {
+            text: context.measureText(node.selectedOptions[0].text).width,
+            available: node.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight) - 24
+          };
+        }''')
+        assert selected_label['text'] <= selected_label['available'], (name, selected_label)
         screenshot('catalogo-' + name)
         viewport_results.append({'width': width, 'overflow': False, 'cover_ratio': round(covers[0], 2)})
 
