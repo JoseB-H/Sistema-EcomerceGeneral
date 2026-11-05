@@ -18,7 +18,7 @@ Se elige servir el catálogo desde Express mediante un repositorio de demostraci
 
 Se conserva `server.js`, la configuración estricta de S01, el endpoint de salud y sus pruebas. `createApp` acepta un repositorio opcional para montar el catálogo. El nuevo `dev-server.js` permite arrancar sin DB y usa el pool real solo cuando hay credenciales completas. No modifica ni consume el `.env` raíz de Compose: el opcional de desarrollo es `Backend/.env`.
 
-El modo Vite `local`/servidor de desarrollo muestra el catálogo; `npm run build` conserva la pantalla S01 y `npm run build:local` genera el prototipo. Así los artefactos Docker existentes y su pantalla no se sustituyen por una UI que requiera un Backend distinto. Los archivos Docker y sus scripts se preservan; no se verifican mediante Docker en esta entrega.
+El modo Vite `prototype`/servidor de desarrollo muestra el catálogo; `npm run build` conserva la pantalla S01 y `npm run build:local` genera el prototipo. Así los artefactos Docker existentes y su pantalla no se sustituyen por una UI que requiera un Backend distinto. Los archivos Docker y sus scripts se preservan; no se verifican mediante Docker en esta entrega.
 
 ## Contrato
 

@@ -67,3 +67,7 @@ flowchart TB
 - ¿Qué apartados se consideran esenciales para la primera entrega?
 
 **Próximos artefactos:** wireframe por flujo aprobado, mapa de navegación cerrado y pruebas de usabilidad antes de pedir componentes a Codex.
+
+## Alcance visible del prototipo local autorizado
+
+Para HU-001/HU-002 se implementa únicamente Explorar → Ficha → volver, y enlace técnico Estado de conexión. La navegación candidata de biblioteca/tienda/perfil sigue fuera de alcance y no aparece como botones inactivos. El catálogo combina buscador etiquetado, filtro de formato, tarjetas reutilizables y estados de carga/error/vacío; una URL directa desconocida muestra un estado no encontrado. Los datos son ficticios, sin ratings, stock, precios, autores reales ni capítulos. Diseño claro con verdes, tipografía de sistema y marcadores abstractos propios: elección provisional del prototipo, no identidad de marca definitiva ni aprobación de todo el UX futuro.

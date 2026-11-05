@@ -5,7 +5,7 @@ import { spawn } from 'node:child_process';
 import { once } from 'node:events';
 import { setTimeout as delay } from 'node:timers/promises';
 
-test('native runtime serves catalog and health 503 with no PostgreSQL, then closes cleanly', { timeout: 15000 }, async t => {
+test('native runtime serves catalog and health 503 without PostgreSQL and releases its local port', { timeout: 15000 }, async t => {
   const reservation = createServer();
   reservation.listen(0, '127.0.0.1');
   await once(reservation, 'listening');
@@ -31,5 +31,10 @@ test('native runtime serves catalog and health 503 with no PostgreSQL, then clos
   assert.deepEqual(await health.json(), { status: 'degraded', database: 'unavailable' });
   child.kill('SIGTERM');
   const [code] = await closed;
-  assert.equal(code, 0);
+  // Windows force-terminates child.kill signals; console Ctrl+C is a separate native path.
+  if (process.platform !== 'win32') assert.equal(code, 0);
+  const reused = createServer();
+  reused.listen(port, '127.0.0.1');
+  await once(reused, 'listening');
+  await new Promise(resolve => reused.close(resolve));
 });

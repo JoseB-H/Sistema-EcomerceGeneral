@@ -61,3 +61,9 @@ Build multi-stage Vite y Nginx oficial fijado; sin node_modules de desarrollo en
 ### Verificación de integración S01
 
 El navegador Chromium real carga los assets construidos y muestra salud con respuesta de Backend/PostgreSQL. Las pruebas de integración verifican `/api/unknown` como 404 JSON, no HTML SPA, y proxy 502/504 cuando Backend está detenido. El estado de UI se actualiza al reintentar; no se usa polling ni salud simulada.
+
+## Prototipo local HU-001/HU-002
+
+En `npm run dev` o `npm run build:local` se muestra catálogo sintético en `/`, ficha en `/obras/:id` y diagnóstico S01 en `/estado`. Componentes WorkCard/WorkCover, SearchForm y mensajes de estado son reutilizables; useResource limita esperas a 4000 ms y cancela/ignora respuestas obsoletas. La búsqueda y el formato se reflejan en la URL y se conservan al volver del detalle, con enlaces nativos y soporte de navegación atrás. API relativa vía proxy Vite; ningún dato de catálogo se importa del Backend ni se duplica en React.
+
+Las composiciones gráficas CSS/SVG son marcadores propios de demostración, no portadas reales. Fuente sintética y ausencia de persistencia se declaran en catálogo y ficha. Sin enlaces a autenticación, lector, tienda o gamificación. Diseño móvil/escritorio y salto de teclado al contenido verificados en Chromium; 30 pruebas Frontend aprobadas. La compilación predeterminada sigue mostrando S01; build:local usa internamente modo prototype porque Vite reserva el nombre local para archivos .env.local.

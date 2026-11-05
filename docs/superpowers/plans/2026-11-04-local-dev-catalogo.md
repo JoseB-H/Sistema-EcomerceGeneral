@@ -57,7 +57,7 @@
 
 - [ ] Escribir tests ROJOS de fetch relativo/señal/JSON inválido/404 y de componentes: carga, fuente sintética, listado, buscar/filtrar, vacío, error/reintento, detalle/404, timeout y respuesta tardía ignorada.
 - [ ] Implementar UI responsiva con tarjetas, campos etiquetados, mensajes accesibles y marcadores gráficos CSS propios. No añadir navegación a módulos fuera de alcance.
-- [ ] Seleccionar catálogo durante `vite serve` o `--mode local`; build por defecto conserva S01. Ejecutar suite Frontend y ambos builds.
+- [ ] Seleccionar catálogo durante `vite serve` o `--mode prototype`; build por defecto conserva S01. Ejecutar suite Frontend y ambos builds.
 - [ ] Actualizar docs UX y commit `feat(frontend): explore synthetic works and view details`.
 
 ### Task 4: Verificación nativa, documentación y publicación
