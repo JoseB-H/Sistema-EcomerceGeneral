@@ -51,6 +51,15 @@ npm --prefix Frontend run dev
 
 Abrir **http://localhost:5173**. Express escucha exclusivamente en `127.0.0.1:3000`; Vite usa `localhost:5173`, puerto estricto, y redirige `/api` a Express. No hace falta CORS ni exponer la base al navegador. Si un puerto está ocupado, identificar su propietario antes de actuar; no detener procesos ajenos. Para detener este desarrollo, pulsar Ctrl+C en cada una de sus terminales.
 
+En Linux cloud se observó una vez un fallo interno de Node 24.22.1 al cerrar `--watch` (`FSEventWrap`, puerto liberado); no se reprodujo con un programa mínimo. Si el observador causa problemas, ejecutar el mismo servidor **sin recarga automática**, desde la raíz, después de detener su instancia anterior:
+
+```powershell
+Push-Location Backend
+try { node --env-file-if-exists=.env src/dev-server.js } finally { Pop-Location }
+```
+
+Este comando alternativo se verificó en Linux con catálogo 200, salud 503 y cierre Ctrl+C con salida 0. Será necesario reiniciarlo manualmente tras cambiar código Backend; Windows sigue pendiente de verificación.
+
 No es necesario crear un `.env`. El aviso de Node de que no encontró `.env` es esperado si no se creó el archivo opcional. El script nativo lee únicamente `Backend/.env` y las variables heredadas del proceso; **no lee el `.env` Docker de la raíz**. No copiar ese archivo a Backend.
 
 Rutas del navegador:

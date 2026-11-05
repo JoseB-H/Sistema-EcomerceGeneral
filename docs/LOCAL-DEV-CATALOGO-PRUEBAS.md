@@ -4,7 +4,7 @@
 
 ## Entorno y método
 
-Linux cloud aislado con Node.js 24/npm y Chromium del entorno. Express real en `127.0.0.1:3000`, Vite real en `localhost:5173`, sin credenciales PG configuradas. No se ejecutaron comandos Docker ni se usaron sus contenedores para servir este prototipo. No se instalaron nuevas dependencias del proyecto: se mantienen los lockfiles y versiones de S01.
+Linux cloud aislado con Node.js 24.22.1/npm y Chromium del entorno. Express real en `127.0.0.1:3000`, Vite real en `localhost:5173`, sin credenciales PG configuradas. No se ejecutaron comandos Docker ni se usaron sus contenedores para servir este prototipo. No se instalaron nuevas dependencias del proyecto: se mantienen los lockfiles y versiones de S01.
 
 Se aplicaron las skills Superpowers de planificación, ejecución, TDD, depuración sistemática y verificación, más revisión independiente de rama. TDD: pruebas Backend de catálogo fallaron por adapter ausente antes de implementarlo; las del cliente/componentes Frontend fallaron por módulos ausentes antes de escribirlos; después se ejecutaron suites completas. Los tests originales de S01 permanecen incluidos.
 
@@ -51,3 +51,5 @@ Se revisó el diff completo `e672e2e…8a28b73` frente al diseño y plan. No se 
 El revisor no pudo volver a ejecutar HTTP por restricciones de sockets de su sandbox. No certificó Windows, PostgreSQL vivo, Docker, estado remoto/PR ni los documentos finales en redacción. Se aceptan como límites: el autor verifica HTTP/Chromium y rama remota por separado; Windows y PostgreSQL nativo permanecen no ejecutados; Docker/PR #3 están fuera de esta operación. La comprobación acotada de teclado/móvil no se interpreta como auditoría WCAG. No hubo segunda ronda de revisión; la corrección se verificó mediante regresión y suite completa.
 
 Verificación final de integridad: `git diff --check` limpio; Dockerfiles, Compose, Database, scripts S01, servidor/configuración/SQL S01 y ambos lockfiles sin cambios frente a `e672e2e`. Los enlaces rotos preexistentes a un contrato API aún no publicado se sustituyeron por la documentación real de Backend. GitHub confirmó `main` en `b32ee01` y rama S01 en `e672e2e` antes de publicar únicamente la rama local. No se invocó ninguna operación sobre el PR #3.
+
+Incidencia observada al cerrar la sesión final: el supervisor `node --watch` de Node 24.22.1 terminó con una aserción interna `FSEventWrap` durante `FSWatcher.close`; 3000 y 5173 quedaron libres. No se reprodujo con un programa mínimo bajo watch, por lo que no se atribuye una causa definitiva ni se afirma resuelto el observador. Se verificó la alternativa sin watch (`node --env-file-if-exists=.env src/dev-server.js` desde Backend): catálogo200, salud503, Ctrl+C salida0 y puerto liberado. La guía contiene ese comando; no requiere cambiar código ni instalar otra versión. Windows pendiente.
