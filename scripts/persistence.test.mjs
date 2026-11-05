@@ -6,7 +6,7 @@ import { createHelper } from './compose-helper.mjs';
 
 test('persistence_twice_and_cleanup', { concurrency: false }, async t => {
   const helper = createHelper();
-  await helper.withLock(async () => {
+  await helper.withLock(async ({ signal }) => {
     const sql = (input, variables) => helper.compose([
       'exec', '-T', 'database', 'sh', '-c',
       'exec psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -v ON_ERROR_STOP=1 -At "$@"',
@@ -19,6 +19,7 @@ test('persistence_twice_and_cleanup', { concurrency: false }, async t => {
       const variables = { probe_schema: schema, marker };
       const failures = [];
       let created = false;
+      helper.recordRecovery({ schema, services: ['database'] });
       try {
         sql('BEGIN;\nCREATE SCHEMA :"probe_schema";\nCREATE TABLE :"probe_schema".probes (id text PRIMARY KEY);\nINSERT INTO :"probe_schema".probes VALUES (:\'marker\');\nCOMMIT;\n', variables);
         created = true;
@@ -33,7 +34,7 @@ test('persistence_twice_and_cleanup', { concurrency: false }, async t => {
         for (let attempt = 0; attempt < 60; attempt++) {
           try { healthy = helper.httpViaProxy('/api/health').status === 200; } catch { /* reconnect */ }
           if (healthy) break;
-          await delay(500);
+          await delay(500, undefined, { signal });
         }
         assert.equal(healthy, true);
         t.diagnostic(`Cycle ${cycle}: different container, same owned volume ${beforeVolume}, marker retained; DB IP ${before.networks[`${helper.project}_data`].IPAddress} / ${after.networks[`${helper.project}_data`].IPAddress}`);
@@ -41,12 +42,13 @@ test('persistence_twice_and_cleanup', { concurrency: false }, async t => {
         failures.push(error);
       } finally {
         try {
-          helper.assertTestEnvironmentOwned();
-          helper.compose(['up', '-d', '--no-deps', '--wait', '--wait-timeout', '120', 'database']);
-          if (created) {
-            sql('DROP SCHEMA :"probe_schema" CASCADE;\n', variables);
-            assert.equal(sql('SELECT count(*) FROM pg_namespace WHERE nspname = :\'probe_schema\';\n', variables), '0');
-          }
+          await helper.restore(async () => {
+            helper.assertTestEnvironmentOwned();
+            helper.compose(['up', '-d', '--no-deps', '--wait', '--wait-timeout', '120', 'database']);
+            if (created) sql('DROP SCHEMA :"probe_schema" CASCADE;\n', variables);
+            assert.equal(sql('SELECT count(*) FROM pg_namespace WHERE nspname = :\'probe_schema\';\n', variables), '0', 'Unconfirmed schema ownership; retain recovery journal for inspection');
+            helper.clearRecovery({ schema, services: ['database'] });
+          });
         } catch (error) {
           failures.push(new Error(`Cleanup failed for owned synthetic schema ${schema}`, { cause: error }));
         }

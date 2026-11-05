@@ -1,8 +1,8 @@
 import { spawnSync } from 'node:child_process';
 import { createHash, randomUUID } from 'node:crypto';
-import { existsSync, realpathSync, readFileSync, writeFileSync, mkdirSync, openSync, closeSync, unlinkSync } from 'node:fs';
+import { existsSync, realpathSync, readFileSync, writeFileSync, mkdirSync, openSync, closeSync, unlinkSync, renameSync } from 'node:fs';
 import { resolve, join } from 'node:path';
-import { tmpdir } from 'node:os';
+import { tmpdir, hostname } from 'node:os';
 import { pathToFileURL } from 'node:url';
 
 const purpose = 'io.yitverse.s01.purpose';
@@ -25,6 +25,13 @@ export function validateArgs(args) {
   }
 }
 
+export function validateCliArgs(args) {
+  validateArgs(args);
+  if (args[0] === 'config' && (args.length !== 2 || !['-q', '--quiet'].includes(args[1]))) {
+    throw new Error('Use config -q/--quiet to avoid printing credentials');
+  }
+}
+
 function runDocker(args, { input, cwd } = {}) {
   const result = spawnSync('docker', args, { input, cwd, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
   if (result.error) throw new Error(`Docker unavailable: ${result.error.code}`);
@@ -37,7 +44,10 @@ export function createHelper({ root = resolve(import.meta.dirname, '..'), env = 
   const local = join(root, '.local');
   const statePath = join(local, 's01-test-environment.json');
   const overlay = join(local, 'compose.s01-tests.yml');
+  const recoveryPath = join(local, 's01-test-recovery.json');
   let lockHeld = false;
+  let activeSignal;
+  let restoring = false;
   const raw = args => {
     const result = run(args, { cwd: root });
     if (result.status !== 0) throw new Error(`Docker ${args[0]} failed (${result.status}); inspect daemon/access before retrying`);
@@ -100,24 +110,28 @@ export function createHelper({ root = resolve(import.meta.dirname, '..'), env = 
     }
     return { identity, resources };
   };
-  const acquire = () => {
-    const daemon = daemonId();
+  const lockPath = daemon => {
     const key = createHash('sha256').update(`${daemon}:${project}`).digest('hex');
     const directory = join(tmpdir(), 'yitverse-s01-locks');
     mkdirSync(directory, { recursive: true, mode: 0o700 });
-    const file = join(directory, `${key}.lock`);
+    return join(directory, `${key}.lock`);
+  };
+  const acquire = () => {
+    const daemon = daemonId();
+    const identity = existsSync(statePath) ? record() : null;
+    const file = lockPath(daemon);
     const token = randomUUID();
     let fd;
     try { fd = openSync(file, 'wx', 0o600); } catch (error) {
       if (error.code === 'EEXIST') throw new Error(`${project}: lock held by another process; do not remove its lock`);
       throw error;
     }
-    writeFileSync(fd, token);
+    writeFileSync(fd, JSON.stringify({ token, pid: process.pid, hostname: hostname(), project, daemonId: daemon, checkoutRealPath: root, ownerId: identity?.ownerId ?? null }));
     closeSync(fd);
     lockHeld = true;
     return () => {
       lockHeld = false;
-      if (readFileSync(file, 'utf8') !== token) throw new Error(`${project}: lock ownership changed`);
+      if (JSON.parse(readFileSync(file, 'utf8')).token !== token) throw new Error(`${project}: lock ownership changed`);
       unlinkSync(file);
     };
   };
@@ -166,6 +180,7 @@ export function createHelper({ root = resolve(import.meta.dirname, '..'), env = 
   });
   const compose = (args, { input, allowFailure = false } = {}) => {
     validateArgs(args);
+    if (!restoring) activeSignal?.throwIfAborted();
     return locked(() => {
       const { identity } = assertTestEnvironmentOwned();
       assertModel(identity);
@@ -179,7 +194,61 @@ export function createHelper({ root = resolve(import.meta.dirname, '..'), env = 
   const withLock = async fn => {
     if (lockHeld) throw new Error(`${project}: nested suite lock is not allowed`);
     const release = acquire();
-    try { return await fn(); } finally { release(); }
+    const controller = new AbortController();
+    activeSignal = controller.signal;
+    const interrupt = signal => controller.abort(new Error(`${project}: interrupted by ${signal}; restoring owned resources`));
+    const onInt = () => interrupt('SIGINT');
+    const onTerm = () => interrupt('SIGTERM');
+    process.on('SIGINT', onInt);
+    process.on('SIGTERM', onTerm);
+    try {
+      const result = await fn({ signal: controller.signal });
+      controller.signal.throwIfAborted();
+      return result;
+    } finally {
+      process.off('SIGINT', onInt);
+      process.off('SIGTERM', onTerm);
+      activeSignal = undefined;
+      release();
+    }
+  };
+  const restore = async fn => {
+    if (!lockHeld) throw new Error(`${project}: restoration requires the suite lock`);
+    assertTestEnvironmentOwned();
+    restoring = true;
+    try { return await fn(); } finally { restoring = false; }
+  };
+  const updateRecovery = ({ schema, services: targets = [] }, remove) => locked(() => {
+    if (!remove && !restoring) activeSignal?.throwIfAborted();
+    const { identity } = assertTestEnvironmentOwned();
+    if ((schema && !/^s01_probe_[a-f0-9]{32}$/.test(schema)) || targets.some(name => !services.includes(name))) throw new Error('Invalid recovery target');
+    const journal = existsSync(recoveryPath) ? JSON.parse(readFileSync(recoveryPath, 'utf8')) : { ...identity, schemas: [], services: [] };
+    if (journal.ownerId !== identity.ownerId || journal.project !== project || journal.daemonId !== identity.daemonId || journal.checkoutRealPath !== root) throw new Error(`${project}: recovery journal identity mismatch`);
+    for (const [key, values] of [['schemas', schema ? [schema] : []], ['services', targets]]) {
+      journal[key] = remove ? journal[key].filter(value => !values.includes(value)) : [...new Set([...journal[key], ...values])];
+    }
+    const temporary = `${recoveryPath}.${randomUUID()}.tmp`;
+    writeFileSync(temporary, JSON.stringify(journal, null, 2), { flag: 'wx', mode: 0o600 });
+    renameSync(temporary, recoveryPath);
+  });
+  const recoverStaleLock = () => {
+    const daemon = daemonId();
+    const file = lockPath(daemon);
+    const original = readFileSync(file, 'utf8');
+    const lock = JSON.parse(original);
+    if (lock.hostname !== hostname() || lock.project !== project || lock.daemonId !== daemon || lock.checkoutRealPath !== root || !Number.isSafeInteger(lock.pid) || lock.pid <= 0 || !lock.token) throw new Error(`${project}: stale lock identity cannot be verified`);
+    try {
+      process.kill(lock.pid, 0);
+      throw new Error(`${project}: lock owner is still alive`);
+    } catch (error) {
+      if (error.code !== 'ESRCH') throw error;
+    }
+    if (lock.ownerId) {
+      if (assertTestEnvironmentOwned().identity.ownerId !== lock.ownerId) throw new Error(`${project}: stale lock owner mismatch`);
+    } else if (inspectResources().length) throw new Error(`${project}: unknown resources after interrupted preparation`);
+    if (readFileSync(file, 'utf8') !== original) throw new Error(`${project}: stale lock changed during verification`);
+    unlinkSync(file);
+    return recoveryPath;
   };
   const httpViaProxy = path => {
     if (!path.startsWith('/') || path.startsWith('//')) throw new Error('Invalid probe path');
@@ -187,23 +256,30 @@ export function createHelper({ root = resolve(import.meta.dirname, '..'), env = 
     const result = compose(['exec', '-T', 'backend', 'node', '--input-type=module', '-e', script, path]);
     return JSON.parse(result.stdout);
   };
-  return { root, project, compose, prepareTestEnvironment, assertTestEnvironmentOwned, withLock, httpViaProxy };
+  return { root, project, compose, prepareTestEnvironment, assertTestEnvironmentOwned, withLock, restore, httpViaProxy,
+    recordRecovery: targets => updateRecovery(targets, false), clearRecovery: targets => updateRecovery(targets, true), recoverStaleLock };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   try {
     const helper = createHelper();
     const args = process.argv.slice(2);
-    if (args.length === 1 && args[0] === 'prepare') {
-      helper.prepareTestEnvironment();
-      console.log(`${helper.project}: test identity prepared; no Docker resources changed`);
+    if (args.length === 1 && args[0] === 'recover-lock') {
+      console.log(`${helper.project}: verified dead process lock released; inspect recovery journal ${helper.recoverStaleLock()}. No Docker resources changed.`);
     } else {
-      if (args.shift() !== '--') throw new Error('Usage: node scripts/compose-helper.mjs prepare | -- <Compose args>');
-      if (args[0] === 'config' && args.some(a => a !== 'config' && a !== '-q' && a !== '--quiet')) throw new Error('Use config -q to avoid printing credentials');
-      const result = helper.compose(args, { allowFailure: true });
-      process.stdout.write(result.stdout);
-      process.stderr.write(result.stderr);
-      process.exitCode = result.status ?? 1;
+      await helper.withLock(async () => {
+        if (args.length === 1 && args[0] === 'prepare') {
+          helper.prepareTestEnvironment();
+          console.log(`${helper.project}: test identity prepared; no Docker resources changed`);
+        } else {
+          if (args.shift() !== '--') throw new Error('Usage: node scripts/compose-helper.mjs prepare | recover-lock | -- <Compose args>');
+          validateCliArgs(args);
+          const result = helper.compose(args, { allowFailure: true });
+          process.stdout.write(result.stdout);
+          process.stderr.write(result.stderr);
+          process.exitCode = result.status ?? 1;
+        }
+      });
     }
   } catch (error) { console.error(error.message); process.exitCode = 1; }
 }

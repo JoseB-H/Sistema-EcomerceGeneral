@@ -61,3 +61,7 @@ Imagen oficial PostgreSQL 17 fijada por digest; volumen nombrado por proyecto y 
 ### Persistencia S01 verificada
 
 `node --test scripts/persistence.test.mjs` ejecuta dos ciclos: crea esquema sintético aleatorio y tabla ordinaria probes con UUID, recrea solo Database sin borrar volumen, confirma ID de contenedor distinto, mismo volumen y fila retenida. Finalmente elimina solo el esquema propio y verifica su ausencia. Identidad y bloqueo se revalidan en cada operación, también en finally. Dos ciclos aprobados en cloud; volumen y DB quedan disponibles. El esquema no pertenece al dominio y no hay migraciones comerciales.
+
+### Recuperación de una prueba interrumpida
+
+El esquema sintético se registra en .local/s01-test-recovery.json antes de crear/insertar, ligado a identidad de prueba. La limpieza exige creación confirmada y propiedad vigente. Si la creación quedó ambigua o el proceso fue terminado de forma no recuperable, conservar journal y verificar antes de limpiar; nunca adoptar/borrar esquemas o volúmenes inciertos. La restauración con SIGTERM se verificó sobre el laboratorio propio.

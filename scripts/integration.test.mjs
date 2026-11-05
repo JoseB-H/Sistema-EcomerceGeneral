@@ -22,18 +22,18 @@ test('compose_has_three_isolated_services', async () => {
 
 test('S01 operational integration', { concurrency: false }, async t => {
   const helper = createHelper();
-  await helper.withLock(async () => {
+  await helper.withLock(async ({ signal }) => {
     const healthy = () => {
       const response = helper.httpViaProxy('/api/health');
       assert.equal(response.status, 200);
       assert.deepEqual(JSON.parse(response.body), { status: 'ok', database: 'ok' });
     };
-    const recover = async () => {
+    const recover = async waitSignal => {
       const until = Date.now() + 60000;
       let lastError;
       do {
         try { healthy(); return; } catch (error) { lastError = error; }
-        await delay(500);
+        await delay(500, undefined, { signal: waitSignal });
       } while (Date.now() < until);
       throw lastError;
     };
@@ -59,18 +59,23 @@ test('S01 operational integration', { concurrency: false }, async t => {
     });
     await t.test('database_restart_recovers', async () => {
       const backendBefore = resource('backend').id;
+      helper.recordRecovery({ services: ['database'] });
       try {
         helper.compose(['stop', '-t', '15', 'database']);
         const response = helper.httpViaProxy('/api/health');
         assert.equal(response.status, 503);
         assert.deepEqual(JSON.parse(response.body), { status: 'degraded', database: 'unavailable' });
       } finally {
-        helper.compose(['start', 'database']);
-        await recover();
+        await helper.restore(async () => {
+          helper.compose(['start', 'database']);
+          await recover();
+          helper.clearRecovery({ services: ['database'] });
+        });
       }
       assert.equal(resource('backend').id, backendBefore);
     });
     await t.test('backend_stop_closes_cleanly', async () => {
+      helper.recordRecovery({ services: ['backend'] });
       try {
         const before = Date.now();
         helper.compose(['stop', '-t', '15', 'backend']);
@@ -80,22 +85,29 @@ test('S01 operational integration', { concurrency: false }, async t => {
         assert.notEqual(response.status, 0);
         assert.match(response.stderr, /HTTP\/1\.[01] 50[24]/);
       } finally {
-        helper.compose(['start', 'backend']);
-        await recover();
+        await helper.restore(async () => {
+          helper.compose(['start', 'backend']);
+          await recover();
+          helper.clearRecovery({ services: ['backend'] });
+        });
       }
     });
     await t.test('backend_recreate_recovers_proxy', async () => {
       const before = resource('backend');
       const frontendId = resource('frontend').id;
+      helper.recordRecovery({ services: ['backend'] });
       try {
         helper.compose(['up', '-d', '--no-deps', '--force-recreate', '--wait', '--wait-timeout', '120', 'backend']);
-        await recover();
+        await recover(signal);
         assert.notEqual(resource('backend').id, before.id);
         assert.equal(resource('frontend').id, frontendId);
         t.diagnostic(`Backend IP before/after: ${before.networks[`${helper.project}_app`].IPAddress} / ${resource('backend').networks[`${helper.project}_app`].IPAddress}`);
       } finally {
-        helper.compose(['start', 'backend']);
-        await recover();
+        await helper.restore(async () => {
+          helper.compose(['start', 'backend']);
+          await recover();
+          helper.clearRecovery({ services: ['backend'] });
+        });
       }
     });
   });

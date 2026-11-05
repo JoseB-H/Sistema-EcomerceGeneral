@@ -20,7 +20,7 @@ Fecha de inicio: 2026-11-04. Rama: `feat/s01-infraestructura-docker`; base: `b32
 | T01-08 | APROBADO | Dos recreaciones de Database: ID distinto, mismo volumen, UUID retenido y esquema propio limpiado. |
 | T01-09 | APROBADO | .env/.local/outputs ignorados; contraseña sintética ausente de archivos rastreados; diff sin secretos. |
 | T01-10 | APROBADO en Linux cloud | Clon limpio de GitHub 4b716c3: instalación, build y todas las suites con proyecto/puerto/identidad nuevos. Windows no probado. |
-| T01-11 | APROBADO (autor) | Diff dentro del alcance técnico, sin módulos comerciales; revisión independiente de rama pendiente. |
+| T01-11 | APROBADO técnicamente | Alcance inspeccionado por autor y revisor independiente; hallazgos corregidos y probados. Aceptación humana pendiente. |
 
 - Tarea 2: ROJO por config/database ausentes; VERDE `npm --prefix Backend test`, 26/26, sin omitidas. Validación de variables, SELECT 1 y saneamiento de errores; DB real pendiente.
 
@@ -102,3 +102,13 @@ En ese clon se ejecutaron `npm ci` de ambos proyectos, Backend 26/26, Frontend 1
 - Creado: `scripts/compose-helper.test.mjs`.
 - Creado: `scripts/integration.test.mjs`.
 - Creado: `scripts/persistence.test.mjs`.
+
+## Revisión independiente y correcciones finales
+
+Un revisor independiente examinó toda la rama inicial b32ee01..4b716c3, sin mutar Docker. No encontró problemas críticos. Señaló interrupciones que podían dejar locks/esquemas sin información de recuperación y que `config` sin argumentos silenciosos podía imprimir configuración. El segundo hallazgo se trató como importante por su efecto sobre credenciales, aunque el revisor lo había clasificado menor.
+
+Se escribieron primero regresiones: SIGINT/SIGTERM omitían cleanup, no existían journal/recuperación verificable y faltaba la validación CLI silenciosa. Se corrigió en una sola ronda: cancelación controlada con AbortSignal y restauración protegida, journal persistente previo a alterar servicios/SQL, lock con PID/host/propietario y comando explícito recover-lock que rechaza procesos vivos/identidad distinta. SIGKILL conserva el lock para recuperación posterior; nunca se promete ejecutar finally ante una señal no capturable. También se corrigió una fuga de lock detectada por esas pruebas: la identidad ahora se valida antes de crear el archivo de exclusión.
+
+VERDE final: Backend 26/26, Frontend 11/11 y build, helper 15/15, integración 10/10 y persistencia 1/1 (dos ciclos), cero omitidas. SIGTERM real contra un proceso propio con Database detenida ejecutó finally: Database restaurada, HTTP 200, journal vacío y bloqueo liberado. SIGINT/SIGTERM/SIGKILL y recuperación de proceso muerto se verificaron además en fixtures de procesos aislados sin mutar Docker. No hubo segunda revisión independiente del parche; sus regresiones y la suite completa las verificó el autor.
+
+No se borraron volúmenes ni datos ajenos. La restauración del clon de prueba se hace con su propio S01_COMPOSE_PROJECT: un intento con el proyecto predeterminado fue rechazado por identidad distinta antes de modificar nada, y se repitió con el nombre correcto.

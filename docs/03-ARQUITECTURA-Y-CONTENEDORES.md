@@ -78,3 +78,7 @@ Bases oficiales fijadas: Node sha256:c86ecead9e55a5210ac1727de38a4ca840bf03dcaf3
 ### Recuperación S01
 
 La prueba mantiene Backend durante la caída/reinicio de DB y Frontend durante la recreación de Backend. Ambas recuperaciones devuelven 200. Docker reutilizó IP 172.18.0.2 al recrear Backend: se verificó cambio de contenedor y recuperación del proxy, pero no un cambio efectivo de IP. DNS dinámico permanece configurado; no se presenta este ensayo como prueba de reasignación de IP.
+
+### Interrupción y recuperación de pruebas
+
+Las suites dejan journal de servicios/esquemas sintéticos antes de alterarlos. SIGINT/SIGTERM cancelan trabajo nuevo y permiten restauración verificada antes de liberar lock. Los locks incluyen PID/host/propietario/contexto. recover-lock solo libera un lock cuyo proceso ya murió y cuyo contexto/recursos siguen siendo propios; no modifica Docker ni limpia SQL automáticamente. SIGKILL y pérdida del daemon pueden exigir recuperación explícita; ver README.

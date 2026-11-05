@@ -64,6 +64,10 @@ El helper valida el espacio de nombres `yitverse-s01`/`yitverse-s01-*`, daemon, 
 
 Todas las operaciones usan el mismo proyecto y archivos Compose. No añadir `-p`, `-f` o `--env-file` por fuera del helper. Las suites adquieren exclusión por daemon/proyecto y se ejecutan secuencialmente. Ante bloqueo o propiedad incierta, investigar; no borrar locks de otros procesos ni forzar limpieza.
 
+Las suites registran antes de cada alteración los servicios a restaurar y esquemas sintéticos en `.local/s01-test-recovery.json`, ligado al propietario/daemon/checkout. SIGINT/SIGTERM solicitan cancelación controlada: se dejan terminar las operaciones Docker en curso, se restauran únicamente recursos verificados en `finally` y se libera el bloqueo. No se garantiza limpieza ante SIGKILL, caída del equipo o pérdida del daemon.
+
+Si una terminación no recuperable deja un lock, conservar `.local` y verificar que el proceso acabó. `node scripts/compose-helper.mjs recover-lock` solo libera el bloqueo cuando su PID ya no existe en el mismo host y coinciden contexto, propietario y recursos. Rechaza procesos vivos o identidad incierta y no altera contenedores ni datos. Después, inspeccionar el journal, comprobar propiedad con el helper y arrancar únicamente los servicios allí registrados (`-- start database` o `-- start backend`). Cualquier limpieza SQL requiere comprobar que el esquema sintético indicado fue creado por esa prueba; no borrar un esquema de origen incierto ni volúmenes. El journal se conserva si la restauración/limpieza no se completa. No eliminar locks manualmente ni adoptar recursos para sortear el diagnóstico.
+
 Parada/reinicio conservando el volumen:
 
 ```powershell
