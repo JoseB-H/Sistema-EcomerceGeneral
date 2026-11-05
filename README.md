@@ -90,3 +90,13 @@ Las dependencias están fijadas con lockfiles; los Dockerfiles usan imágenes of
 En cloud con proxy TLS, conservar proxy/CA del entorno. El override local ignorado `.local/compose.cloud.yml` puede añadir el secreto BuildKit `proxy_ca` a los builds frontend/backend y declarar `secrets.proxy_ca.file` como la ruta pública de la CA proporcionada por la plataforma. El helper lo incluye automáticamente; los Dockerfiles usan ese mount opcional con `NODE_EXTRA_CA_CERTS`, sin desactivar TLS ni persistir la CA en capas. Este archivo de sesión no debe copiarse a Windows.
 
 Resultados reales y límites: [reporte S01](docs/sprints/S01-REPORTE-PRUEBAS.md). La disponibilidad de una página HTTP, las pruebas unitarias, un navegador real y la aceptación humana se registran por separado.
+
+### Persistencia y reproducción independiente
+
+Después de integración y sin ejecutarlas en paralelo:
+
+```powershell
+node --test scripts/persistence.test.mjs
+```
+
+La prueba hace dos ciclos de inserción sintética, recreación de Database y consulta con mismo volumen; limpia solo su esquema. Repetir desde un clon limpio de la rama del incremento, con `.env` nuevo, puerto diferente y `$env:S01_COMPOSE_PROJECT = 'yitverse-s01-clean'`. Ejecutar `prepare` y los mismos comandos de construcción/pruebas. No copiar `.local`, `.env`, dependencias ni outputs de otra copia. Ante colisión de nombre o propiedad incierta, abortar y elegir otro nombre permitido; no adoptar ni eliminar el entorno existente.

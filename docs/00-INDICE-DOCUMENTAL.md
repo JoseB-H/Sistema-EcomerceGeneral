@@ -64,3 +64,8 @@ Contratos API, plan detallado de implementación, plan de pruebas, manuales oper
 **Nota:** el repositorio es público; no incluir diapositivas protegidas, contraseñas, capturas privadas, datos reales ni la bóveda académica completa sin autorización.
 
 > Algunos archivos enumerados como plan futuro aún deben redactarse y publicarse. Verifica enlaces antes de asumir que existen.
+
+## Evidencia de desarrollo S01
+
+- [Plan técnico aprobado](superpowers/plans/2026-11-03-sprint-1-infraestructura.md).
+- [Reporte de pruebas y limitaciones S01](sprints/S01-REPORTE-PRUEBAS.md).

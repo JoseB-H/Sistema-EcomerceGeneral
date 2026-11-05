@@ -57,3 +57,7 @@ Backend usa `pg` y `SELECT 1 AS ok`; no crea tablas del dominio. La configuraci�
 ### Docker S01
 
 Imagen oficial PostgreSQL 17 fijada por digest; volumen nombrado por proyecto y montado en `/var/lib/postgresql/data`. Únicamente red `data` interna, sin puerto al host; autenticación por contraseña y pg_isready como sonda local. No existe SQL de inicialización comercial. El helper verifica propietario de volumen y montaje antes de operar.
+
+### Persistencia S01 verificada
+
+`node --test scripts/persistence.test.mjs` ejecuta dos ciclos: crea esquema sintético aleatorio y tabla ordinaria probes con UUID, recrea solo Database sin borrar volumen, confirma ID de contenedor distinto, mismo volumen y fila retenida. Finalmente elimina solo el esquema propio y verifica su ausencia. Identidad y bloqueo se revalidan en cada operación, también en finally. Dos ciclos aprobados en cloud; volumen y DB quedan disponibles. El esquema no pertenece al dominio y no hay migraciones comerciales.

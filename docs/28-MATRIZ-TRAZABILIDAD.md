@@ -56,3 +56,7 @@ Una idea registrada en Obsidian entra al Product Backlog para revisión; **no ge
 
 ## 5. Próximo refinamiento
 Priorizar resolución de [DEC-01 — modalidad legal de lectura](25-DECISIONES-PENDIENTES.md), [DEC-09 a DEC-12 — XP y economía](25-DECISIONES-PENDIENTES.md), el alcance de pedidos y la selección del primer MVP.
+
+## S01 — evidencia técnica del incremento
+
+Los RF comerciales anteriores siguen sin implementar. HU-T01 → build/config/arranque/aislamiento (RNF-01/02/03/05/06/07/12/30); HU-T02 → API SQL real, UI, 503 y recuperación (RNF-06/11/27/28); HU-T03 → recreación y persistencia sintética, guardas de propiedad/limpieza (RNF-04/12/27/29). Pruebas y límites en [reporte S01](sprints/S01-REPORTE-PRUEBAS.md). La evidencia técnica no acredita aceptación humana ni requisitos comerciales.

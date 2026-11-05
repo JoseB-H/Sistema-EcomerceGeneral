@@ -94,3 +94,7 @@ Registro/login, catálogo manga/manhwa, portada o capítulos, favoritos, histori
 - [ ] Review y retrospectiva realizados.
 
 **Siguiente:** [Tarea T01 para Codex](../codex/TAREA-T01-CONTENEDORES.md) y [Plan inicial](../29-PLAN-INICIO-DESARROLLO.md).
+
+## Actualización de ejecución autorizada — 2026-11-04
+
+El usuario autorizó implementar las seis tareas desde main b32ee01, en rama feat/s01-infraestructura-docker. Ya existen frontend técnico, Backend SQL, tres servicios Compose y pruebas de errores/recuperación y persistencia; ver [reporte real](S01-REPORTE-PRUEBAS.md). Se mantiene pendiente revisión/aceptación del PR y del sprint. No se inventan calendario, capacidad, Sprint Review ni retrospectiva. Esta actualización sustituye únicamente el estado anterior de implementación iniciada y pruebas operativas; no autoriza funcionalidades comerciales.

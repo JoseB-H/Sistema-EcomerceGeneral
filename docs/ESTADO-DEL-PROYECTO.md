@@ -79,3 +79,5 @@ Tarea 3 implementada: React/Vite con 11 pruebas aprobadas y build generado; UI t
 Tarea 4 implementada y validada en cloud: tres servicios saludables, guardas de propiedad (8 tests), estructura/runtime/salud (3 tests). Solo frontend publica puerto loopback. Caídas y persistencia siguen pendientes; no se ha probado Windows.
 
 Tarea 5: 10/10 pruebas de integración reales aprobadas (incluyen seis escenarios operativos), sin omitidas. Chromium real comprobado en cloud. No equivale a verificación Windows ni aceptación del sprint. Persistencia queda para tarea 6.
+
+Tarea 6: prueba real de persistencia aprobada en dos ciclos de recreación y limpieza de esquema propio. Queda pendiente repetición desde clon limpio, revisión final de rama y aceptación humana. PostgreSQL 17.11, Node 24.22.2 y Nginx 1.30.6 ejecutados en Docker cloud.
