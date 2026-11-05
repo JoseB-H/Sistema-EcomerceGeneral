@@ -4,7 +4,7 @@
 **Versión:** 0.2 · **Fecha:** 2026-11-03 · **Estado:** línea base documental para refinamiento Scrum.  
 **Alcance:** manga, manhwa y lecturas afines inicialmente; accesorios y ediciones físicas; biblioteca de usuario y recompensas por lectura.
 
-> **No hay aprobación de sprint ni implementación.** La idea del usuario está **confirmada a nivel de visión**, pero las reglas concretas que no ha definido permanecen **pendientes**. Los criterios indicados son propuestas de validación para acordar, no hechos implementados.
+> El usuario autorizó el **prototipo local sintético HU-001/HU-002**, implementado en rama para revisión. Su alcance acotado se registra al final; no acredita el catálogo comercial completo. Las demás reglas concretas y criterios no aprobados siguen pendientes. El incremento técnico S01 conserva su evidencia y aceptación pendiente.
 
 ## 1. Convenciones para leer los RF
 - **VC:** visión confirmada por el usuario, aún no refinada ni autorizada para implementar.
@@ -150,3 +150,7 @@ Son controles de diseño a validar; las políticas definitivas se registrarán e
 | Verificado | Evidencia de aceptación satisfactoria |
 
 **Estado global al publicar:** RF documentados, sin sprints asignados ni pruebas de implementación. Ver [Product Backlog](24-PRODUCT-BACKLOG-SCRUM.md), [visión](20-VISION-FUNCIONAL-YITVERSE.md), [decisiones](25-DECISIONES-PENDIENTES.md), [RNF](27-REQUISITOS-NO-FUNCIONALES.md) y [matriz de trazabilidad](28-MATRIZ-TRAZABILIDAD.md).
+
+## Evidencia acotada HU-001/HU-002 — modalidad local temporal
+
+RF-01 y parte de RF-02/RF-03 se ejercitan mediante seis fichas sintéticas solo lectura y búsqueda/filtro. El usuario autorizó expresamente este prototipo; la aceptación queda pendiente. No se atribuye disponibilidad editorial/comercial, no se habilitan capítulos y no se implementan ediciones/SKU (RF-04). Fuente aislada de persistencia; PostgreSQL sigue previsto, sin instalación local acreditada. Ver [backlog actualizado](24-PRODUCT-BACKLOG-SCRUM.md) y [pruebas](LOCAL-DEV-CATALOGO-PRUEBAS.md). El alcance completo de cada RF mantiene las decisiones de refinamiento originales.

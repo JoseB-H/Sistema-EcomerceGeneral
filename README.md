@@ -7,9 +7,9 @@ Proyecto académico **Servicios Cloud**. Este repositorio es el punto de referen
 - `Frontend/`: React + Vite.
 - `Backend/`: Node.js + Express.
 - `Database/`: PostgreSQL.
-- Docker Compose conectará los tres servicios.
+- Docker Compose del Sprint 1 se conserva; su uso está temporalmente pausado para el prototipo local.
 
-**Estado actual:** incremento técnico de S01 implementado y probado: pantalla de diagnóstico, API de salud y PostgreSQL. La revisión/aceptación del PR y del sprint sigue pendiente. No hay módulos comerciales.
+**Estado actual:** prototipo local HU-001/HU-002 con catálogo y detalle de seis obras ficticias, búsqueda y estados de interfaz. Express/Vite se ejecutan directamente; PostgreSQL aún no está instalado localmente y su diagnóstico indica indisponibilidad. Se conserva el incremento técnico S01; revisión/aceptación del PR #3 y del sprint pendiente. No hay transacciones comerciales.
 
 ## Antes de empezar
 
@@ -33,7 +33,29 @@ Consultar la [guía de sincronización Obsidian ↔ GitHub ↔ Codex](docs/30-OB
 
 Evitar abrir como bóveda la misma carpeta activa de desarrollo de Codex para que los commits automáticos no incluyan código a medio escribir.
 
-## Ejecutar el laboratorio S01
+## Ejecutar el prototipo local actual, sin Docker
+
+Requisitos: Git y Node.js 24 LTS/npm. En PowerShell, desde `D:\Proyectos\YitVerse\YitVerse-Desarrollo`, usar dos terminales:
+
+```powershell
+# Terminal 1
+npm --prefix Backend ci
+npm --prefix Backend run dev
+```
+
+```powershell
+# Terminal 2
+npm --prefix Frontend ci
+npm --prefix Frontend run dev
+```
+
+Abrir **http://localhost:5173**; Vite redirige `/api` a Express en `127.0.0.1:3000`. No hace falta `.env` ni PostgreSQL para las fichas sintéticas. `/estado` y `/api/health` informan el fallo real de conexión (503). No existe persistencia del catálogo.
+
+[Guía Windows completa, cambio de rama y límites PostgreSQL](docs/LOCAL-DEV-CATALOGO.md) · [Pruebas reales y limitaciones](docs/LOCAL-DEV-CATALOGO-PRUEBAS.md).
+
+## Laboratorio S01 conservado — Docker pausado
+
+Las instrucciones siguientes documentan el laboratorio previo y sus precauciones. Para el desarrollo actual utilizar únicamente la modalidad nativa anterior; no ejecutar estos comandos Docker ni sus suites de integración/persistencia. Su evidencia histórica continúa en el reporte S01.
 
 Requisitos gratuitos: Git, Node.js 24 LTS/npm y motor Docker con Compose v2 y contenedores Linux. No hace falta instalar PostgreSQL en Windows. Revisar los términos de Docker Desktop para el uso propio; en Linux puede usarse Docker Engine.
 

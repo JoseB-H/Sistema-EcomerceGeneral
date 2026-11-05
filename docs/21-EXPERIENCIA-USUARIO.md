@@ -1,6 +1,6 @@
 # Experiencia de usuario y estructura visual — v0.1
 
-**Estado:** propuesta de diseño para conversación; no hay mockups ni pantallas aprobadas.
+**Estado:** visión general propuesta; flujo local sintético Explorar → Ficha autorizado e implementado para revisión, con alcance al final de este documento. La identidad definitiva y otros módulos siguen pendientes.
 
 ## Principio rector
 

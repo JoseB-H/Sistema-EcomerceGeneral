@@ -1,7 +1,7 @@
 # Especificación de Requisitos No Funcionales (RNF) — YitVerse
 
 **Proyecto:** Sistema-EcomerceGeneral · **Versión:** 0.1 · **Fecha:** 2026-11-03  
-**Estado:** restricciones técnicas confirmadas y propuestas medibles pendientes de aceptación. **Ningún RNF se declara probado.**
+**Estado:** restricciones técnicas confirmadas y propuestas medibles pendientes de aceptación. La evidencia técnica S01 y del prototipo local se registra con sus límites; no equivale a aceptación global de todos los RNF.
 
 ## 1. Objetivo y estado
 Los RNF determinan **cómo** debe comportarse la solución y cuáles son sus condiciones de calidad, seguridad y operación. Los RF se definen en [Requisitos Funcionales](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md).
@@ -92,3 +92,9 @@ Un porcentaje arbitrario de cobertura o tiempo de respuesta no será un criterio
 - Los umbrales y decisiones aprobadas deberán registrarse con fecha, Product Owner, sprint y PR.
 
 **Relacionado:** [RF](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md) · [Visión YitVerse](20-VISION-FUNCIONAL-YITVERSE.md) · [Reglas XP](22-REGLAS-XP-YITCOINS.md) · [Riesgos](26-RIESGOS-Y-CONTROLES.md) · [Matriz de trazabilidad](28-MATRIZ-TRAZABILIDAD.md).
+
+## Aplicación temporal al prototipo local HU-001/HU-002
+
+Por autorización del usuario se pausa Docker para esta rama y se ejecutan Frontend/Backend nativos (5173/3000). RNF-01 conserva separación de responsabilidades y PostgreSQL como destino de persistencia; RNF-02/03/04/07 conservan sus artefactos y evidencia S01, sin reejecutarse aquí. No se borra ni modifica ningún recurso Docker. La nueva modalidad no declara persistencia ni sustituye PostgreSQL.
+
+Evidencia acotada de RNF-05/06/11/12: configuración nativa opcional/validada, salud real 503 sin PG, entradas/API comprobadas y sin secretos versionados. RNF-14: únicamente obras ficticias y arte geométrico propio, sin contenidos de terceros. RNF-21/22/23: carga, error/reintento, vacío, rutas desconocidas, móvil/escritorio y foco/teclado comprobados; no equivale a certificación WCAG. RNF-26/27/28/29/30: adapter separado, pruebas reales, errores técnicos saneados, documentación y dependencias gratuitas sin adiciones. Ver [reporte](LOCAL-DEV-CATALOGO-PRUEBAS.md). Windows, BD nativa, carga/rendimiento y una auditoría completa siguen sin verificar.

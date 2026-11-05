@@ -1,6 +1,6 @@
 # Índice documental — Sistema-EcomerceGeneral
 
-> Estado: **línea base de diseño propuesta**, no funcionalidad implementada. Última revisión: 2026-11-03.
+> Estado: diseño del producto en refinamiento, incremento técnico S01 y prototipo sintético HU-001/HU-002 implementados en ramas para revisión. Última revisión: 2026-11-04.
 
 ## Documentación actualmente publicada
 - [Marco Scrum](16-MARCO-SCRUM.md): sprints, backlog y eventos.
@@ -33,8 +33,15 @@
 
 - [Plan de inicio del desarrollo y Sprint 1 propuesto](29-PLAN-INICIO-DESARROLLO.md): requisitos de equipo, primera integración y criterios de aceptación.
 
+## Modalidad local actual — Docker pausado
+
+- [Guía Windows del catálogo/detalle](LOCAL-DEV-CATALOGO.md).
+- [Resultados de pruebas nativas](LOCAL-DEV-CATALOGO-PRUEBAS.md).
+- [Diseño autorizado acotado](superpowers/specs/2026-11-04-local-dev-catalogo-design.md).
+- [Plan de implementación local](superpowers/plans/2026-11-04-local-dev-catalogo.md).
+
 ## Documentos previstos pero aún no publicados
-Contratos API, plan detallado de implementación, plan de pruebas, manuales operativos y plantillas avanzadas. Sus nombres anteriores eran un plan, no enlaces vigentes.
+Contratos y operación de módulos futuros requieren refinamiento. Consultar las guías anteriores y las notas de Frontend/Backend para los endpoints y comandos ya implementados.
 
 
 ## Sprint 1 técnico — planificación autorizada

@@ -1,7 +1,7 @@
 # Matriz de trazabilidad RF ↔ HU ↔ RNF — YitVerse
 
 **Versión:** 0.1 · **Fecha:** 2026-11-03  
-**Estado:** RF comerciales en diseño y sin implementación; evidencia técnica de HU-T01/HU-T02/HU-T03 en la sección S01 y su reporte, con aceptación humana pendiente.
+**Estado:** prototipo sintético autorizado HU-001/HU-002 implementado para revisión; RF comerciales completos siguen en diseño. Evidencia técnica HU-T01/HU-T02/HU-T03 conservada en S01, con aceptación humana pendiente.
 
 Esta tabla permite que Codex identifique requisitos funcionales afectados, historias del Product Backlog y propiedades de calidad obligatorias. Los estados y requisitos vigentes se consultan en [RF](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md), [RNF](27-REQUISITOS-NO-FUNCIONALES.md) y [Backlog Scrum](24-PRODUCT-BACKLOG-SCRUM.md).
 
@@ -9,9 +9,9 @@ Esta tabla permite que Codex identifique requisitos funcionales afectados, histo
 
 | RF | Objetivo | HU (existente o pendiente) | RNF clave | Estado |
 |---|---|---|---|---|
-| RF-01 | Catálogo | HU-001 | RNF-14, RNF-21, RNF-24 | Refinamiento |
-| RF-02 | Ficha de obra | HU-002 | RNF-14, RNF-21, RNF-24 | Refinamiento |
-| RF-03 | Búsqueda y categorías | HU-001 (ampliar) | RNF-21, RNF-24, RNF-25 | Propuesto |
+| RF-01 | Catálogo | HU-001 | RNF-14, RNF-21, RNF-24 | Prototipo sintético; revisión pendiente |
+| RF-02 | Ficha de obra | HU-002 | RNF-14, RNF-21, RNF-24 | Prototipo de metadatos; sin lectura/compra |
+| RF-03 | Búsqueda y categorías | HU-001 (ampliar) | RNF-21, RNF-24, RNF-25 | Búsqueda/filtro sintéticos; revisión pendiente |
 | RF-04 | Obra, edición, capítulo y SKU separados | HU-002, HU-012 | RNF-19, RNF-26 | Propuesto |
 | RF-05 | Extensión a nuevos formatos | Nueva HU | RNF-19, RNF-26 | Futuro |
 | RF-06 | Registro de usuario | HU-003 | RNF-09, RNF-11, RNF-13 | Refinamiento |
@@ -60,3 +60,14 @@ Priorizar resolución de [DEC-01 — modalidad legal de lectura](25-DECISIONES-P
 ## S01 — evidencia técnica del incremento
 
 Los RF comerciales anteriores siguen sin implementar. HU-T01 → build/config/arranque/aislamiento (RNF-01/02/03/05/06/07/12/30); HU-T02 → API SQL real, UI, 503 y recuperación (RNF-06/11/27/28); HU-T03 → recreación y persistencia sintética, guardas de propiedad/limpieza (RNF-04/12/27/29). Pruebas y límites en [reporte S01](sprints/S01-REPORTE-PRUEBAS.md). La evidencia técnica no acredita aceptación humana ni requisitos comerciales.
+
+## Prototipo local temporal HU-001/HU-002 — 2026-11-04
+
+| Evidencia | RF/HU | RNF cubiertos de forma acotada | Resultado observado | Referencia de cambio |
+| --- | --- | --- | --- | --- |
+| API sintética y validaciones | RF-01/02/03, HU-001/002 | 11, 14, 26, 27, 28 | Lista/filtro/detalle/404 y errores saneados | `f4c21ca` |
+| Runtime nativo, configuración y diagnóstico | HU-001/002; infraestructura | 01, 05, 06, 12, 30 | Catálogo 200 sin PG, salud 503; configuración parcial rechazada | `ba0308d` |
+| React catálogo/ficha/estados | RF-01/02/03, HU-001/002 | 21, 22, 23, 26, 27 | Búsqueda, móvil, vacío/error/reintento, URL y retorno filtrados | `8a28b73` |
+| Regresión de teclado | HU-001 | 23, 27 | Se conserva foco al enviar búsqueda/filtro, RED→GREEN | `63dd783` |
+
+[Resultados completos](LOCAL-DEV-CATALOGO-PRUEBAS.md): 45 Backend y 31 Frontend; HTTP y Chromium nativos. No acredita persistencia de obras, rendimiento/capacidad, Windows ni aceptación humana. RNF Docker siguen en el reporte S01 sin ejecutarse en esta modalidad.

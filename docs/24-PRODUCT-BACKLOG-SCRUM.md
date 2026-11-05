@@ -1,7 +1,7 @@
 # Product Backlog inicial — YitVerse
 
 **Versión:** 0.1 — 2026-11-03  
-**Estado:** candidatos a refinamiento, no sprint asignado y ninguna historia implementada.
+**Estado:** backlog candidato sin nuevo sprint asignado. El usuario autorizó el prototipo local sintético de HU-001/HU-002; implementado en rama para revisión, aceptación pendiente. Las demás historias mantienen su estado.
 
 ## Regla Scrum
 Las historias expresan intención y su prioridad es **propuesta**. Ninguna tarea pasa a un Sprint Backlog sin comprensión del alcance, aprobación de criterios de aceptación y confirmación de capacidad. Si el usuario agrega una nota, se registra/refina un Product Backlog Item; **no se crea un sprint por cada nota**.
@@ -22,8 +22,8 @@ Las historias expresan intención y su prioridad es **propuesta**. Ninguna tarea
 ## Historias candidatas
 | ID | Historia de usuario | Épica | Prioridad orientativa | Estado |
 | --- | --- | --- | --- | --- |
-| HU-001 | Como visitante, quiero explorar títulos y formatos disponibles para descubrir lecturas | E-01 | Alta | Borrador |
-| HU-002 | Como visitante, quiero consultar una ficha de obra para conocerla antes de leer o comprar | E-01 | Alta | Borrador |
+| HU-001 | Como visitante, quiero explorar títulos y formatos disponibles para descubrir lecturas | E-01 | Alta | Prototipo sintético implementado; revisión pendiente |
+| HU-002 | Como visitante, quiero consultar una ficha de obra para conocerla antes de leer o comprar | E-01 | Alta | Prototipo sintético implementado; revisión pendiente |
 | HU-003 | Como lector, quiero crear una cuenta para conservar mi experiencia y lecturas | E-02 | Alta | Borrador |
 | HU-004 | Como lector, quiero marcar favoritos y retomarlos posteriormente | E-02 | Alta | Borrador |
 | HU-005 | Como lector, quiero seguir obras y saber en qué capítulo me quedé | E-02 | Alta | Borrador |
@@ -46,6 +46,12 @@ Las historias expresan intención y su prioridad es **propuesta**. Ninguna tarea
 - Dada una lista de **obras de prueba autorizadas**, cuando el visitante abre Explorar, puede ver título, tipo de obra y portada solo si existe derecho para utilizarla.
 - Al no haber resultados, se muestra estado vacío.
 - No supone que el visitante puede leer capítulos completos.
+
+### HU-001/HU-002 — incremento local autorizado (2026-11-04)
+
+El usuario autorizó explorar seis obras ficticias, buscar sin distinguir acentos/mayúsculas, filtrar manga/manhwa y abrir su ficha por URL directa. Cada ficha muestra título, formato, géneros y sinopsis ficticios, arte geométrico propio y vuelta al catálogo conservando filtros. Se incluyen carga, error/reintento, vacío, obra/página desconocida y adaptación móvil. La fuente declara `synthetic`, `persisted: false`; no hay lectura ni disponibilidad de compra.
+
+Implementado en `feat/local-dev-catalogo`, desde S01 `e672e2e`; [diseño/alcance](superpowers/specs/2026-11-04-local-dev-catalogo-design.md), [ejecución Windows](LOCAL-DEV-CATALOGO.md) y [evidencia](LOCAL-DEV-CATALOGO-PRUEBAS.md). PostgreSQL permanece como tecnología futura de persistencia; no se simula salud ni se guarda información del catálogo. Docker pausado, S01/PR #3 conservados. La revisión del prototipo y su ejecución real en Windows quedan pendientes; esta autorización no crea ni cierra un sprint ni autoriza las demás historias.
 
 ### HU-004 — Favoritos
 - Dado un usuario autenticado, cuando guarda una obra, esta aparece en su biblioteca.

@@ -1,6 +1,6 @@
 # Diseño del Frontend — React + Vite
 
-**Estado:** pantalla técnica S01 aprobada, implementada y probada; módulos de negocio pendientes de aprobación.
+**Estado:** pantalla técnica S01 conservada; prototipo local sintético HU-001/HU-002 implementado y probado en rama para revisión. Otros módulos requieren autorización.
 
 ## Responsabilidad del componente
 Presentar información y permitir interacciones con el usuario a través de una API HTTP. No contiene lógica de integridad del servidor ni credenciales privadas.
@@ -46,9 +46,9 @@ flowchart LR
 ```
 
 ## Por definir con usuario
-Identidad visual, pantalla inicial, lista de rutas, formularios, controles de accesibilidad prioritarios, autenticación y estados de sesión, necesidades de catálogo o compra y contenido legal. Ninguno se encuentra aprobado.
+La sección local al final registra las rutas y controles del prototipo autorizado. Identidad definitiva, autenticación, compra y contenido editorial real siguen pendientes de refinamiento.
 
-Véase [Contratos API](07-CONTRATOS-API-Y-FLUJOS.md) y [Requisitos](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md).
+Véase [API implementada en Backend](05-DISENO-BACKEND.md) y [Requisitos](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md). El documento general de contratos de módulos futuros aún no está publicado.
 
 ## S01 — pantalla técnica implementada
 

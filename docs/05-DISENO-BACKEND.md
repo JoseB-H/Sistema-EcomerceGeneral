@@ -1,6 +1,6 @@
 # Diseño del Backend — Node.js + Express
 
-**Estado:** API técnica S01 implementada y probada; sin endpoints de negocio definidos.
+**Estado:** API técnica S01 conservada y API sintética solo lectura HU-001/HU-002 implementada para revisión. Persistencia y demás endpoints de negocio pendientes.
 
 ## Objetivo
 Centralizar las reglas de negocio, validar operaciones, gestionar acceso a datos y publicar una API documentada para el frontend.
@@ -42,7 +42,7 @@ Si el tamaño inicial es pequeño, Codex puede simplificar esta estructura sin m
 - Entradas, salidas, códigos de estado y errores especificados.
 - Validación y autorización aplicadas cuando proceda.
 - Pruebas de éxito y error reproducibles.
-- Se actualiza [Contratos API](07-CONTRATOS-API-Y-FLUJOS.md) y [Estado](ESTADO-DEL-PROYECTO.md).
+- Se documenta el contrato implementado en este archivo y se actualiza [Estado](ESTADO-DEL-PROYECTO.md); los contratos generales de módulos futuros siguen pendientes de publicación.
 
 ## Pendientes
 Modelo de autenticación, sesiones, roles, reglas del comercio, endpoints concretos, estructura de errores definitiva, estrategia de logging y límites de uso. No implementar esos elementos por conjetura.
@@ -72,3 +72,5 @@ HU-001/HU-002 autorizadas para demostración local. `createApp` acepta `catalogR
 ### Runtime nativo temporal
 
 `npm --prefix Backend run dev` ejecuta Node 24 con --watch y --env-file-if-exists=.env en Backend; no lee el .env raíz de Compose. `src/dev-server.js` escucha 127.0.0.1:3000, permite DB ausente y sirve siempre catálogo sintético. Sin PGUSER/PGPASSWORD/PGDATABASE, salud devuelve 503 y no se crea pool; configuración parcial falla de forma explícita. Con los tres valores se usa pg y SELECT 1 real, con host local predeterminado. El catálogo no se vuelve persistente por configurar DB. `src/server.js` y configuración S01 quedan intactos. Cierre SIGINT/SIGTERM; se verificó el proceso nativo real en Linux. Suite Backend 45/45.
+
+Límite menor detectado en revisión: un ID con codificación porcentual malformada puede generar un 503 saneado en Express antes de la validación, en vez del 400 previsto para IDs inválidos. Los enlaces de la UI generan IDs válidos. Pendiente registrado en el [reporte local](LOCAL-DEV-CATALOGO-PRUEBAS.md).
