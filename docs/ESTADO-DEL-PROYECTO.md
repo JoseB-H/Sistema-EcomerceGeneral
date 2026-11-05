@@ -87,3 +87,7 @@ Tarea 6: prueba real de persistencia aprobada en dos ciclos de recreación y lim
 Reproducción T01-10 aprobada desde clon limpio GitHub 4b716c3, con proyecto/puerto/identidad propios y todas las suites verdes en Linux cloud. Las once comprobaciones T01 tienen evidencia; revisión independiente de rama y aceptación humana aún pendientes. Windows no probado.
 
 Revisión independiente realizada sobre el incremento inicial. Sus dos hallazgos se corrigieron con regresiones: señales/journal/lock recuperable y config CLI exclusivamente silencioso. Suite final 26 Backend + 11 Frontend + 15 helper + 10 integración + 1 persistencia aprobada; Chromium y SIGTERM reales verificados. Aceptación humana de PR/sprint pendiente; no se fusiona ni se cierra Issue #1.
+
+## Modalidad local temporal — HU-001/HU-002
+
+Autorizada por el usuario en `feat/local-dev-catalogo`, desde Sprint 1 e672e2e. Docker temporalmente pausado para este desarrollo, sin ejecutar sus comandos ni modificar PR #3/main. Primer avance: adapter y API de catálogo sintético solo lectura, con búsqueda/filtro, detalle, 404/validación/errores; 40 pruebas Backend aprobadas. Ejecución nativa/UI/evidencia final se registrarán en la misma rama. No hay autenticación, lectura digital, XP, YitCoins ni transacciones comerciales.

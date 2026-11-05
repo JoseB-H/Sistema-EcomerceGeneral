@@ -1,6 +1,7 @@
 import express from 'express';
+import { createCatalogRouter } from './catalog/router.js';
 
-export function createApp({ checkDatabase, logger = console }) {
+export function createApp({ checkDatabase, logger = console, catalogRepository }) {
   const app = express();
   app.disable('x-powered-by');
   app.get('/api/health', async (_req, res) => {
@@ -13,6 +14,7 @@ export function createApp({ checkDatabase, logger = console }) {
     }
     return res.json({ status: 'ok', database: 'ok' });
   });
+  if (catalogRepository) app.use('/api/works', createCatalogRouter(catalogRepository, logger));
   app.use((_req, res) => res.status(404).json({ error: 'not_found' }));
   app.use((_error, _req, res, _next) => {
     try { logger.error({ event: 'internal_error' }); } catch { /* logging must not expose the original error */ }

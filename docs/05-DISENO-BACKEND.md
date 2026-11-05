@@ -64,3 +64,7 @@ Runtime no root (`node`), manifiestos y src de su propiedad; instalación `npm c
 ### Integración real S01
 
 DB detenida: respuesta 503 exacta vía Nginx. Al iniciar DB, retorna 200 sin cambiar ID de Backend. SIGTERM cierra antes de 10 s con exit 0; la recuperación y recreación de Backend conservan el frontend activo. Las seis comprobaciones HTTP/operativas están automatizadas en `scripts/integration.test.mjs`.
+
+## Catálogo sintético del prototipo local
+
+HU-001/HU-002 autorizadas para demostración local. `createApp` acepta `catalogRepository` opcional: sin él conserva S01. `GET /api/works?q=&format=` lista/busca (q string, máx. 100 caracteres; formato manga/manhwa); `GET /api/works/:id` devuelve detalle o 404. Entrada inválida → 400; proveedor fallido → 503 saneado. Todas las respuestas usan no-store. `source={kind:synthetic,persisted:false}` identifica la procedencia. Los seis registros y sus sinopsis son ficticios, solo lectura y aislados en `src/catalog`; no hay SQL comercial ni persistencia. Suite Backend: 40/40 aprobada; salud DB permanece independiente.
