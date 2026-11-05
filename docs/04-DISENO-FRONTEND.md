@@ -49,3 +49,7 @@ flowchart LR
 Identidad visual, pantalla inicial, lista de rutas, formularios, controles de accesibilidad prioritarios, autenticación y estados de sesión, necesidades de catálogo o compra y contenido legal. Ninguno se encuentra aprobado.
 
 Véase [Contratos API](07-CONTRATOS-API-Y-FLUJOS.md) y [Requisitos](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md).
+
+## S01 — pantalla técnica implementada
+
+`Frontend/src/App.jsx` presenta únicamente diagnóstico, sin módulos comerciales. El cliente usa `/api/health` relativo, no-store, valida HTTP 200 y JSON sano. Carga, éxito y error accesibles con status/alert; reintento deshabilitado durante carga. Cancelación al desmontar, límite de 4000 ms e ignorar respuestas obsoletas evitan éxitos tardíos. `npm --prefix Frontend test`: 11/11; `npm --prefix Frontend run build` aprobado. No se ha validado aún en contenedores/navegador real.
