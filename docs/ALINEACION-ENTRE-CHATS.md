@@ -42,3 +42,7 @@ El repositorio es público. Las diapositivas de clase y la bóveda completa **no
 ## S01 — autorización técnica recibida (2026-11-04)
 
 El usuario autorizó ejecutar las seis tareas del plan integrado en `b32ee01`, en `feat/s01-infraestructura-docker`. Se adoptan pantalla de diagnóstico React/Vite servida con Nginx, proxy `/api`, Express con contrato 200/503 y consulta SQL real, dos redes y PostgreSQL con volumen persistente sin puerto publicado. Se mantienen las precauciones de D:/Docker Desktop y de propiedad de recursos de prueba. No implica aprobar módulos de negocio, fechas, aceptación final ni cierre del sprint.
+
+## Modalidad local temporal y HU-001/HU-002 — 2026-11-04
+
+El usuario autorizó pausar Docker para el desarrollo actual y crear `feat/local-dev-catalogo` desde `feat/s01-infraestructura-docker`, sin alterar main ni PR #3. La ejecución local será Vite localhost:5173 → Express localhost:3000. PostgreSQL se conserva; su ausencia no se simula como éxito. Se autoriza un prototipo de exploración/ficha con datos sintéticos identificados, búsqueda y estados, aislado de persistencia futura. Se elige adapter de demostración en Backend y se conserva el arranque S01. Esto refina solo HU-001/HU-002 para este prototipo, sin asignar automáticamente otro sprint, aprobar comercio ni resolver licencias de obras reales. Diseño y plan en docs/superpowers con prefijo 2026-11-04-local-dev-catalogo.
