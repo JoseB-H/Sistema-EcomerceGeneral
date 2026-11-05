@@ -46,3 +46,7 @@ El usuario autorizó ejecutar las seis tareas del plan integrado en `b32ee01`, e
 ## Modalidad local temporal y HU-001/HU-002 — 2026-11-04
 
 El usuario autorizó pausar Docker para el desarrollo actual y crear `feat/local-dev-catalogo` desde `feat/s01-infraestructura-docker`, sin alterar main ni PR #3. La ejecución local será Vite localhost:5173 → Express localhost:3000. PostgreSQL se conserva; su ausencia no se simula como éxito. Se autoriza un prototipo de exploración/ficha con datos sintéticos identificados, búsqueda y estados, aislado de persistencia futura. Se elige adapter de demostración en Backend y se conserva el arranque S01. Esto refina solo HU-001/HU-002 para este prototipo, sin asignar automáticamente otro sprint, aprobar comercio ni resolver licencias de obras reales. Diseño y plan en docs/superpowers con prefijo 2026-11-04-local-dev-catalogo.
+
+## Rediseño visual azul nocturno autorizado — 2026-11-04
+
+El usuario solicita preparar, implementar y publicar una interfaz oscura editorial, con paleta azul explícita, sobre rama derivada de feat/local-dev-catalogo. Rama elegida feat/ui-azul-nocturno. Se cambia la preferencia verde/clara provisional; se conservan HU-001/HU-002, datos ficticios, API, navegación y ejecución nativa. No se autoriza comercio ni se modifica Docker, main o PR #3. Olympus no fue accesible por proxy403: se usa la organización descrita, sin copiar material ni afirmar inspección visual. Diseño/plan 2026-11-04-ui-azul-nocturno documentan decisiones del implementador para revisión.
