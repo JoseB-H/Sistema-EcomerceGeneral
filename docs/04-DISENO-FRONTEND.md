@@ -1,6 +1,6 @@
 # Diseño del Frontend — React + Vite
 
-**Estado:** guía de arquitectura, sin módulos ni pantallas aprobados.
+**Estado:** pantalla técnica S01 aprobada, implementada y probada; módulos de negocio pendientes de aprobación.
 
 ## Responsabilidad del componente
 Presentar información y permitir interacciones con el usuario a través de una API HTTP. No contiene lógica de integridad del servidor ni credenciales privadas.

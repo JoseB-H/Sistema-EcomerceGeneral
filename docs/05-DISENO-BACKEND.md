@@ -1,6 +1,6 @@
 # Diseño del Backend — Node.js + Express
 
-**Estado:** decisiones estructurales propuestas; sin endpoints de negocio definidos.
+**Estado:** API técnica S01 implementada y probada; sin endpoints de negocio definidos.
 
 ## Objetivo
 Centralizar las reglas de negocio, validar operaciones, gestionar acceso a datos y publicar una API documentada para el frontend.

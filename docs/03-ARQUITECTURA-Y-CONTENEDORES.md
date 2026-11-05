@@ -1,6 +1,6 @@
 # Arquitectura lógica y de contenedores
 
-**Estado:** línea base confirmada en cuanto a tecnologías y tres servicios; topología de redes, puertos y despliegue en evaluación.
+**Estado:** topología S01 implementada y probada en cloud según las secciones finales; despliegue remoto y aceptación humana pendientes.
 
 ## Vista de contenedores
 
@@ -52,10 +52,10 @@ Propuesta de aislamiento en Compose: Frontend y Backend comparten una red de apl
 - Versionar Dockerfiles y Compose, nunca contraseñas reales.
 
 ## Decisiones técnicas sin cerrar
-- Servir compilación React con Nginx u otra alternativa.
-- Política de proxy o acceso directo al backend en desarrollo.
-- Puertos externos: por definir según ambiente.
-- Versión exacta de Node, PostgreSQL e imágenes base: fijar al implementar.
+- Resuelto en S01: compilación React servida con Nginx.
+- Resuelto en S01: proxy `/api` en Compose; proxy Vite opcional para desarrollo en host.
+- Resuelto en S01: solo frontend en loopback, puerto 8080 configurable.
+- Resuelto en S01: versiones reales y digests fijados/documentados en el incremento.
 - Estrategia de despliegue en nube para la entrega académica: pendiente.
 - Protocolo HTTPS en escenario remoto: por concretar.
 - Niveles de replicación: no previstos para la primera prueba local.

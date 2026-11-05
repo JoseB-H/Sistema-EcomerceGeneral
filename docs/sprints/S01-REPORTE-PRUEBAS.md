@@ -112,3 +112,20 @@ Se escribieron primero regresiones: SIGINT/SIGTERM omitían cleanup, no existía
 VERDE final: Backend 26/26, Frontend 11/11 y build, helper 15/15, integración 10/10 y persistencia 1/1 (dos ciclos), cero omitidas. SIGTERM real contra un proceso propio con Database detenida ejecutó finally: Database restaurada, HTTP 200, journal vacío y bloqueo liberado. SIGINT/SIGTERM/SIGKILL y recuperación de proceso muerto se verificaron además en fixtures de procesos aislados sin mutar Docker. No hubo segunda revisión independiente del parche; sus regresiones y la suite completa las verificó el autor.
 
 No se borraron volúmenes ni datos ajenos. La restauración del clon de prueba se hace con su propio S01_COMPOSE_PROJECT: un intento con el proyecto predeterminado fue rechazado por identidad distinta antes de modificar nada, y se repitió con el nombre correcto.
+
+### Revalidación del parche final desde el clon limpio
+
+Tras fast-forward desde GitHub a `97a5ee0`, el clon independiente volvió a pasar helper 15/15, integración 10/10 y persistencia 1/1 (dos ciclos), con su propio proyecto/volumen. No cambió ninguna dependencia ni código de aplicación frente a la instalación limpia anterior. El checkout quedó limpio. La CLI real `node scripts/compose-helper.mjs -- config` se verificó con exit 1 y stdout vacío: exige -q/--quiet.
+
+## Decisiones y límites de la ejecución
+
+- Se mantuvo el checkout cloud ya aislado, sin worktree adicional, según el plan aprobado; no aporta aislamiento adicional dentro de esta tarea.
+- Los scripts auxiliares de las skills cloud no pudieron leerse como recursos ejecutables. Se extrajeron briefs y mantuvo ledger local con los mismos comandos, resultados y commits; el registro fue manual, con riesgo de error de transcripción mitigado por salidas verificadas.
+- BusyBox usa wget -Y off únicamente para loopback; conserva proxy/CA externos. Depende de la opción soportada en la imagen Nginx fijada, comprobada en ejecución.
+- La reasignación real de IP no fue reproducida: Docker reutilizó IPs. DNS dinámico sigue configurado; queda ese escenario experimental pendiente.
+- El revisor dejó el clon limpio al ejecutor; se comprobó íntegramente y se revalidó el parche final, sin una brecha pendiente de reproducción Linux.
+- Windows, backup/restore y despliegue público quedan fuera de la evidencia de S01; pueden tener particularidades que requieren validación posterior.
+- No se ejecutó una auditoría de vulnerabilidades de dependencias. Se verificaron lockfiles/TLS; no se afirma ausencia de vulnerabilidades upstream.
+- El revisor no ejecutó mutaciones operativas para no interferir. El autor reprodujo interrupciones y verificó las correcciones mediante TDD y suite completa; no hubo segunda revisión independiente del parche.
+
+No quedaron hallazgos menores diferidos: la exposición de config se reclasificó importante y se corrigió. El incremento está disponible para revisión; el sprint no se declara aceptado ni cerrado.

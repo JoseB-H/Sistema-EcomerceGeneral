@@ -5,15 +5,15 @@
 ## Estado verificado
 - Repositorio `JoseB-H/Sistema-EcomerceGeneral` disponible en GitHub.
 - Estructura objetivo de tres contenedores acordada.
-- Este repositorio contiene inicialmente instrucciones y documentación compartida para que Codex inicie el desarrollo.
+- Incremento técnico S01 implementado y probado en rama `feat/s01-infraestructura-docker`; aceptación del PR/sprint pendiente. Ver [evidencia](sprints/S01-REPORTE-PRUEBAS.md).
 
 ## Pendiente en Codex
-- [ ] Crear estructura `Frontend/`, `Backend/`, `Database/`.
+- [x] Crear estructura `Frontend/`, `Backend/`, `Database/`.
 - [ ] Definir arquitectura y módulos del e-commerce con el usuario.
-- [ ] Implementar Dockerfiles y `docker-compose.yml`.
-- [ ] Definir esquema PostgreSQL, migraciones y persistencia.
-- [ ] Implementar integración frontend ↔ API ↔ base de datos.
-- [ ] Verificar el arranque real y documentar las pruebas.
+- [x] Implementar Dockerfiles y `docker-compose.yml`.
+- [x] Verificar persistencia técnica PostgreSQL con datos sintéticos; esquema/migraciones comerciales siguen pendientes.
+- [x] Implementar integración frontend ↔ API ↔ base de datos.
+- [x] Verificar el arranque real y documentar las pruebas.
 
 ## Pendiente en Obsidian
 - [ ] Abrir una copia local de este repositorio como bóveda si es el destino elegido.
@@ -35,16 +35,16 @@
 - [x] Publicada matriz RF ↔ HU ↔ RNF en `docs/28-MATRIZ-TRAZABILIDAD.md`.
 - [ ] Aceptación de los criterios definitivos y decisiones críticas por Product Owner.
 - [ ] Asignación de historias refinadas a un sprint.
-- [ ] Pruebas o implementación verificadas: **ninguna acreditada por esta documentación**.
+- [x] Pruebas técnicas S01 acreditadas en el reporte; RF comerciales aún sin implementar y aceptación humana pendiente.
 
 Los módulos de YitVerse no están aprobados automáticamente para implementación. Los próximos acuerdos sobre legalidad del lector, XP, YitCoins, pedidos y MVP deben reflejarse primero en los RF/HU.
 
 
 ## Preparación del desarrollo — 2026-11-03
 - [x] Plan técnico de arranque y Sprint 1 **propuesto** documentado en `docs/29-PLAN-INICIO-DESARROLLO.md`.
-- [ ] Verificar instalación funcional de Git y Docker Compose en el entorno de Codex/Windows.
+- [x] Verificar Git y Docker Compose en cloud; verificación Windows pendiente del usuario.
 - [ ] Aprobar Sprint Goal, fechas y alcance de Sprint 1.
-- [ ] Implementar y probar tres contenedores. **No hay implementación confirmada.**
+- [x] Implementar y probar tres contenedores; aceptación del incremento pendiente.
 
 ## Sprint 1 — autorización de planificación (2026-11-03)
 - [x] El usuario aprobó **iniciar la planificación** del Sprint 1 técnico sin desarrollar módulos comerciales.
@@ -52,10 +52,10 @@ Los módulos de YitVerse no están aprobados automáticamente para implementaci�
 - [x] Se publicó la [tarea T01 para Codex](codex/TAREA-T01-CONTENEDORES.md).
 - [x] Se abrió [Issue #1](https://github.com/JoseB-H/Sistema-EcomerceGeneral/issues/1) para seguimiento.
 - [ ] Determinar calendario, capacidad y compromiso formal del Sprint Backlog.
-- [ ] Implementación de Frontend, Backend y Database realizada.
-- [ ] Resultados reales de pruebas recibidos y validados.
+- [x] Implementación técnica de Frontend, Backend y Database realizada.
+- [x] Resultados reales de pruebas registrados y comprobados técnicamente; aceptación del usuario pendiente.
 
-**Estado actual:** preparación documental completada; código y pruebas siguen pendientes. No confundir la autorización de la planificación con la ejecución del sprint.
+**Estado actual:** implementación y pruebas técnicas realizadas; aceptación/revisión del PR y del sprint pendientes. No se han aprobado módulos comerciales ni calendario por inferencia.
 
 ## Bóveda de documentación de YitVerse — preparación (2026-11-03)
 - [x] Creado archivo de inicio `00 - YitVerse.md`.
@@ -69,6 +69,8 @@ Los módulos de YitVerse no están aprobados automáticamente para implementaci�
 **Importante:** la configuración remota de GitHub no habilita automáticamente sincronización en Obsidian Desktop.
 
 ## Implementación técnica S01 autorizada — 2026-11-04
+
+Cronología de avances: los pendientes que siguen en cada párrafo corresponden a ese momento de ejecución; el resultado final está al cierre y en el reporte de pruebas.
 
 Trabajo en rama `feat/s01-infraestructura-docker`, desde `main` `b32ee01`. Tarea 1 implementada: contrato HTTP técnico probado con 5 pruebas unitarias aprobadas. DB real, frontend, Docker, integración y persistencia pendientes. La aceptación del sprint/PR sigue pendiente del usuario; no hay funcionalidades comerciales. Evidencia incremental en `docs/sprints/S01-REPORTE-PRUEBAS.md`.
 

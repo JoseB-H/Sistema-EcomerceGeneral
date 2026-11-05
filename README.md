@@ -9,7 +9,7 @@ Proyecto académico **Servicios Cloud**. Este repositorio es el punto de referen
 - `Database/`: PostgreSQL.
 - Docker Compose conectará los tres servicios.
 
-**Estado actual:** infraestructura técnica de S01 en desarrollo: pantalla de diagnóstico, API de salud y PostgreSQL. La revisión/aceptación del sprint sigue pendiente. No hay módulos comerciales.
+**Estado actual:** incremento técnico de S01 implementado y probado: pantalla de diagnóstico, API de salud y PostgreSQL. La revisión/aceptación del PR y del sprint sigue pendiente. No hay módulos comerciales.
 
 ## Antes de empezar
 

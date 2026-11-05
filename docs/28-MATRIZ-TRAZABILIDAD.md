@@ -1,7 +1,7 @@
 # Matriz de trazabilidad RF ↔ HU ↔ RNF — YitVerse
 
 **Versión:** 0.1 · **Fecha:** 2026-11-03  
-**Estado:** relación de diseño, **sin pruebas ejecutadas ni sprints asignados**.
+**Estado:** RF comerciales en diseño y sin implementación; evidencia técnica de HU-T01/HU-T02/HU-T03 en la sección S01 y su reporte, con aceptación humana pendiente.
 
 Esta tabla permite que Codex identifique requisitos funcionales afectados, historias del Product Backlog y propiedades de calidad obligatorias. Los estados y requisitos vigentes se consultan en [RF](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md), [RNF](27-REQUISITOS-NO-FUNCIONALES.md) y [Backlog Scrum](24-PRODUCT-BACKLOG-SCRUM.md).
 
