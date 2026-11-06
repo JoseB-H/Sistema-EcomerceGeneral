@@ -17,10 +17,10 @@ test('home waits for the API before presenting real received titles and sections
   expect(list.mock.calls[0][0].signal).toBeInstanceOf(AbortSignal);
   expect(screen.getByRole('heading', { level: 1, name: 'Relato ficticio 0' })).toBeInTheDocument();
   const discovery = within(screen.getByRole('region', { name: 'Continuar explorando' }));
-  expect(discovery.getAllByRole('link', { name: /Ver ficha de/ })).toHaveLength(3);
+  expect(discovery.getAllByRole('link', { name: /Abrir ficha de/ })).toHaveLength(3);
   expect(discovery.getByRole('heading', { level: 3, name: 'Relato ficticio 1' })).toBeInTheDocument();
   expect(discovery.getByText(/sin historial personal/i)).toBeInTheDocument();
-  expect(within(screen.getByRole('region', { name: 'Selección de demostración' })).getAllByRole('link', { name: /Ver ficha de/ })).toHaveLength(2);
+  expect(within(screen.getByRole('region', { name: 'Selección de demostración' })).getAllByRole('link', { name: /Abrir ficha de/ })).toHaveLength(2);
   const genres = within(screen.getByRole('region', { name: 'Descubre por género' }));
   expect(genres.getAllByRole('link')).toHaveLength(2);
   expect(genres.getByRole('link', { name: /Ciencia ficción/ })).toHaveAttribute('href', '/explorar?q=Ciencia+ficci%C3%B3n');
