@@ -21,7 +21,7 @@ body.catalog-mode { margin: 0; padding: 0; background: var(--background); color:
 .catalog-shell .header-search svg { color: var(--detail); width: var(--icon-size); height: var(--icon-size); }
 .catalog-shell .header-search:hover { border-color: var(--detail); background: var(--info-surface); }
 .catalog-shell .local-pill { padding: var(--space-1) var(--space-3); border: var(--border-width) solid var(--line); border-radius: var(--radius-control); background: var(--surface); color: var(--muted); font-size: var(--type-caption); white-space: nowrap; }
-.catalog-shell .demo-banner { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-1) var(--space-3); padding: var(--space-3) var(--layout-gutter); border-bottom: var(--border-width) solid var(--line); background: var(--surface); color: var(--ink-soft); text-align: center; font-size: var(--type-caption); }
+.catalog-shell .demo-banner { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-1) var(--space-3); padding: var(--space-2) var(--layout-gutter); border-bottom: var(--border-width) solid var(--line); background: var(--surface); color: var(--ink-soft); text-align: center; font-size: var(--type-caption); }
 .catalog-shell .demo-banner strong { color: var(--detail); font-weight: var(--weight-semibold); }
 .catalog-shell main.catalog-main { max-width: var(--layout-width); width: 100%; margin: 0 auto; padding: var(--space-8) var(--layout-gutter) var(--space-16); background: transparent; border: 0; border-radius: 0; }
 .catalog-shell .catalog-intro { position: relative; isolation: isolate; display: flex; align-items: center; min-height: var(--hero-min-height); margin-bottom: var(--space-8); overflow: hidden; border: var(--border-width) solid var(--line); border-radius: var(--radius-hero); background: var(--hero-background); }
@@ -58,7 +58,7 @@ body.catalog-mode { margin: 0; padding: 0; background: var(--background); color:
 .catalog-shell .results-heading h2 { font-size: var(--type-section); font-weight: var(--weight-bold); letter-spacing: var(--tracking-heading); margin: 0; line-height: var(--leading-tight); }
 .catalog-shell .results-heading h2 > span { color: var(--detail); }
 .catalog-shell .results-heading > p { margin: 0 0 var(--space-1); font-size: var(--type-caption); color: var(--muted); }
-.catalog-shell .works-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-6); }
+.catalog-shell .works-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-5); }
 .catalog-shell .work-card { min-width: 0; overflow-wrap: anywhere; }
 .catalog-shell .work-card-link { display: flex; flex-direction: column; height: 100%; text-decoration: none; border-radius: var(--radius-card); }
 .catalog-shell .work-cover { min-width: 0; position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; aspect-ratio: var(--cover-ratio); border: var(--border-width) solid var(--cover-line); border-radius: var(--radius-card); padding: var(--space-3); background: var(--cover-surface); color: var(--ink); box-shadow: var(--shadow-card); }
@@ -73,7 +73,7 @@ body.catalog-mode { margin: 0; padding: 0; background: var(--background); color:
 .catalog-shell .card-meta span:first-child { color: var(--detail); text-transform: uppercase; font-weight: var(--weight-semibold); letter-spacing: var(--tracking-art); }
 .catalog-shell .card-meta span + span::before { content: "·"; padding-right: var(--space-2); }
 .catalog-shell .work-card :is(h2, h3) { margin: 0 0 var(--space-2); font-size: var(--type-body); font-weight: var(--weight-bold); line-height: var(--leading-tight); letter-spacing: var(--tracking-heading); }
-.catalog-shell .card-genre { color: var(--muted); font-size: var(--type-caption); line-height: var(--leading-body); margin: 0 0 var(--space-4); }
+.catalog-shell .card-genre { color: var(--muted); font-size: var(--type-label); line-height: var(--leading-body); margin: 0 0 var(--space-4); }
 .catalog-shell .card-action { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: var(--space-3); border-top: var(--border-width) solid var(--line); color: var(--ink-soft); font-size: var(--type-label); }
 .catalog-shell .card-action svg { color: var(--detail); width: var(--icon-small); }
 .catalog-shell .work-card-link:hover .work-cover { border-color: var(--detail); transform: translateY(var(--hover-lift)); box-shadow: var(--shadow-cover-hover); }

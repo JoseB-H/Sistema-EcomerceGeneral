@@ -47,7 +47,7 @@ with sync_playwright() as p:
         assert page.locator('main').evaluate('(n) => n.scrollWidth <= n.clientWidth + 1'), label
 
     def cover_ratios(label):
-        ratios = page.locator('.work-cover').evaluate_all('(nodes) => nodes.map(n => {const r=n.getBoundingClientRect();return r.width/r.height;})')
+        ratios = page.locator('.work-cover:visible').evaluate_all('(nodes) => nodes.map(n => {const r=n.getBoundingClientRect();return r.width/r.height;})')
         assert all(abs(r - .75) < .01 for r in ratios), (label, ratios)
         return ratios
 
@@ -79,7 +79,7 @@ with sync_playwright() as p:
             page.set_viewport_size({'width': width, 'height': height})
             for path in ['/', '/explorar', '/obras/archivo-aurora']:
                 page.goto(base + path)
-                expect(page.locator('.work-cover').first).to_be_visible()
+                expect(page.locator('.work-cover:visible').first).to_be_visible()
                 no_overflow((width, path))
                 cover_ratios((width, path))
                 for control in page.locator('.catalog-header a, .catalog-footer a, .catalog-search input, .catalog-search select, .catalog-search button').all():

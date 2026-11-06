@@ -23,8 +23,12 @@
   .catalog-shell .works-grid { gap: var(--space-5); }
   .catalog-shell .work-detail { column-gap: var(--space-6); padding: var(--space-6); }
   .catalog-shell .footer-note { display: none; }
-  .catalog-shell .home-hero .hero-copy { width: 62%; }
-  .catalog-shell .home-feature-cover { width: var(--detail-cover-min); margin-right: var(--space-6); }
+  .catalog-shell .home-hero .hero-copy { width: auto; padding: var(--space-8); }
+  .catalog-shell .home-feature-cover { width: 11rem; margin-right: var(--space-6); }
+  .catalog-shell .genre-discovery { display: block; }
+  .catalog-shell .genre-intro { margin-bottom: var(--space-2); }
+  .catalog-shell .discovery-invitation { grid-template-columns: minmax(0, 1fr) auto; padding: var(--space-6); }
+  .catalog-shell .invitation-mark { display: none; }
   .catalog-shell .home-section-heading { display: block; }
   .catalog-shell .home-section-heading > a { margin-top: var(--space-3); }
 }
@@ -43,11 +47,17 @@
   .catalog-shell .catalog-intro h1 { margin-top: var(--space-3); }
   .catalog-shell .desktop-break { display: none; }
   .catalog-shell .home-hero .hero-copy { width: 100%; padding: var(--space-6); }
+  .catalog-shell .home-hero { display: block; }
   .catalog-shell .home-hero .hero-art { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .4; }
-  .catalog-shell .home-feature-cover { width: var(--detail-cover-min); margin: 0 auto var(--space-6); }
+  .catalog-shell .home-feature-cover { display: none; }
   .catalog-shell .home-section { margin-top: var(--space-10); }
-  .catalog-shell .genre-discovery { padding: var(--space-6); }
-  .catalog-shell .genre-link { width: 100%; }
+  .catalog-shell .genre-discovery { padding: var(--space-2) 0 var(--space-4); }
+  .catalog-shell .editorial-panels { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
+  .catalog-shell .editorial-panels > .home-section { margin-top: 0; padding: var(--space-5); }
+  .catalog-shell .editorial-panels { margin-top: var(--space-8); }
+  .catalog-shell .discovery-invitation { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); padding: var(--space-5); }
+  .catalog-shell .discovery-invitation .button-primary { width: 100%; }
+  .catalog-shell .genre-link { width: auto; }
   .catalog-shell .hero-art { position: relative; width: 125%; height: var(--hero-art-mobile-height); opacity: 1; right: 8%; margin-top: 0; }
   .catalog-shell .hero-art::after { background: linear-gradient(180deg, var(--hero-start), transparent 45%, var(--hero-end)); }
   .catalog-shell .night-artwork { object-fit: contain; }
@@ -69,7 +79,8 @@
   .catalog-shell .health-view > main { padding: var(--space-5); margin: var(--space-8) auto; }
 }
 @media (max-width: 359px) {
-  .catalog-shell { --type-cover: 2.25rem; }
-  .catalog-shell .works-grid { grid-template-columns: minmax(0, 1fr); }
+  .catalog-shell { --type-cover: 1.05rem; }
+  .catalog-shell .works-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6) var(--space-3); }
+  .catalog-shell .work-card :is(h2, h3), .catalog-shell .home-section .work-card h3 { font-size: var(--type-ui); }
   .catalog-shell .work-cover:not(.cover-large) { max-width: var(--cover-narrow-max); width: 100%; margin: auto; }
 }

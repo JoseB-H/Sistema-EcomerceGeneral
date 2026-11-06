@@ -11,7 +11,7 @@ export function SearchIcon() {
   return <svg aria-hidden="true" focusable="false" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg>;
 }
 export function VerseMark() {
-  return <svg aria-hidden="true" focusable="false" viewBox="0 0 40 40" fill="none"><path d="m6 8 14 17L34 8M20 25v10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" /><path d="m13 6 7 9 7-9" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" /></svg>;
+  return <svg aria-hidden="true" focusable="false" viewBox="0 0 40 40" fill="none"><path d="m6 8 14 17L34 8M20 25v10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" /><path d="m13 6 7 9 7-9" stroke="var(--detail)" strokeWidth="2" strokeLinecap="round" /></svg>;
 }
 export function WorkCover({ work, large = false }) {
   return <div className={`work-cover ${large ? 'cover-large' : ''}`} aria-hidden="true">

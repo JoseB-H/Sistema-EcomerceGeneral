@@ -5,7 +5,7 @@ import CatalogPage from './CatalogPage.jsx';
 import HomePage from './HomePage.jsx';
 import { isCatalogLocation } from './catalog-navigation.js';
 import WorkDetailPage from './WorkDetailPage.jsx';
-import { NotFound, SearchIcon, VerseMark } from './components.jsx';
+import { NotFound, SearchIcon, VerseMark, ArrowIcon } from './components.jsx';
 import './tokens.css';
 import './catalog.css';
 import './HomePage.css';
@@ -39,7 +39,7 @@ export default function CatalogApp({ api = catalogApi }) {
     </div></header>
     <div className="demo-banner"><strong><span aria-hidden="true">✦ </span>Datos de demostración</strong><span>Todas las obras son ficticias. No se guardan cambios.</span></div>
     {page}
-    <section className="discovery-invitation" aria-labelledby="invitation-heading"><span className="invitation-mark" aria-hidden="true"><VerseMark /></span><div><p className="section-kicker">Un universo por descubrir</p><h2 id="invitation-heading">Tu próxima historia te espera</h2><p>Explora nuestra colección de mundos ficticios y encuentra uno que despierte tu curiosidad.</p></div><a className="button-primary" href="/explorar">Descubrir el catálogo <span aria-hidden="true">↗</span></a></section>
+    <section className="discovery-invitation" aria-labelledby="invitation-heading"><span className="invitation-mark" aria-hidden="true"><VerseMark /></span><div><p className="section-kicker">Un universo por descubrir</p><h2 id="invitation-heading">Tu próxima historia te espera</h2><p>Explora nuestra colección de mundos ficticios y encuentra uno que despierte tu curiosidad.</p></div><a className="button-primary" href="/explorar">Descubrir el catálogo <ArrowIcon /></a></section>
     <footer className="catalog-footer"><div className="footer-identity"><a className="brand" href="/" aria-label="YitVerse, inicio"><span className="brand-symbol"><VerseMark /></span><span>Yit<span className="brand-light">Verse</span></span></a><p>Historias que abren otros mundos.</p></div><nav aria-label="Enlaces de YitVerse"><a href="/">Inicio</a><a href="/explorar">Explorar</a><a href="/estado">Estado de conexión</a></nav><p className="footer-note">Catálogo sintético<br />Hecho para imaginar.</p></footer>
   </div>;
 }

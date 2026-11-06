@@ -2,24 +2,27 @@
 body.catalog-mode,
 .catalog-shell {
   /* Palette and semantic states */
-  --background: #07090F;
-  --surface: #101522;
-  --surface-raised: #151D2C;
-  --surface-input: #0B101B;
-  --blue: #2563EB;
-  --blue-hover: #1D4ED8;
-  --cyan: #38BDF8;
-  --detail: #60A5FA;
-  --violet: #8B5CF6;
-  --ink: #F8FAFC;
-  --muted: #94A3B8;
-  --ink-soft: #B8C6DB;
-  --ink-label: #CDD8E7;
-  --line: #26364F;
-  --control-line: #64748B;
-  --info-surface: #121E34;
-  --info-line: #365586;
-  --info-text: #AFCFFF;
+  --background: #101017;
+  --surface: #191923;
+  --surface-raised: #20202C;
+  --surface-input: #12121B;
+  --accent-solid: #7545D0;
+  --accent-hover: #6438B7;
+  /* Compatibility aliases keep existing technical/state components intact. */
+  --blue: var(--accent-solid);
+  --blue-hover: var(--accent-hover);
+  --cyan: #D5C2FF;
+  --detail: #C0A4FF;
+  --violet: #9B73F9;
+  --ink: #F4F3F8;
+  --muted: #B0AABE;
+  --ink-soft: #D0CBDD;
+  --ink-label: #DFD9EC;
+  --line: #383242;
+  --control-line: #81778F;
+  --info-surface: #282036;
+  --info-line: #6F558F;
+  --info-text: #DDCEFC;
   --error: #FDA4AF;
   --error-surface: #2B1823;
   --error-line: #9D5873;
@@ -31,8 +34,8 @@ body.catalog-mode,
   --cover-line: #344A69;
   --cover-ink: #E0EDFF;
   --cover-muted: #C1CEE3;
-  --hero-start: #0D1525;
-  --hero-end: #0D1020;
+  --hero-start: #1B1426;
+  --hero-end: #15111D;
   --shadow-color: #000000;
 
   /* Typography: information starts at 12px; hidden artwork has its own scale. */
@@ -46,7 +49,7 @@ body.catalog-mode,
   --type-brand: 1.75rem;
   --type-footer-brand: 1.375rem;
   --type-section: clamp(1.5rem, 2.2vw, 1.75rem);
-  --type-hero: clamp(2.5rem, 4.3vw, 4rem);
+  --type-hero: clamp(2.5rem, 4.1vw, 3.6rem);
   --type-detail: clamp(2.25rem, 4vw, 3.75rem);
   --type-feedback: clamp(1.75rem, 4vw, 2.5rem);
   --type-cover: clamp(1.15rem, 1.6vw, 1.55rem);
@@ -81,11 +84,11 @@ body.catalog-mode,
   --space-16: 4rem;
   --control-min: 2.75rem;
   --control-size: 3rem;
-  --header-size: 5.5rem;
-  --layout-width: 83rem;
-  --layout-gutter: var(--space-8);
+  --header-size: 5rem;
+  --layout-width: 88rem;
+  --layout-gutter: var(--space-10);
   --format-width: 12.5rem;
-  --hero-min-height: 28rem;
+  --hero-min-height: 29rem;
   --intro-copy-width: 29rem;
   --hero-art-mobile-height: 13.125rem;
   --detail-cover-min: 15rem;
@@ -108,9 +111,9 @@ body.catalog-mode,
   --border-width: 1px;
   --accent-border-width: 3px;
   --radius-control: .5rem;
-  --radius-card: .75rem;
+  --radius-card: .625rem;
   --radius-surface: .875rem;
-  --radius-hero: 1rem;
+  --radius-hero: .75rem;
   --radius-pill: 999px;
 
   /* Depth and moderate interaction */
