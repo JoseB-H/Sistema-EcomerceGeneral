@@ -1,6 +1,6 @@
-# Guía visual Frontend V2 — Incrementos2–4
+# Guía visual Frontend V2 — entrega de Incrementos1–5
 
-**Actualización:** 2026-11-06 UTC. **Rama local:** `feat/frontend-v2-editorial`. Incremento3 aceptado técnicamente en `ddf908e`; arte/ficha/móvil Inc4 implementados para revisión. Sin push/PR ni Incremento5. Figma pendiente. [Pruebas Inc2](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md) · [Pruebas Inc3](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md) · [Comparativas Inc4](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md).
+**Actualización:** 2026-11-06 UTC. **Rama publicada:** `feat/frontend-v2-editorial`. Inc4 aceptado técnicamente en7caff17; Inc5 verifica/consolida sin alterar tokens/componentes de producto. [Entrega33 y evidencias definitivas](33-ENTREGA-FRONTEND-V2.md). Sin PR/merge; Figma pendiente.
 
 ## Organización y alcance
 
@@ -102,3 +102,7 @@ El Hero móvil reduce padding/márgenes con la escala compartida, sin suprimir l
 Carga/error de ficha tienen h1 «Ficha de obra», status/alert y regreso filtrado; el error conserva reintento y explica alternativas.404 de obra explica que la obra no se encuentra en la colección y conserva la búsqueda. Vacíos válidos usan avisos neutrales; no sustituyen una respuesta API inválida por una obra de respaldo.
 
 Las portadas y SVG siguen decorativos (`aria-hidden`, `focusable=false`); título, formato y aviso ficticio están accesibles fuera del arte. No se añade un alt redundante al SVG. Quitar su visibilidad no elimina información ni navegación. Se conserva `useId` por instancia para gradientes únicos y se protege el fallback gráfico frente a propiedades heredadas de JavaScript. No significa que exista una portada persistida en la API.
+
+## Verificación integral — Incremento5
+
+El sistema visual permanece igual al Incremento4. Smokes completos repetidos en dev y preview compilado a320/390/768/1440, sin overflow/excepciones/avisos inesperados. Consola separa404/503 y fallos de red intencionales de errores de aplicación. Teclado/foco/semántica/contrastes de muestras/reduced-motion y resize se comprueban; no conformidad WCAG integral ni otros navegadores acreditados. [Galería definitiva y métricas](33-ENTREGA-FRONTEND-V2.md). Las imágenes idénticas a capturas anteriores se reutilizan tras comprobar SHA256 de una ejecución nueva.

@@ -7,13 +7,13 @@ Proyecto académico **Servicios Cloud**. Este repositorio es el punto de referen
 - `Frontend/`: React + Vite.
 - `Backend/`: Node.js + Express.
 - `Database/`: PostgreSQL.
-- Docker Compose del Sprint 1 se conserva; su uso está temporalmente pausado para el prototipo local.
+- Docker Compose S01 se conserva; V2 se desarrolla nativamente. Inc5 revalidó S01/SQL en un laboratorio Docker aislado.
 
 **Estado actual:** prototipo local HU-001/HU-002 con catálogo y detalle de seis obras ficticias, búsqueda y estados de interfaz. Express/Vite se ejecutan directamente; PostgreSQL aún no está instalado localmente y su diagnóstico indica indisponibilidad. Se conserva el incremento técnico S01; revisión/aceptación del PR #3 y del sprint pendiente. No hay transacciones comerciales.
 
 El catálogo local incluye ahora el [rediseño azul nocturno](docs/UI-AZUL-NOCTURNO.md), con capturas y pruebas para revisión en `feat/ui-azul-nocturno`, derivada de la rama del prototipo.
 
-Incrementos1–3 aceptados técnicamente; Incremento4 refina ficha, seis SVG originales y móvil en la rama **local** `feat/frontend-v2-editorial`. Inicio `/`, Explorar `/explorar`, API, ficha, filtros e historial conservados. Sin publicación/PR; detenerse antes del Incremento5. [Comparativas/pruebas actuales](docs/FRONTEND-V2-INCREMENTO-4-PRUEBAS.md), [guía visual](docs/32-GUIA-VISUAL-FRONTEND-V2.md), [bitácora](docs/00-BITACORA-DE-CONTINUIDAD.md) y [recuperación segura Git Windows](docs/RECUPERACION-GIT-WINDOWS.md).
+**Frontend V2 — entrega:** Incrementos1–4 aceptados técnicamente; Incremento5 verificado/consolidado en [`feat/frontend-v2-editorial`](https://github.com/JoseB-H/Sistema-EcomerceGeneral/tree/feat/frontend-v2-editorial), publicada inicialmente en7caff17. Inicio, Explorar y ficha editoriales, seis SVG propios, API y estados conservados.135 casos de suites, ambos builds y Chromium dev/preview aprobados. [Entrega33: arquitectura, pruebas, capturas y continuidad](docs/33-ENTREGA-FRONTEND-V2.md) · [Bitácora](docs/00-BITACORA-DE-CONTINUIDAD.md) · [Guía visual](docs/32-GUIA-VISUAL-FRONTEND-V2.md) · [Recuperación Windows](docs/RECUPERACION-GIT-WINDOWS.md). Sin PR/merge ni nuevas funciones.
 
 ## Antes de empezar
 
@@ -39,7 +39,7 @@ Evitar abrir como bóveda la misma carpeta activa de desarrollo de Codex para qu
 
 ## Ejecutar el prototipo local actual, sin Docker
 
-Requisitos: Git y Node.js 24 LTS/npm. En PowerShell, **solo desde un clon nuevo verificado**, por ejemplo `D:\Proyectos\YitVerse\YitVerse-Frontend-V2-Limpio`, usar dos terminales. No ejecutar en el repositorio original afectado ni en el respaldo; seguir primero la guía de recuperación enlazada arriba. La base pública clonable es `feat/ui-azul-nocturno`; V2 sigue local.
+Requisitos: Git y Node.js 24 LTS/npm. En PowerShell, **solo desde un clon nuevo verificado**, por ejemplo `D:\Proyectos\YitVerse\YitVerse-Frontend-V2-Limpio`, usar dos terminales. No ejecutar en el repositorio original afectado ni en el respaldo; seguir primero la guía de recuperación enlazada arriba. La rama V2 ya es clonable: `feat/frontend-v2-editorial`; seguir la guía de recuperación y usar un destino nuevo.
 
 ```powershell
 # Terminal 1
@@ -57,9 +57,9 @@ Abrir **http://localhost:5173**; Vite redirige `/api` a Express en `127.0.0.1:30
 
 [Guía Windows completa, cambio de rama y límites PostgreSQL](docs/LOCAL-DEV-CATALOGO.md) · [Pruebas reales y limitaciones](docs/LOCAL-DEV-CATALOGO-PRUEBAS.md).
 
-## Laboratorio S01 conservado — Docker pausado
+## Laboratorio S01 conservado — desarrollo V2 nativo
 
-Las instrucciones siguientes documentan el laboratorio previo y sus precauciones. Para el desarrollo actual utilizar únicamente la modalidad nativa anterior; no ejecutar estos comandos Docker ni sus suites de integración/persistencia. Su evidencia histórica continúa en el reporte S01.
+Las instrucciones siguientes documentan S01 y sus guardas; no son necesarias para arrancar el catálogo nativo. En Inc5 se revalidaron en un clon/proyecto nuevo, sin adoptar el laboratorio previo. No usar el proyecto predeterminado para pruebas de fallo sobre recursos existentes: elegir identidad/puerto propios y comprobar propiedad. Docker sigue sirviendo la pantalla técnica S01; no acredita despliegue V2. [Evidencia actual](docs/33-ENTREGA-FRONTEND-V2.md).
 
 Requisitos gratuitos: Git, Node.js 24 LTS/npm y motor Docker con Compose v2 y contenedores Linux. No hace falta instalar PostgreSQL en Windows. Revisar los términos de Docker Desktop para el uso propio; en Linux puede usarse Docker Engine.
 

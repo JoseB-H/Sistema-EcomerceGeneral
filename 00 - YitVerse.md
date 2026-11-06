@@ -5,9 +5,10 @@ estado: indice
 # YitVerse — Centro de documentación
 
 > [!info] Estado del proyecto
-> Esta bóveda visualiza el repositorio **Sistema-EcomerceGeneral**. Los documentos aquí describen las decisiones y planificación del proyecto; no implican que los tres contenedores ya estén implementados.
+> Esta bóveda visualiza el repositorio **Sistema-EcomerceGeneral**. Frontend V2 e infraestructura S01 tienen código/evidencias; la entrega vigente está en la rama feat/frontend-v2-editorial, sin merge a main. Sincronización Windows pendiente.
 
 ## Para empezar
+- [[docs/33-ENTREGA-FRONTEND-V2|Entrega V2 y continuidad entre chats]]
 - [[docs/00-INDICE-DOCUMENTAL|Índice documental completo]]
 - [[docs/01-VISION-Y-ALCANCE|Visión y alcance]]
 - [[docs/20-VISION-FUNCIONAL-YITVERSE|Idea del producto YitVerse]]

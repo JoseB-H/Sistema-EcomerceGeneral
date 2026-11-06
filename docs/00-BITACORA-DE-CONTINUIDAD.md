@@ -6,13 +6,13 @@ actualizado: 2026-11-06
 # Bitácora de continuidad — YitVerse
 
 > [!important] Leer primero al reanudar cualquier chat
-> **Incremento3 `ddf908e` aceptado técnicamente; exclusivamente Incremento4 implementado para revisión local.** Ficha editorial, refinamientos de los seis SVG originales y mejoras móviles; catálogo/API/rutas conservados. Sin publicación ni PR; detenerse antes del Incremento5. Figma sigue pendiente. [Comparativas y pruebas](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md).
+> **Incrementos1–4 aceptados técnicamente; Incremento5 verificado para revisión de integración.** Rama [`feat/frontend-v2-editorial`](https://github.com/JoseB-H/Sistema-EcomerceGeneral/tree/feat/frontend-v2-editorial) publicada inicialmente en7caff17, antes de editar. Entrega y recuperación en [documento33](33-ENTREGA-FRONTEND-V2.md). Sin PR/merge/main ni funciones nuevas; Figma pendiente.
 
 ## Estado de los frentes
 
 | Frente | Responsable / espacio | Estado comprobable | Retomar desde |
 | --- | --- | --- | --- |
-| Frontend V2 | Usuario + Codex; Figma como referencia pendiente | Inc1–3 aceptados técnicamente; Inc4 arte/ficha/móvil local en revisión; Inc5 no autorizado | [[31-YITVERSE-DISENO-VISUAL-V2]] |
+| Frontend V2 | Usuario + Codex; Figma como referencia pendiente | Inc1–4 aceptados técnicamente; Inc5 verificado/publicación en misma rama para revisión de integración | [[31-YITVERSE-DISENO-VISUAL-V2]] |
 | Visión y requisitos del producto | Documentación en GitHub/Obsidian | Visión, RF, RNF y trazabilidad documentados; decisiones de negocio aún pendientes | [[20-VISION-FUNCIONAL-YITVERSE]] |
 | Arquitectura Docker | Codex | Implementación y evidencia histórica S01 conservadas; no reejecutadas en este incremento | [[sprints/S01-REPORTE-PRUEBAS]] |
 | Obsidian y respaldo | GitHub + Obsidian Git local | Copia Markdown versionada en GitHub; sincronización del equipo aún no verificada | [[30-OBSIDIAN-GITHUB-SINCRONIZACION]] |
@@ -22,7 +22,7 @@ actualizado: 2026-11-06
 
 **Acuerdo del Incremento1 (histórico, ya aceptado en `daf3c85`):** usuario aprueba los cinco incrementos y las decisiones provisionales sobre selección de demostración, continuar explorando no personalizado y categorías existentes. Autoriza ejecutar **solo el Incremento1**, con commit local. Prohíbe cambiar visuales/rutas/Backend/Database/Docker, publicar la rama, abrir PR o comenzar el Incremento2.
 
-**Acuerdo vigente:** el usuario acepta técnicamente `ddf908e` y autoriza exclusivamente Incremento4: refinar las seis ilustraciones existentes como base, ficha y móvil. Sin dirección artística nueva, contratos/API/servicios/Docker/librerías nuevas. Capturas antes/después, pruebas, commit y nuevo bundle locales; conservar respaldos previos. No hay autorización de publicación/PR/merge ni Incremento5.
+**Acuerdo vigente:** usuario acepta7caff17 y autoriza solo Incremento5: verificar/consolidar/documentar, push inicial y final únicamente de `feat/frontend-v2-editorial`, sin force/PR/merge/main. Inicial7caff17 confirmado antes de cambios, tras auditoría de secretos/remoto. Docker/PG disponibles se probaron en clon/proyecto propios, sin alterar laboratorio anterior. No hay autorización para nuevas funciones.
 
 **Antecedente conservado:**
 
@@ -47,7 +47,7 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 
 ## Mecanismo de respaldo desde ahora
 1. Al cerrar cada bloque de trabajo, **actualizar esta nota** con fecha, decisión, enlace a Figma/PR/commit, tareas realizadas, tareas pendientes y próxima acción.
-2. Guardar especificaciones más largas en documentos separados; enlazarlos aquí mediante [[wikilinks]].
+2. Guardar especificaciones más largas en documentos separados; enlazarlos aquí mediante `[[wikilinks]]` (sintaxis de ejemplo).
 3. GitHub conserva versiones de estos Markdown. Obsidian los muestra **cuando se abra/sincronice una copia del repositorio**.
 4. Si otro chat no recuerda el trabajo previo, darle el enlace a esta bitácora en GitHub y pedir que la lea antes de trabajar.
 
@@ -59,7 +59,7 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 | 2026-11-05 | Figma | Creado archivo editable «YitVerse — Dirección Visual V2 · Editorial Dark» | [Abrir Figma](https://www.figma.com/design/dCLgExm48T9Ui6sTcEIhwu) |
 | 2026-11-05 | Respaldo | Iniciada esta bitácora y la especificación visual V2 en GitHub | Notas Markdown versionadas |
 
-**Próxima acción vigente:** revisar Incremento4, comparativas, commit/bundle locales. Esperar aprobación expresa antes del Incremento5 y antes de publicar/abrir PR. Figma sigue siendo referencia pendiente.
+**Próxima acción vigente:** revisar la [entrega33](33-ENTREGA-FRONTEND-V2.md) y decidir la futura integración coordinada con S01/PR#3. No se inicia otra etapa automáticamente. Recuperar código/notas desde la rama publicada en un clon nuevo; no asumir sincronización de Obsidian Windows.
 
 
 ## Incidente Git local — 2026-11-05
@@ -125,3 +125,13 @@ La recuperación del Git local debe esperar a que la copia de seguridad se compl
 **Verificación:**45 Backend/58 Frontend (45 previas +13 nuevas), ambos builds y Chromium dev/preview320/390/768/1440 aprobados. Fixtures extensos/vacíos/incompletos, resize/rotación simulada, filtros/historial/recargas, teclado/foco/reduced-motion; sin desbordes ni errores JS en recorridos probados. Título móvil390px pasa de857px a328,17px; solo el título repetido decorativo se limita a tres líneas. Fallos reproducidos/corregidos con RED→GREEN documentados.
 
 **Commit de entrega:** `feat(frontend): refine V2 original covers detail and mobile layouts` (hash en cierre/manifiesto externo; no autorreferencia circular). **Respaldo:** Inc3/anteriores preservados; nuevo bundle tras commit, con verificación/restauración real registrada externamente. **Límites:** Windows/dispositivos físicos/otros navegadores/lectores de pantalla/WCAG integral/PG nativo/Docker/producción/Figma no acreditados. Rama local, sin push/PR/merge. **Próxima tarea:** revisión del Incremento4; Incremento5 preparado, no iniciado ni autorizado.
+
+## Frontend V2 — Incremento5: verificación y entrega (2026-11-06 UTC)
+
+**Rama/base:** `feat/frontend-v2-editorial`, desde7caff17 aceptado técnicamente. **Respaldo inicial:** push7caff17 verificado antes de editar, tras fsck/historial/auditoría de publicación; main/ramas originales sin cambios. **Terminado:** verificación integral, consola, documentación33/continuidad/recuperación Git/Obsidian y galería definitiva. No cambia producto/API/Backend/Database/Docker/dependencias; se añade instrumentación compartida de consola a smokes.
+
+**Pruebas:**45 Backend +58 Frontend +15 guardas +10 integraciónDocker +1 persistencia +6 consola =135 casos aprobados, ambos builds y cuatro smokes Chromium (dev/preview) a320/390/768/1440. Filtros/historial/recargas/estados/reintento, fixtures largos/vacíos/inválidos, teclado/foco/reduced-motion/contraste de muestras y consola verificados; sin overflow/pageerror/avisos inesperados. HTTP negativos esperados se registran aparte. npm ls0problemas/audit0avisos. S01 SQL/persistencia se revalidó en proyecto propio; anteriores recursos intactos y volumen de prueba conservado.
+
+**Archivos:** [entrega33](33-ENTREGA-FRONTEND-V2.md), estas notas00/31/32/estado/alineación, README/índice/centroObsidian/guías local y recuperación/plan, helperconsole y dos smokes; manifiesto de12capturas (6reutilizadas conSHAidéntico,6nuevas) y métricas. **Commit de cierre:** `docs(frontend): consolidate V2 verification and delivery`; SHA exacto consultable con `git log -1 --format="%H %s" -- docs/33-ENTREGA-FRONTEND-V2.md` y manifiesto externo del bundle. Tras commit, bundle nuevo verificado/restaurado y push final exclusivamente a la misma rama con relectura del remoto; resultado exacto en la entrega final. Bundles anteriores preservados.
+
+**Límites:** Windows/dispositivos físicos/otros navegadores/lectores de pantalla/WCAG integral/Figma no acreditados. Catálogo sintético sin persistencia; Docker sirveS01, noV2; PG nativo usuario no probado. [33](33-ENTREGA-FRONTEND-V2.md) registra riesgos de integración conmain/PR#3 y recuperación desde otro chat. **Siguiente paso:** revisión humana e integración solo tras nueva aprobación. Sin PR/merge/main ni nuevas funciones.

@@ -5,6 +5,7 @@ import re
 import shutil
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
+from console_checks import capture_console
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--base-url', default='http://localhost:5173')
@@ -24,6 +25,7 @@ with sync_playwright() as p:
     browser = p.chromium.launch(**options)
     context = browser.new_context(viewport={'width': 1440, 'height': 1000}, reduced_motion='no-preference')
     page = context.new_page()
+    console = capture_console(page)
     errors, external = [], []
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.on('request', lambda request: external.append(request.url) if not request.url.startswith(base + '/') else None)
@@ -137,18 +139,20 @@ with sync_playwright() as p:
         page.unroute('**/api/works/archivo-aurora')
         page.get_by_role('button', name='Reintentar').click()
         expect(page.get_by_role('heading', level=1, name=work['title'])).to_be_visible()
-        page.goto(base + '/obras/no-existe?q=Aurora&format=manga')
-        expect(page.get_by_role('heading', level=1, name='No encontramos esta obra')).to_be_visible()
-        expect(page.get_by_role('link', name=re.compile('Volver al catálogo'))).to_have_attribute('href', '/explorar?q=Aurora&format=manga')
-        shot('ficha-no-encontrada')
+        with console.expect_network('/api/works/no-existe', '404'):
+            page.goto(base + '/obras/no-existe?q=Aurora&format=manga')
+            expect(page.get_by_role('heading', level=1, name='No encontramos esta obra')).to_be_visible()
+            expect(page.get_by_role('link', name=re.compile('Volver al catálogo'))).to_have_attribute('href', '/explorar?q=Aurora&format=manga')
+            shot('ficha-no-encontrada')
         page.emulate_media(reduced_motion='reduce')
         detail()
         motion = page.locator('.work-cover').evaluate('(n) => {const s=getComputedStyle(n);return [s.transitionDuration,s.animationName,s.transform,s.scrollBehavior];}')
         assert motion == ['0s', 'none', 'none', 'auto']
         report.update({'responsive': results, 'rotation_filters': 'passed', 'long_partial_invalid_fixtures_retry': 'passed', 'decorative_art_text_survives': 'passed', 'reduced_motion': motion})
     assert not errors, errors
+    assert not console['unexpected'], console['unexpected']
     assert not external, external
-    report.update({'page_errors': errors, 'external_requests': external})
+    report.update({'page_errors': errors, 'external_requests': external, 'console': console})
     (output / 'mediciones.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(report, ensure_ascii=False, indent=2))
     browser.close()

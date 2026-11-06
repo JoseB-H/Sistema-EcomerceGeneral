@@ -1,13 +1,13 @@
 ---
 tags: [yitverse, diseno, figma, v2, interfaz]
 tipo: especificacion-visual
-estado: arte-ficha-movil-inc4-local-en-revision
+estado: v2-verificado-en-revision-de-integracion
 actualizado: 2026-11-06
 ---
 # YitVerse — Dirección visual V2
 
 > [!info] Punto de continuidad
-> El usuario aceptó técnicamente Incremento3 `ddf908e` y autorizó **exclusivamente Incremento4: Arte, detalle y móvil**. Se refinan los SVG existentes y la composición de ficha/móvil; sin publicación ni nueva dirección artística. Incremento5 requiere nueva aprobación. Infraestructura y Figma mantienen su estado anterior.
+> El usuario aceptó técnicamente Incremento4 `7caff17` y autorizó **exclusivamente Incremento5: verificación y entrega**. No se altera el diseño/producto. Rama V2 publicada inicialmente7caff17 y entrega consolidada en [33](33-ENTREGA-FRONTEND-V2.md); sin PR/merge ni nuevas funciones. Figma sigue pendiente.
 
 ## Identidad visual de la iteración
 
@@ -18,7 +18,7 @@ actualizado: 2026-11-06
 - **Portadas:** el encargo actual prioriza composición y presentación de los seis SVG propios. Se conservan sus motivos/paletas y se añaden detalles acotados; no se sustituyen por un estilo nuevo ni se importan imágenes de terceros.
 - **Gamificación:** parte de la visión futura; XP/YitCoins no se implementan ni se presentan como funciones disponibles en este plan.
 - **Dispositivos:** composición desktop y adaptación móvil desde el diseño.
-- **Alcance de ejecución actual:** ficha editorial, detalles puntuales sobre los seis SVG y adaptación móvil, reutilizando tokens/componentes. API, Backend, Database, Docker, datos y dependencias sin cambios. No autoriza Incremento5 ni módulos comerciales.
+- **Alcance de ejecución actual:** verificación integral y consolidación documental; producto/API/Backend/Database/Docker/datos/dependencias intactos respecto7caff17. Solo instrumentación de consola en smokes, documentación y evidencias. No autoriza módulos nuevos ni integración automática.
 
 ## Vistas incluidas en el encargo V2
 
@@ -39,8 +39,8 @@ actualizado: 2026-11-06
 La V2 puede utilizar títulos, frases y portadas **ficticias** para ilustrar la interfaz. No confundir datos de prueba con catálogo comercial real, licencias o permisos de lectura. No asignar XP, YitCoins o precios como reglas aprobadas.
 
 ## Acuerdo vigente y siguiente paso
-1. Revisar Incremento4, desde `ddf908e`, y sus comparativas/commit/bundle locales.
-2. Esperar autorización expresa antes del Incremento5, publicación o PR. No se inicia por haber aprobado el plan general.
+1. Revisar la entrega integral [33](33-ENTREGA-FRONTEND-V2.md), con historial, capturas definitivas y recuperación.
+2. Solo está autorizada la publicación de esta rama. PR/merge/nuevas funciones requieren aprobación posterior.
 3. Usar la especificación Markdown provisional y el [plan aprobado](superpowers/plans/2026-11-05-frontend-v2-editorial.md) como base de los incrementos autorizados. La antigua secuencia que pedía cerrar primero cinco vistas Figma queda como antecedente; no implica que se hayan creado o aprobado.
 4. Mantener Figma como referencia pendiente y aceptación visual del usuario separada de pruebas técnicas. No cambiar fuente de catálogo ni activar lector/seguimiento/XP/tienda por figurar en una vista.
 
@@ -94,3 +94,13 @@ Arte: Aurora conserva observatorio/auroras y gana constelación; Órbita conserv
 **Verificación:**45 Backend/58 Frontend (45 previas +13 nuevas), ambos builds y Chromium dev/preview320/390/768/1440 aprobados. Fixtures extensos/vacíos/incompletos, resize/rotación simulada, filtros/historial/recargas, teclado/foco/reduced-motion; sin desbordes ni errores JS en recorridos probados. Título móvil390px pasa de857px a328,17px; solo el título repetido decorativo se limita a tres líneas. Fallos reproducidos/corregidos con RED→GREEN documentados.
 
 **Commit de entrega:** `feat(frontend): refine V2 original covers detail and mobile layouts` (hash en cierre/manifiesto externo; no autorreferencia circular). **Respaldo:** Inc3/anteriores preservados; nuevo bundle tras commit, con verificación/restauración real registrada externamente. **Límites:** Windows/dispositivos físicos/otros navegadores/lectores de pantalla/WCAG integral/PG nativo/Docker/producción/Figma no acreditados. Rama local, sin push/PR/merge. **Próxima tarea:** revisión del Incremento4; Incremento5 preparado, no iniciado ni autorizado.
+
+## Frontend V2 — Incremento5: verificación y entrega (2026-11-06 UTC)
+
+**Rama/base:** `feat/frontend-v2-editorial`, desde7caff17 aceptado técnicamente. **Respaldo inicial:** push7caff17 verificado antes de editar, tras fsck/historial/auditoría de publicación; main/ramas originales sin cambios. **Terminado:** verificación integral, consola, documentación33/continuidad/recuperación Git/Obsidian y galería definitiva. No cambia producto/API/Backend/Database/Docker/dependencias; se añade instrumentación compartida de consola a smokes.
+
+**Pruebas:**45 Backend +58 Frontend +15 guardas +10 integraciónDocker +1 persistencia +6 consola =135 casos aprobados, ambos builds y cuatro smokes Chromium (dev/preview) a320/390/768/1440. Filtros/historial/recargas/estados/reintento, fixtures largos/vacíos/inválidos, teclado/foco/reduced-motion/contraste de muestras y consola verificados; sin overflow/pageerror/avisos inesperados. HTTP negativos esperados se registran aparte. npm ls0problemas/audit0avisos. S01 SQL/persistencia se revalidó en proyecto propio; anteriores recursos intactos y volumen de prueba conservado.
+
+**Archivos:** [entrega33](33-ENTREGA-FRONTEND-V2.md), estas notas00/31/32/estado/alineación, README/índice/centroObsidian/guías local y recuperación/plan, helperconsole y dos smokes; manifiesto de12capturas (6reutilizadas conSHAidéntico,6nuevas) y métricas. **Commit de cierre:** `docs(frontend): consolidate V2 verification and delivery`; SHA exacto consultable con `git log -1 --format="%H %s" -- docs/33-ENTREGA-FRONTEND-V2.md` y manifiesto externo del bundle. Tras commit, bundle nuevo verificado/restaurado y push final exclusivamente a la misma rama con relectura del remoto; resultado exacto en la entrega final. Bundles anteriores preservados.
+
+**Límites:** Windows/dispositivos físicos/otros navegadores/lectores de pantalla/WCAG integral/Figma no acreditados. Catálogo sintético sin persistencia; Docker sirveS01, noV2; PG nativo usuario no probado. [33](33-ENTREGA-FRONTEND-V2.md) registra riesgos de integración conmain/PR#3 y recuperación desde otro chat. **Siguiente paso:** revisión humana e integración solo tras nueva aprobación. Sin PR/merge/main ni nuevas funciones.

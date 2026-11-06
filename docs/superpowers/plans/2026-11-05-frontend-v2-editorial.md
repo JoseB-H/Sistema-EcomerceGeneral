@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task **respetando la autorización de ejecución por incremento del usuario**. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Estado:** PLAN APROBADO por el usuario el 2026-11-05, incluidas las decisiones provisionales. **Incrementos1–3 aceptados técnicamente y exclusivamente Incremento4 autorizado.** Incremento5 espera nueva aprobación. No hay mockups Figma aprobados ni diseño final acreditado. La rama y su commit permanecerán locales; push/PR expresamente prohibidos en esta entrega.
+**Estado:** plan aprobado; Incrementos1–4 aceptados técnicamente e Incremento5 autorizado/verificado para entrega. Push inicial/final exclusivamente de feat/frontend-v2-editorial autorizado por solicitud Inc5; no PR/merge/main ni funciones nuevas. Figma pendiente. [Entrega vigente33](../../33-ENTREGA-FRONTEND-V2.md).
 
 **Goal:** Evolucionar el frontend existente hacia Inicio, Explorar, Detalle y adaptación móvil V2, con una guía visual común, conservando catálogo/API y las garantías funcionales.
 
@@ -118,11 +118,11 @@ En **cada incremento** se actualizan `docs/00-BITACORA-DE-CONTINUIDAD.md`, `docs
 
 ## Incremento5 — entrega verificable
 
-- [ ] Ejecutar todas las suites Backend/Frontend existentes y nuevas, builds normal/local y smoke Chromium actualizado. Cero fallos/omitidos inesperados; no fijar un total arbitrario de tests nuevos.
-- [ ] Verificar Home → Explorar → Ficha → regreso; búsquedas directas/legacy/acentos/formato/categorías; atrás/adelante; carga/error/vacío/404/reintento; teclado/foco/reduced-motion y salud503 real sin PostgreSQL. No invocar Docker.
-- [ ] Revisar toda la rama frente a su base y corregir problemas con regresiones. Comprobar que no cambia Backend, Database, Docker, credenciales o datos y que no se elimina ningún caso funcional de prueba.
-- [ ] Documentar resultados reales, capturas de las cuatro vistas, tokens, comandos Windows y límites (Windows/PG/Figma no se acreditan por un navegador Linux). Actualizar los tres documentos obligatorios con próxima tarea y estado “en revisión”.
-- [ ] Commit: `docs(frontend): record V2 verification and review delivery`. Publicar únicamente la rama de trabajo para revisión, con comparación respecto a la base azul; no fusionar main, modificar PR#3 ni declarar aceptado el sprint.
+- [x] Ejecutar todas las suites Backend/Frontend existentes y nuevas, builds normal/local y smoke Chromium actualizado. Cero fallos/omitidos inesperados; no fijar un total arbitrario de tests nuevos.
+- [x] Verificar Home → Explorar → Ficha → regreso; búsquedas directas/legacy/acentos/formato/categorías; atrás/adelante; carga/error/vacío/404/reintento; teclado/foco/reduced-motion y salud503 real sin PostgreSQL. En Inc5, revalidar S01 Docker/PG solo en un clon/proyecto propio si están disponibles, según autorización actual; sin cambiar la arquitectura.
+- [x] Revisar toda la rama frente a su base y corregir problemas con regresiones. Comprobar que no cambia Backend, Database, Docker, credenciales o datos y que no se elimina ningún caso funcional de prueba.
+- [x] Documentar resultados reales, capturas de las cuatro vistas, tokens, comandos Windows y límites (Windows/PG/Figma no se acreditan por un navegador Linux). Actualizar los tres documentos obligatorios con próxima tarea y estado “en revisión”.
+- [x] Commit: `docs(frontend): consolidate V2 verification and delivery`. Publicar únicamente la rama de trabajo para revisión, con comparación respecto a la base azul; no fusionar main, modificar PR#3 ni declarar aceptado el sprint.
 
 ## Review Focus
 
@@ -134,4 +134,4 @@ En **cada incremento** se actualizan `docs/00-BITACORA-DE-CONTINUIDAD.md`, `docs
 
 ## Punto de parada actual
 
-El usuario aceptó técnicamente Incremento3 `ddf908e` y autorizó **exclusivamente Incremento4**, implementado para revisión local. Se refina arte existente, ficha y móvil; no contratos/API/servicios/Docker/dependencias nuevas. **Sin push/PR/fusión. Detenerse antes del Incremento5 hasta nueva aprobación.** Figma pendiente. Evidencia en [reporte Inc4](../../FRONTEND-V2-INCREMENTO-4-PRUEBAS.md).
+Incremento5 verificado y consolidado para revisión de integración. Respaldo inicial7caff17 confirmado antes de editar; cierre documental, bundle y push final en la misma rama. Sin PR/merge/main ni nuevas funcionalidades. [Entrega33](../../33-ENTREGA-FRONTEND-V2.md). No iniciar otra fase sin autorización.

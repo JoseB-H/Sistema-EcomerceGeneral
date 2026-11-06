@@ -5,6 +5,7 @@ import re
 import shutil
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
+from console_checks import capture_console
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--base-url', default='http://localhost:5173')
@@ -32,6 +33,7 @@ with sync_playwright() as p:
     browser = p.chromium.launch(**options)
     context = browser.new_context(viewport={'width': 1440, 'height': 1000}, reduced_motion='no-preference')
     page = context.new_page()
+    console = capture_console(page)
     errors = []
     external = []
     page.on('pageerror', lambda error: errors.append(str(error)))
@@ -212,13 +214,14 @@ with sync_playwright() as p:
     expect(page.get_by_role('status')).to_have_text('Cargando catálogo…')
     screenshot('estado-cargando')
     assert pending
-    for route in pending:
-        route.abort()
-    expect(page.get_by_role('alert')).to_contain_text('No se pudo cargar el catálogo')
-    screenshot('estado-error')
-    page.unroute('**/api/works')
-    page.get_by_role('button', name='Reintentar').click()
-    expect(catalog()).to_have_count(6)
+    with console.expect_network('/api/works', 'ERR_FAILED'):
+        for route in pending:
+            route.abort()
+        expect(page.get_by_role('alert')).to_contain_text('No se pudo cargar el catálogo')
+        screenshot('estado-error')
+        page.unroute('**/api/works')
+        page.get_by_role('button', name='Reintentar').click()
+        expect(catalog()).to_have_count(6)
 
     for width in [1440, 768, 390, 320]:
         page.set_viewport_size({'width': width, 'height': 1000 if width > 400 else 844})
@@ -231,22 +234,24 @@ with sync_playwright() as p:
     page.keyboard.press('Enter')
     expect(page.get_by_role('searchbox')).to_be_focused()
 
-    page.goto(base + '/obras/no-existe')
-    expect(page.get_by_role('heading', name='No encontramos esta obra')).to_be_visible()
-    screenshot('estado-obra-desconocida')
+    with console.expect_network('/api/works/no-existe', '404'):
+        page.goto(base + '/obras/no-existe')
+        expect(page.get_by_role('heading', name='No encontramos esta obra')).to_be_visible()
+        screenshot('estado-obra-desconocida')
     page.goto(base + '/no-existe')
     expect(page.get_by_role('heading', name='Esta página no existe')).to_be_visible()
-    page.goto(base + '/estado')
-    expect(page.get_by_role('alert')).to_contain_text('No se pudo comprobar la conexión')
-    surface = page.locator('.catalog-shell').evaluate('(node) => getComputedStyle(node).getPropertyValue("--surface").trim()')
-    actual_surface = page.locator('main').evaluate('(node) => getComputedStyle(node).backgroundColor')
-    expected_surface = page.evaluate('''color => { const node=document.createElement('span');node.style.backgroundColor=color;
-        document.body.append(node);const result=getComputedStyle(node).backgroundColor;node.remove();return result; }''', surface)
-    assert actual_surface == expected_surface
-    assert page.get_by_text('Backend y PostgreSQL disponibles').count() == 0
-    page.get_by_role('button', name='Reintentar').click()
-    expect(page.get_by_role('alert')).to_be_visible()
-    screenshot('estado-conexion')
+    with console.expect_network('/api/health', '503'):
+        page.goto(base + '/estado')
+        expect(page.get_by_role('alert')).to_contain_text('No se pudo comprobar la conexión')
+        surface = page.locator('.catalog-shell').evaluate('(node) => getComputedStyle(node).getPropertyValue("--surface").trim()')
+        actual_surface = page.locator('main').evaluate('(node) => getComputedStyle(node).backgroundColor')
+        expected_surface = page.evaluate('''color => { const node=document.createElement('span');node.style.backgroundColor=color;
+            document.body.append(node);const result=getComputedStyle(node).backgroundColor;node.remove();return result; }''', surface)
+        assert actual_surface == expected_surface
+        assert page.get_by_text('Backend y PostgreSQL disponibles').count() == 0
+        page.get_by_role('button', name='Reintentar').click()
+        expect(page.get_by_role('alert')).to_be_visible()
+        screenshot('estado-conexion')
 
     reload_paths = [
         ('/', 'Archivo Aurora'),
@@ -266,9 +271,10 @@ with sync_playwright() as p:
         if 'format=' in path and '/obras/' not in path:
             expect(page.get_by_role('combobox')).to_have_value('manhwa' if 'manhwa' in path else '')
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
-    page.goto(base + '/estado')
-    page.reload()
-    expect(page.get_by_role('alert')).to_be_visible()
+    with console.expect_network('/api/health', '503'):
+        page.goto(base + '/estado')
+        page.reload()
+        expect(page.get_by_role('alert')).to_be_visible()
     page.goto(base + '/#catalog-query')
     expect(page.get_by_role('searchbox')).to_be_focused()
     # Deterministic fault injection tests UI states only, never changes production data.
@@ -279,13 +285,14 @@ with sync_playwright() as p:
     assert catalog().count() == 0
     screenshot('inicio-cargando')
     assert pending_home
-    for route in pending_home:
-        route.abort()
-    expect(page.get_by_role('alert')).to_be_visible()
-    screenshot('inicio-error')
-    page.unroute('**/api/works')
-    page.get_by_role('button', name='Reintentar').click()
-    expect(catalog()).to_have_count(6)
+    with console.expect_network('/api/works', 'ERR_FAILED'):
+        for route in pending_home:
+            route.abort()
+        expect(page.get_by_role('alert')).to_be_visible()
+        screenshot('inicio-error')
+        page.unroute('**/api/works')
+        page.get_by_role('button', name='Reintentar').click()
+        expect(catalog()).to_have_count(6)
     page.route('**/api/works', lambda route: route.fulfill(json={'source': {'kind': 'synthetic', 'persisted': False}, 'items': []}))
     page.goto(base + '/')
     expect(page.get_by_role('heading', name='Todavía no hay obras para explorar')).to_be_visible()
@@ -302,8 +309,9 @@ with sync_playwright() as p:
     motion = page.locator('.work-cover').first.evaluate('(node) => {const s=getComputedStyle(node);return [s.transitionDuration,s.animationName,s.transform,s.scrollBehavior];}')
     assert motion == ['0s', 'none', 'none', 'auto'], motion
     assert not errors, errors
+    assert not console['unexpected'], console['unexpected']
     assert not external, external
-    report = {'home_viewports': home_viewports, 'direct_reload_paths': [path for path, _ in reload_paths] + ['/estado'], 'home_states_and_genres': 'passed', 'viewports': viewport_results, 'contrast': ratios, 'svg_gradient_ids': len(ids), 'keyboard_and_history': 'passed', 'loading_error_empty_retry_404_health503': 'passed', 'reduced_motion': motion, 'page_errors': errors, 'external_requests': external}
+    report = {'home_viewports': home_viewports, 'direct_reload_paths': [path for path, _ in reload_paths] + ['/estado'], 'home_states_and_genres': 'passed', 'viewports': viewport_results, 'contrast': ratios, 'svg_gradient_ids': len(ids), 'keyboard_and_history': 'passed', 'loading_error_empty_retry_404_health503': 'passed', 'reduced_motion': motion, 'page_errors': errors, 'external_requests': external, 'console': console}
     (output / 'mediciones.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(report, ensure_ascii=False, indent=2))
     browser.close()

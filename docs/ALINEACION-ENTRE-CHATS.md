@@ -76,3 +76,11 @@ El usuario acepta técnicamente `ddf908e` y autoriza únicamente arte, ficha y e
 No hay cambios Backend/Database/Docker/API, publicación, PR, merge o Incremento5. Se preservan bundles previos; la entrega genera otro recuperable. Las pruebas serán acotadas a Chromium Linux y fixtures controlados; no aprobación Figma, Windows, lector de pantalla o conformidad WCAG integral por inferencia.
 
 Resultado Inc4:45 Backend/58 Frontend, builds y Chromium dev/preview aprobados. [Reporte Inc4](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md) conserva comparativas, decisiones, problemas y límites. Commit de entrega `feat(frontend): refine V2 original covers detail and mobile layouts`; nuevo bundle verificable tras commit y anteriores conservados. La aceptación técnica Inc3 no implica aprobación visual final/Figma ni publicación; detener antes del Incremento5.
+
+## Frontend V2 — Incremento5 autorizado/verificado (2026-11-06 UTC)
+
+El usuario acepta técnicamente7caff17 y autoriza verificación/consolidación/entrega sin funciones nuevas. Autoriza push inicial y final **solo feat/frontend-v2-editorial**, tras auditar contenido/remoto; no force, PR, merge, main u otras ramas. Respaldo inicial7caff17 publicado/verificado antes de editar; referencias protegidas sin cambios. Historial/bundles/integridad/secretos/dependencias revisados. Docker y PG estaban disponibles:26 casos S01 en clon/proyecto propios, recursos anteriores intactos, volumen conservado. V2 sigue nativo/preview y catálogo sintético; SQL exitoso S01 no lo convierte en persistente ni acredita despliegue V2.
+
+45 Backend/58 Frontend, ambos builds, smokes dev/preview con consola y cuatro tamaños aprobados. [Entrega33](33-ENTREGA-FRONTEND-V2.md) es el punto de entrada para otro chat/Obsidian y la próxima revisión. Figma/Windows/otros navegadores/AA integral sin acreditar. No nuevas funciones hasta autorización; futura integración puede requerir reconciliar notas00/31 add/add y coordinar PR#3, sin ejecutarla ahora.
+
+Commit documental de cierre: `docs(frontend): consolidate V2 verification and delivery`. Hash de código7caff17 y tabla de los cinco incrementos en33; hash documental exacto se obtiene del historial de esa nota/manifiesto de respaldo. Rama publicada para revisión, no aceptación de integración por inferencia.

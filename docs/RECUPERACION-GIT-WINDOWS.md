@@ -1,6 +1,6 @@
 # Recuperación segura de Git en Windows
 
-**Estado:** instrucciones para revisión/ejecución manual del usuario. No se ejecutaron en Windows desde cloud y no certifican ningún respaldo local. Incremento1 de `feat/frontend-v2-editorial`, 2026-11-05.
+**Estado:** instrucciones para revisión/ejecución manual del usuario. No se ejecutaron en Windows desde cloud y no certifican ningún respaldo local. Actualizada en Incremento5, 2026-11-06; rama V2 publicada.
 
 ## Rutas protegidas y diagnóstico
 
@@ -39,13 +39,13 @@ La coincidencia de un archivo no certifica todos los demás. El respaldo puede c
 
 No ejecutar esta secuencia dentro de la carpeta dañada o del respaldo. La ruta propuesta es `D:\Proyectos\YitVerse\YitVerse-Frontend-V2-Limpio`; si ya existe, conservarla y escoger otro nombre nuevo. Git y Node24/npm son requisitos para ejecutar después el prototipo.
 
-La rama `feat/frontend-v2-editorial` del Incremento1 es **local en cloud y no se ha publicado**. El comando siguiente clona `feat/ui-azul-nocturno`, que sí está en GitHub; no afirmar que esto obtiene un commit V2 todavía no publicado.
+La rama `feat/frontend-v2-editorial` **ya está publicada**, inicialmente7caff17 y con cierre documental Inc5 en la misma rama. El comando siguiente obtiene V2; la base azul127aa8a queda como antecedente, no como destino actual. Ver [entrega33](33-ENTREGA-FRONTEND-V2.md).
 
 ```powershell
 Set-Location -LiteralPath $env:USERPROFILE -ErrorAction Stop
 $clonYit = 'D:\Proyectos\YitVerse\YitVerse-Frontend-V2-Limpio'
 if (Test-Path -LiteralPath $clonYit) { throw 'La ruta ya existe. Conservarla y elegir otra carpeta nueva.' }
-git clone --branch feat/ui-azul-nocturno https://github.com/JoseB-H/Sistema-EcomerceGeneral.git $clonYit
+git clone --single-branch --branch feat/frontend-v2-editorial https://github.com/JoseB-H/Sistema-EcomerceGeneral.git $clonYit
 if ($LASTEXITCODE -ne 0) { throw 'Falló la clonación. No ejecutar el proyecto; conservar el diagnóstico.' }
 Set-Location -LiteralPath $clonYit -ErrorAction Stop
 git fsck --full
@@ -55,7 +55,7 @@ git branch -a
 git rev-parse HEAD
 ```
 
-En la revisión del 2026-11-05, la base azul era `127aa8a7c8c5b4d29bd590f37c615de51730fa9e`. Si el remoto avanzó, inspeccionar los commits nuevos; no regresar la copia a la fuerza. La nueva clonación no recupera automáticamente cambios sin commit de Windows ni prueba sincronización Obsidian.
+Historial esperado: daf3c85→fba88e3→ddf908e→7caff17→cierre documental Inc5; comprobarlo con `git log -5 --oneline`. Si el remoto avanzó, inspeccionar los commits nuevos; no regresar la copia a la fuerza. La nueva clonación no recupera automáticamente cambios sin commit de Windows ni prueba sincronización Obsidian.
 
 ## 3. Comparar antes de recuperar archivos
 
@@ -65,6 +65,6 @@ Esta entrega cloud no autoriza ni realiza una restauración automática de archi
 
 ## 4. Qué ejecutar y qué esperar
 
-Para ejecutar la base azul en el clon nuevo, seguir [desarrollo local](LOCAL-DEV-CATALOGO.md). No ejecutar Docker. La ruta `/` sigue siendo catálogo/hero, `/obras/:id` detalle y `/estado` diagnóstico; `/explorar` separado todavía no existe. Sin PostgreSQL configurado, la API de catálogo devuelve datos ficticios y la salud503 sigue indicando la indisponibilidad real de DB.
+Para ejecutar V2 en el clon nuevo, seguir [desarrollo local](LOCAL-DEV-CATALOGO.md), con Vite/Express nativos. `/` es Inicio editorial, `/explorar` catálogo, `/obras/:id` ficha y `/estado` diagnóstico; las consultas antiguas en `/` siguen siendo compatibles. Sin PostgreSQL configurado, la API de catálogo devuelve datos ficticios y la salud503 sigue indicando la indisponibilidad real de DB.
 
-La publicación de la rama V2 y un eventual cambio a ella requieren la siguiente aprobación del usuario. No intentar descargarla ni abrir PR mientras no se haya publicado expresamente.
+La publicación/recuperación de esta rama está autorizada. PR, merge, modificación de main o nuevas funcionalidades requieren aprobación posterior. Obsidian Windows no se considera sincronizado hasta comprobarlo en el equipo.

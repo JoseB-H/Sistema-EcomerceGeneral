@@ -1,0 +1,40 @@
+{
+  "time_utc": "2026-11-06T03:41:07.836626+00:00",
+  "code_commit": "7caff173a113f319ef3969d6b2c661fe48eddf44",
+  "project": "yitverse-s01-v2-inc5-76fe0776",
+  "scope": "Existing S01 Docker diagnostics; does not serve or verify Frontend V2",
+  "checks": [
+    {
+      "check": "guardas",
+      "exit_code": 0,
+      "tests": 15,
+      "passed": 15,
+      "failed": 0
+    },
+    {
+      "check": "up-propio",
+      "exit_code": 0
+    },
+    {
+      "check": "integracion",
+      "exit_code": 0,
+      "tests": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "check": "persistencia",
+      "exit_code": 0,
+      "tests": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "check": "stop-propio",
+      "exit_code": 0
+    }
+  ],
+  "foreign_containers_unchanged": true,
+  "owned_project_stopped": true,
+  "volume_retained": true
+}

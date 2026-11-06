@@ -1,0 +1,20 @@
+{
+  "initial_commit": "7caff173a113f319ef3969d6b2c661fe48eddf44",
+  "initial_push_verified": true,
+  "git_fsck_exit": 0,
+  "prior_bundles_verified": 4,
+  "audited_new_blobs": 126,
+  "new_text_blobs": 81,
+  "unique_png_blobs": 45,
+  "publication_blockers_found": false,
+  "scan_limits": "Pattern/entropy/context plus representative screenshots; not an absolute guarantee.",
+  "npm_ls_problems": {
+    "Frontend": 0,
+    "Backend": 0
+  },
+  "npm_audit_vulnerabilities": {
+    "Frontend": 0,
+    "Backend": 0
+  },
+  "main_observed": "ae3f8e849f79c98d66b50956916795e710c00ddd"
+}

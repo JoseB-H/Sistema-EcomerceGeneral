@@ -1,0 +1,63 @@
+{
+  "time_utc": "2026-11-06T03:45:09.116675+00:00",
+  "code_commit": "7caff173a113f319ef3969d6b2c661fe48eddf44",
+  "checks": [
+    {
+      "check": "backend",
+      "command": [
+        "npm",
+        "--prefix",
+        "Backend",
+        "test"
+      ],
+      "exit_code": 0,
+      "tests": 45
+    },
+    {
+      "check": "frontend",
+      "command": [
+        "npm",
+        "--prefix",
+        "Frontend",
+        "test",
+        "--",
+        "--reporter=dot"
+      ],
+      "exit_code": 0,
+      "tests": 58
+    },
+    {
+      "check": "build-normal",
+      "command": [
+        "npm",
+        "--prefix",
+        "Frontend",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "s01_sha256_unchanged": true
+    },
+    {
+      "check": "build-local",
+      "command": [
+        "npm",
+        "--prefix",
+        "Frontend",
+        "run",
+        "build:local"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "console-regressions",
+      "command": [
+        "python3",
+        "Frontend/test/browser/console_checks_test.py"
+      ],
+      "tests": 6,
+      "exit_code": 0
+    }
+  ],
+  "total_with_docker": 135
+}

@@ -1,0 +1,40 @@
+{
+  "code_commit": "7caff173a113f319ef3969d6b2c661fe48eddf44",
+  "project": "yitverse-s01-v2-inc5-76fe0776",
+  "frontend_port": 39179,
+  "clone_method": "Local clean clone --no-hardlinks, no .env/.local/node_modules copied",
+  "scope": "Existing S01 Docker diagnostics; does not serve or verify Frontend V2",
+  "suite_results": {
+    "helper-tests": {
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    "integration-tests": {
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    "persistence-tests": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    }
+  },
+  "all_commands_exit_zero": true,
+  "foreign_resources_unchanged": true,
+  "own_containers_stopped": true,
+  "own_volume_retained": true,
+  "recovery_journal_empty": true,
+  "started_utc": "2026-11-06T03:16:03.031735+00:00",
+  "finished_utc": "2026-11-06T03:17:30.184055+00:00"
+}

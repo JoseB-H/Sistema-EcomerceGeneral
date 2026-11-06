@@ -2,7 +2,7 @@
 
 **Modalidad autorizada:** HU-001/HU-002 en `feat/local-dev-catalogo`, desde `feat/s01-infraestructura-docker` (`e672e2e`). Docker está pausado para este incremento; se conserva el laboratorio S01 y no se modifica ni fusiona `main` o el PR #3. [Diseño](superpowers/specs/2026-11-04-local-dev-catalogo-design.md), [plan](superpowers/plans/2026-11-04-local-dev-catalogo.md) y [pruebas](LOCAL-DEV-CATALOGO-PRUEBAS.md).
 
-En `feat/frontend-v2-editorial`, Incrementos1–3 aceptados técnicamente y **Incremento4 implementado para revisión local**: ficha/arte/móvil refinados, conservando Inicio/Explorar, catálogo, API y sistema visual. Esta rama sigue solo en cloud, sin push/PR; todavía no puede clonarse desde GitHub. Los comandos de recuperación remota usan la base pública `feat/ui-azul-nocturno`, que aún no contiene V2. Se conservan bundles anteriores y se entrega uno nuevo de Inc4, siempre recuperable en una carpeta nueva. [Evidencia Inc4](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md).
+En `feat/frontend-v2-editorial`, Incrementos1–4 aceptados técnicamente e **Incremento5 verificado para revisión de integración**. La rama ya está publicada en GitHub, inicialmente7caff17; el cierre se publica en la misma rama. Incluye Inicio/Explorar/ficha, arte propio, API y estados. [Entrega33, pruebas y capturas](33-ENTREGA-FRONTEND-V2.md). Docker/PG S01 se revalidaron aisladamente, sin cambiar el modo nativo ni convertir el catálogo en persistente.
 
 ## Requisitos y copia de trabajo segura
 
@@ -10,7 +10,7 @@ Git y Node.js **24 LTS** con npm. Dependencias gratuitas, sin servicios externos
 
 Antes de clonar o ejecutar en Windows, leer [recuperación segura de Git](RECUPERACION-GIT-WINDOWS.md): conservar la carpeta de desarrollo original y el respaldo existente, verificar los cambios locales en otro destino nuevo y clonar en una ruta que no exista. No reparar objetos ni sobrescribir carpetas. La copia de seguridad Windows permanece sin verificación desde cloud.
 
-Ruta nueva propuesta: `D:\Proyectos\YitVerse\YitVerse-Frontend-V2-Limpio`, solo si está libre. No usar `D:\Proyectos\YitVerse\YitVerse-Desarrollo` para ejecutar estos comandos. La guía de recuperación contiene la clonación y controles de integridad de la base azul publicada. No descargar `feat/frontend-v2-editorial` mientras no se autorice y confirme su publicación; no intentar compensarlo fusionando main.
+Ruta nueva propuesta: `D:\Proyectos\YitVerse\YitVerse-Frontend-V2-Limpio`, solo si está libre. No usar `D:\Proyectos\YitVerse\YitVerse-Desarrollo` para ejecutar estos comandos. La guía de recuperación contiene la clonación y controles de integridad de `feat/frontend-v2-editorial`, ya publicada; no fusionar main para obtenerla.
 
 El laboratorio cloud está en `/workspace/YitVerse-Frontend-V2-Revision` y no accede a D: ni a la carpeta de respaldo del equipo. El almacenamiento npm puede seguir usando C: (`npm config get cache`); comprobar espacio antes de instalar. No mover/borrar datos Docker o WSL para este desarrollo.
 
@@ -47,7 +47,7 @@ Este comando alternativo se verificó en Linux con catálogo 200, salud 503 y ci
 
 No es necesario crear un `.env`. El aviso de Node de que no encontró `.env` es esperado si no se creó el archivo opcional. El script nativo lee únicamente `Backend/.env` y las variables heredadas del proceso; **no lee el `.env` Docker de la raíz**. No copiar ese archivo a Backend.
 
-Rutas actuales en la rama V2 local (Incremento3):
+Rutas actuales de la rama V2 publicada:
 
 | Ruta | Resultado |
 | --- | --- |
