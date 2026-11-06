@@ -2,6 +2,16 @@
 
 **Proyecto compartido:** [Sistema-EcomerceGeneral](https://github.com/JoseB-H/Sistema-EcomerceGeneral)
 
+## Acuerdo vigente — integración coordinada, 2026-11-06 UTC
+
+Los cinco incrementos V2 están entregados y aceptados técnicamente en `ad8a8b2`, sin aprobación visual Figma. El usuario confirma PR #3 fusionado y Git verifica `main=b8daf7096ecae79b24829e9a5dfcc760d8a005aa`, merge con padres `ae3f8e8` y `e672e2e`: conserva los9 commits S01. Issue #1 continúa abierto según la confirmación del usuario; no se declara aceptado el Sprint1. Windows/Docker Desktop/D: pendiente bajo limitación aceptada.
+
+Autorizada exclusivamente Etapa2: nueva rama `integration/frontend-v2-main` desde V2, merge normal de main, reconciliar bitácora00/especificación31 preservando antecedentes, ejecutar135 casos/ambos builds/smokes, bundle recuperable y push únicamente de esa rama tras auditar secretos si el transporte lo permite. No se abre PR, fusiona V2 con main, reescribe historia ni cambia arquitectura/despliegue Docker. Un403 se informa conservando trabajo y respaldo; no cambiar credenciales ni eludir la política de red. [Resultado, evidencia y continuidad34](34-REVISION-COORDINADA-INTEGRACION.md).
+
+Las secciones siguientes son acuerdos y resultados históricos; no amplían esta autorización. La sincronización Windows/Obsidian sigue sin verificarse.
+
+**Resultado técnico Etapa2:**135 casos, ambos builds y los cuatro smokes Chromium dev/preview aprobados. Se resuelven exclusivamente los add/add00/31 y se actualiza continuidad; aplicación/infraestructura/tests conservados respecto a `ad8a8b2`. El laboratorio Docker propio terminó detenido con volumen retenido y recursos ajenos intactos. El manifiesto externo posterior al commit registra hash/bundle/restauración/publicación; no equivale a aprobación para abrir PR. Figma pendiente.
+
 ## Objetivo
 Establecer un único contexto técnico y documental para trabajar en **chats separados** sin que cada espacio invente requisitos diferentes. La coordinación entre chats se produce leyendo y actualizando **este repositorio**; las conversaciones de ChatGPT no se sincronizan entre sí en tiempo real.
 

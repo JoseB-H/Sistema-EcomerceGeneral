@@ -1,0 +1,715 @@
+{
+  "verifiedUtc": "2026-11-06T04:38:39.192344+00:00",
+  "scope": "Integrated working tree before merge commit; only documentation/evidence differs from approved V2; no Docker V2 deployment",
+  "inputs": {
+    "main": "b8daf7096ecae79b24829e9a5dfcc760d8a005aa",
+    "v2": "ad8a8b26b3b16195a1c152339abd4e2a4d2d9fb4",
+    "s01": "e672e2e541e90a41319a320eb20d9ea1cd48e1ca"
+  },
+  "preservation": {
+    "baseV2": "ad8a8b26b3b16195a1c152339abd4e2a4d2d9fb4",
+    "main": "b8daf7096ecae79b24829e9a5dfcc760d8a005aa",
+    "mainParents": [
+      "ae3f8e849f79c98d66b50956916795e710c00ddd",
+      "e672e2e541e90a41319a320eb20d9ea1cd48e1ca"
+    ],
+    "sharedBase": "e672e2e541e90a41319a320eb20d9ea1cd48e1ca",
+    "v2TrackedFiles": 193,
+    "mainTrackedFiles": 67,
+    "s01TrackedFiles": 65,
+    "missingV2": [],
+    "missingMain": [],
+    "missingS01": [],
+    "functionalPathsCompared": 71,
+    "functionalPathsChanged": [],
+    "originalS01TestFilesIdentical": [
+      "Backend/test/config.test.js",
+      "Backend/test/database.test.js",
+      "Backend/test/health.test.js",
+      "Frontend/test/App.test.jsx",
+      "Frontend/test/health-client.test.js",
+      "Frontend/test/setup.js",
+      "scripts/compose-helper.test.mjs",
+      "scripts/integration.test.mjs",
+      "scripts/persistence.test.mjs"
+    ],
+    "unresolvedConflicts": []
+  },
+  "suites": [
+    {
+      "suite": "Backend",
+      "command": [
+        "npm",
+        "--prefix",
+        "Backend",
+        "test"
+      ],
+      "tests": 45,
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "Frontend",
+      "command": [
+        "npm",
+        "--prefix",
+        "Frontend",
+        "test"
+      ],
+      "tests": 58,
+      "passed": 58,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "Console observer",
+      "command": [
+        "python3",
+        "Frontend/test/browser/console_checks_test.py"
+      ],
+      "tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "helper-tests",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/compose-helper.test.mjs"
+      ],
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "integration-tests",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/integration.test.mjs"
+      ],
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "persistence-tests",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/persistence.test.mjs"
+      ],
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "total": {
+    "tests": 135,
+    "passed": 135,
+    "failed": 0,
+    "skipped": 0
+  },
+  "builds": [
+    {
+      "label": "build-s01",
+      "argv": [
+        "npm",
+        "--prefix",
+        "Frontend",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 0.28,
+      "distSha256": {
+        "assets/index-BW79X7NP.js": "1e96b56dbdf79d4608a52e5a328142872d9f1ad6206a23e41fb876fd7864c974",
+        "assets/index-D5uNv2kr.css": "5490fa3d3ef9924a964d0e34dff7e05cf69efd9624abcd04ed312169ea6fac90",
+        "index.html": "a3b2809fe34f1be30288271a98363001ca7d0702e50efa7e96e73e78321eba8f"
+      }
+    },
+    {
+      "label": "build-local",
+      "argv": [
+        "npm",
+        "--prefix",
+        "Frontend",
+        "run",
+        "build:local"
+      ],
+      "exitCode": 0,
+      "seconds": 0.29,
+      "distSha256": {
+        "assets/CatalogApp-62SnwHSu.js": "fdbcdcc14020ba3cdd1c2b174e269910ec2e1362b287381a2aa6cfb841d8c83f",
+        "assets/CatalogApp-T1sTs4om.css": "31a29aec4a934694b99f7182fd6c7f3adc8e56e0868fe64cbb93667019c219e7",
+        "assets/index-CXjAxkTO.js": "9a74ca4d74c0ec50b13d8b819b637a29a60dfa03b80ead6d9d07b3270602ca84",
+        "assets/index-D5uNv2kr.css": "5490fa3d3ef9924a964d0e34dff7e05cf69efd9624abcd04ed312169ea6fac90",
+        "index.html": "ae37b2963ab02d95c204c1d45257c27f494efaba8adbfab6eae5abb2abf5f58b"
+      }
+    }
+  ],
+  "chromium": [
+    {
+      "mode": "dev",
+      "smoke": "catalogo",
+      "exitCode": 0,
+      "seconds": 8.71,
+      "measurements": {
+        "home_viewports": [
+          {
+            "width": 1440,
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "overflow": false
+          }
+        ],
+        "direct_reload_paths": [
+          "/",
+          "/explorar",
+          "/explorar?q=%C3%93RBITA&format=manhwa",
+          "/?q=%C3%93RBITA&format=manhwa",
+          "/?format=manhwa",
+          "/?q=&format=",
+          "/obras/archivo-aurora?q=Aurora&format=manga",
+          "/no-existe",
+          "/estado"
+        ],
+        "home_states_and_genres": "passed",
+        "viewports": [
+          {
+            "width": 1440,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 768,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 390,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 320,
+            "overflow": false,
+            "cover_ratio": 0.75
+          }
+        ],
+        "contrast": {
+          "body": 19.02,
+          "secondary": 7.76,
+          "button": 4.94,
+          "field": 18.18,
+          "border": 4.0,
+          "focus": 8.51
+        },
+        "svg_gradient_ids": 18,
+        "keyboard_and_history": "passed",
+        "loading_error_empty_retry_404_health503": "passed",
+        "reduced_motion": [
+          "0s",
+          "none",
+          "none",
+          "auto"
+        ],
+        "page_errors": [],
+        "external_requests": [],
+        "console": {
+          "expected_network_errors": {
+            "ERR_FAILED": 2,
+            "404": 1,
+            "503": 3
+          },
+          "expected_browser_errors": {
+            "favicon.ico:404": 1
+          },
+          "unexpected": []
+        }
+      }
+    },
+    {
+      "mode": "dev",
+      "smoke": "detalle",
+      "exitCode": 0,
+      "seconds": 6.276,
+      "measurements": {
+        "phase": "despues",
+        "base_url": "http://localhost:5173",
+        "detail_mobile_positions": {
+          "titleTop": 328.171875,
+          "coverTop": 442.4375
+        },
+        "art_nodes": [
+          34,
+          31,
+          36,
+          43,
+          34,
+          30
+        ],
+        "responsive": [
+          {
+            "width": 1440,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          }
+        ],
+        "rotation_filters": "passed",
+        "long_partial_invalid_fixtures_retry": "passed",
+        "decorative_art_text_survives": "passed",
+        "reduced_motion": [
+          "0s",
+          "none",
+          "none",
+          "auto"
+        ],
+        "page_errors": [],
+        "external_requests": [],
+        "console": {
+          "expected_network_errors": {
+            "404": 1
+          },
+          "expected_browser_errors": {
+            "favicon.ico:404": 1
+          },
+          "unexpected": []
+        }
+      }
+    },
+    {
+      "mode": "preview",
+      "smoke": "catalogo",
+      "exitCode": 0,
+      "seconds": 6.687,
+      "measurements": {
+        "home_viewports": [
+          {
+            "width": 1440,
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "overflow": false
+          }
+        ],
+        "direct_reload_paths": [
+          "/",
+          "/explorar",
+          "/explorar?q=%C3%93RBITA&format=manhwa",
+          "/?q=%C3%93RBITA&format=manhwa",
+          "/?format=manhwa",
+          "/?q=&format=",
+          "/obras/archivo-aurora?q=Aurora&format=manga",
+          "/no-existe",
+          "/estado"
+        ],
+        "home_states_and_genres": "passed",
+        "viewports": [
+          {
+            "width": 1440,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 768,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 390,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 320,
+            "overflow": false,
+            "cover_ratio": 0.75
+          }
+        ],
+        "contrast": {
+          "body": 19.02,
+          "secondary": 7.76,
+          "button": 4.94,
+          "field": 18.18,
+          "border": 4.0,
+          "focus": 8.51
+        },
+        "svg_gradient_ids": 18,
+        "keyboard_and_history": "passed",
+        "loading_error_empty_retry_404_health503": "passed",
+        "reduced_motion": [
+          "0s",
+          "none",
+          "none",
+          "auto"
+        ],
+        "page_errors": [],
+        "external_requests": [],
+        "console": {
+          "expected_network_errors": {
+            "ERR_FAILED": 2,
+            "404": 1,
+            "503": 3
+          },
+          "expected_browser_errors": {
+            "favicon.ico:404": 1
+          },
+          "unexpected": []
+        }
+      }
+    },
+    {
+      "mode": "preview",
+      "smoke": "detalle",
+      "exitCode": 0,
+      "seconds": 4.165,
+      "measurements": {
+        "phase": "despues",
+        "base_url": "http://localhost:5174",
+        "detail_mobile_positions": {
+          "titleTop": 328.171875,
+          "coverTop": 442.4375
+        },
+        "art_nodes": [
+          34,
+          31,
+          36,
+          43,
+          34,
+          30
+        ],
+        "responsive": [
+          {
+            "width": 1440,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          }
+        ],
+        "rotation_filters": "passed",
+        "long_partial_invalid_fixtures_retry": "passed",
+        "decorative_art_text_survives": "passed",
+        "reduced_motion": [
+          "0s",
+          "none",
+          "none",
+          "auto"
+        ],
+        "page_errors": [],
+        "external_requests": [],
+        "console": {
+          "expected_network_errors": {
+            "404": 1
+          },
+          "expected_browser_errors": {
+            "favicon.ico:404": 1
+          },
+          "unexpected": []
+        }
+      }
+    }
+  ],
+  "nativeServersStopped": true,
+  "docker": {
+    "project": "yitverse-s01-integration-v2-94c482ca",
+    "frontendLoopbackPort": 54579,
+    "version": "29.9.2",
+    "composeVersion": "2.40.3",
+    "cacheMayBeReused": true,
+    "commands": [
+      {
+        "label": "helper-tests",
+        "command": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "scripts/compose-helper.test.mjs"
+        ],
+        "exitCode": 0,
+        "elapsedSeconds": 0.201,
+        "counts": {
+          "tests": 15,
+          "pass": 15,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "label": "prepare",
+        "command": [
+          "node",
+          "scripts/compose-helper.mjs",
+          "prepare"
+        ],
+        "exitCode": 0,
+        "elapsedSeconds": 0.245
+      },
+      {
+        "label": "config-quiet",
+        "command": [
+          "node",
+          "scripts/compose-helper.mjs",
+          "--",
+          "config",
+          "-q"
+        ],
+        "exitCode": 0,
+        "elapsedSeconds": 0.723
+      },
+      {
+        "label": "up-build-wait",
+        "command": [
+          "node",
+          "scripts/compose-helper.mjs",
+          "--",
+          "up",
+          "--build",
+          "-d",
+          "--wait",
+          "--wait-timeout",
+          "120"
+        ],
+        "exitCode": 0,
+        "elapsedSeconds": 19.129
+      },
+      {
+        "label": "integration-tests",
+        "command": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "scripts/integration.test.mjs"
+        ],
+        "exitCode": 0,
+        "elapsedSeconds": 23.476,
+        "counts": {
+          "tests": 10,
+          "pass": 10,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "label": "persistence-tests",
+        "command": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "scripts/persistence.test.mjs"
+        ],
+        "exitCode": 0,
+        "elapsedSeconds": 26.129,
+        "counts": {
+          "tests": 1,
+          "pass": 1,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "label": "stop-own",
+        "command": [
+          "node",
+          "scripts/compose-helper.mjs",
+          "--",
+          "stop",
+          "-t",
+          "15"
+        ],
+        "exitCode": 0,
+        "elapsedSeconds": 1.01
+      }
+    ],
+    "foreignResourcesBefore": {
+      "containers": 9,
+      "networks": 9,
+      "volumes": 3
+    },
+    "foreignResourcesAfter": {
+      "containers": 9,
+      "networks": 9,
+      "volumes": 3
+    },
+    "foreignUnchanged": true,
+    "allOwnContainersStopped": true,
+    "retainedVolume": "yitverse-s01-integration-v2-94c482ca_postgres_data",
+    "retainedVolumeExists": true,
+    "recoveryJournalEmpty": true,
+    "scope": "Fresh S01 technical Docker validation over the integrated worktree; does not serve or verify Frontend V2",
+    "limitations": [
+      "Linux cloud only",
+      "Existing Docker build cache may be reused",
+      "No Frontend V2, Windows, native PostgreSQL or production/browser coverage",
+      "Docker reused the backend and database IP addresses during recreations; a real IP address change was not demonstrated.",
+      "This rerun used the integrated shared worktree, not a clean clone; previous clean-clone evidence remains historical.",
+      "Volume persistence is not backup/restore validation."
+    ]
+  },
+  "secretsAudit": {
+    "trackedAndNewDocumentFilesScanned": 194,
+    "historicalPostS01BlobsScanned": 243,
+    "patterns": [
+      "private_key",
+      "github_token",
+      "aws_access_id",
+      "google_api_key",
+      "slack_token",
+      "stripe_secret"
+    ],
+    "findings": [],
+    "scope": "High-confidence token/key patterns and forbidden names; ignored .env/credentials not read; not a guarantee of absence of all secrets"
+  },
+  "limits": [
+    "Windows/Docker Desktop/D: not run; explicitly accepted operational limitation",
+    "Figma not visually approved",
+    "Native user PostgreSQL not validated; native health503 without configuration",
+    "Synthetic catalog remains read-only/nonpersistent",
+    "Production V2 deployment not changed",
+    "Firefox/WebKit/physical devices/screen readers/full WCAG audit not validated",
+    "Known favicon404 recorded separately in smoke console data; malformed percent encoding detail may return sanitized503"
+  ]
+}

@@ -1,6 +1,6 @@
 # Guía visual Frontend V2 — entrega de Incrementos1–5
 
-**Actualización:** 2026-11-06 UTC. **Rama publicada:** `feat/frontend-v2-editorial`. Inc4 aceptado técnicamente en7caff17; Inc5 verifica/consolida sin alterar tokens/componentes de producto. [Entrega33 y evidencias definitivas](33-ENTREGA-FRONTEND-V2.md). Sin PR/merge; Figma pendiente.
+**Actualización:** 2026-11-06 UTC. Los cinco incrementos de `feat/frontend-v2-editorial`/`ad8a8b2` están entregados y aceptados técnicamente. La rama separada `integration/frontend-v2-main` incorpora main/S01 `b8daf70` sin cambiar este sistema visual, componentes ni tokens. [Integración34 y pruebas nuevas](34-REVISION-COORDINADA-INTEGRACION.md) · [Entrega histórica33](33-ENTREGA-FRONTEND-V2.md). Sin PR V2 ni merge V2 a main; Figma pendiente de aprobación visual.
 
 ## Organización y alcance
 

@@ -5,9 +5,10 @@ estado: indice
 # YitVerse — Centro de documentación
 
 > [!info] Estado del proyecto
-> Esta bóveda visualiza el repositorio **Sistema-EcomerceGeneral**. Frontend V2 e infraestructura S01 tienen código/evidencias; la entrega vigente está en la rama feat/frontend-v2-editorial, sin merge a main. Sincronización Windows pendiente.
+> Esta bóveda visualiza el repositorio **Sistema-EcomerceGeneral**. S01 ya está integrado en main/b8daf70. Los cinco incrementos V2 están entregados y aceptados técnicamente en ad8a8b2; su integración con main se revisa por separado en integration/frontend-v2-main, sin nuevo PR todavía. Figma y sincronización Windows pendientes.
 
 ## Para empezar
+- [[docs/34-REVISION-COORDINADA-INTEGRACION|Integración coordinada: resultado y continuidad vigente]]
 - [[docs/33-ENTREGA-FRONTEND-V2|Entrega V2 y continuidad entre chats]]
 - [[docs/00-INDICE-DOCUMENTAL|Índice documental completo]]
 - [[docs/01-VISION-Y-ALCANCE|Visión y alcance]]

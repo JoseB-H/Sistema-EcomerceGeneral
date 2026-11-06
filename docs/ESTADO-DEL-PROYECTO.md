@@ -4,12 +4,14 @@
 
 ## Punto de continuidad vigente — Frontend V2
 
-Incrementos1–4 aceptados técnicamente; **Incremento5 verificado y consolidado para revisión de integración**. Rama `feat/frontend-v2-editorial` publicada inicialmente en7caff17 antes de editar. Producto/API/servicios intactos;135 casos de suites aprobados (45 Backend,58 Frontend,15 guardas,10 integración,1 persistencia,6 consola), ambos builds y Chromium dev/preview. [Entrega integral33](33-ENTREGA-FRONTEND-V2.md) registra rutas, componentes, pruebas, límites, historial y recuperación. No PR/merge/main ni nuevas funciones. Figma y sincronización Windows/Obsidian pendientes.
+Los cinco incrementos están entregados y aceptados técnicamente en `ad8a8b2`. **S01 integrado en main por PR #3/merge `b8daf70`**, comprobado mediante Git con padres `ae3f8e8`/`e672e2e`. Integración de catálogo + V2 autorizada únicamente en `integration/frontend-v2-main` desde `ad8a8b2`; no abrir todavía su PR ni fusionarla con main. Solo reconciliación documental, sin cambios de producto/API/servicios. [Resultado y pruebas nuevas34](34-REVISION-COORDINADA-INTEGRACION.md); [entrega histórica33](33-ENTREGA-FRONTEND-V2.md). Figma y sincronización Windows/Obsidian pendientes. Los registros cronológicos posteriores describen el estado de cada entrega, no reemplazan este panel vigente.
+
+**Revalidación Etapa2:**135/135, ambos builds y cuatro smokes Chromium dev/preview aprobados a320/390/768/1440px, sin desbordes ni errores JavaScript inesperados. Docker/SQL real en proyecto propio, dos recreaciones persistentes, contenedores propios detenidos y volumen conservado; recursos ajenos intactos. Solo dos conflictos documentales esperados; código/infraestructura/suites iguales a `ad8a8b2`. Nuevo bundle/restauración y estado de publicación se registran externamente tras el commit; evidencia nueva en34. Próxima tarea: revisión del resultado y autorización para abrir el PR específico.
 
 ## Estado verificado
 - Repositorio `JoseB-H/Sistema-EcomerceGeneral` disponible en GitHub.
 - Estructura objetivo de tres contenedores acordada.
-- Incremento técnico S01 implementado y probado en rama `feat/s01-infraestructura-docker`; aceptación del PR/sprint pendiente. Ver [evidencia](sprints/S01-REPORTE-PRUEBAS.md).
+- Incremento técnico S01 implementado/probado e integrado por PR #3 en `b8daf70`; Issue #1 continúa abierto según confirmación del usuario, sin declaración de aceptación/cierre del Sprint1. Windows/Docker Desktop/D: sigue pendiente como limitación expresamente aceptada. Ver [evidencia histórica](sprints/S01-REPORTE-PRUEBAS.md) y [revalidación de integración](34-REVISION-COORDINADA-INTEGRACION.md).
 
 ## Pendiente en Codex
 - [x] Crear estructura `Frontend/`, `Backend/`, `Database/`.

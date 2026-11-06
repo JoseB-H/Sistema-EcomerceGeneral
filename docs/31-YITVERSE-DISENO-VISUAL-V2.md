@@ -1,13 +1,13 @@
 ---
 tags: [yitverse, diseno, figma, v2, interfaz]
 tipo: especificacion-visual
-estado: v2-verificado-en-revision-de-integracion
+estado: cinco-incrementos-aceptados-tecnicamente-integracion-en-revision
 actualizado: 2026-11-06
 ---
 # YitVerse — Dirección visual V2
 
 > [!info] Punto de continuidad
-> El usuario aceptó técnicamente Incremento4 `7caff17` y autorizó **exclusivamente Incremento5: verificación y entrega**. No se altera el diseño/producto. Rama V2 publicada inicialmente7caff17 y entrega consolidada en [33](33-ENTREGA-FRONTEND-V2.md); sin PR/merge ni nuevas funciones. Figma sigue pendiente.
+> Los cinco incrementos V2 están entregados y aceptados técnicamente en `ad8a8b2`. S01 ya está integrado en main por PR #3/merge `b8daf70`; se autoriza únicamente preparar `integration/frontend-v2-main` con un merge normal de ese main. [Resultado de integración34](34-REVISION-COORDINADA-INTEGRACION.md) y [entrega original33](33-ENTREGA-FRONTEND-V2.md). No hay autorización para abrir el PR V2, fusionarlo a main o añadir funciones. Figma sigue pendiente de aprobación visual.
 
 ## Identidad visual de la iteración
 
@@ -18,7 +18,7 @@ actualizado: 2026-11-06
 - **Portadas:** el encargo actual prioriza composición y presentación de los seis SVG propios. Se conservan sus motivos/paletas y se añaden detalles acotados; no se sustituyen por un estilo nuevo ni se importan imágenes de terceros.
 - **Gamificación:** parte de la visión futura; XP/YitCoins no se implementan ni se presentan como funciones disponibles en este plan.
 - **Dispositivos:** composición desktop y adaptación móvil desde el diseño.
-- **Alcance de ejecución actual:** verificación integral y consolidación documental; producto/API/Backend/Database/Docker/datos/dependencias intactos respecto7caff17. Solo instrumentación de consola en smokes, documentación y evidencias. No autoriza módulos nuevos ni integración automática.
+- **Alcance de ejecución actual:** reconciliación documental y verificación de integración. Producto/API/Backend/Database/Docker/datos/dependencias se conservan respecto `ad8a8b2`. El merge no cambia cómo Docker sirve el diagnóstico S01 ni despliega V2 en contenedores. No autoriza módulos nuevos.
 
 ## Vistas incluidas en el encargo V2
 
@@ -39,10 +39,14 @@ actualizado: 2026-11-06
 La V2 puede utilizar títulos, frases y portadas **ficticias** para ilustrar la interfaz. No confundir datos de prueba con catálogo comercial real, licencias o permisos de lectura. No asignar XP, YitCoins o precios como reglas aprobadas.
 
 ## Acuerdo vigente y siguiente paso
-1. Revisar la entrega integral [33](33-ENTREGA-FRONTEND-V2.md), con historial, capturas definitivas y recuperación.
-2. Solo está autorizada la publicación de esta rama. PR/merge/nuevas funciones requieren aprobación posterior.
+1. Revisar la entrega integral [33](33-ENTREGA-FRONTEND-V2.md) y su continuación de integración [34](34-REVISION-COORDINADA-INTEGRACION.md), con historial, pruebas y recuperación.
+2. Está autorizada únicamente la publicación de `integration/frontend-v2-main` después de verificarla y auditar secretos. Abrir su PR, fusionarla con main o añadir funciones requiere aprobación posterior.
 3. Usar la especificación Markdown provisional y el [plan aprobado](superpowers/plans/2026-11-05-frontend-v2-editorial.md) como base de los incrementos autorizados. La antigua secuencia que pedía cerrar primero cinco vistas Figma queda como antecedente; no implica que se hayan creado o aprobado.
 4. Mantener Figma como referencia pendiente y aceptación visual del usuario separada de pruebas técnicas. No cambiar fuente de catálogo ni activar lector/seguimiento/XP/tienda por figurar en una vista.
+
+### Antecedentes de main conservados
+
+La [especificación de main anterior a la integración](https://github.com/JoseB-H/Sistema-EcomerceGeneral/blob/b8daf7096ecae79b24829e9a5dfcc760d8a005aa/docs/31-YITVERSE-DISENO-VISUAL-V2.md), fechada2026-11-05, encargaba cinco vistas Figma «En diseño», portadas narrativas originales y una secuencia Figma→revisión→Codex. Incluía como visión futura títulos nuevos, lectura/seguimiento y gamificación cuando correspondiera; no acreditaba datos ni funciones. Se conserva como antecedente, junto al archivo Figma/fecha/enlaces originales. Las autorizaciones posteriores permitieron implementar desde Markdown: Selección de demostración sustituye novedades sin fechas, Continuar no implica historial y no se activan Leer/Seguir/XP/YitCoins. La aceptación técnica de los cinco incrementos no acredita mockups ni aprobación visual Figma. Los registros por incremento que siguen son históricos.
 
 ## Decisiones del plan aprobado y estado de implementación
 

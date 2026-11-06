@@ -6,15 +6,15 @@ actualizado: 2026-11-06
 # Bitácora de continuidad — YitVerse
 
 > [!important] Leer primero al reanudar cualquier chat
-> **Incrementos1–4 aceptados técnicamente; Incremento5 verificado para revisión de integración.** Rama [`feat/frontend-v2-editorial`](https://github.com/JoseB-H/Sistema-EcomerceGeneral/tree/feat/frontend-v2-editorial) publicada inicialmente en7caff17, antes de editar. Entrega y recuperación en [documento33](33-ENTREGA-FRONTEND-V2.md). Sin PR/merge/main ni funciones nuevas; Figma pendiente.
+> **Los cinco incrementos están entregados y aceptados técnicamente hasta `ad8a8b2`.** PR #3/S01 fue fusionado en `main` mediante `b8daf70`. La integración de catálogo + V2 se prepara exclusivamente en `integration/frontend-v2-main`, desde `ad8a8b2`, sin nuevas funciones ni PR todavía. [Continuidad de integración34](34-REVISION-COORDINADA-INTEGRACION.md); [entrega original33](33-ENTREGA-FRONTEND-V2.md). Figma continúa pendiente de aprobación visual.
 
 ## Estado de los frentes
 
 | Frente | Responsable / espacio | Estado comprobable | Retomar desde |
 | --- | --- | --- | --- |
-| Frontend V2 | Usuario + Codex; Figma como referencia pendiente | Inc1–4 aceptados técnicamente; Inc5 verificado/publicación en misma rama para revisión de integración | [[31-YITVERSE-DISENO-VISUAL-V2]] |
+| Frontend V2 | Usuario + Codex; Figma como referencia pendiente | Cinco incrementos entregados/aceptados técnicamente; integración separada para revisión, sin PR todavía | [[34-REVISION-COORDINADA-INTEGRACION]] |
 | Visión y requisitos del producto | Documentación en GitHub/Obsidian | Visión, RF, RNF y trazabilidad documentados; decisiones de negocio aún pendientes | [[20-VISION-FUNCIONAL-YITVERSE]] |
-| Arquitectura Docker | Codex | Implementación y evidencia histórica S01 conservadas; no reejecutadas en este incremento | [[sprints/S01-REPORTE-PRUEBAS]] |
+| Arquitectura Docker | Codex | S01 integrado por PR #3/merge b8daf70; Windows/Docker Desktop/D: pendiente bajo limitación aceptada; validación nueva separada en34 | [[34-REVISION-COORDINADA-INTEGRACION]] |
 | Obsidian y respaldo | GitHub + Obsidian Git local | Copia Markdown versionada en GitHub; sincronización del equipo aún no verificada | [[30-OBSIDIAN-GITHUB-SINCRONIZACION]] |
 
 ## Último acuerdo con el usuario
@@ -22,7 +22,11 @@ actualizado: 2026-11-06
 
 **Acuerdo del Incremento1 (histórico, ya aceptado en `daf3c85`):** usuario aprueba los cinco incrementos y las decisiones provisionales sobre selección de demostración, continuar explorando no personalizado y categorías existentes. Autoriza ejecutar **solo el Incremento1**, con commit local. Prohíbe cambiar visuales/rutas/Backend/Database/Docker, publicar la rama, abrir PR o comenzar el Incremento2.
 
-**Acuerdo vigente:** usuario acepta7caff17 y autoriza solo Incremento5: verificar/consolidar/documentar, push inicial y final únicamente de `feat/frontend-v2-editorial`, sin force/PR/merge/main. Inicial7caff17 confirmado antes de cambios, tras auditoría de secretos/remoto. Docker/PG disponibles se probaron en clon/proyecto propios, sin alterar laboratorio anterior. No hay autorización para nuevas funciones.
+**Acuerdo vigente:** usuario acepta técnicamente `ad8a8b2` y confirma que la conexión GitHub de ChatGPT fusionó PR #3 con merge commit. Git comprueba `main=b8daf7096ecae79b24829e9a5dfcc760d8a005aa`, cuyos padres son `ae3f8e8` y `e672e2e`. Autoriza únicamente Etapa2: crear `integration/frontend-v2-main` desde V2, incorporar main con merge, reconciliar estas notas y especificación31, revalidar135 casos/builds/smokes, generar bundle y publicar solo esa rama si es posible. No abrir todavía PR, fusionar V2 con main ni añadir funciones. Issue #1 sigue abierto según confirmación del usuario; integrar S01 no declara aceptado el Sprint1. Windows/Docker Desktop/D: pendiente y aceptado como limitación operativa.
+
+**Resultado de verificación Etapa2:**135/135 (45 Backend,58 Frontend,15 guardas,10 integración,1 persistencia,6 consola), ambos builds salida0 y cuatro smokes Chromium dev/preview a320/390/768/1440 aprobados. Dos add/add documentales reconciliados;71 archivos funcionales/configuración iguales a V2, sin pérdida de rutas main/S01/V2. Laboratorio propio detenido, volumen conservado e inventario ajeno idéntico. [Nota34](34-REVISION-COORDINADA-INTEGRACION.md) reúne límites, evidencia y forma de identificar el merge; commit/bundle/estado remoto finales se entregan con manifiesto externo verificable. No se abren PR ni funciones nuevas.
+
+**Antecedente inmediato:** el intento anterior se detuvo sin merge por `Forbidden` tanto en GraphQL como en REST. El usuario resolvió la Etapa1 desde otra conexión. No se modifican credenciales ni se usan atajos de red; la nueva etapa usa Git y conserva cualquier bloqueo de publicación como limitación.
 
 **Antecedente conservado:**
 
@@ -36,7 +40,7 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 - Se refinan composición/detalles de las seis escenas SVG originales. Una sustitución completa o dirección artística nueva requiere aprobación; no se realiza por el antiguo objetivo de portadas más narrativas.
 - Jerarquía clara: destacados, continuar explorando **no personalizado**, **Selección de demostración** sin fechas inventadas y categorías derivadas de géneros existentes; implementado en Incremento3 a partir de la API, sin personalización.
 - Vistas objetivo: Home, Explorar, Detalle, Home móvil y mini guía de estilos.
-- Figma es una referencia pendiente: el plan aprobado usa Markdown provisional, sin atribuir aprobación a sus mockups. Incrementos1–3 aceptados técnicamente; Incremento4 arte/ficha/móvil implementado para revisión local. La aceptación visual sigue correspondiendo al usuario.
+- Figma es una referencia pendiente: el plan aprobado usa Markdown provisional, sin atribuir aprobación a sus mockups. Los cinco incrementos fueron entregados y aceptados técnicamente; la aceptación visual sigue correspondiendo al usuario.
 
 ## Qué no debe hacerse al reanudar
 - No confundir la planificación técnica de tres contenedores con el punto de avance visual.
@@ -59,7 +63,7 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 | 2026-11-05 | Figma | Creado archivo editable «YitVerse — Dirección Visual V2 · Editorial Dark» | [Abrir Figma](https://www.figma.com/design/dCLgExm48T9Ui6sTcEIhwu) |
 | 2026-11-05 | Respaldo | Iniciada esta bitácora y la especificación visual V2 en GitHub | Notas Markdown versionadas |
 
-**Próxima acción vigente:** revisar la [entrega33](33-ENTREGA-FRONTEND-V2.md) y decidir la futura integración coordinada con S01/PR#3. No se inicia otra etapa automáticamente. Recuperar código/notas desde la rama publicada en un clon nuevo; no asumir sincronización de Obsidian Windows.
+**Próxima acción vigente:** revisar el resultado y las evidencias de [integración34](34-REVISION-COORDINADA-INTEGRACION.md), y solicitar autorización para abrir el PR específico de catálogo + V2 cuando la rama esté validada. Recuperar código/notas desde un clon nuevo; no asumir sincronización de Obsidian Windows. Los registros siguientes conservan el estado histórico de cada entrega.
 
 
 ## Incidente Git local — 2026-11-05

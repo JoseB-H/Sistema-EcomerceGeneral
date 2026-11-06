@@ -2,19 +2,20 @@
 
 > Estado: diseño del producto en refinamiento, incremento técnico S01 y prototipo sintético HU-001/HU-002 implementados en ramas para revisión. Última revisión: 2026-11-06.
 
-## Continuidad Frontend V2 — entrega publicada para revisión
+## Continuidad Frontend V2 — integración coordinada
 
+- [Integración34 — empezar aquí al retomar](34-REVISION-COORDINADA-INTEGRACION.md): S01 integrado en main/b8daf70; rama separada de catálogo + V2, sin nuevo PR todavía.
 - [Bitácora vigente y autorización limitada](00-BITACORA-DE-CONTINUIDAD.md).
 - [Especificación visual V2](31-YITVERSE-DISENO-VISUAL-V2.md): plan aprobado; Figma pendiente.
-- [Plan de cinco incrementos](superpowers/plans/2026-11-05-frontend-v2-editorial.md): Inc1–4 aceptados; Inc5 verificado; detener nuevas funciones/PR/merge.
-- [Entrega integral33 — empezar aquí al retomar](33-ENTREGA-FRONTEND-V2.md).
+- [Plan histórico de cinco incrementos](superpowers/plans/2026-11-05-frontend-v2-editorial.md): los cinco entregados y aceptados técnicamente; detener nuevas funciones/PR/merge V2 a main.
+- [Entrega integral33 — evidencia histórica de ad8a8b2](33-ENTREGA-FRONTEND-V2.md).
 - [Guía visual Frontend V2](32-GUIA-VISUAL-FRONTEND-V2.md).
 - [Pruebas y comparativas del Incremento2](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md).
 - [Inicio/Explorar: pruebas y capturas del Incremento3](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
 - [Arte/ficha/móvil: comparativas y pruebas del Incremento4](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md).
 - [Recuperación Git Windows](RECUPERACION-GIT-WINDOWS.md): conservar original/respaldo y usar destinos nuevos.
 
-La rama `feat/frontend-v2-editorial` está publicada para revisión. Main y PR#3 no se modificaron; no confundir esta entrega de rama con una integración ya aceptada.
+La rama original `feat/frontend-v2-editorial` permanece en `ad8a8b2`. PR #3 ya está fusionado mediante `b8daf70`; la rama nueva `integration/frontend-v2-main` preserva ambas historias para revisar catálogo + V2. Publicarla no autoriza abrir su PR ni fusionarla a main. Figma y Windows/Obsidian pendientes.
 
 ## Documentación actualmente publicada
 - [Marco Scrum](16-MARCO-SCRUM.md): sprints, backlog y eventos.
