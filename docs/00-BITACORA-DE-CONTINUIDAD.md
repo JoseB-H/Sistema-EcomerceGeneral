@@ -6,23 +6,23 @@ actualizado: 2026-11-06
 # Bitácora de continuidad — YitVerse
 
 > [!important] Leer primero al reanudar cualquier chat
-> **Los cinco incrementos están entregados y aceptados técnicamente hasta `ad8a8b2`.** PR #3/S01 fue fusionado en `main` mediante `b8daf70`. La integración de catálogo + V2 se prepara exclusivamente en `integration/frontend-v2-main`, desde `ad8a8b2`, sin nuevas funciones ni PR todavía. [Continuidad de integración34](34-REVISION-COORDINADA-INTEGRACION.md); [entrega original33](33-ENTREGA-FRONTEND-V2.md). Figma continúa pendiente de aprobación visual.
+> **Frente vigente: rediseño editorial lavanda**, en rama local `feat/ui-editorial-lavanda`, desde integración2142e26. Adaptación visual de Practicas-main.zip confirmada por el usuario, conservando API/seis obras/SVG. Código47e8ae3,134 pruebas, ambos builds y seis smokes Chromium aprobados. [Capturas y continuidad35](35-REDISENO-EDITORIAL-LAVANDA.md). Pendiente aprobación estética; sin push/PR/merge ni Figma aprobado.
 
 ## Estado de los frentes
 
 | Frente | Responsable / espacio | Estado comprobable | Retomar desde |
 | --- | --- | --- | --- |
-| Frontend V2 | Usuario + Codex; Figma como referencia pendiente | Cinco incrementos entregados/aceptados técnicamente; integración separada para revisión, sin PR todavía | [[34-REVISION-COORDINADA-INTEGRACION]] |
+| Frontend V2 | Usuario + Codex; Figma como referencia pendiente | Rediseño lavanda verificado técnicamente; revisión estética pendiente, rama local sin publicación | [[35-REDISENO-EDITORIAL-LAVANDA]] |
 | Visión y requisitos del producto | Documentación en GitHub/Obsidian | Visión, RF, RNF y trazabilidad documentados; decisiones de negocio aún pendientes | [[20-VISION-FUNCIONAL-YITVERSE]] |
 | Arquitectura Docker | Codex | S01 integrado por PR #3/merge b8daf70; Windows/Docker Desktop/D: pendiente bajo limitación aceptada; validación nueva separada en34 | [[34-REVISION-COORDINADA-INTEGRACION]] |
 | Obsidian y respaldo | GitHub + Obsidian Git local | Copia Markdown versionada en GitHub; sincronización del equipo aún no verificada | [[30-OBSIDIAN-GITHUB-SINCRONIZACION]] |
 
-## Último acuerdo con el usuario
+## Antecedentes de acuerdos — integración y V2
 **Fecha: 2026-11-06 UTC.**
 
 **Acuerdo del Incremento1 (histórico, ya aceptado en `daf3c85`):** usuario aprueba los cinco incrementos y las decisiones provisionales sobre selección de demostración, continuar explorando no personalizado y categorías existentes. Autoriza ejecutar **solo el Incremento1**, con commit local. Prohíbe cambiar visuales/rutas/Backend/Database/Docker, publicar la rama, abrir PR o comenzar el Incremento2.
 
-**Acuerdo vigente:** usuario acepta técnicamente `ad8a8b2` y confirma que la conexión GitHub de ChatGPT fusionó PR #3 con merge commit. Git comprueba `main=b8daf7096ecae79b24829e9a5dfcc760d8a005aa`, cuyos padres son `ae3f8e8` y `e672e2e`. Autoriza únicamente Etapa2: crear `integration/frontend-v2-main` desde V2, incorporar main con merge, reconciliar estas notas y especificación31, revalidar135 casos/builds/smokes, generar bundle y publicar solo esa rama si es posible. No abrir todavía PR, fusionar V2 con main ni añadir funciones. Issue #1 sigue abierto según confirmación del usuario; integrar S01 no declara aceptado el Sprint1. Windows/Docker Desktop/D: pendiente y aceptado como limitación operativa.
+**Acuerdo al preparar Etapa2 (histórico):** usuario acepta técnicamente `ad8a8b2` y confirma que la conexión GitHub de ChatGPT fusionó PR #3 con merge commit. Git comprueba `main=b8daf7096ecae79b24829e9a5dfcc760d8a005aa`, cuyos padres son `ae3f8e8` y `e672e2e`. Autoriza únicamente Etapa2: crear `integration/frontend-v2-main` desde V2, incorporar main con merge, reconciliar estas notas y especificación31, revalidar135 casos/builds/smokes, generar bundle y publicar solo esa rama si es posible. No abrir todavía PR, fusionar V2 con main ni añadir funciones. Issue #1 sigue abierto según confirmación del usuario; integrar S01 no declara aceptado el Sprint1. Windows/Docker Desktop/D: pendiente y aceptado como limitación operativa.
 
 **Resultado de verificación Etapa2:**135/135 (45 Backend,58 Frontend,15 guardas,10 integración,1 persistencia,6 consola), ambos builds salida0 y cuatro smokes Chromium dev/preview a320/390/768/1440 aprobados. Dos add/add documentales reconciliados;71 archivos funcionales/configuración iguales a V2, sin pérdida de rutas main/S01/V2. Laboratorio propio detenido, volumen conservado e inventario ajeno idéntico. [Nota34](34-REVISION-COORDINADA-INTEGRACION.md) reúne límites, evidencia y forma de identificar el merge; commit/bundle/estado remoto finales se entregan con manifiesto externo verificable. No se abren PR ni funciones nuevas.
 
@@ -63,7 +63,7 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 | 2026-11-05 | Figma | Creado archivo editable «YitVerse — Dirección Visual V2 · Editorial Dark» | [Abrir Figma](https://www.figma.com/design/dCLgExm48T9Ui6sTcEIhwu) |
 | 2026-11-05 | Respaldo | Iniciada esta bitácora y la especificación visual V2 en GitHub | Notas Markdown versionadas |
 
-**Próxima acción vigente:** revisar el resultado y las evidencias de [integración34](34-REVISION-COORDINADA-INTEGRACION.md), y solicitar autorización para abrir el PR específico de catálogo + V2 cuando la rama esté validada. Recuperar código/notas desde un clon nuevo; no asumir sincronización de Obsidian Windows. Los registros siguientes conservan el estado histórico de cada entrega.
+**Próxima acción registrada en Etapa2 (histórica):** revisar el resultado y las evidencias de [integración34](34-REVISION-COORDINADA-INTEGRACION.md), y solicitar autorización para abrir el PR específico de catálogo + V2 cuando la rama esté validada. Recuperar código/notas desde un clon nuevo; no asumir sincronización de Obsidian Windows. Los registros siguientes conservan el estado histórico de cada entrega.
 
 
 ## Incidente Git local — 2026-11-05
@@ -139,3 +139,15 @@ La recuperación del Git local debe esperar a que la copia de seguridad se compl
 **Archivos:** [entrega33](33-ENTREGA-FRONTEND-V2.md), estas notas00/31/32/estado/alineación, README/índice/centroObsidian/guías local y recuperación/plan, helperconsole y dos smokes; manifiesto de12capturas (6reutilizadas conSHAidéntico,6nuevas) y métricas. **Commit de cierre:** `docs(frontend): consolidate V2 verification and delivery`; SHA exacto consultable con `git log -1 --format="%H %s" -- docs/33-ENTREGA-FRONTEND-V2.md` y manifiesto externo del bundle. Tras commit, bundle nuevo verificado/restaurado y push final exclusivamente a la misma rama con relectura del remoto; resultado exacto en la entrega final. Bundles anteriores preservados.
 
 **Límites:** Windows/dispositivos físicos/otros navegadores/lectores de pantalla/WCAG integral/Figma no acreditados. Catálogo sintético sin persistencia; Docker sirveS01, noV2; PG nativo usuario no probado. [33](33-ENTREGA-FRONTEND-V2.md) registra riesgos de integración conmain/PR#3 y recuperación desde otro chat. **Siguiente paso:** revisión humana e integración solo tras nueva aprobación. Sin PR/merge/main ni nuevas funciones.
+
+## Rediseño editorial lavanda — 2026-11-06, America/Bogota
+
+**Autorización:** adaptar el ZIP como referencia visual sobre YitVerse existente; no adoptar su SQLite/lector/biblioteca/datos/arte. Nueva rama desde2142e26; no main/Docker/PostgreSQL/GitHub/Figma. El usuario pidió continuidad sin decir «sigue»: conservar progreso/commits y retomar tareas pendientes si la sesión se reactiva; no existe reactivación automática programable por créditos.
+
+**Implementado:** tema ciruela/violeta/lavanda, Hero panorámico con géneros reales y acciones existentes, tira de géneros, seis destacadas, grupos editoriales como atajos y CTA final. Originales SVG/API/datos/servicios/deps preservados.
+
+**Pruebas:**45Backend+68Frontend+15guardas+6consola=134/134; dos builds y seis smokes Chromium dev/preview320/390/768/1440, sin overflow/pageerror/avisos inesperados. Docker integración10/persistencia1 NO EJECUTADAS por alcance; evidencia anterior no se reutiliza como nueva.14 capturas reales nuevas y manifiesto en35.
+
+**Commits:**65410d7plan,46a53eacomposición,03d95dbtema/responsive; cierre documental y bundle identificables por historial/manifiesto externo. Fuente local `/workspace/YitVerse-Visual-Lavanda`; Windows/backups no accedidos.
+
+**Pendiente:** revisión visual de [35](35-REDISENO-EDITORIAL-LAVANDA.md), Figma/Windows/PGnativo/otrosnavegadores/AAintegral/zoom200%. Sin push/PR/merge. Siguiente tarea requiere revisión humana antes de publicar o integrar; no nuevas funciones.

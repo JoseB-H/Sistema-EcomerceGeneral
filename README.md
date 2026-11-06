@@ -1,5 +1,7 @@
 # Sistema-EcomerceGeneral
 
+**Frente visual actual:** rediseño editorial lavanda, rama local `feat/ui-editorial-lavanda` desde2142e26. [Entrega35 y capturas reales para revisión](docs/35-REDISENO-EDITORIAL-LAVANDA.md).134pruebas, ambos builds y seis smokes Chromium aprobados; API/seis obras/SVG/infraestructura preservados. Sin publicación/PR; Figma y aceptación estética pendientes. Los apartados siguientes conservan los antecedentes de integración/ejecución.
+
 Proyecto académico **Servicios Cloud**. Este repositorio es el punto de referencia compartido entre Codex (desarrollo), Obsidian/Vaultcraft (documentación) y el chat «Servicios Cloud» (decisiones del curso).
 
 ## Organización acordada

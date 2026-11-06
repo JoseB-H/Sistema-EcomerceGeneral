@@ -1,24 +1,24 @@
 ---
 tags: [yitverse, diseno, figma, v2, interfaz]
 tipo: especificacion-visual
-estado: cinco-incrementos-aceptados-tecnicamente-integracion-en-revision
+estado: rediseño-lavanda-verificado-pendiente-aprobacion-visual
 actualizado: 2026-11-06
 ---
 # YitVerse — Dirección visual V2
 
 > [!info] Punto de continuidad
-> Los cinco incrementos V2 están entregados y aceptados técnicamente en `ad8a8b2`. S01 ya está integrado en main por PR #3/merge `b8daf70`; se autoriza únicamente preparar `integration/frontend-v2-main` con un merge normal de ese main. [Resultado de integración34](34-REVISION-COORDINADA-INTEGRACION.md) y [entrega original33](33-ENTREGA-FRONTEND-V2.md). No hay autorización para abrir el PR V2, fusionarlo a main o añadir funciones. Figma sigue pendiente de aprobación visual.
+> El frente actual es la adaptación editorial lavanda de la referencia ZIP confirmada por el usuario, en `feat/ui-editorial-lavanda` desde2142e26. Código47e8ae3 y [capturas/verificación35](35-REDISENO-EDITORIAL-LAVANDA.md): Hero panorámico, géneros y seis destacadas, sin cambiar API/arte/infraestructura. Los cinco incrementos anteriores e integración34 se conservan. Resultado estético y Figma pendientes; sin push/PR/merge.
 
 ## Identidad visual de la iteración
 
 - **Marca/proyecto:** YitVerse — plataforma de exploración y lectura de manga/manhwa, biblioteca personal y tienda de coleccionables, con XP y YitCoins contemplados en la visión.
 - **Referencia de estilo:** experiencia editorial contemporánea, de alto impacto, inspirada en el tipo de jerarquía visual y tratamiento de contenido que el usuario describió como «Olympus»; no reproducir imágenes, marca ni elementos protegidos de sitios ajenos.
-- **Paleta de dirección:** negro profundo, azul eléctrico, superficies oscuras y texto de alto contraste.
+- **Paleta vigente:** ciruela oscuro, violeta y lavanda con contraste legible; sustituye visualmente la dirección azul de los incrementos anteriores, que permanece como antecedente documentado.
 - **Jerarquía:** un Hero protagonista, títulos fuertes, espacio negativo, tarjetas editoriales y portadas narrativas detalladas.
 - **Portadas:** el encargo actual prioriza composición y presentación de los seis SVG propios. Se conservan sus motivos/paletas y se añaden detalles acotados; no se sustituyen por un estilo nuevo ni se importan imágenes de terceros.
 - **Gamificación:** parte de la visión futura; XP/YitCoins no se implementan ni se presentan como funciones disponibles en este plan.
 - **Dispositivos:** composición desktop y adaptación móvil desde el diseño.
-- **Alcance de ejecución actual:** reconciliación documental y verificación de integración. Producto/API/Backend/Database/Docker/datos/dependencias se conservan respecto `ad8a8b2`. El merge no cambia cómo Docker sirve el diagnóstico S01 ni despliega V2 en contenedores. No autoriza módulos nuevos.
+- **Alcance de ejecución actual:** rediseño de presentación exclusivamente Frontend. API/Backend/Database/Docker/datos/dependencias y arte fuente se conservan respecto2142e26. Referencia ZIP solo de composición/jerarquía; no se adoptan imágenes/SQLite/módulos. Capturas reales cloud para aprobación antes de PR.
 
 ## Vistas incluidas en el encargo V2
 
@@ -38,7 +38,7 @@ actualizado: 2026-11-06
 ## Tratamiento de contenido
 La V2 puede utilizar títulos, frases y portadas **ficticias** para ilustrar la interfaz. No confundir datos de prueba con catálogo comercial real, licencias o permisos de lectura. No asignar XP, YitCoins o precios como reglas aprobadas.
 
-## Acuerdo vigente y siguiente paso
+## Antecedente de integración y siguiente paso de ese momento
 1. Revisar la entrega integral [33](33-ENTREGA-FRONTEND-V2.md) y su continuación de integración [34](34-REVISION-COORDINADA-INTEGRACION.md), con historial, pruebas y recuperación.
 2. Está autorizada únicamente la publicación de `integration/frontend-v2-main` después de verificarla y auditar secretos. Abrir su PR, fusionarla con main o añadir funciones requiere aprobación posterior.
 3. Usar la especificación Markdown provisional y el [plan aprobado](superpowers/plans/2026-11-05-frontend-v2-editorial.md) como base de los incrementos autorizados. La antigua secuencia que pedía cerrar primero cinco vistas Figma queda como antecedente; no implica que se hayan creado o aprobado.
@@ -108,3 +108,9 @@ Arte: Aurora conserva observatorio/auroras y gana constelación; Órbita conserv
 **Archivos:** [entrega33](33-ENTREGA-FRONTEND-V2.md), estas notas00/31/32/estado/alineación, README/índice/centroObsidian/guías local y recuperación/plan, helperconsole y dos smokes; manifiesto de12capturas (6reutilizadas conSHAidéntico,6nuevas) y métricas. **Commit de cierre:** `docs(frontend): consolidate V2 verification and delivery`; SHA exacto consultable con `git log -1 --format="%H %s" -- docs/33-ENTREGA-FRONTEND-V2.md` y manifiesto externo del bundle. Tras commit, bundle nuevo verificado/restaurado y push final exclusivamente a la misma rama con relectura del remoto; resultado exacto en la entrega final. Bundles anteriores preservados.
 
 **Límites:** Windows/dispositivos físicos/otros navegadores/lectores de pantalla/WCAG integral/Figma no acreditados. Catálogo sintético sin persistencia; Docker sirveS01, noV2; PG nativo usuario no probado. [33](33-ENTREGA-FRONTEND-V2.md) registra riesgos de integración conmain/PR#3 y recuperación desde otro chat. **Siguiente paso:** revisión humana e integración solo tras nueva aprobación. Sin PR/merge/main ni nuevas funciones.
+
+## Dirección lavanda vigente — 2026-11-06, America/Bogota
+
+El usuario confirmó adaptar Practicas-main.zip manteniendo seis obras/SVG/API/PostgreSQL. Se implementan Hero panorámico con la escena original, géneros reales, seis tarjetas en orden API, atajos3/2sin portadas repetidas y CTA real a Explorar. En móvil la duplicación decorativa de portada del Hero se omite; panorama, texto y acciones permanecen. Tema/variables/contrastes en [guía32](32-GUIA-VISUAL-FRONTEND-V2.md). Sin nuevas reglas ni lector/favoritos/biblioteca.
+
+134casos ejecutados, ambos builds,6smokes dev/preview y14capturas nuevas descritos en [35](35-REDISENO-EDITORIAL-LAVANDA.md). Docker no ejecutado, fuentes originales intactas. Aceptación estética/Figma/Windows y accesibilidad integral pendientes. Rama local sin publicación: entregar y detenerse antes de PR/merge.

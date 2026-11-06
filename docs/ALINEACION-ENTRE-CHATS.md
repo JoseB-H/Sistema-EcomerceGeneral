@@ -2,7 +2,13 @@
 
 **Proyecto compartido:** [Sistema-EcomerceGeneral](https://github.com/JoseB-H/Sistema-EcomerceGeneral)
 
-## Acuerdo vigente — integración coordinada, 2026-11-06 UTC
+## Acuerdo vigente — rediseño editorial lavanda, 2026-11-06 America/Bogota
+
+Usuario confirma usar Practicas-main.zip solo como referencia visual, preservando proyecto/React/Vite/Express/API/PostgreSQL, seis obras e ilustraciones originales. Nueva rama feat/ui-editorial-lavanda desde integration/frontend-v2-main/2142e26. No adoptar SQLite/lector/biblioteca/ratings/capítulos/datos/arte/deps del ZIP; no main/Docker/Figma/GitHub ni PR antes de revisión visual.
+
+Implementado código47e8ae3: tema lavanda/hero panorámico/géneros/seis destacadas/atajos/CTA con destinos existentes.134casos,2builds,6smokes y14capturas realescloud en [35](35-REDISENO-EDITORIAL-LAVANDA.md); Docker NO EJECUTADO. Rama local, respaldo final verificable tras cierre. Aprobación estética/Figma/Windows/AAintegral pendientes. La petición de continuidad automática mantiene este alcance al reanudarse sesión; no habilita agenda/reactivación automática por créditos.
+
+## Antecedente — integración coordinada, 2026-11-06 UTC
 
 Los cinco incrementos V2 están entregados y aceptados técnicamente en `ad8a8b2`, sin aprobación visual Figma. El usuario confirma PR #3 fusionado y Git verifica `main=b8daf7096ecae79b24829e9a5dfcc760d8a005aa`, merge con padres `ae3f8e8` y `e672e2e`: conserva los9 commits S01. Issue #1 continúa abierto según la confirmación del usuario; no se declara aceptado el Sprint1. Windows/Docker Desktop/D: pendiente bajo limitación aceptada.
 

@@ -1,0 +1,757 @@
+{
+  "verifiedLocal": "2026-11-06T15:33:44.787840-05:00",
+  "timezone": "America/Bogota",
+  "branch": "feat/ui-editorial-lavanda",
+  "baseCommit": "2142e262598d4ba638b79f9db28995611434665f",
+  "codeCommit": "47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7",
+  "reference": "Practicas-main.zip, autorizado solo como referencia visual; sin importar código/datos/arte/dependencias",
+  "suites": [
+    {
+      "name": "backend",
+      "command": [
+        "npm",
+        "--prefix",
+        "Backend",
+        "test"
+      ],
+      "exitCode": 0,
+      "tests": 45
+    },
+    {
+      "name": "frontend",
+      "command": [
+        "npm",
+        "--prefix",
+        "Frontend",
+        "test"
+      ],
+      "exitCode": 0,
+      "tests": 68
+    },
+    {
+      "name": "guardas",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "scripts/compose-helper.test.mjs"
+      ],
+      "exitCode": 0,
+      "tests": 15
+    },
+    {
+      "name": "console",
+      "command": [
+        "python3",
+        "Frontend/test/browser/console_checks_test.py"
+      ],
+      "exitCode": 0,
+      "tests": 6
+    },
+    {
+      "name": "build-s01",
+      "command": [
+        "npm",
+        "--prefix",
+        "Frontend",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "tests": null
+    },
+    {
+      "name": "build-local",
+      "command": [
+        "npm",
+        "--prefix",
+        "Frontend",
+        "run",
+        "build:local"
+      ],
+      "exitCode": 0,
+      "tests": null
+    }
+  ],
+  "totalExecuted": {
+    "tests": 134,
+    "passed": 134,
+    "failed": 0,
+    "skipped": 0
+  },
+  "dockerIntegration": {
+    "status": "NO EJECUTADA",
+    "cases": 10,
+    "reason": "Rediseño exclusivamente Frontend; no usar ni modificar Docker"
+  },
+  "dockerPersistence": {
+    "status": "NO EJECUTADA",
+    "cases": 1,
+    "reason": "Mismo alcance; evidencia histórica en nota34 no presentada como nueva"
+  },
+  "smokes": [
+    {
+      "mode": "dev",
+      "script": "Frontend/test/browser/editorial-smoke.py",
+      "exitCode": 0,
+      "measurements": {
+        "background": "rgb(16, 16, 23)",
+        "responsive": [
+          {
+            "width": 1440,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          }
+        ],
+        "featuredColumns": [
+          6,
+          3,
+          2,
+          2
+        ],
+        "realApiWorks": 6,
+        "console": {
+          "expected_network_errors": {},
+          "expected_browser_errors": {
+            "favicon.ico:404": 1
+          },
+          "unexpected": []
+        }
+      }
+    },
+    {
+      "mode": "dev",
+      "script": "Frontend/test/browser/dark-catalog-smoke.py",
+      "exitCode": 0,
+      "measurements": {
+        "home_viewports": [
+          {
+            "width": 1440,
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "overflow": false
+          }
+        ],
+        "direct_reload_paths": [
+          "/",
+          "/explorar",
+          "/explorar?q=%C3%93RBITA&format=manhwa",
+          "/?q=%C3%93RBITA&format=manhwa",
+          "/?format=manhwa",
+          "/?q=&format=",
+          "/obras/archivo-aurora?q=Aurora&format=manga",
+          "/no-existe",
+          "/estado"
+        ],
+        "home_states_and_genres": "passed",
+        "viewports": [
+          {
+            "width": 1440,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 768,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 390,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 320,
+            "overflow": false,
+            "cover_ratio": 0.75
+          }
+        ],
+        "contrast": {
+          "body": 17.16,
+          "secondary": 8.43,
+          "button": 5.41,
+          "field": 16.86,
+          "border": 4.4,
+          "focus": 10.78
+        },
+        "svg_gradient_ids": 18,
+        "keyboard_and_history": "passed",
+        "loading_error_empty_retry_404_health503": "passed",
+        "reduced_motion": [
+          "0s",
+          "none",
+          "none",
+          "auto"
+        ],
+        "page_errors": [],
+        "external_requests": [],
+        "console": {
+          "expected_network_errors": {
+            "ERR_FAILED": 2,
+            "404": 1,
+            "503": 3
+          },
+          "expected_browser_errors": {
+            "favicon.ico:404": 1
+          },
+          "unexpected": []
+        }
+      }
+    },
+    {
+      "mode": "dev",
+      "script": "Frontend/test/browser/detail-mobile-smoke.py",
+      "exitCode": 0,
+      "measurements": {
+        "phase": "despues",
+        "base_url": "http://localhost:5173",
+        "detail_mobile_positions": {
+          "titleTop": 328.171875,
+          "coverTop": 442.4375
+        },
+        "art_nodes": [
+          34,
+          31,
+          36,
+          43,
+          34,
+          30
+        ],
+        "responsive": [
+          {
+            "width": 1440,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          }
+        ],
+        "rotation_filters": "passed",
+        "long_partial_invalid_fixtures_retry": "passed",
+        "decorative_art_text_survives": "passed",
+        "reduced_motion": [
+          "0s",
+          "none",
+          "none",
+          "auto"
+        ],
+        "page_errors": [],
+        "external_requests": [],
+        "console": {
+          "expected_network_errors": {
+            "404": 1
+          },
+          "expected_browser_errors": {
+            "favicon.ico:404": 1
+          },
+          "unexpected": []
+        }
+      }
+    },
+    {
+      "mode": "preview",
+      "script": "Frontend/test/browser/editorial-smoke.py",
+      "exitCode": 0,
+      "measurements": {
+        "background": "rgb(16, 16, 23)",
+        "responsive": [
+          {
+            "width": 1440,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          }
+        ],
+        "featuredColumns": [
+          6,
+          3,
+          2,
+          2
+        ],
+        "realApiWorks": 6,
+        "console": {
+          "expected_network_errors": {},
+          "expected_browser_errors": {
+            "favicon.ico:404": 1
+          },
+          "unexpected": []
+        }
+      }
+    },
+    {
+      "mode": "preview",
+      "script": "Frontend/test/browser/dark-catalog-smoke.py",
+      "exitCode": 0,
+      "measurements": {
+        "home_viewports": [
+          {
+            "width": 1440,
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "overflow": false
+          }
+        ],
+        "direct_reload_paths": [
+          "/",
+          "/explorar",
+          "/explorar?q=%C3%93RBITA&format=manhwa",
+          "/?q=%C3%93RBITA&format=manhwa",
+          "/?format=manhwa",
+          "/?q=&format=",
+          "/obras/archivo-aurora?q=Aurora&format=manga",
+          "/no-existe",
+          "/estado"
+        ],
+        "home_states_and_genres": "passed",
+        "viewports": [
+          {
+            "width": 1440,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 768,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 390,
+            "overflow": false,
+            "cover_ratio": 0.75
+          },
+          {
+            "width": 320,
+            "overflow": false,
+            "cover_ratio": 0.75
+          }
+        ],
+        "contrast": {
+          "body": 17.16,
+          "secondary": 8.43,
+          "button": 5.41,
+          "field": 16.86,
+          "border": 4.4,
+          "focus": 10.78
+        },
+        "svg_gradient_ids": 18,
+        "keyboard_and_history": "passed",
+        "loading_error_empty_retry_404_health503": "passed",
+        "reduced_motion": [
+          "0s",
+          "none",
+          "none",
+          "auto"
+        ],
+        "page_errors": [],
+        "external_requests": [],
+        "console": {
+          "expected_network_errors": {
+            "ERR_FAILED": 2,
+            "404": 1,
+            "503": 4
+          },
+          "expected_browser_errors": {
+            "favicon.ico:404": 1
+          },
+          "unexpected": []
+        }
+      }
+    },
+    {
+      "mode": "preview",
+      "script": "Frontend/test/browser/detail-mobile-smoke.py",
+      "exitCode": 0,
+      "measurements": {
+        "phase": "despues",
+        "base_url": "http://localhost:5174",
+        "detail_mobile_positions": {
+          "titleTop": 328.171875,
+          "coverTop": 442.4375
+        },
+        "art_nodes": [
+          34,
+          31,
+          36,
+          43,
+          34,
+          30
+        ],
+        "responsive": [
+          {
+            "width": 1440,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 1440,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 768,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 390,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/explorar",
+            "overflow": false
+          },
+          {
+            "width": 320,
+            "path": "/obras/archivo-aurora",
+            "overflow": false
+          }
+        ],
+        "rotation_filters": "passed",
+        "long_partial_invalid_fixtures_retry": "passed",
+        "decorative_art_text_survives": "passed",
+        "reduced_motion": [
+          "0s",
+          "none",
+          "none",
+          "auto"
+        ],
+        "page_errors": [],
+        "external_requests": [],
+        "console": {
+          "expected_network_errors": {
+            "404": 1
+          },
+          "expected_browser_errors": {
+            "favicon.ico:404": 1
+          },
+          "unexpected": []
+        }
+      }
+    }
+  ],
+  "nativeOwnServersStopped": true,
+  "protectedPathsUnchanged": [
+    "Backend",
+    "Database",
+    "scripts",
+    "docker-compose.yml",
+    "Frontend/src/catalog/artwork.jsx",
+    "Frontend/src/catalog/catalog-client.js",
+    "Frontend/src/catalog/catalog-navigation.js",
+    "Frontend/src/catalog/use-resource.js",
+    "Frontend/src/catalog/home-sections.js",
+    "Frontend/src/App.jsx",
+    "Frontend/src/App.css",
+    "Frontend/src/main.jsx",
+    "Frontend/src/health-client.js",
+    "Frontend/package.json",
+    "Frontend/package-lock.json",
+    "Frontend/vite.config.js",
+    "Frontend/Dockerfile",
+    "Frontend/nginx.conf"
+  ],
+  "captures": {
+    "detalle-1440": {
+      "path": "docs/assets/editorial-lavanda/detalle-1440.png",
+      "sha256": "bca98b37f047a575e0584395f4a0bcc92dd3673f91b815e320897184dfa27098",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "detalle-320": {
+      "path": "docs/assets/editorial-lavanda/detalle-320.png",
+      "sha256": "76eb6925df42a284ad57a1b09b6dabed31c00c74acdadca288517f25b4b34c38",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "detalle-390": {
+      "path": "docs/assets/editorial-lavanda/detalle-390.png",
+      "sha256": "5cbb07c3e287a406d1800ed608310a9705a7f22784d3ca7b205ad531c87ef433",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "detalle-768": {
+      "path": "docs/assets/editorial-lavanda/detalle-768.png",
+      "sha256": "3a614149ff2fe0917f61f1381757430ddb6cb02f40c28303ed48e5c439aa0226",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "explorar-1440": {
+      "path": "docs/assets/editorial-lavanda/explorar-1440.png",
+      "sha256": "79514fd8bcb8fb2eaa59c9feb70216b05d1b7499969188bab7e67ff0385c1cc1",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "explorar-320": {
+      "path": "docs/assets/editorial-lavanda/explorar-320.png",
+      "sha256": "b5938546e16ac81bafc17046605bb1856cc83175df8350472f6498c4347bff74",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "explorar-390": {
+      "path": "docs/assets/editorial-lavanda/explorar-390.png",
+      "sha256": "36eba70fcf30b4d47ffd69cd76f5add856b3d2b08317aecd4140164a0a7aa0a9",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "explorar-768": {
+      "path": "docs/assets/editorial-lavanda/explorar-768.png",
+      "sha256": "4be7978e30e032c8aa600f270fc278a503ed39b8b5e1a620486ec3adb665c251",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "inicio-1440": {
+      "path": "docs/assets/editorial-lavanda/inicio-1440.png",
+      "sha256": "9a33f7a72cb1d8e3e7e5664e4374d36fd26f56fcd2ca06dedae203a1acc225c5",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "inicio-320": {
+      "path": "docs/assets/editorial-lavanda/inicio-320.png",
+      "sha256": "c5935b1c083b84e797863c48bc0707af10b9d1bf6ede5f42a3a23b9fb3f9d319",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "inicio-390": {
+      "path": "docs/assets/editorial-lavanda/inicio-390.png",
+      "sha256": "7df93dc855f55ca8010a397d18d3c5e5ce2f2727e0a4de2900ff0582c268a83b",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "inicio-768": {
+      "path": "docs/assets/editorial-lavanda/inicio-768.png",
+      "sha256": "1da7b32c7c0b9b478199038335c1ac7d7af03413318508b52b534ddbd8eeb088",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "filtros-1440": {
+      "path": "docs/assets/editorial-lavanda/filtros-1440.png",
+      "sha256": "83ada52d5450479c1199da6524f059a14bca2cddd74ba401eba87c46f8cb035d",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    },
+    "filtros-390": {
+      "path": "docs/assets/editorial-lavanda/filtros-390.png",
+      "sha256": "98e76ab4214fb38fb4065e62157b1a099b04e5db10923b329d1c37fb12bf0035",
+      "source": "Chromium preview real sobre código 47e8ae33f540bd3b1315c6ee773aa62ee4a6b7c7; captura recién generada"
+    }
+  },
+  "limits": [
+    "Capturas Chromium Linux/cloud, no Windows del usuario",
+    "Figma y aprobación estética final pendientes",
+    "Firefox/WebKit/dispositivos físicos/lectores de pantalla/WCAG integral y zoom200% no validados",
+    "Catálogo sintético de solo lectura; PostgreSQL nativo no configurado, salud503 real",
+    "No imágenes/SQLite/lector/biblioteca/capítulos/rating/fechas del ZIP",
+    "Favicon404 conocido separado de errores JS; antecedente Backend porcentaje inválido puede producir503 saneado"
+  ],
+  "review": {
+    "independent": "lavender_final_review",
+    "scope": "Whole branch and staged docs; reviewer did not execute runtime checks",
+    "critical": 0,
+    "importantInitially": 0,
+    "minorInitially": 1,
+    "rootRegradedAndFixed": "Label in Name/voice action: RED regression then GREEN68Frontend, full134cases/2builds/6smokes",
+    "remainingFindings": 0,
+    "visualApproval": "pending user"
+  }
+}

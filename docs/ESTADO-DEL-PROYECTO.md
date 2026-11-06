@@ -2,7 +2,13 @@
 
 **Fecha de arranque de coordinación:** 2026-11-03
 
-## Punto de continuidad vigente — Frontend V2
+## Punto vigente — rediseño editorial lavanda
+
+**Rama local:** feat/ui-editorial-lavanda desde2142e26; código47e8ae3. Confirmada referencia ZIP únicamente visual. Tema lavanda, Hero panorámico, géneros, seis destacadas, atajos y CTA implementados; API, rutas/URL, SVG, Backend/Database/Docker y deps conservados. **134/134**, ambos builds y seis smokes Chromium dev/preview320/390/768/1440 aprobados,14capturas nuevas. [Entrega35](35-REDISENO-EDITORIAL-LAVANDA.md).
+
+Docker integración10/persistencia1 **NO EJECUTADAS** por alcance. Rama sin publicación/PR/merge, pendiente aprobación estética. Figma/Windows/PGnativo/otrosnavegadores/AAintegral pendientes. Bundle final se verifica tras commit y queda en manifiesto externo; no se toca ningún respaldo Windows. Siguiente paso: revisión visual humana antes de publicar/integrar; no nuevas funcionalidades.
+
+## Antecedente de continuidad — integración técnica
 
 Los cinco incrementos están entregados y aceptados técnicamente en `ad8a8b2`. **S01 integrado en main por PR #3/merge `b8daf70`**, comprobado mediante Git con padres `ae3f8e8`/`e672e2e`. Integración de catálogo + V2 autorizada únicamente en `integration/frontend-v2-main` desde `ad8a8b2`; no abrir todavía su PR ni fusionarla con main. Solo reconciliación documental, sin cambios de producto/API/servicios. [Resultado y pruebas nuevas34](34-REVISION-COORDINADA-INTEGRACION.md); [entrega histórica33](33-ENTREGA-FRONTEND-V2.md). Figma y sincronización Windows/Obsidian pendientes. Los registros cronológicos posteriores describen el estado de cada entrega, no reemplazan este panel vigente.
 

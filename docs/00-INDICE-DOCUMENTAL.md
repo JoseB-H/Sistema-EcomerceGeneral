@@ -2,9 +2,10 @@
 
 > Estado: diseño del producto en refinamiento, incremento técnico S01 y prototipo sintético HU-001/HU-002 implementados en ramas para revisión. Última revisión: 2026-11-06.
 
-## Continuidad Frontend V2 — integración coordinada
+## Continuidad Frontend V2 — rediseño lavanda en revisión
 
-- [Integración34 — empezar aquí al retomar](34-REVISION-COORDINADA-INTEGRACION.md): S01 integrado en main/b8daf70; rama separada de catálogo + V2, sin nuevo PR todavía.
+- [Rediseño lavanda35 — empezar aquí](35-REDISENO-EDITORIAL-LAVANDA.md): rama local y14capturas nuevas, pendiente aprobación estética, sin publicación/PR.
+- [Integración34 — antecedente técnico](34-REVISION-COORDINADA-INTEGRACION.md): S01 integrado en main/b8daf70; rama separada de catálogo + V2, sin nuevo PR todavía.
 - [Bitácora vigente y autorización limitada](00-BITACORA-DE-CONTINUIDAD.md).
 - [Especificación visual V2](31-YITVERSE-DISENO-VISUAL-V2.md): plan aprobado; Figma pendiente.
 - [Plan histórico de cinco incrementos](superpowers/plans/2026-11-05-frontend-v2-editorial.md): los cinco entregados y aceptados técnicamente; detener nuevas funciones/PR/merge V2 a main.
