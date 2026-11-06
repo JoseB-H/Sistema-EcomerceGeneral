@@ -15,7 +15,7 @@ export default function Hero({ work }) {
         <p className="intro-copy">{work.synopsis}</p>
       </> : <><h1 id="discovery-title">Tu próxima historia<br /><span>empieza aquí.</span></h1><p className="intro-copy">Explora otros mundos entre mangas y manhwas de demostración.</p></>}
       <div className="home-hero-actions">
-        {work && <a className="button-primary" href={workHref({ id: work.id })} aria-label={`Descubrir ${title}`}>Descubrir la obra <ArrowIcon /></a>}
+        {work && <a className="button-primary" href={workHref({ id: work.id })} aria-label={`Descubrir la obra: ${title}`}>Descubrir la obra <ArrowIcon /></a>}
         <a className={work ? 'text-link' : 'button-primary'} href={exploreHref()}>Explorar catálogo <ArrowIcon /></a>
       </div>
       <p className="hero-note">Una colección ficticia. Posibilidades para imaginar.</p>

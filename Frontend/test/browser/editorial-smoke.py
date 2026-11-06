@@ -39,7 +39,7 @@ with sync_playwright() as p:
                 if width <= 599:
                     expect(page.locator('.home-feature-cover')).not_to_be_visible()
                     expect(page.locator('.hero-panorama')).to_be_visible()
-                    expect(page.get_by_role('link', name='Descubrir ' + first['title'], exact=True)).to_be_visible()
+                    expect(page.get_by_role('link', name='Descubrir la obra: ' + first['title'], exact=True)).to_be_visible()
                 stories = page.get_by_role('region', name='Historias destacadas')
                 expect(stories.get_by_role('article')).to_have_count(6)
                 links = stories.get_by_role('link', name='Ver ficha de', exact=False)

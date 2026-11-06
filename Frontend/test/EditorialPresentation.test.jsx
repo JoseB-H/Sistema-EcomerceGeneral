@@ -9,6 +9,13 @@ import { work, collection, detail, source } from './catalog-fixtures.js';
 const items = Array.from({ length: 6 }, (_, index) => ({ ...work, id: `obra-${index}`, title: `Historia de muestra ${index}`, genres: index % 2 ? ['Misterio', 'Aventura'] : ['Misterio'] }));
 beforeEach(() => window.history.replaceState({}, '', '/'));
 
+test('the hero action accessible name includes its visible label for voice navigation', () => {
+  render(<Hero work={work} />);
+  const action = screen.getByRole('link', { name: 'Descubrir la obra: Archivo Aurora' });
+  expect(action).toHaveTextContent('Descubrir la obra');
+  expect(action).toHaveAttribute('href', '/obras/archivo-aurora');
+});
+
 test('featured stories show every API work once in its received order without ranking', async () => {
   render(<HomePage api={{ list: async () => ({ source, items }) }} />);
   const region = within(await screen.findByRole('region', { name: 'Historias destacadas' }));
@@ -24,7 +31,7 @@ test('hero presents existing clean genres and a working discovery action', () =>
   render(<Hero work={{ ...work, genres: [' Misterio ', '', 'Misterio', 'Ciencia ficción'] }} />);
   const genres = within(screen.getByRole('list', { name: 'Géneros de la obra destacada' }));
   expect(genres.getAllByRole('listitem').map(item => item.textContent)).toEqual(['Misterio', 'Ciencia ficción']);
-  expect(screen.getByRole('link', { name: 'Descubrir Archivo Aurora' })).toHaveAttribute('href', '/obras/archivo-aurora');
+  expect(screen.getByRole('link', { name: 'Descubrir la obra: Archivo Aurora' })).toHaveAttribute('href', '/obras/archivo-aurora');
 });
 
 test('genre discovery precedes featured stories and uses the existing query route', async () => {
