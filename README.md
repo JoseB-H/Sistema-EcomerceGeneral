@@ -13,7 +13,7 @@ Proyecto académico **Servicios Cloud**. Este repositorio es el punto de referen
 
 El catálogo local incluye ahora el [rediseño azul nocturno](docs/UI-AZUL-NOCTURNO.md), con capturas y pruebas para revisión en `feat/ui-azul-nocturno`, derivada de la rama del prototipo.
 
-El Incremento1 `daf3c85` fue aceptado y el Incremento2 actualiza exclusivamente el sistema visual en la rama **local** `feat/frontend-v2-editorial`. Sin publicación/PR ni nuevas rutas. [Guía visual V2](docs/32-GUIA-VISUAL-FRONTEND-V2.md) y [comparativas/pruebas](docs/FRONTEND-V2-INCREMENTO-2-PRUEBAS.md). Ver [bitácora](docs/00-BITACORA-DE-CONTINUIDAD.md), [V2](docs/31-YITVERSE-DISENO-VISUAL-V2.md) y [recuperación segura Git Windows](docs/RECUPERACION-GIT-WINDOWS.md).
+Incrementos1/2 aceptados (`daf3c85`/`fba88e3`). El Incremento3 separa Inicio `/` y Explorar `/explorar` en la rama **local** `feat/frontend-v2-editorial`, conservando API, ficha, consultas anteriores e identidad visual. Sin publicación/PR; detenerse antes del Incremento4. [Pruebas y capturas actuales](docs/FRONTEND-V2-INCREMENTO-3-PRUEBAS.md). [Guía visual V2](docs/32-GUIA-VISUAL-FRONTEND-V2.md) y [comparativas/pruebas](docs/FRONTEND-V2-INCREMENTO-2-PRUEBAS.md). Ver [bitácora](docs/00-BITACORA-DE-CONTINUIDAD.md), [V2](docs/31-YITVERSE-DISENO-VISUAL-V2.md) y [recuperación segura Git Windows](docs/RECUPERACION-GIT-WINDOWS.md).
 
 ## Antes de empezar
 

@@ -79,3 +79,7 @@ Los RF comerciales anteriores siguen sin implementar. HU-T01 → build/config/ar
 | Presentación editorial, portada propia, ficha y estados oscuros | RF-01/02/03, HU-001/002 | 14,21,22,23,26,27,29,30 | `96e91b8`; 35 Frontend/45 Backend, builds y Chromium; [reporte](UI-AZUL-NOCTURNO.md) | Implementado; aceptación del usuario pendiente |
 
 Conserva el alcance sintético y las restricciones anteriores, sin cambios de API/SQL ni nuevos módulos comerciales.
+
+## Frontend V2 Inicio/Explorar — Incremento3 (2026-11-06 UTC)
+
+RF-01/02/03 y HU-001/002: separación editorial, catálogo y ficha conservados; géneros a través de búsqueda existente, sin endpoint ni regla nueva. RNF-14/21/22/23/26/27/29: datos e ilustraciones propios, responsive/teclado/foco, componentes y regresiones.45 Backend/45 Frontend, ambos builds y Chromium dev/preview aprobados; [evidencia](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md). No acredita todos los RF/RNF completos, persistencia real, AA integral ni aceptación humana de la V2. Commit de entrega: `feat(frontend): add V2 home and dedicated explore view`, solo rama local `feat/frontend-v2-editorial`.

@@ -4,7 +4,7 @@
 
 ## Punto de continuidad vigente — Frontend V2
 
-Incremento1 `daf3c85` aceptado; **solo Incremento2 Sistema Visual V2 autorizado**, implementado para revisión en rama local `feat/frontend-v2-editorial`. Rutas/lógica/API intactas. Incremento3, publicación y PR requieren nueva aprobación. Ver [bitácora](00-BITACORA-DE-CONTINUIDAD.md), [especificación V2](31-YITVERSE-DISENO-VISUAL-V2.md) y registro de este incremento al final. Figma sigue pendiente.
+Incremento2 `fba88e3` aceptado; **exclusivamente Incremento3 Inicio/Explorar implementado para revisión local** en `feat/frontend-v2-editorial`. `/` editorial, `/explorar` catálogo; detalle/estado/404, consultas anteriores y API conservados. Incremento4, publicación y PR requieren nueva aprobación. Ver [bitácora](00-BITACORA-DE-CONTINUIDAD.md), [especificación V2](31-YITVERSE-DISENO-VISUAL-V2.md) y [evidencia Inc3](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md). Figma pendiente.
 
 ## Estado verificado
 - Repositorio `JoseB-H/Sistema-EcomerceGeneral` disponible en GitHub.
@@ -127,3 +127,13 @@ Implementado en `feat/ui-azul-nocturno`, desde catálogo `4794803`: header/hero 
 **Pruebas:**45 Backend y35 Frontend aprobadas, builds normal/local0, build S01 byte a byte idéntico, Chromium1440/768/390/320 sin desbordes ni errores JS, legibilidad/campos/teclado/foco/contraste/reduced-motion/estados aprobados. **Conservado:** seis SVG, catálogo/API, handlers/rutas, Backend/Database/Docker y dependencias.
 
 **Límites:** objetivo WCAG AA con comprobación acotada; no auditoría integral/lector de pantalla/Windows/PG nativo. Figma pendiente. Sin push/PR. **Siguiente tarea:** revisar el resultado y esperar nueva autorización antes de Incremento3. Ver [guía visual](32-GUIA-VISUAL-FRONTEND-V2.md) y [pruebas/capturas](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md).
+
+## Frontend V2 — Incremento3, 2026-11-06 UTC
+
+**Rama/base:** `feat/frontend-v2-editorial` desde `fba88e3`, aceptado por el usuario. **Terminado:** Inicio `/` y Explorar `/explorar` separados con API existente; Hero, Continuar explorando no personalizado, Selección de demostración y géneros reales. Rutas antiguas con q/format compatibles; ficha/estado/404, retorno filtrado e historial conservados. Seis SVG originales y Backend/Database/Docker/dependencias sin cambios.
+
+**Archivos:** HomePage/Hero/HomePage.css, home-sections/catalog-navigation; CatalogApp/CatalogPage/WorkDetailPage/components y CSS base/responsive; tres suites nuevas, CatalogApp tests y smoke; continuidad00/31/32/estado/alineación, guía local/diseño04/trazabilidad28/índice/README/plan, reporte y capturas. Lista completa en [reporte](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
+
+**Pruebas:**45 Backend y45 Frontend (35 anteriores +10), ambos builds, smoke Chromium dev y build local/preview1440/768/390/320 aprobados; sin overflow ni errores JS. Recarga SPA directa, historial, búsqueda/acentos/formato/géneros, teclado/foco, reduced-motion y estados/reintento verificados. Salud503 real sin PostgreSQL. Revisión independiente sin Critical/Important; jerarquía h3 de tarjetas en Inicio corregida con regresión. Capturas/mediciones en el reporte.
+
+**Commit:** `feat(frontend): add V2 home and dedicated explore view` (hash de entrega en el cierre/manifiesto externo; identificable con `git log -1 --format="%H %s"`). **Respaldo:** Inc2 verificado/conservado; nuevo bundle tras commit con verificación y clon restaurado registrados externamente. **Límites:** Windows/PG nativo/Docker/producción/lector de pantalla/WCAG integral/Figma no acreditados. Rama aún local, sin push/PR/fusión. **Siguiente tarea:** revisión del Incremento3; no iniciar Incremento4 sin nueva aprobación.

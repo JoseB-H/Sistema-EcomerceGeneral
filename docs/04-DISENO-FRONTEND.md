@@ -1,6 +1,6 @@
 # Diseño del Frontend — React + Vite
 
-**Estado:** pantalla técnica S01 conservada; prototipo local sintético HU-001/HU-002 implementado y probado en rama para revisión. Otros módulos requieren autorización.
+**Estado actual:** S01 conservado; V2 Incremento3 Inicio/Explorar implementado para revisión local, API y ficha sintética conservadas. Los apartados anteriores registran su evolución histórica. Sin publicación ni autorización para Incremento4. [Evidencia actual](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
 
 ## Responsabilidad del componente
 Presentar información y permitir interacciones con el usuario a través de una API HTTP. No contiene lógica de integridad del servidor ni credenciales privadas.
@@ -85,3 +85,9 @@ Revisión de presentación: el selector de tablet se amplió a 170px para mostra
 `CatalogApp.jsx` importa tokens → base → responsive. Tokens se acotan a body.catalog-mode/catalog-shell, sin tema global ni modificación de App.css. Palette/semánticos, tipografía, espaciados, tamaños, radios, profundidad y movimiento centralizados; breakpoints existentes1199/800/599/359 en un CSS exclusivo. Componentes, props, rutas, API y arte original intactos. Metadatos informativos≥12px, campos48px con interior compatible y foco visible también en destinos tabIndex.
 
 45 Backend/35 Frontend, ambos builds y Chromium4anchuras aprobados; build S01 idéntico por SHA256. Guía32 documenta el sistema y reporte Incremento2 conserva capturas antes/después. Objetivo AA, no certificación. Sin push/PR ni Inicio/Explorar nuevos; detener antes de Incremento3. [Guía](32-GUIA-VISUAL-FRONTEND-V2.md) · [Evidencia](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md).
+
+## Inicio y Explorar V2 — Incremento3 (2026-11-06 UTC)
+
+`CatalogApp` reutiliza rutas por pathname/enlaces nativos: Inicio `/`, catálogo `/explorar`, ficha `/obras/:id`, diagnóstico `/estado`,404. `catalog-navigation` concentra enlaces y compatibilidad de consultas antiguas en `/`. `HomePage` usa el mismo cliente API/hook; `home-sections` deriva orden y géneros sin datos de respaldo/personalización. `Hero` reutiliza arte original. SearchForm comparte foco de fragmento; WorkCard permite nivel de encabezado3 en Inicio y2 en Explorar. API, seis obras, SVG y servicios no cambian.
+
+CSS de importación: tokens → base → HomePage → responsive.45 Backend/45 Frontend y ambos builds aprobados; Chromium dev y preview compilado validan recargas/filtros/historial/estados/accesibilidad acotada en cuatro tamaños. Nginx conserva fallback, pero Docker construye S01, no V2. Sin Docker ejecutado ni publicación. [Reporte y capturas](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md). Parar antes de Incremento4.

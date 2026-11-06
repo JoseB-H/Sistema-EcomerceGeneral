@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { catalogQuery } from './catalog-client.js';
+import { exploreHref } from './catalog-navigation.js';
 import { useResource } from './use-resource.js';
 import { WorkCover, LoadingState, ErrorState, NotFound, formatLabel } from './components.jsx';
 
@@ -7,7 +7,7 @@ export default function WorkDetailPage({ api, id, search }) {
   const load = useCallback(signal => api.detail(id, { signal }), [api, id]);
   const resource = useResource(load);
   const params = new URLSearchParams(search);
-  const back = `/${catalogQuery(params.get('q') ?? '', params.get('format') ?? '')}`;
+  const back = exploreHref({ query: params.get('q') ?? '', format: params.get('format') ?? '' });
   if (resource.error?.code === 'not_found') return <NotFound work back={back} />;
   const work = resource.data?.item;
   return <main id="contenido" tabIndex={-1} className="catalog-main detail-main">

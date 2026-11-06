@@ -1,4 +1,5 @@
-import { catalogQuery } from './catalog-client.js';
+import { useEffect, useRef } from 'react';
+import { workHref } from './catalog-navigation.js';
 import { CoverArtwork } from './artwork.jsx';
 
 export const formatLabel = value => value === 'manga' ? 'Manga' : 'Manhwa';
@@ -19,21 +20,26 @@ export function WorkCover({ work, large = false }) {
     <span className="cover-bottom">UNIVERSO FICTICIO <ArrowIcon /></span>
   </div>;
 }
-export function WorkCard({ work, query, format }) {
-  const href = `/obras/${work.id}${catalogQuery(query, format)}`;
+export function WorkCard({ work, query, format, headingLevel = 2 }) {
+  const Heading = `h${headingLevel}`;
+  const href = workHref({ id: work.id, query, format });
   return <article className="work-card">
     <a href={href} aria-label={`Ver ficha de ${work.title}`} className="work-card-link">
       <WorkCover work={work} />
       <div className="card-meta"><span>{formatLabel(work.format)}</span><span>Obra ficticia</span></div>
-      <h2>{work.title}</h2>
+      <Heading>{work.title}</Heading>
       <p className="card-genre">{work.genres.join(' · ')}</p>
       <span className="card-action">Ver ficha <ArrowIcon /></span>
     </a>
   </article>;
 }
 export function SearchForm({ query, format, onChange, onSearch }) {
+  const input = useRef(null);
+  useEffect(() => {
+    if (window.location.hash === '#catalog-query') input.current?.focus();
+  }, []);
   return <form className="catalog-search" role="search" onSubmit={event => { event.preventDefault(); onSearch(query.trim(), format); }}>
-    <div className="search-field"><label htmlFor="catalog-query">Buscar obras</label><div className="search-input"><SearchIcon /><input id="catalog-query" type="search" maxLength={100} value={query} onChange={event => onChange({ query: event.target.value, format })} placeholder="Título, género o una nueva historia…" /></div></div>
+    <div className="search-field"><label htmlFor="catalog-query">Buscar obras</label><div className="search-input"><SearchIcon /><input ref={input} id="catalog-query" type="search" maxLength={100} value={query} onChange={event => onChange({ query: event.target.value, format })} placeholder="Título, género o una nueva historia…" /></div></div>
     <div className="format-field"><label htmlFor="catalog-format">Formato</label><select id="catalog-format" value={format} onChange={event => onChange({ query, format: event.target.value })}><option value="">Todos los formatos</option><option value="manga">Manga</option><option value="manhwa">Manhwa</option></select></div>
     <button className="button-primary" type="submit">Buscar <ArrowIcon /></button>
   </form>;
@@ -44,6 +50,6 @@ export function LoadingState({ detail = false }) {
 export function ErrorState({ detail = false, retry }) {
   return <section className="catalog-feedback error-feedback"><span className="feedback-symbol" aria-hidden="true">!</span><p role="alert">{detail ? 'No se pudo cargar la ficha' : 'No se pudo cargar el catálogo'}</p><p>Comprueba que el servidor local está disponible y vuelve a intentarlo.</p><button className="button-primary" onClick={retry}>Reintentar</button></section>;
 }
-export function NotFound({ work = false, back = '/' }) {
+export function NotFound({ work = false, back = '/explorar' }) {
   return <main id="contenido" tabIndex={-1} className="catalog-main"><section className="catalog-feedback not-found"><span className="feedback-symbol" aria-hidden="true"><SearchIcon /></span><span className="section-kicker">No encontrado</span><h1>{work ? 'No encontramos esta obra' : 'Esta página no existe'}</h1><p>Explora las obras de demostración disponibles en el catálogo.</p><a className="text-link" href={back}>Volver al catálogo <ArrowIcon /></a></section></main>;
 }

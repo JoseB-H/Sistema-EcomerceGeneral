@@ -1,28 +1,28 @@
 ---
 tags: [yitverse, continuidad, historial, respaldo]
 tipo: bitacora
-actualizado: 2026-11-05
+actualizado: 2026-11-06
 ---
 # Bitácora de continuidad — YitVerse
 
 > [!important] Leer primero al reanudar cualquier chat
-> **Incremento1 `daf3c85` aceptado y exclusivamente Incremento2 autorizado/completado para revisión local.** El sistema visual se centraliza/aplica sobre las pantallas actuales. No se crean nuevas rutas, no se publica y el Incremento3 requiere una nueva aprobación. Figma sigue pendiente, no aprobado.
+> **Incremento2 `fba88e3` aceptado; exclusivamente Incremento3 implementado para revisión local.** Inicio `/` y Explorar `/explorar` ya están separados con API real. Sin publicación ni PR; detenerse antes del Incremento4. Figma sigue pendiente. [Evidencia y capturas](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
 
 ## Estado de los frentes
 
 | Frente | Responsable / espacio | Estado comprobable | Retomar desde |
 | --- | --- | --- | --- |
-| Frontend V2 | Usuario + Codex; Figma como referencia pendiente | Inc1 aceptado; Inc2 sistema visual local en revisión; Inc3 no iniciado | [[31-YITVERSE-DISENO-VISUAL-V2]] |
+| Frontend V2 | Usuario + Codex; Figma como referencia pendiente | Inc1/Inc2 aceptados; Inc3 Inicio/Explorar local en revisión; Inc4 no autorizado | [[31-YITVERSE-DISENO-VISUAL-V2]] |
 | Visión y requisitos del producto | Documentación en GitHub/Obsidian | Visión, RF, RNF y trazabilidad documentados; decisiones de negocio aún pendientes | [[20-VISION-FUNCIONAL-YITVERSE]] |
 | Arquitectura Docker | Codex | Implementación y evidencia histórica S01 conservadas; no reejecutadas en este incremento | [[sprints/S01-REPORTE-PRUEBAS]] |
 | Obsidian y respaldo | GitHub + Obsidian Git local | Copia Markdown versionada en GitHub; sincronización del equipo aún no verificada | [[30-OBSIDIAN-GITHUB-SINCRONIZACION]] |
 
 ## Último acuerdo con el usuario
-**Fecha: 2026-11-05 (America/Bogota).**
+**Fecha: 2026-11-06 UTC.**
 
 **Acuerdo del Incremento1 (histórico, ya aceptado en `daf3c85`):** usuario aprueba los cinco incrementos y las decisiones provisionales sobre selección de demostración, continuar explorando no personalizado y categorías existentes. Autoriza ejecutar **solo el Incremento1**, con commit local. Prohíbe cambiar visuales/rutas/Backend/Database/Docker, publicar la rama, abrir PR o comenzar el Incremento2.
 
-**Acuerdo vigente:** el usuario acepta `daf3c85` y autoriza exclusivamente Incremento2: tokens/componentes/tema responsive, conservación de rutas/API/SVG y accesibilidad, comparativas antes/después y commit local. No autoriza push/PR ni Incremento3.
+**Acuerdo vigente:** el usuario acepta `fba88e3` y autoriza exclusivamente Incremento3: Inicio y Explorar, navegación compatible, pruebas, capturas, commit y bundle locales. Conservar SVG/API/infraestructura y respaldo Inc2; sin push/PR/fusiones ni Incremento4.
 
 **Antecedente conservado:**
 
@@ -34,14 +34,14 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 - Look editorial oscuro, **negro + azul eléctrico**.
 - Hero impactante con narrativa visual.
 - Portadas con mayor detalle y personalidad, no simples formas geométricas.
-- Jerarquía clara: destacados, continuar explorando **no personalizado**, **Selección de demostración** sin fechas inventadas y categorías derivadas de géneros existentes; decisiones del plan aprobado, aún sin implementar en V2.
+- Jerarquía clara: destacados, continuar explorando **no personalizado**, **Selección de demostración** sin fechas inventadas y categorías derivadas de géneros existentes; implementado en Incremento3 a partir de la API, sin personalización.
 - Vistas objetivo: Home, Explorar, Detalle, Home móvil y mini guía de estilos.
-- Figma es una referencia pendiente: el plan aprobado usa Markdown provisional, sin atribuir aprobación a sus mockups. El Incremento1 documental está aceptado; el Incremento2 solo actualiza el sistema visual existente y el Incremento3 espera autorización.
+- Figma es una referencia pendiente: el plan aprobado usa Markdown provisional, sin atribuir aprobación a sus mockups. Incrementos1/2 aceptados; Inicio/Explorar del Incremento3 implementados para revisión. Las portadas narrativas del Incremento4 esperan autorización.
 
 ## Qué no debe hacerse al reanudar
 - No confundir la planificación técnica de tres contenedores con el punto de avance visual.
 - No asegurar que el usuario perdió sus conversaciones: el historial de chats y la copia GitHub son cosas diferentes.
-- No afirmar que las pantallas están terminadas sin comprobar Figma.
+- No presentar Figma como aprobado ni confundir verificación técnica con aceptación visual del usuario.
 - No convertir ideas visuales en requisitos comerciales aprobados sin validación.
 - No afirmar sincronización local de Obsidian hasta probar pull y push en Windows.
 
@@ -59,7 +59,7 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 | 2026-11-05 | Figma | Creado archivo editable «YitVerse — Dirección Visual V2 · Editorial Dark» | [Abrir Figma](https://www.figma.com/design/dCLgExm48T9Ui6sTcEIhwu) |
 | 2026-11-05 | Respaldo | Iniciada esta bitácora y la especificación visual V2 en GitHub | Notas Markdown versionadas |
 
-**Próxima acción vigente:** entregar el Incremento2 para revisión del usuario; esperar aprobación expresa antes del Incremento3. No publicar esta rama ni abrir PR. La secuencia de diseño Figma anterior se conserva como antecedente, sin asumir pantallas terminadas.
+**Próxima acción vigente:** revisar Incremento3 y su commit/bundle locales. Esperar aprobación expresa antes del Incremento4 y antes de publicar/abrir PR. Figma sigue siendo referencia pendiente.
 
 
 ## Incidente Git local — 2026-11-05
@@ -74,7 +74,7 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 
 **Estado:** respaldo y clonación nueva pendientes de verificación con salida de terminal del usuario.
 
-**Prioridad registrada entonces:** diseñar V2 en Figma. **Acuerdo vigente:** el plan Markdown fue aprobado, pero únicamente su Incremento1 documental tiene autorización de ejecución; no hay aprobación visual Figma.
+**Prioridad registrada entonces:** diseñar V2 en Figma. **Acuerdo de ese momento:** solo Incremento1 documental autorizado. El punto vigente está al inicio de esta nota; no hay aprobación visual Figma.
 
 ### Actualización del incidente — 2026-11-05 18:14 (hora Perú)
 
@@ -105,3 +105,13 @@ La recuperación del Git local debe esperar a que la copia de seguridad se compl
 - **Pruebas reales:** 45/45 Backend,35/35 Frontend, ambos builds0; S01 idéntico por SHA256 antes/después. Chromium1440/768/390/320 sin desbordamiento, contraste/teclado/reduced-motion/estados/recuperación aprobados, cero errores JS. Comparativas de vistas existentes antes/después versionadas.
 - **Pendiente/límites:** revisión visual humana, Figma, Windows/lectores de pantalla/PG nativo y auditoría WCAG completa. La rama sigue solo local.
 - **Siguiente tarea:** revisar Incremento2; no iniciar Incremento3 hasta nueva aprobación. [Guía visual](32-GUIA-VISUAL-FRONTEND-V2.md) y [comparativas](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md).
+
+## Frontend V2 — Incremento3, 2026-11-06 UTC
+
+**Rama/base:** `feat/frontend-v2-editorial` desde `fba88e3`, aceptado por el usuario. **Terminado:** Inicio `/` y Explorar `/explorar` separados con API existente; Hero, Continuar explorando no personalizado, Selección de demostración y géneros reales. Rutas antiguas con q/format compatibles; ficha/estado/404, retorno filtrado e historial conservados. Seis SVG originales y Backend/Database/Docker/dependencias sin cambios.
+
+**Archivos:** HomePage/Hero/HomePage.css, home-sections/catalog-navigation; CatalogApp/CatalogPage/WorkDetailPage/components y CSS base/responsive; tres suites nuevas, CatalogApp tests y smoke; continuidad00/31/32/estado/alineación, guía local/diseño04/trazabilidad28/índice/README/plan, reporte y capturas. Lista completa en [reporte](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
+
+**Pruebas:**45 Backend y45 Frontend (35 anteriores +10), ambos builds, smoke Chromium dev y build local/preview1440/768/390/320 aprobados; sin overflow ni errores JS. Recarga SPA directa, historial, búsqueda/acentos/formato/géneros, teclado/foco, reduced-motion y estados/reintento verificados. Salud503 real sin PostgreSQL. Revisión independiente sin Critical/Important; jerarquía h3 de tarjetas en Inicio corregida con regresión. Capturas/mediciones en el reporte.
+
+**Commit:** `feat(frontend): add V2 home and dedicated explore view` (hash de entrega en el cierre/manifiesto externo; identificable con `git log -1 --format="%H %s"`). **Respaldo:** Inc2 verificado/conservado; nuevo bundle tras commit con verificación y clon restaurado registrados externamente. **Límites:** Windows/PG nativo/Docker/producción/lector de pantalla/WCAG integral/Figma no acreditados. Rama aún local, sin push/PR/fusión. **Siguiente tarea:** revisión del Incremento3; no iniciar Incremento4 sin nueva aprobación.

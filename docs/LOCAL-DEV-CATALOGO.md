@@ -2,7 +2,7 @@
 
 **Modalidad autorizada:** HU-001/HU-002 en `feat/local-dev-catalogo`, desde `feat/s01-infraestructura-docker` (`e672e2e`). Docker está pausado para este incremento; se conserva el laboratorio S01 y no se modifica ni fusiona `main` o el PR #3. [Diseño](superpowers/specs/2026-11-04-local-dev-catalogo-design.md), [plan](superpowers/plans/2026-11-04-local-dev-catalogo.md) y [pruebas](LOCAL-DEV-CATALOGO-PRUEBAS.md).
 
-En `feat/frontend-v2-editorial` el Incremento1 es únicamente documental: conserva el [rediseño azul nocturno](UI-AZUL-NOCTURNO.md) y no modifica las rutas o componentes. Esta rama V2 existe solo en cloud, sin push/PR; todavía no puede clonarse desde GitHub. Los comandos de recuperación usan la base pública `feat/ui-azul-nocturno`.
+En `feat/frontend-v2-editorial`, Incrementos1/2 aceptados y **Incremento3 implementado para revisión local**: Inicio y Explorar separados, conservando catálogo, API, ilustraciones y sistema visual. Esta rama sigue solo en cloud, sin push/PR; todavía no puede clonarse desde GitHub. Los comandos de recuperación remota usan la base pública `feat/ui-azul-nocturno`, que aún no contiene V2. El bundle final de Inc3 permite recuperar el trabajo local cuando se entregue, siempre en una carpeta nueva. [Evidencia Inc3](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
 
 ## Requisitos y copia de trabajo segura
 
@@ -47,12 +47,14 @@ Este comando alternativo se verificó en Linux con catálogo 200, salud 503 y ci
 
 No es necesario crear un `.env`. El aviso de Node de que no encontró `.env` es esperado si no se creó el archivo opcional. El script nativo lee únicamente `Backend/.env` y las variables heredadas del proceso; **no lee el `.env` Docker de la raíz**. No copiar ese archivo a Backend.
 
-Rutas actuales del navegador (sin cambios por Incremento1; Inicio/Explorar separados todavía no están implementados):
+Rutas actuales en la rama V2 local (Incremento3):
 
 | Ruta | Resultado |
 | --- | --- |
-| `/` | Seis obras ficticias; búsqueda por título, sinopsis o género y filtro manga/manhwa |
-| `/?q=aurora&format=manga` | Búsqueda compartible, sin distinguir mayúsculas ni acentos |
+| `/` | Inicio editorial con Hero, secciones no personalizadas, géneros y búsqueda hacia Explorar |
+| `/explorar` | Seis obras ficticias; búsqueda por título, sinopsis o género y filtro manga/manhwa |
+| `/explorar?q=aurora&format=manga` | Catálogo filtrado compartible y restaurado al recargar |
+| `/?q=aurora&format=manga` | URL antigua compatible; los nuevos enlaces de catálogo usan `/explorar` |
 | `/obras/archivo-aurora` | Ficha sintética; la vuelta conserva los filtros cuando se llega desde Explorar |
 | `/estado` | Diagnóstico técnico S01; sin PostgreSQL muestra indisponibilidad |
 | Ruta u obra desconocida | Estado no encontrado y enlace al catálogo |
@@ -82,7 +84,17 @@ npm --prefix Frontend test
 npm --prefix Frontend run build:local
 ```
 
-`build:local` genera el prototipo en `Frontend/dist`; usa internamente el modo Vite `prototype` porque `local` es un nombre reservado. Un build estático necesita un servidor con fallback de rutas a `index.html` y proxy `/api`; para esta entrega utilizar `npm run dev`.
+`build:local` genera el prototipo en `Frontend/dist`; usa internamente el modo Vite `prototype` porque `local` es un nombre reservado. Un build estático necesita un servidor con fallback de rutas a `index.html` y proxy `/api`; para desarrollar utilizar `npm run dev`. Preview se verificó también con proxy/fallback existentes:
+
+```powershell
+npm --prefix Frontend run build:local
+Push-Location -LiteralPath Frontend -ErrorAction Stop
+npm exec vite -- preview --host localhost --port 5174 --strictPort
+# Al detener preview con Ctrl+C:
+Pop-Location
+```
+
+Mantener Express activo en la otra terminal y abrir http://localhost:5174. Probar recarga directa en `/explorar?q=Aurora&format=manga`, `/obras/archivo-aurora` y `/estado`. Preview sirve para revisión local, no acredita despliegue de producción. Docker sigue construyendo la pantalla S01 y no fue modificado.
 
 El comando histórico `npm --prefix Frontend run build` conserva la pantalla técnica S01 y también se verificó. Ambos builds escriben en el mismo `dist`, que está ignorado: el último reemplaza al anterior. No hay que ejecutar scripts de integración/persistencia Docker para validar esta modalidad. No se modificaron Dockerfiles, Compose ni sus guardas de propiedad.
 

@@ -5,7 +5,7 @@ import CatalogApp from '../src/catalog/CatalogApp.jsx';
 import { collection, detail, source } from './catalog-fixtures.js';
 
 const api = { list: async () => collection, detail: async () => detail };
-beforeEach(() => window.history.replaceState({}, '', '/'));
+beforeEach(() => window.history.replaceState({}, '', '/explorar'));
 afterEach(() => vi.useRealTimers());
 
 test('header search reaches the single existing field without resetting catalog filters', async () => {
@@ -22,7 +22,7 @@ test('header search reaches the single existing field without resetting catalog 
 test('header search is reachable from a direct detail route', async () => {
   window.history.replaceState({}, '', '/obras/archivo-aurora?q=Aurora');
   render(<CatalogApp api={api} />);
-  expect(within(screen.getByRole('banner')).getByRole('link', { name: 'Buscar en el catálogo' })).toHaveAttribute('href', '/#catalog-query');
+  expect(within(screen.getByRole('banner')).getByRole('link', { name: 'Buscar en el catálogo' })).toHaveAttribute('href', '/explorar#catalog-query');
   await screen.findByRole('heading', { name: 'Archivo Aurora' });
 });
 
@@ -34,10 +34,11 @@ test('arriving through a search fragment focuses the field after React mounts', 
 });
 
 test('hero and footer lead only to implemented destinations', async () => {
+  window.history.replaceState({}, '', '/');
   render(<CatalogApp api={api} />);
-  expect(screen.getByRole('link', { name: 'Explorar catálogo' })).toHaveAttribute('href', '#catalog-query');
+  expect(screen.getByRole('link', { name: 'Explorar catálogo' })).toHaveAttribute('href', '/explorar');
   const footer = within(screen.getByRole('navigation', { name: 'Enlaces de YitVerse' }));
-  expect(footer.getByRole('link', { name: 'Explorar' })).toHaveAttribute('href', '/');
+  expect(footer.getByRole('link', { name: 'Explorar' })).toHaveAttribute('href', '/explorar');
   expect(footer.getByRole('link', { name: 'Estado de conexión' })).toHaveAttribute('href', '/estado');
   await screen.findByRole('link', { name: /Ver ficha de Archivo Aurora/ });
 });
@@ -60,6 +61,7 @@ test('search and format update results and URL without losing the filter on deta
   fireEvent.submit(screen.getByRole('search'));
   await act(async () => {});
   expect(calls.at(-1)).toMatchObject({ query: 'Aurora', format: 'manga' });
+  expect(window.location.pathname).toBe('/explorar');
   expect(window.location.search).toBe('?q=Aurora&format=manga');
   expect(screen.getByRole('link', { name: /Ver ficha de Archivo Aurora/ }).getAttribute('href')).toBe('/obras/archivo-aurora?q=Aurora&format=manga');
 });
@@ -107,7 +109,7 @@ test('direct detail uses its real identifier and returns to the filtered catalog
   expect(screen.getByRole('status')).toHaveTextContent('Cargando ficha');
   expect(await screen.findByRole('heading', { level: 1, name: 'Archivo Aurora' })).toBeInTheDocument();
   expect(ids).toEqual(['archivo-aurora']);
-  expect(screen.getByRole('link', { name: /Volver al catálogo/ })).toHaveAttribute('href', '/?q=Aurora&format=manga');
+  expect(screen.getByRole('link', { name: /Volver al catálogo/ })).toHaveAttribute('href', '/explorar?q=Aurora&format=manga');
   expect(screen.getByText(detail.item.synopsis)).toBeInTheDocument();
 });
 
@@ -173,4 +175,30 @@ test('timeout leaves loading and retry works even when a provider ignores abort'
   expect(screen.getByRole('alert')).toHaveTextContent('No se pudo cargar el catálogo');
   await act(async () => fireEvent.click(screen.getByRole('button', { name: 'Reintentar' })));
   expect(screen.getByRole('link', { name: /Ver ficha de Archivo Aurora/ })).toBeInTheDocument();
+});
+
+
+test('home and Explore expose separate destinations and accurate current-page navigation', async () => {
+  window.history.replaceState({}, '', '/');
+  const home = render(<CatalogApp api={api} />);
+  const nav = within(screen.getByRole('navigation', { name: 'Principal' }));
+  expect(nav.getByRole('link', { name: 'Inicio' })).toHaveAttribute('aria-current', 'page');
+  expect(nav.getByRole('link', { name: 'Explorar' })).toHaveAttribute('href', '/explorar');
+  expect(nav.getByRole('link', { name: 'Explorar' })).not.toHaveAttribute('aria-current');
+  await screen.findByRole('heading', { level: 1, name: 'Archivo Aurora' });
+  home.unmount();
+  window.history.replaceState({}, '', '/explorar?q=Aurora&format=manga');
+  render(<CatalogApp api={api} />);
+  expect(screen.getByRole('heading', { level: 1, name: 'Explorar el catálogo' })).toBeInTheDocument();
+  expect(within(screen.getByRole('navigation', { name: 'Principal' })).getByRole('link', { name: 'Explorar' })).toHaveAttribute('aria-current', 'page');
+  expect(screen.getByRole('searchbox')).toHaveValue('Aurora');
+  expect(screen.getByRole('combobox')).toHaveValue('manga');
+  await screen.findByRole('link', { name: /Ver ficha de Archivo Aurora/ });
+});
+
+test('legacy empty filter parameters still render the full catalog instead of home', async () => {
+  window.history.replaceState({}, '', '/?q=&format=');
+  render(<CatalogApp api={api} />);
+  expect(screen.getByRole('heading', { level: 1, name: 'Explorar el catálogo' })).toBeInTheDocument();
+  await screen.findByRole('link', { name: /Ver ficha de Archivo Aurora/ });
 });

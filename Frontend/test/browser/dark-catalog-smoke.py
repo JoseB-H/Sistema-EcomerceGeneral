@@ -49,7 +49,58 @@ with sync_playwright() as p:
     def screenshot(name):
         page.screenshot(path=str(output / (name + '.png')), full_page=True, animations='disabled')
 
-    page.goto(base)
+    # Home consumes the same API; no duplicated static catalog or personal history.
+    page.goto(base + '/')
+    expect(page.get_by_role('heading', level=1, name=data['items'][0]['title'])).to_be_visible()
+    expect(page.get_by_role('region', name='Continuar explorando')).to_be_visible()
+    expect(page.get_by_role('region', name='Selección de demostración')).to_be_visible()
+    expect(catalog()).to_have_count(6)
+    home_viewports = []
+    for width, height in [(1440, 1000), (768, 1024), (390, 844), (320, 800)]:
+        page.set_viewport_size({'width': width, 'height': height})
+        assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), ('home', width)
+        expect(page.get_by_role('navigation', name='Principal').get_by_role('link', name='Inicio')).to_have_attribute('aria-current', 'page')
+        assert page.get_by_role('searchbox').count() == 1
+        assert page.get_by_role('heading', level=1).count() == 1
+        for link in page.locator('.catalog-header a, .genre-link').all():
+            bounds = link.bounding_box()
+            assert bounds['height'] >= 44 and bounds['width'] >= 44, ('home', width, bounds)
+        screenshot('inicio-' + str(width))
+        if width == 390:
+            page.locator('.catalog-header').screenshot(path=str(output / 'navegacion-mobile.png'))
+        home_viewports.append({'width': width, 'overflow': False})
+    home_ids = page.locator('svg [id]').evaluate_all('(nodes) => nodes.map(node => node.id)')
+    assert len(home_ids) == len(set(home_ids))
+    # Native keyboard navigation: Home -> Explore -> detail -> back, preserving history.
+    page.set_viewport_size({'width': 1440, 'height': 1000})
+    page.get_by_role('link', name='Explorar catálogo').focus()
+    assert page.get_by_role('link', name='Explorar catálogo').evaluate('(node) => getComputedStyle(node).outlineStyle') == 'solid'
+    page.keyboard.press('Enter')
+    expect(page).to_have_url(base + '/explorar')
+    expect(catalog()).to_have_count(6)
+    catalog().first.click()
+    expect(page.get_by_role('heading', level=1, name='Archivo Aurora')).to_be_visible()
+    page.get_by_role('link', name=re.compile('Volver al catálogo')).click()
+    expect(page).to_have_url(base + '/explorar')
+    page.go_back()
+    expect(page.get_by_role('heading', level=1, name='Archivo Aurora')).to_be_visible()
+    page.go_back()
+    expect(page).to_have_url(base + '/explorar')
+    page.go_back()
+    expect(page).to_have_url(base + '/')
+    expect(page.get_by_role('heading', level=1, name='Archivo Aurora')).to_be_visible()
+    # Search and existing genre links use canonical Explore queries.
+    page.get_by_role('searchbox').fill('ÓRBITA')
+    page.get_by_role('combobox').select_option('manhwa')
+    page.get_by_role('button', name=re.compile('Buscar')).click()
+    expect(catalog()).to_have_count(1)
+    assert '/explorar?q=%C3%93RBITA&format=manhwa' in page.url
+    screenshot('filtros-desktop')
+    page.goto(base + '/')
+    page.get_by_role('region', name='Descubre por género').get_by_role('link', name='Misterio', exact=True).click()
+    expect(page.get_by_role('searchbox')).to_have_value('Misterio')
+    expect(catalog()).to_have_count(2)
+    page.goto(base + '/explorar')
     expect(catalog()).to_have_count(6)
     screenshot('catalogo-desktop')
     viewport_results = []
@@ -95,7 +146,7 @@ with sync_playwright() as p:
         viewport_results.append({'width': width, 'overflow': False, 'cover_ratio': round(covers[0], 2)})
 
     page.set_viewport_size({'width': 1440, 'height': 1000})
-    page.goto(base)
+    page.goto(base + '/explorar')
     expect(catalog()).to_have_count(6)
     page.keyboard.press('Tab')
     expect(page.get_by_role('link', name='Saltar al contenido')).to_be_focused()
@@ -109,9 +160,6 @@ with sync_playwright() as p:
     header_bounds = page.get_by_role('banner').bounding_box()
     assert field_bounds['y'] >= header_bounds['y'] + header_bounds['height'], (field_bounds, header_bounds)
     assert page.get_by_role('searchbox').evaluate('(node) => getComputedStyle(node).outlineStyle') == 'solid'
-    page.get_by_role('link', name='Explorar catálogo').focus()
-    page.keyboard.press('Enter')
-    expect(page.get_by_role('searchbox')).to_be_focused()
 
     colors = page.evaluate('''() => {
       const style = selector => getComputedStyle(document.querySelector(selector));
@@ -160,7 +208,7 @@ with sync_playwright() as p:
 
     pending = []
     page.route('**/api/works', lambda route: pending.append(route))
-    page.goto(base)
+    page.goto(base + '/explorar')
     expect(page.get_by_role('status')).to_have_text('Cargando catálogo…')
     screenshot('estado-cargando')
     assert pending
@@ -177,7 +225,7 @@ with sync_playwright() as p:
         page.goto(base + '/obras/despues-del-ultimo-tren?q=Aurora&format=manga')
         expect(page.get_by_role('heading', level=1, name='Después del último tren')).to_be_visible()
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
-        expect(page.get_by_role('link', name=re.compile('Volver al catálogo'))).to_have_attribute('href', '/?q=Aurora&format=manga')
+        expect(page.get_by_role('link', name=re.compile('Volver al catálogo'))).to_have_attribute('href', '/explorar?q=Aurora&format=manga')
         screenshot('ficha-' + str(width))
     page.get_by_role('link', name='Buscar en el catálogo').focus()
     page.keyboard.press('Enter')
@@ -200,13 +248,62 @@ with sync_playwright() as p:
     expect(page.get_by_role('alert')).to_be_visible()
     screenshot('estado-conexion')
 
+    reload_paths = [
+        ('/', 'Archivo Aurora'),
+        ('/explorar', 'Explorar el catálogo'),
+        ('/explorar?q=%C3%93RBITA&format=manhwa', 'Explorar el catálogo'),
+        ('/?q=%C3%93RBITA&format=manhwa', 'Explorar el catálogo'),
+        ('/?format=manhwa', 'Explorar el catálogo'),
+        ('/?q=&format=', 'Explorar el catálogo'),
+        ('/obras/archivo-aurora?q=Aurora&format=manga', 'Archivo Aurora'),
+        ('/no-existe', 'Esta página no existe'),
+    ]
+    for path, heading in reload_paths:
+        assert page.goto(base + path).status == 200
+        expect(page.get_by_role('heading', level=1, name=heading)).to_be_visible()
+        assert page.reload().status == 200
+        expect(page.get_by_role('heading', level=1, name=heading)).to_be_visible()
+        if 'format=' in path and '/obras/' not in path:
+            expect(page.get_by_role('combobox')).to_have_value('manhwa' if 'manhwa' in path else '')
+        assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+    page.goto(base + '/estado')
+    page.reload()
+    expect(page.get_by_role('alert')).to_be_visible()
+    page.goto(base + '/#catalog-query')
+    expect(page.get_by_role('searchbox')).to_be_focused()
+    # Deterministic fault injection tests UI states only, never changes production data.
+    pending_home = []
+    page.route('**/api/works', lambda route: pending_home.append(route))
+    page.goto(base + '/')
+    expect(page.get_by_role('status')).to_have_text('Cargando catálogo…')
+    assert catalog().count() == 0
+    screenshot('inicio-cargando')
+    assert pending_home
+    for route in pending_home:
+        route.abort()
+    expect(page.get_by_role('alert')).to_be_visible()
+    screenshot('inicio-error')
+    page.unroute('**/api/works')
+    page.get_by_role('button', name='Reintentar').click()
+    expect(catalog()).to_have_count(6)
+    page.route('**/api/works', lambda route: route.fulfill(json={'source': {'kind': 'synthetic', 'persisted': False}, 'items': []}))
+    page.goto(base + '/')
+    expect(page.get_by_role('heading', name='Todavía no hay obras para explorar')).to_be_visible()
+    assert catalog().count() == 0
+    screenshot('inicio-vacio')
+    page.unroute('**/api/works')
+    page.get_by_role('button', name='Reintentar').click()
+    expect(catalog()).to_have_count(6)
+
     page.emulate_media(reduced_motion='reduce')
-    page.goto(base)
+    page.goto(base + '/explorar')
     expect(catalog()).to_have_count(6)
     catalog().first.hover()
     motion = page.locator('.work-cover').first.evaluate('(node) => {const s=getComputedStyle(node);return [s.transitionDuration,s.animationName,s.transform,s.scrollBehavior];}')
     assert motion == ['0s', 'none', 'none', 'auto'], motion
     assert not errors, errors
     assert not external, external
-    print(json.dumps({'viewports': viewport_results, 'contrast': ratios, 'svg_gradient_ids': len(ids), 'keyboard_and_history': 'passed', 'loading_error_empty_retry_404_health503': 'passed', 'reduced_motion': motion, 'page_errors': errors, 'external_requests': external}, ensure_ascii=False, indent=2))
+    report = {'home_viewports': home_viewports, 'direct_reload_paths': [path for path, _ in reload_paths] + ['/estado'], 'home_states_and_genres': 'passed', 'viewports': viewport_results, 'contrast': ratios, 'svg_gradient_ids': len(ids), 'keyboard_and_history': 'passed', 'loading_error_empty_retry_404_health503': 'passed', 'reduced_motion': motion, 'page_errors': errors, 'external_requests': external}
+    (output / 'mediciones.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+    print(json.dumps(report, ensure_ascii=False, indent=2))
     browser.close()

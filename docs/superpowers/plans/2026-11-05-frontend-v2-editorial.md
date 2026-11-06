@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task **respetando la autorización de ejecución por incremento del usuario**. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Estado:** PLAN APROBADO por el usuario el 2026-11-05, incluidas las decisiones provisionales. **Incremento1 aceptado y exclusivamente Incremento2 autorizado por el usuario.** Incrementos3–5 esperan nueva aprobación. No hay mockups Figma aprobados ni diseño final acreditado. La rama y su commit permanecerán locales; push/PR expresamente prohibidos en esta entrega.
+**Estado:** PLAN APROBADO por el usuario el 2026-11-05, incluidas las decisiones provisionales. **Incrementos1/2 aceptados y exclusivamente Incremento3 autorizado por el usuario.** Incrementos4–5 esperan nueva aprobación. No hay mockups Figma aprobados ni diseño final acreditado. La rama y su commit permanecerán locales; push/PR expresamente prohibidos en esta entrega.
 
 **Goal:** Evolucionar el frontend existente hacia Inicio, Explorar, Detalle y adaptación móvil V2, con una guía visual común, conservando catálogo/API y las garantías funcionales.
 
@@ -97,14 +97,14 @@ En **cada incremento** se actualizan `docs/00-BITACORA-DE-CONTINUIDAD.md`, `docs
 
 **Interfaces:** `api.list({query,format,signal})`, hook y WorkCard actuales. Helpers de navegación y derivación descritos arriba; sin nuevos parámetros de API.
 
-- [ ] TDD: tests nuevos deben fallar antes de crear helpers/pantalla. Probar `/` como Inicio, `/explorar` como catálogo y `/?q=...&format=...` como acceso compatible al catálogo anterior. Mantener rutas de detalle/estado/404 y fragmento de búsqueda.
-- [ ] Inicio muestra datos de `api.list()` mediante `deriveHomeSections`: destacado, continuar explorando no personalizado, selección ficticia y categorías. Sin API válida: carga/error/reintento/vacío, sin catálogo estático alternativo.
-- [ ] Un solo buscador real por pantalla, reutilizando SearchForm. En Inicio envía a `/explorar?q=...&format=...`; en Explorar actualiza la URL y mantiene foco/estado. Header y hero conservan acceso por teclado al campo, incluso tras montaje dinámico.
-- [ ] Catálogo conserva acentos, filtro manga/manhwa, vacío/limpiar, abortos/timeout y respuesta tardía ignorada. Cambiar expectativas de rutas de tests solo por la separación aprobada; conservar todos sus casos funcionales.
-- [ ] Las tarjetas conservan `/obras/:id` con q/format; Volver al catálogo lleva a `/explorar` con filtros. Atrás/adelante nativos siguen funcionando. Los enlaces antiguos de detalle siguen siendo válidos.
-- [ ] Probar categorías desde géneros reales hacia `q`; validar que ninguna sección afirma fechas, rankings, historial o progreso. No añadir un parámetro `genre` que el Backend rechaza.
-- [ ] Tests de `deriveHomeSections`: vacío, menos de seis resultados, categorías únicas y registros sin mutación; nunca fabricar obras faltantes.
-- [ ] Verde: suites completas y navegador; acotar selectores del smoke a cada pantalla/sección, porque Inicio puede representar la misma obra en varias secciones. Actualizar tres documentos obligatorios. Commit: `feat(frontend): add V2 home and dedicated explore view`.
+- [x] TDD: tests nuevos deben fallar antes de crear helpers/pantalla. Probar `/` como Inicio, `/explorar` como catálogo y `/?q=...&format=...` como acceso compatible al catálogo anterior. Mantener rutas de detalle/estado/404 y fragmento de búsqueda.
+- [x] Inicio muestra datos de `api.list()` mediante `deriveHomeSections`: destacado, continuar explorando no personalizado, selección ficticia y categorías. Sin API válida: carga/error/reintento/vacío, sin catálogo estático alternativo.
+- [x] Un solo buscador real por pantalla, reutilizando SearchForm. En Inicio envía a `/explorar?q=...&format=...`; en Explorar actualiza la URL y mantiene foco/estado. Header y hero conservan acceso por teclado al campo, incluso tras montaje dinámico.
+- [x] Catálogo conserva acentos, filtro manga/manhwa, vacío/limpiar, abortos/timeout y respuesta tardía ignorada. Cambiar expectativas de rutas de tests solo por la separación aprobada; conservar todos sus casos funcionales.
+- [x] Las tarjetas conservan `/obras/:id` con q/format; Volver al catálogo lleva a `/explorar` con filtros. Atrás/adelante nativos siguen funcionando. Los enlaces antiguos de detalle siguen siendo válidos.
+- [x] Probar categorías desde géneros reales hacia `q`; validar que ninguna sección afirma fechas, rankings, historial o progreso. No añadir un parámetro `genre` que el Backend rechaza.
+- [x] Tests de `deriveHomeSections`: vacío, menos de seis resultados, categorías únicas y registros sin mutación; nunca fabricar obras faltantes.
+- [x] Verde: suites completas y navegador; acotar selectores del smoke a cada pantalla/sección, porque Inicio puede representar la misma obra en varias secciones. Actualizar tres documentos obligatorios. Commit: `feat(frontend): add V2 home and dedicated explore view`.
 
 ## Incremento4 — portadas narrativas, ficha y móvil
 
@@ -134,4 +134,4 @@ En **cada incremento** se actualizan `docs/00-BITACORA-DE-CONTINUIDAD.md`, `docs
 
 ## Punto de parada actual
 
-El usuario aceptó el Incremento1 `daf3c85` y autorizó **exclusivamente Incremento2**, completado para revisión local. La rama `feat/frontend-v2-editorial` se creó desde `127aa8a`; en Incremento2 se centraliza/aplica el sistema visual conservando lógica, rutas, API y SVG. **No se publica ni abre PR y no se avanza al Incremento3 sin nueva aprobación.**
+El usuario aceptó Incremento2 `fba88e3` y autorizó **exclusivamente Incremento3**, implementado y verificado para revisión local. Inicio/Explorar reutilizan API, tokens, componentes y navegación nativa; detalle, estado, URLs antiguas y seis SVG se conservan. **Sin push/PR/fusión. Detenerse antes del Incremento4 hasta nueva aprobación.** Figma pendiente. Evidencia en [reporte Inc3](../../FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).

@@ -1,6 +1,6 @@
-# Guía visual Frontend V2 — Incremento2
+# Guía visual Frontend V2 — Incrementos2 y3
 
-**Fecha:** 2026-11-05 (America/Bogota). **Rama local:** `feat/frontend-v2-editorial`. Base de este incremento: `daf3c85`. El usuario autorizó únicamente el sistema visual; Figma sigue pendiente y el Incremento3 no está iniciado. [Pruebas y comparativas](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md).
+**Actualización:** 2026-11-06 UTC. **Rama local:** `feat/frontend-v2-editorial`. Sistema visual Inc2 aceptado en `fba88e3`; Inicio/Explorar Inc3 implementados para revisión. Sin push/PR ni Incremento4. Figma pendiente. [Pruebas Inc2](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md) · [Pruebas Inc3](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
 
 ## Organización y alcance
 
@@ -8,11 +8,12 @@ El contenedor existente importa, en orden:
 
 1. `Frontend/src/catalog/tokens.css`: valores de tema, tipografía, espacios, dimensiones, radios, sombras y movimiento.
 2. `Frontend/src/catalog/catalog.css`: estilos de los componentes existentes y preferencias de accesibilidad.
-3. `Frontend/src/catalog/catalog-responsive.css`: todos los umbrales de viewport y adaptaciones estructurales.
+3. `Frontend/src/catalog/HomePage.css`: composición editorial, secciones y descubrimiento por género; reutiliza tokens.
+4. `Frontend/src/catalog/catalog-responsive.css`: todos los umbrales de viewport y adaptaciones estructurales, incluidos Inicio y Explorar.
 
 Los tokens se declaran en `body.catalog-mode` y `.catalog-shell`: el body necesita su propio acceso a los valores porque no hereda de un descendiente. No se introduce tema en `:root`, `body` global ni `App.css`. Las reglas de componentes quedan dentro de `.catalog-shell`. El build técnico S01 conserva su contenido exacto.
 
-Rutas actuales conservadas: `/` (hero/catálogo), `/obras/:id`, `/estado` y404. No hay Home/Explorar separados ni ruta para esta guía. No se alteran consultas/API, componentes funcionales, seis registros ni SVG originales. El único cambio JSX es importar los dos CSS nuevos.
+Rutas actuales: `/` Inicio editorial; `/explorar` catálogo completo; `/obras/:id`, `/estado` y404 conservados. `/?q=…` o `/?format=…` mantienen catálogo compatible. No hay ruta para esta guía ni nuevo router/dependencias. API, seis registros y SVG originales intactos. Detalles del comportamiento en el reporte Inc3.
 
 ## Paleta y semántica
 
@@ -80,8 +81,14 @@ Los cuatro umbrales conservados son1199/800/599/359px. Con `prefers-reduced-moti
 
 ## Reutilización de componentes y estados
 
-`WorkCard`, `WorkCover`, `SearchForm`, Hero existente, navegación, ficha y mensajes mantienen sus props/handlers y contenido. Botones: normal azul, hover más oscuro, foco cian, activo sin sombra y deshabilitado cuando ya lo requiere el diagnóstico. Selección de formato conserva borde y superficie informativa visibles.
+`WorkCard`, `WorkCover`, `SearchForm` y estados se reutilizan en Inicio y Explorar. `Hero` se extrae como componente: datos reales del primer registro, portada SVG original, fondo NightArtwork y enlaces reales a ficha/Explorar. Antes de cargar o ante error/vacío muestra una invitación genérica, sin obra inventada. El foco del fragmento se comparte dentro de SearchForm. Botones: normal azul, hover más oscuro, foco cian, activo sin sombra y deshabilitado cuando ya lo requiere el diagnóstico. Selección de formato conserva borde y superficie informativa visibles.
 
-Carga conserva `role=status`; error conserva `role=alert` y Reintentar; vacío mantiene Limpiar búsqueda;404 mantiene el regreso. `/estado` usa la misma superficie y semántica local. No se agregan pantallas, lectura, seguimiento, historial personal o comercio.
+Carga conserva `role=status`; error conserva `role=alert` y Reintentar; vacío mantiene Limpiar búsqueda;404 mantiene el regreso. `/estado` usa la misma superficie y semántica local. Se agregan únicamente Inicio y Explorar; no lectura, seguimiento, historial personal o comercio.
 
 Contraste/teclado/movimiento reducido se miden en Chromium; objetivo WCAG AA, sin declarar una auditoría integral ni certificación. Windows y lectores de pantalla no se verificaron en esta entrega.
+
+## Composición editorial del Incremento3
+
+Inicio presenta Hero, un único SearchForm, Continuar explorando no personalizado, Selección de demostración y géneros existentes. La portada destacada conserva3:4; su texto sigue decorativo y el título/formato reales se exponen fuera del SVG. Las filas editoriales usan tres columnas en escritorio/tablet, dos en móvil y una a320px; conservan la misma escala de tokens. A768px se apilan encabezados de sección; en móvil Hero y portada se apilan y los accesos a géneros ocupan todo el ancho.
+
+Explorar mantiene la retícula6/3/2/1, encabezado propio, formulario, recuento real y estados. Navegación siempre visible Inicio/Explorar/Estado; `aria-current` solo señala la ruta correspondiente. Se añade ancho mínimo44px al enlace Inicio y se conserva foco cian. Footer enlaza las mismas rutas. Las acciones no disponibles no aparecen.

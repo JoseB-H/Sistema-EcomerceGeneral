@@ -9,9 +9,10 @@
 - [Plan de cinco incrementos](superpowers/plans/2026-11-05-frontend-v2-editorial.md): Inc1 aceptado e Inc2 autorizado; detener antes de Inc3.
 - [Guía visual Frontend V2](32-GUIA-VISUAL-FRONTEND-V2.md).
 - [Pruebas y comparativas del Incremento2](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md).
+- [Inicio/Explorar: pruebas y capturas del Incremento3](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
 - [Recuperación Git Windows](RECUPERACION-GIT-WINDOWS.md): conservar original/respaldo y usar destinos nuevos.
 
-Esta rama/documentación de Incrementos1–2 no se ha publicado. No interpretar los enlaces locales como disponibilidad de `feat/frontend-v2-editorial` en GitHub.
+Esta rama/documentación de Incrementos1–3 no se ha publicado. No interpretar los enlaces locales como disponibilidad de `feat/frontend-v2-editorial` en GitHub.
 
 ## Documentación actualmente publicada
 - [Marco Scrum](16-MARCO-SCRUM.md): sprints, backlog y eventos.

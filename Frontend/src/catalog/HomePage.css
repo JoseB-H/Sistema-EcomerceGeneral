@@ -1,0 +1,25 @@
+/* Editorial composition reuses the Increment 2 theme and responsive scale. */
+.catalog-shell .home-hero { min-height: calc(var(--hero-min-height) + var(--space-16)); }
+.catalog-shell .home-hero .hero-copy { width: 60%; }
+.catalog-shell .home-hero h1 { max-width: 12ch; }
+.catalog-shell .home-hero .intro-copy { max-width: var(--intro-copy-width); }
+.catalog-shell .hero-work-meta { display: flex; flex-wrap: wrap; gap: var(--space-3); color: var(--ink-soft); font-size: var(--type-label); }
+.catalog-shell .hero-work-meta span:first-child { color: var(--cyan); }
+.catalog-shell .home-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-6); margin-top: var(--space-6); }
+.catalog-shell .home-feature-cover { position: relative; z-index: 1; width: var(--detail-cover-min); margin: var(--space-10) auto; }
+.catalog-shell .home-feature-cover > span { display: block; margin-top: var(--space-4); color: var(--muted); font-size: var(--type-caption); text-align: center; }
+.catalog-shell .home-section { margin-top: var(--space-16); }
+.catalog-shell .home-section-heading { display: flex; justify-content: space-between; align-items: end; gap: var(--space-6); margin-bottom: var(--space-6); }
+.catalog-shell .home-section h2 { margin: 0; font-size: var(--type-section); font-weight: var(--weight-bold); line-height: var(--leading-tight); letter-spacing: var(--tracking-heading); }
+.catalog-shell .home-section p:not(.section-kicker) { max-width: var(--reading-width); margin: var(--space-3) 0 0; color: var(--muted); font-size: var(--type-copy); }
+.catalog-shell .home-section-heading > a { flex-shrink: 0; }
+.catalog-shell .home-section .work-card h3 { font-size: var(--type-body); }
+.catalog-shell .home-works-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.catalog-shell .genre-discovery { padding: var(--space-8); border: var(--border-width) solid var(--line); border-radius: var(--radius-surface); background: var(--hero-background); }
+.catalog-shell .genre-links { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+.catalog-shell .genre-link { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--space-6); min-height: var(--control-size); padding: var(--space-3) var(--space-5); border: var(--border-width) solid var(--control-line); border-radius: var(--radius-control); background: var(--surface); text-decoration: none; font-size: var(--type-ui); }
+.catalog-shell .genre-link svg { color: var(--detail); }
+.catalog-shell .genre-link:hover { border-color: var(--detail); background: var(--info-surface); }
+.catalog-shell .explore-intro { margin: var(--space-6) 0 var(--space-8); }
+.catalog-shell .explore-intro h1 { margin: 0; font-size: var(--type-detail); line-height: var(--leading-heading); letter-spacing: var(--tracking-display); }
+.catalog-shell .explore-intro > p:last-child { color: var(--muted); max-width: var(--reading-width); margin-bottom: 0; }
