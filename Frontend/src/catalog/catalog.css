@@ -59,14 +59,14 @@ body.catalog-mode { margin: 0; padding: 0; background: var(--background); color:
 .catalog-shell .results-heading h2 > span { color: var(--detail); }
 .catalog-shell .results-heading > p { margin: 0 0 var(--space-1); font-size: var(--type-caption); color: var(--muted); }
 .catalog-shell .works-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-6); }
-.catalog-shell .work-card { min-width: 0; }
+.catalog-shell .work-card { min-width: 0; overflow-wrap: anywhere; }
 .catalog-shell .work-card-link { display: flex; flex-direction: column; height: 100%; text-decoration: none; border-radius: var(--radius-card); }
-.catalog-shell .work-cover { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; aspect-ratio: var(--cover-ratio); border: var(--border-width) solid var(--cover-line); border-radius: var(--radius-card); padding: var(--space-3); background: var(--cover-surface); color: var(--ink); box-shadow: var(--shadow-card); }
+.catalog-shell .work-cover { min-width: 0; position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; aspect-ratio: var(--cover-ratio); border: var(--border-width) solid var(--cover-line); border-radius: var(--radius-card); padding: var(--space-3); background: var(--cover-surface); color: var(--ink); box-shadow: var(--shadow-card); }
 .catalog-shell .cover-artwork { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
 .catalog-shell .cover-top, .catalog-shell .cover-bottom { position: relative; display: flex; align-items: center; justify-content: space-between; gap: var(--space-1); font-size: var(--type-art); letter-spacing: var(--tracking-art); }
 .catalog-shell .cover-top { color: var(--cover-ink); }
 .catalog-shell .cover-top > span { text-transform: uppercase; font-size: var(--type-art-micro); background: color-mix(in srgb, var(--background) 75%, transparent); border: var(--border-width) solid var(--cover-line); border-radius: var(--radius-control); padding: var(--space-half) var(--space-1); }
-.catalog-shell .cover-title { margin-top: auto; padding-bottom: var(--space-3); font-size: var(--type-cover); font-weight: var(--weight-bold); letter-spacing: var(--tracking-display); line-height: var(--leading-heading); text-shadow: var(--shadow-title); }
+.catalog-shell .cover-title { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; flex-shrink: 0; margin-top: auto; padding-bottom: var(--space-3); font-size: var(--type-cover); font-weight: var(--weight-bold); letter-spacing: var(--tracking-display); line-height: var(--leading-heading); text-shadow: var(--shadow-title); }
 .catalog-shell .cover-bottom { font-size: var(--type-art-micro); color: var(--cover-muted); border-top: var(--border-width) solid color-mix(in srgb, var(--cover-muted) 28%, transparent); padding-top: var(--space-2); }
 .catalog-shell .cover-bottom svg { width: var(--icon-small); height: var(--icon-small); }
 .catalog-shell .card-meta { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-2); align-items: center; margin: var(--space-4) 0 var(--space-2); font-size: var(--type-caption); color: var(--muted); }
@@ -93,23 +93,27 @@ body.catalog-mode { margin: 0; padding: 0; background: var(--background); color:
 .catalog-shell .detail-main { padding-top: var(--space-6) !important; }
 .catalog-shell .back-link { display: inline-flex; align-items: center; gap: var(--space-3); min-height: var(--control-min); margin-bottom: var(--space-8); color: var(--muted); text-decoration: none; font-size: var(--type-ui); }
 .catalog-shell .back-link:hover { color: var(--detail); }
-.catalog-shell .work-detail { display: grid; grid-template-columns: minmax(var(--detail-cover-min), var(--detail-cover-width)) minmax(0, 1fr); gap: var(--detail-gap); padding-bottom: var(--space-4); }
-.catalog-shell .detail-art { min-width: 0; }
+.catalog-shell .work-detail { display: grid; grid-template-columns: minmax(var(--detail-cover-min), var(--detail-cover-width)) minmax(0, 1fr); grid-template-areas: "art heading" "art copy"; column-gap: var(--detail-gap); row-gap: var(--space-8); align-items: start; padding: var(--space-8); border: var(--border-width) solid var(--line); border-radius: var(--radius-hero); background: var(--hero-background); }
+.catalog-shell .detail-art { grid-area: art; min-width: 0; margin: 0; }
 .catalog-shell .cover-large { padding: var(--space-6); box-shadow: var(--shadow-cover-large); }
 .catalog-shell .cover-large .cover-title { font-size: var(--type-cover-large); }
 .catalog-shell .cover-large .cover-top { font-size: var(--type-art-large); }
 .catalog-shell .cover-large .cover-top > span, .catalog-shell .cover-large .cover-bottom { font-size: var(--type-art); }
-.catalog-shell .detail-art > p { margin: var(--space-4) 0; color: var(--muted); text-align: center; font-size: var(--type-caption); }
-.catalog-shell .detail-copy { min-width: 0; padding-top: var(--space-2); }
-.catalog-shell .detail-copy h1 { max-width: var(--reading-width); margin: var(--space-4) 0 var(--space-6); font-size: var(--type-detail); line-height: var(--leading-heading); letter-spacing: var(--tracking-display); }
-.catalog-shell .detail-badges, .catalog-shell .genre-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.catalog-shell .detail-badges { margin-top: var(--space-6); }
-.catalog-shell .detail-badges span { padding: var(--space-1) var(--space-3); border: var(--border-width) solid var(--info-line); border-radius: var(--radius-control); background: var(--info-surface); color: var(--info-text); font-size: var(--type-caption); }
-.catalog-shell .detail-badges span + span { color: var(--muted); background: var(--surface); border-color: var(--line); }
-.catalog-shell .genre-tags span { padding: var(--space-1) var(--space-3); border: var(--border-width) solid var(--line); border-radius: var(--radius-pill); color: var(--ink-soft); font-size: var(--type-caption); background: var(--surface); }
-.catalog-shell .synopsis { margin-top: var(--space-8); padding-top: var(--space-5); border-top: var(--border-width) solid var(--line); }
-.catalog-shell .synopsis h2 { margin: 0 0 var(--space-3); font-size: var(--type-subheading); font-weight: var(--weight-semibold); }
-.catalog-shell .synopsis p { max-width: var(--reading-width); margin: 0; color: var(--ink-soft); font-size: var(--type-body); line-height: var(--leading-copy); }
+.catalog-shell .detail-art > figcaption { margin: var(--space-4) 0 0; color: var(--muted); text-align: center; font-size: var(--type-caption); }
+.catalog-shell .detail-heading { grid-area: heading; min-width: 0; }
+.catalog-shell .detail-heading h1 { max-width: var(--reading-width); margin: var(--space-4) 0 var(--space-6); font-size: var(--type-detail); line-height: var(--leading-heading); letter-spacing: var(--tracking-display); overflow-wrap: anywhere; }
+.catalog-shell .detail-copy { grid-area: copy; min-width: 0; overflow-wrap: anywhere; }
+.catalog-shell .work-facts { margin: 0; }
+.catalog-shell .work-facts > div { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+.catalog-shell .work-facts dt { color: var(--muted); font-size: var(--type-label); }
+.catalog-shell .work-facts dd { margin: 0; padding: var(--space-1) var(--space-3); border: var(--border-width) solid var(--info-line); border-radius: var(--radius-control); background: var(--info-surface); color: var(--info-text); font-size: var(--type-label); }
+.catalog-shell .genre-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; margin: var(--space-3) 0 0; padding: 0; }
+.catalog-shell .genre-tags li { min-width: 0; max-width: 100%; padding: var(--space-1) var(--space-3); border: var(--border-width) solid var(--line); border-radius: var(--radius-control); color: var(--ink-soft); font-size: var(--type-caption); background: var(--surface); }
+.catalog-shell .detail-genres h2, .catalog-shell .synopsis h2 { margin: 0 0 var(--space-3); font-size: var(--type-subheading); font-weight: var(--weight-semibold); }
+.catalog-shell .missing-metadata { color: var(--muted); font-size: var(--type-copy); margin: 0; }
+.catalog-shell .synopsis { margin-top: var(--space-8); padding-top: var(--space-6); border-top: var(--border-width) solid var(--line); }
+.catalog-shell .synopsis p { max-width: var(--reading-width); margin: 0; color: var(--ink-soft); font-size: var(--type-body); line-height: var(--leading-copy); white-space: pre-line; }
+.catalog-shell .detail-state-title { margin: 0 0 var(--space-6); font-size: var(--type-section); }
 .catalog-shell .demo-detail-note { margin-top: var(--space-8); padding: var(--space-4) var(--space-5); border: var(--border-width) solid var(--line); border-left: var(--accent-border-width) solid var(--blue); border-radius: 0 var(--radius-control) var(--radius-control) 0; background: var(--surface); }
 .catalog-shell .demo-detail-note h2 { margin: 0 0 var(--space-2); color: var(--detail); font-size: var(--type-label); font-weight: var(--weight-semibold); }
 .catalog-shell .demo-detail-note p { margin: 0; color: var(--muted); font-size: var(--type-ui); line-height: var(--leading-copy); }
@@ -118,7 +122,7 @@ body.catalog-mode { margin: 0; padding: 0; background: var(--background); color:
 .catalog-shell .catalog-footer .brand-symbol { width: var(--space-8); height: var(--space-8); }
 .catalog-shell .footer-identity > p { margin: var(--space-3) 0 0; color: var(--muted); font-size: var(--type-caption); }
 .catalog-shell .catalog-footer nav { display: flex; gap: var(--space-6); }
-.catalog-shell .catalog-footer nav a { min-height: var(--control-min); display: inline-flex; align-items: center; color: var(--ink-soft); font-size: var(--type-label); text-decoration: none; }
+.catalog-shell .catalog-footer nav a { min-width: var(--control-min); justify-content: center; min-height: var(--control-min); display: inline-flex; align-items: center; color: var(--ink-soft); font-size: var(--type-label); text-decoration: none; }
 .catalog-shell .catalog-footer nav a:hover { color: var(--detail); }
 .catalog-shell .footer-note { margin: 0; color: var(--muted); font-size: var(--type-caption); text-align: right; line-height: var(--leading-copy); }
 .catalog-shell .health-view { padding: 0 var(--layout-gutter); width: 100%; }

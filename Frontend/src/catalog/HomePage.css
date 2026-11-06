@@ -1,6 +1,6 @@
 /* Editorial composition reuses the Increment 2 theme and responsive scale. */
 .catalog-shell .home-hero { min-height: calc(var(--hero-min-height) + var(--space-16)); }
-.catalog-shell .home-hero .hero-copy { width: 60%; }
+.catalog-shell .home-hero .hero-copy { width: 60%; min-width: 0; overflow-wrap: anywhere; }
 .catalog-shell .home-hero h1 { max-width: 12ch; }
 .catalog-shell .home-hero .intro-copy { max-width: var(--intro-copy-width); }
 .catalog-shell .hero-work-meta { display: flex; flex-wrap: wrap; gap: var(--space-3); color: var(--ink-soft); font-size: var(--type-label); }
@@ -17,7 +17,7 @@
 .catalog-shell .home-works-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .catalog-shell .genre-discovery { padding: var(--space-8); border: var(--border-width) solid var(--line); border-radius: var(--radius-surface); background: var(--hero-background); }
 .catalog-shell .genre-links { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
-.catalog-shell .genre-link { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--space-6); min-height: var(--control-size); padding: var(--space-3) var(--space-5); border: var(--border-width) solid var(--control-line); border-radius: var(--radius-control); background: var(--surface); text-decoration: none; font-size: var(--type-ui); }
+.catalog-shell .genre-link { min-width: 0; max-width: 100%; overflow-wrap: anywhere; display: inline-flex; align-items: center; justify-content: space-between; gap: var(--space-6); min-height: var(--control-size); padding: var(--space-3) var(--space-5); border: var(--border-width) solid var(--control-line); border-radius: var(--radius-control); background: var(--surface); text-decoration: none; font-size: var(--type-ui); }
 .catalog-shell .genre-link svg { color: var(--detail); }
 .catalog-shell .genre-link:hover { border-color: var(--detail); background: var(--info-surface); }
 .catalog-shell .explore-intro { margin: var(--space-6) 0 var(--space-8); }

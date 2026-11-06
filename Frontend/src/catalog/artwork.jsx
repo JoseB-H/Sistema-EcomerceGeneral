@@ -11,14 +11,17 @@ const directions = {
 };
 
 function Stars() {
+  // Same stars and radii, grouped into two paths to avoid ten repeated nodes per scene.
+  const points = [[67, 73, 2], [132, 182, 1], [242, 65, 1], [325, 147, 2], [454, 98, 1], [526, 215, 1], [97, 320, 2], [385, 294, 1], [497, 371, 1], [213, 254, 2]];
   return <g fill="#E0F2FE">
-    {[[67, 73], [132, 182], [242, 65], [325, 147], [454, 98], [526, 215], [97, 320], [385, 294], [497, 371], [213, 254]].map(([x, y], i) => <circle key={x} cx={x} cy={y} r={i % 3 === 0 ? 2 : 1} opacity={i % 2 ? .35 : .75} />)}
+    {[.75, .35].map((opacity, group) => <path key={opacity} opacity={opacity} d={points.filter((_, i) => i % 2 === group).map(([x, y, r]) => `M${x - r} ${y}a${r} ${r} 0 1 0 ${2 * r} 0a${r} ${r} 0 1 0 ${-2 * r} 0Z`).join('')} />)}
     <path d="m448 192 2-9 2 9 9 2-9 2-2 9-2-9-9-2Z" opacity=".8" />
   </g>;
 }
 
 function Scene({ name, light, accent }) {
   if (name === 'aurora') return <>
+    <path d="m64 208 62-58 75 36 62-88m-137 52 43-69" fill="none" stroke={light} opacity=".3" /><g fill={light}><circle cx="64" cy="208" r="3" /><circle cx="201" cy="186" r="3" /><circle cx="263" cy="98" r="3" /></g>
     <g fill="none" stroke={light} opacity=".4"><path d="M60 0Q410 180 135 450" strokeWidth="14" /><path d="M240-20Q530 230 325 470" strokeWidth="4" /><path d="M350 0Q620 180 460 440" strokeWidth="40" opacity=".35" /></g>
     <path d="m0 570 125-226 150 131 145-98 180 168v255H0Z" fill="#102646" />
     <path d="m125 344 33 78-42-17-30 28Z" fill="#C7E8F5" opacity=".75" />
@@ -30,6 +33,7 @@ function Scene({ name, light, accent }) {
     <circle cx="300" cy="345" r="104" fill="#313F83" stroke="#BFCBFF" strokeWidth="2" /><path d="M222 278q132 6 167 104M205 327q130 2 168 94" fill="none" stroke={light} opacity=".35" />
     <g fill="#DCE8FF" stroke="#8CA6DD"><path d="m135 188 66-19 29 92-67 19Z" /><path d="m432 449 58 25-31 75-58-25Z" /><path d="m91 440 40-34 52 64-40 33Z" /></g>
     <g stroke="#526AAA" strokeWidth="3"><path d="m154 202 38-11m-33 28 38-11m223 310 30 12m-20-29 30 12" /></g>
+    <path d="m135 188 22 39 44-58m-44 58 73 34m202 188 8 47 50-22" fill="none" stroke="#657DB3" strokeWidth="2" /><path d="M66 337q70-213 322-218" fill="none" stroke={light} strokeDasharray="4 13" opacity=".4" />
     <path d="M0 650Q220 565 600 655v145H0Z" fill="#0B1631" />
   </>;
   if (name === 'garden') return <>
@@ -39,18 +43,20 @@ function Scene({ name, light, accent }) {
     <g stroke={light} fill="#15334C"><path d="M286 536v105m-77-105q77-117 154 0Z" /><path d="M402 592v50m-47-50q47-71 94 0Z" /><path d="M139 567v67m-56-67q56-86 112 0Z" /></g>
     <g fill={light}><circle cx="214" cy="369" r="3" /><circle cx="373" cy="428" r="4" /><circle cx="297" cy="294" r="2" /><circle cx="88" cy="457" r="3" /></g>
     <path d="M0 669q300-72 600-7v138H0Z" fill="#091A2D" />
+    <g fill="none" stroke={light} opacity=".4"><path d="M225 532q61-76 122 0m-246 33q37-49 74 0m191 24q37-49 74 0" /><path d="m304 608 20 2m-42 24 25 3m-59 28 39 4m-87 30 57 6" strokeWidth="4" /></g>
   </>;
   if (name === 'city') return <>
     <circle cx="352" cy="228" r="94" fill={light} opacity=".12" />
     <g fill="#15203D" stroke="#6660A4"><path d="M18 658V352h82v306m18 0V260h70v398m25 0V385h53v273m28 0V194h84v464m24 0V318h61v340m21 0V244h91v414" /><path d="M127 260v-43h51v43m129-66 29-69 29 69m141 50v-63h45v63" /></g>
     <g fill={light} opacity=".75">{[45, 142, 229, 320, 425, 511].map((x, i) => <g key={x}><path d={`M${x} 413h8v12h-8Zm0 37h8v12h-8Zm0 37h8v12h-8Z`} /><path d={`M${x + 18} ${i % 2 ? 340 : 540}h8v12h-8Z`} /></g>)}</g>
-    <path d="M-20 591q320-160 650 0" fill="none" stroke={accent} strokeWidth="3" /><path d="M0 683h600v117H0Z" fill="#0C142A" />
+    <path d="M-20 591q320-160 650 0" fill="none" stroke={accent} strokeWidth="3" /><path d="M0 607q300-139 600 0M90 548v23m105-55v18m105-26v17m105-9v18m105 14v23" fill="none" stroke={accent} opacity=".5" strokeWidth="2" /><path d="M0 683h600v117H0Z" fill="#0C142A" />
   </>;
   if (name === 'train') return <>
     <circle cx="418" cy="216" r="76" fill={light} opacity=".15" />
     <path d="m0 620 245-184h112L600 620v180H0Z" fill="#0B1B35" />
     <g stroke="#3D6E95" fill="none"><path d="m50 800 220-365M545 800 333 435M140 800l137-365M461 800 132-365" /><path d="M110 690h382M158 622h278M203 555h183M235 499h112" /></g>
     <path d="M228 419q0-97 72-97t72 97v116H228Z" fill="#1D4363" stroke={light} strokeWidth="2" /><path d="M247 403h106v62H247Z" fill="#0C213B" stroke={light} /><path d="M300 403v62" stroke={light} />
+    <path d="m251 498-85 153h169Zm98 0-85 153h169Z" fill={light} opacity=".08" /><circle cx="479" cy="276" r="25" fill="#0C213B" stroke={light} opacity=".8" /><path d="M479 260v17l12 6" fill="none" stroke={light} strokeWidth="3" />
     <g fill={light}><circle cx="251" cy="498" r="6" /><circle cx="349" cy="498" r="6" /></g><path d="M250 548h100" stroke={accent} strokeWidth="4" />
     <path d="M70 587V321m0 0h89M516 587V321m0 0h-89" fill="none" stroke="#385C7E" strokeWidth="6" /><path d="M129 321h43m256 0h43" stroke={light} strokeWidth="5" />
   </>;
@@ -59,18 +65,19 @@ function Scene({ name, light, accent }) {
     <g fill="none" stroke={light}><path d="M-20 250q135-130 290-15t350-63M-20 285q135-130 290-15t350-63M70 410q200-118 510-10" opacity=".5" /><path d="M-10 370q230-148 440-64" strokeWidth="3" opacity=".2" /></g>
     <g fill="#102248" stroke="#5279B0"><path d="m65 474 139-84 95 33-82 70-86 65Z" /><path d="m335 541 132-62 102 50-107 71Z" /><path d="m224 289 67-40 63 28-62 54Z" /></g>
     <g stroke={light} fill="none" opacity=".6"><path d="m154 417 31-118 35 106M185 299l66 53-79 11" /><path d="m439 502 18-81 22 72m-22-72 44 35-52 7" /></g>
+    <path d="m185 299 1 59 65-6m206 69 1 38 43-3M90 216q18-20 36 0m9-28q13-14 26 0M352 369q21-24 42 0" fill="none" stroke={light} opacity=".6" strokeWidth="2" />
     <path d="M0 708q300-91 600-28v120H0Z" fill="#0A1532" />
   </>;
 }
 
 export function CoverArtwork({ id }) {
   const unique = useId().replaceAll(':', '');
-  const [scene, sky, light, accent] = directions[id] ?? directions['archivo-aurora'];
+  const [scene, sky, light, accent] = directions[Object.hasOwn(directions, id) ? id : 'archivo-aurora'];
   return <svg className="cover-artwork" viewBox="0 0 600 800" aria-hidden="true" focusable="false">
     <defs>
       <linearGradient id={`${unique}-sky`} x2=".7" y2="1"><stop stopColor={sky} /><stop offset="1" stopColor="#091225" /></linearGradient>
       <radialGradient id={`${unique}-glow`}><stop stopColor={accent} stopOpacity=".35" /><stop offset="1" stopColor={accent} stopOpacity="0" /></radialGradient>
-      <linearGradient id={`${unique}-shade`} x2="0" y2="1"><stop offset=".35" stopColor="#070F20" stopOpacity="0" /><stop offset="1" stopColor="#070F20" stopOpacity=".96" /></linearGradient>
+      <linearGradient id={`${unique}-shade`} x2="0" y2="1"><stop offset=".55" stopColor="#070F20" stopOpacity="0" /><stop offset="1" stopColor="#070F20" stopOpacity=".96" /></linearGradient>
     </defs>
     <path fill={`url(#${unique}-sky)`} d="M0 0h600v800H0Z" />
     <circle cx="420" cy="200" r="360" fill={`url(#${unique}-glow)`} />

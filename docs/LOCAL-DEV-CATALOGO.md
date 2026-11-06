@@ -2,7 +2,7 @@
 
 **Modalidad autorizada:** HU-001/HU-002 en `feat/local-dev-catalogo`, desde `feat/s01-infraestructura-docker` (`e672e2e`). Docker está pausado para este incremento; se conserva el laboratorio S01 y no se modifica ni fusiona `main` o el PR #3. [Diseño](superpowers/specs/2026-11-04-local-dev-catalogo-design.md), [plan](superpowers/plans/2026-11-04-local-dev-catalogo.md) y [pruebas](LOCAL-DEV-CATALOGO-PRUEBAS.md).
 
-En `feat/frontend-v2-editorial`, Incrementos1/2 aceptados y **Incremento3 implementado para revisión local**: Inicio y Explorar separados, conservando catálogo, API, ilustraciones y sistema visual. Esta rama sigue solo en cloud, sin push/PR; todavía no puede clonarse desde GitHub. Los comandos de recuperación remota usan la base pública `feat/ui-azul-nocturno`, que aún no contiene V2. El bundle final de Inc3 permite recuperar el trabajo local cuando se entregue, siempre en una carpeta nueva. [Evidencia Inc3](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
+En `feat/frontend-v2-editorial`, Incrementos1–3 aceptados técnicamente y **Incremento4 implementado para revisión local**: ficha/arte/móvil refinados, conservando Inicio/Explorar, catálogo, API y sistema visual. Esta rama sigue solo en cloud, sin push/PR; todavía no puede clonarse desde GitHub. Los comandos de recuperación remota usan la base pública `feat/ui-azul-nocturno`, que aún no contiene V2. Se conservan bundles anteriores y se entrega uno nuevo de Inc4, siempre recuperable en una carpeta nueva. [Evidencia Inc4](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md).
 
 ## Requisitos y copia de trabajo segura
 

@@ -4,6 +4,6 @@ export function deriveHomeSections(works) {
     featured: works[0] ?? null,
     discovery: works.slice(1, 4),
     selection: works.slice(4),
-    categories: [...new Set(works.flatMap(work => work.genres))],
+    categories: [...new Set(works.flatMap(work => work.genres).map(genre => genre.trim()).filter(Boolean))],
   };
 }

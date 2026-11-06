@@ -1,6 +1,6 @@
-# Guía visual Frontend V2 — Incrementos2 y3
+# Guía visual Frontend V2 — Incrementos2–4
 
-**Actualización:** 2026-11-06 UTC. **Rama local:** `feat/frontend-v2-editorial`. Sistema visual Inc2 aceptado en `fba88e3`; Inicio/Explorar Inc3 implementados para revisión. Sin push/PR ni Incremento4. Figma pendiente. [Pruebas Inc2](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md) · [Pruebas Inc3](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
+**Actualización:** 2026-11-06 UTC. **Rama local:** `feat/frontend-v2-editorial`. Incremento3 aceptado técnicamente en `ddf908e`; arte/ficha/móvil Inc4 implementados para revisión. Sin push/PR ni Incremento5. Figma pendiente. [Pruebas Inc2](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md) · [Pruebas Inc3](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md) · [Comparativas Inc4](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md).
 
 ## Organización y alcance
 
@@ -13,7 +13,7 @@ El contenedor existente importa, en orden:
 
 Los tokens se declaran en `body.catalog-mode` y `.catalog-shell`: el body necesita su propio acceso a los valores porque no hereda de un descendiente. No se introduce tema en `:root`, `body` global ni `App.css`. Las reglas de componentes quedan dentro de `.catalog-shell`. El build técnico S01 conserva su contenido exacto.
 
-Rutas actuales: `/` Inicio editorial; `/explorar` catálogo completo; `/obras/:id`, `/estado` y404 conservados. `/?q=…` o `/?format=…` mantienen catálogo compatible. No hay ruta para esta guía ni nuevo router/dependencias. API, seis registros y SVG originales intactos. Detalles del comportamiento en el reporte Inc3.
+Rutas actuales: `/` Inicio editorial; `/explorar` catálogo completo; `/obras/:id`, `/estado` y404 conservados. `/?q=…` o `/?format=…` mantienen catálogo compatible. No hay ruta para esta guía ni nuevo router/dependencias. API y seis registros intactos; SVG originales refinados como base en Inc4. El reporte Inc3 conserva el comportamiento de rutas y el reporte Inc4 sus ajustes de presentación.
 
 ## Paleta y semántica
 
@@ -60,7 +60,7 @@ Interlineados: cuerpo1,7, lectura1,85, titulares1,1 y controles/texto compacto1,
 
 - Escala compartida:4/8/12/16/20/24/32/40/48/64px (`--space-*`), más2px para detalles finos. No duplicar medidas corrientes como literales en componentes nuevos.
 - Controles: mínimo44px (`--control-min`), campos/botones48px (`--control-size`). Campos con padding vertical8px; el espacio interior se comprueba frente a la línea tipográfica real. Selector de formato200px donde comparte fila; se apila en móvil.
-- Portadas3:4 (`--cover-ratio`); límite de lectura y anchura de ficha expresados por tokens de layout. Los SVG y textos no se reconstruyen.
+- Portadas3:4 (`--cover-ratio`); límite de lectura y anchura de ficha expresados por tokens de layout. Los SVG conservan sus escenas/paletas. Solo el título decorativo repetido dentro de portada se limita a tres líneas; el título accesible externo conserva todo el contenido.
 - Radios: controles8px, tarjetas12px, superficies14px, hero16px; píldoras con radio completo.
 - Borde normal1px, acento3px. Foco2px y separación4px; también se aplica a los destinos de navegación con `tabIndex`.
 - Sombras: tokens distintos para tarjeta, acción principal, hover y portada grande. Hover de portada con desplazamiento máximo3px; sin animación continua.
@@ -92,3 +92,13 @@ Contraste/teclado/movimiento reducido se miden en Chromium; objetivo WCAG AA, si
 Inicio presenta Hero, un único SearchForm, Continuar explorando no personalizado, Selección de demostración y géneros existentes. La portada destacada conserva3:4; su texto sigue decorativo y el título/formato reales se exponen fuera del SVG. Las filas editoriales usan tres columnas en escritorio/tablet, dos en móvil y una a320px; conservan la misma escala de tokens. A768px se apilan encabezados de sección; en móvil Hero y portada se apilan y los accesos a géneros ocupan todo el ancho.
 
 Explorar mantiene la retícula6/3/2/1, encabezado propio, formulario, recuento real y estados. Navegación siempre visible Inicio/Explorar/Estado; `aria-current` solo señala la ruta correspondiente. Se añade ancho mínimo44px al enlace Inicio y se conserva foco cian. Footer enlaza las mismas rutas. Las acciones no disponibles no aparecen.
+
+## Ficha, arte y móvil — Incremento4
+
+Se reutilizan tokens/radios/superficies existentes; no nueva paleta o breakpoint. La ficha usa grid con áreas `art heading / art copy` y marco con degradado del tema; en≤599px cambia a `heading / art / copy`. La portada móvil se limita al token de ancho de ficha y mantiene3:4. El título aparece antes que el arte; formato es `dl`, géneros lista semántica y sinopsis conserva párrafos. Los textos indivisibles usan `overflow-wrap:anywhere` en título, cuerpo, tarjetas, Hero y enlaces por género; no se oculta el texto esencial para evitar desbordes.
+
+El Hero móvil reduce padding/márgenes con la escala compartida, sin suprimir la sinopsis ni acciones disponibles. La navegación principal sigue visible, sin menú oculto nuevo. Footer suma ancho mínimo44px al enlace Inicio; campos48px y formato completo conservados. Rotación simulada y resize preservan valores/filtros.
+
+Carga/error de ficha tienen h1 «Ficha de obra», status/alert y regreso filtrado; el error conserva reintento y explica alternativas.404 de obra explica que la obra no se encuentra en la colección y conserva la búsqueda. Vacíos válidos usan avisos neutrales; no sustituyen una respuesta API inválida por una obra de respaldo.
+
+Las portadas y SVG siguen decorativos (`aria-hidden`, `focusable=false`); título, formato y aviso ficticio están accesibles fuera del arte. No se añade un alt redundante al SVG. Quitar su visibilidad no elimina información ni navegación. Se conserva `useId` por instancia para gradientes únicos y se protege el fallback gráfico frente a propiedades heredadas de JavaScript. No significa que exista una portada persistida en la API.

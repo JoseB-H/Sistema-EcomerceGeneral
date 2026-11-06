@@ -4,7 +4,7 @@
 
 ## Punto de continuidad vigente — Frontend V2
 
-Incremento2 `fba88e3` aceptado; **exclusivamente Incremento3 Inicio/Explorar implementado para revisión local** en `feat/frontend-v2-editorial`. `/` editorial, `/explorar` catálogo; detalle/estado/404, consultas anteriores y API conservados. Incremento4, publicación y PR requieren nueva aprobación. Ver [bitácora](00-BITACORA-DE-CONTINUIDAD.md), [especificación V2](31-YITVERSE-DISENO-VISUAL-V2.md) y [evidencia Inc3](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md). Figma pendiente.
+Incremento3 `ddf908e` aceptado técnicamente; **exclusivamente Incremento4 Arte/ficha/móvil implementado para revisión local** en `feat/frontend-v2-editorial`. Ficha editorial, campos vacíos explícitos, títulos extensos sin desbordes, seis SVG refinados como base y adaptación móvil. API/rutas/catálogo/servicios conservados. Incremento5, publicación y PR requieren nueva aprobación. Ver [bitácora](00-BITACORA-DE-CONTINUIDAD.md), [especificación V2](31-YITVERSE-DISENO-VISUAL-V2.md) y [evidencia Inc4](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md). Figma pendiente.
 
 ## Estado verificado
 - Repositorio `JoseB-H/Sistema-EcomerceGeneral` disponible en GitHub.
@@ -137,3 +137,13 @@ Implementado en `feat/ui-azul-nocturno`, desde catálogo `4794803`: header/hero 
 **Pruebas:**45 Backend y45 Frontend (35 anteriores +10), ambos builds, smoke Chromium dev y build local/preview1440/768/390/320 aprobados; sin overflow ni errores JS. Recarga SPA directa, historial, búsqueda/acentos/formato/géneros, teclado/foco, reduced-motion y estados/reintento verificados. Salud503 real sin PostgreSQL. Revisión independiente sin Critical/Important; jerarquía h3 de tarjetas en Inicio corregida con regresión. Capturas/mediciones en el reporte.
 
 **Commit:** `feat(frontend): add V2 home and dedicated explore view` (hash de entrega en el cierre/manifiesto externo; identificable con `git log -1 --format="%H %s"`). **Respaldo:** Inc2 verificado/conservado; nuevo bundle tras commit con verificación y clon restaurado registrados externamente. **Límites:** Windows/PG nativo/Docker/producción/lector de pantalla/WCAG integral/Figma no acreditados. Rama aún local, sin push/PR/fusión. **Siguiente tarea:** revisión del Incremento3; no iniciar Incremento4 sin nueva aprobación.
+
+## Frontend V2 — Incremento4, 2026-11-06 UTC
+
+**Rama/base:** `feat/frontend-v2-editorial` desde `ddf908e`, aceptado técnicamente. **Implementado:** ficha editorial con título/formato antes de portada en móvil; géneros semánticos, sinopsis por párrafos, avisos de campos válidos vacíos, estados/regreso filtrado; títulos extensos y controles táctiles. Se refinan los seis SVG existentes, sin dirección nueva; estrellas agrupadas reducen nodos241→208. API/rutas/catálogo/servicios/infraestructura/dependencias conservados.
+
+**Archivos:** WorkDetailPage/components/artwork/Hero, CSS base/responsive/HomePage y helper de secciones; nueva suite de ficha y smoke responsive/fixtures, prueba extra de categorías; documentos de continuidad, guía/reporte/capturas, diseño04/trazabilidad28/índice/guía local/README/plan. [Lista, decisiones, comparativas y pruebas](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md).
+
+**Verificación:**45 Backend/58 Frontend (45 previas +13 nuevas), ambos builds y Chromium dev/preview320/390/768/1440 aprobados. Fixtures extensos/vacíos/incompletos, resize/rotación simulada, filtros/historial/recargas, teclado/foco/reduced-motion; sin desbordes ni errores JS en recorridos probados. Título móvil390px pasa de857px a328,17px; solo el título repetido decorativo se limita a tres líneas. Fallos reproducidos/corregidos con RED→GREEN documentados.
+
+**Commit de entrega:** `feat(frontend): refine V2 original covers detail and mobile layouts` (hash en cierre/manifiesto externo; no autorreferencia circular). **Respaldo:** Inc3/anteriores preservados; nuevo bundle tras commit, con verificación/restauración real registrada externamente. **Límites:** Windows/dispositivos físicos/otros navegadores/lectores de pantalla/WCAG integral/PG nativo/Docker/producción/Figma no acreditados. Rama local, sin push/PR/merge. **Próxima tarea:** revisión del Incremento4; Incremento5 preparado, no iniciado ni autorizado.

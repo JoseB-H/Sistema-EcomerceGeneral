@@ -17,3 +17,7 @@ test('does not invent titles or categories for empty and small responses', () =>
   expect(deriveHomeSections([])).toEqual({ featured: null, discovery: [], selection: [], categories: [] });
   expect(deriveHomeSections([work])).toEqual({ featured: work, discovery: [], selection: [], categories: work.genres });
 });
+
+test('genre discovery omits blank labels and consolidates surrounding whitespace', () => {
+  expect(deriveHomeSections([{ ...work, genres: ['', '  ', 'Drama', ' Drama '] }]).categories).toEqual(['Drama']);
+});

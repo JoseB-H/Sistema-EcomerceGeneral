@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task **respetando la autorización de ejecución por incremento del usuario**. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Estado:** PLAN APROBADO por el usuario el 2026-11-05, incluidas las decisiones provisionales. **Incrementos1/2 aceptados y exclusivamente Incremento3 autorizado por el usuario.** Incrementos4–5 esperan nueva aprobación. No hay mockups Figma aprobados ni diseño final acreditado. La rama y su commit permanecerán locales; push/PR expresamente prohibidos en esta entrega.
+**Estado:** PLAN APROBADO por el usuario el 2026-11-05, incluidas las decisiones provisionales. **Incrementos1–3 aceptados técnicamente y exclusivamente Incremento4 autorizado.** Incremento5 espera nueva aprobación. No hay mockups Figma aprobados ni diseño final acreditado. La rama y su commit permanecerán locales; push/PR expresamente prohibidos en esta entrega.
 
 **Goal:** Evolucionar el frontend existente hacia Inicio, Explorar, Detalle y adaptación móvil V2, con una guía visual común, conservando catálogo/API y las garantías funcionales.
 
@@ -110,11 +110,11 @@ En **cada incremento** se actualizan `docs/00-BITACORA-DE-CONTINUIDAD.md`, `docs
 
 **Interfaces:** mismos IDs, WorkCover y metadatos del API; arte separado de los datos de catálogo.
 
-- [ ] Crear las seis ilustraciones originales con escena/composición/detalle más narrativos, reutilizando la identidad existente. Conservar la proporción3:4 y avisos de ficción. No importar personajes, portadas o imágenes protegidas.
-- [ ] Evolucionar hero y ficha, espacios/títulos/tags y navegación móvil real. Acciones de ficha limitadas a lo actualmente disponible; no simular lectura/seguimiento con botones inactivos.
-- [ ] Probar carga y dimensiones del arte, textos largos, foco, targets44px y ausencia de desbordes en320/390/768/1440px. Si hay carga diferida, reservar dimensiones para evitar saltos; el fallo de una imagen no elimina título/enlace de la obra.
-- [ ] Verificar texto/contraste, aviso ficticio, reduced-motion, regreso filtrado y que la fuente sigue siendo API. Añadir regresiones de comportamientos nuevos/fallos encontrados antes de corregirlos; comparar capturas para estilos.
-- [ ] Actualizar tres documentos obligatorios y guía visual. Commit: `feat(frontend): refine V2 original covers detail and mobile layouts`.
+- [x] Refinar composición/detalles de las seis ilustraciones existentes como base, según autorización acotada del Incremento4; no reemplazarlas ni adoptar una dirección artística nueva. Conservar la proporción3:4 y avisos de ficción. No importar personajes, portadas o imágenes protegidas.
+- [x] Evolucionar hero y ficha, espacios/títulos/tags y navegación móvil real. Acciones de ficha limitadas a lo actualmente disponible; no simular lectura/seguimiento con botones inactivos.
+- [x] Probar carga y dimensiones del arte, textos largos, foco, targets44px y ausencia de desbordes en320/390/768/1440px. Si hay carga diferida, reservar dimensiones para evitar saltos; el fallo de una imagen no elimina título/enlace de la obra.
+- [x] Verificar texto/contraste, aviso ficticio, reduced-motion, regreso filtrado y que la fuente sigue siendo API. Añadir regresiones de comportamientos nuevos/fallos encontrados antes de corregirlos; comparar capturas para estilos.
+- [x] Actualizar tres documentos obligatorios y guía visual. Commit: `feat(frontend): refine V2 original covers detail and mobile layouts`.
 
 ## Incremento5 — entrega verificable
 
@@ -134,4 +134,4 @@ En **cada incremento** se actualizan `docs/00-BITACORA-DE-CONTINUIDAD.md`, `docs
 
 ## Punto de parada actual
 
-El usuario aceptó Incremento2 `fba88e3` y autorizó **exclusivamente Incremento3**, implementado y verificado para revisión local. Inicio/Explorar reutilizan API, tokens, componentes y navegación nativa; detalle, estado, URLs antiguas y seis SVG se conservan. **Sin push/PR/fusión. Detenerse antes del Incremento4 hasta nueva aprobación.** Figma pendiente. Evidencia en [reporte Inc3](../../FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
+El usuario aceptó técnicamente Incremento3 `ddf908e` y autorizó **exclusivamente Incremento4**, implementado para revisión local. Se refina arte existente, ficha y móvil; no contratos/API/servicios/Docker/dependencias nuevas. **Sin push/PR/fusión. Detenerse antes del Incremento5 hasta nueva aprobación.** Figma pendiente. Evidencia en [reporte Inc4](../../FRONTEND-V2-INCREMENTO-4-PRUEBAS.md).

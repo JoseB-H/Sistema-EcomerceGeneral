@@ -1,6 +1,6 @@
 # Diseño del Frontend — React + Vite
 
-**Estado actual:** S01 conservado; V2 Incremento3 Inicio/Explorar implementado para revisión local, API y ficha sintética conservadas. Los apartados anteriores registran su evolución histórica. Sin publicación ni autorización para Incremento4. [Evidencia actual](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md).
+**Estado actual:** S01 conservado; V2 Incremento4 arte/ficha/móvil implementado para revisión local, API y catálogo sintético conservados. Los apartados anteriores registran su evolución histórica. Sin publicación ni autorización para Incremento5. [Evidencia actual](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md).
 
 ## Responsabilidad del componente
 Presentar información y permitir interacciones con el usuario a través de una API HTTP. No contiene lógica de integridad del servidor ni credenciales privadas.
@@ -91,3 +91,9 @@ Revisión de presentación: el selector de tablet se amplió a 170px para mostra
 `CatalogApp` reutiliza rutas por pathname/enlaces nativos: Inicio `/`, catálogo `/explorar`, ficha `/obras/:id`, diagnóstico `/estado`,404. `catalog-navigation` concentra enlaces y compatibilidad de consultas antiguas en `/`. `HomePage` usa el mismo cliente API/hook; `home-sections` deriva orden y géneros sin datos de respaldo/personalización. `Hero` reutiliza arte original. SearchForm comparte foco de fragmento; WorkCard permite nivel de encabezado3 en Inicio y2 en Explorar. API, seis obras, SVG y servicios no cambian.
 
 CSS de importación: tokens → base → HomePage → responsive.45 Backend/45 Frontend y ambos builds aprobados; Chromium dev y preview compilado validan recargas/filtros/historial/estados/accesibilidad acotada en cuatro tamaños. Nginx conserva fallback, pero Docker construye S01, no V2. Sin Docker ejecutado ni publicación. [Reporte y capturas](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md). Parar antes de Incremento4.
+
+## Arte, ficha y móvil V2 — Incremento4
+
+Sobre `ddf908e`, ficha usa grid por áreas, título/formato antes de portada móvil, metadatos semánticos y avisos neutrales de vacíos válidos. Se preserva validación estricta en el cliente API, URL/regreso/hook; `titleLabel` se comparte sin crear registros alternativos. Géneros vacíos no generan enlaces sin nombre. WorkCover limita solo su título decorativo; texto esencial externo no se trunca. SVG existentes refinados y estrellas agrupadas, sin recursos externos nuevos. Fallback gráfico usa Object.hasOwn para evitar propiedades heredadas.
+
+45 Backend/58 Frontend, builds y Chromium dev/preview aprobados con fixtures largos/vacíos/inválidos y rotación simulada. API/Backend/Database/Docker/dependencias/tokens/rutas no cambian. [Reporte actual](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md). Incremento5 no autorizado.

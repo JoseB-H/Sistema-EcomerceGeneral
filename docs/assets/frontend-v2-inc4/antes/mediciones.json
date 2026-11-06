@@ -1,0 +1,19 @@
+{
+  "phase": "antes",
+  "base_url": "http://localhost:5173",
+  "detail_mobile_positions": {
+    "titleTop": 857,
+    "coverTop": 282.78125
+  },
+  "art_nodes": [
+    37,
+    37,
+    41,
+    50,
+    39,
+    37
+  ],
+  "mode": "baseline captures only; new acceptance checks not run",
+  "page_errors": [],
+  "external_requests": []
+}

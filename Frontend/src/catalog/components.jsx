@@ -3,6 +3,7 @@ import { workHref } from './catalog-navigation.js';
 import { CoverArtwork } from './artwork.jsx';
 
 export const formatLabel = value => value === 'manga' ? 'Manga' : 'Manhwa';
+export const titleLabel = title => title.trim() || 'Título no disponible';
 export function ArrowIcon() {
   return <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M5 19 19 5M5 5h14v14" /></svg>;
 }
@@ -16,18 +17,19 @@ export function WorkCover({ work, large = false }) {
   return <div className={`work-cover ${large ? 'cover-large' : ''}`} aria-hidden="true">
     <CoverArtwork id={work.id} />
     <span className="cover-top">YITVERSE <span>{formatLabel(work.format)}</span></span>
-    <span className="cover-title">{work.title}</span>
+    <span className="cover-title">{titleLabel(work.title)}</span>
     <span className="cover-bottom">UNIVERSO FICTICIO <ArrowIcon /></span>
   </div>;
 }
 export function WorkCard({ work, query, format, headingLevel = 2 }) {
   const Heading = `h${headingLevel}`;
+  const title = titleLabel(work.title);
   const href = workHref({ id: work.id, query, format });
   return <article className="work-card">
-    <a href={href} aria-label={`Ver ficha de ${work.title}`} className="work-card-link">
+    <a href={href} aria-label={`Ver ficha de ${title}`} className="work-card-link">
       <WorkCover work={work} />
       <div className="card-meta"><span>{formatLabel(work.format)}</span><span>Obra ficticia</span></div>
-      <Heading>{work.title}</Heading>
+      <Heading>{title}</Heading>
       <p className="card-genre">{work.genres.join(' · ')}</p>
       <span className="card-action">Ver ficha <ArrowIcon /></span>
     </a>
@@ -45,11 +47,11 @@ export function SearchForm({ query, format, onChange, onSearch }) {
   </form>;
 }
 export function LoadingState({ detail = false }) {
-  return <div className="catalog-feedback"><span className="feedback-symbol loading-symbol" aria-hidden="true"><VerseMark /></span><p role="status">{detail ? 'Cargando ficha…' : 'Cargando catálogo…'}</p></div>;
+  return <div className="catalog-feedback"><span className="feedback-symbol loading-symbol" aria-hidden="true"><VerseMark /></span><p role="status">{detail ? 'Cargando ficha…' : 'Cargando catálogo…'}</p>{detail && <p>Consultando la información de esta obra de demostración.</p>}</div>;
 }
 export function ErrorState({ detail = false, retry }) {
-  return <section className="catalog-feedback error-feedback"><span className="feedback-symbol" aria-hidden="true">!</span><p role="alert">{detail ? 'No se pudo cargar la ficha' : 'No se pudo cargar el catálogo'}</p><p>Comprueba que el servidor local está disponible y vuelve a intentarlo.</p><button className="button-primary" onClick={retry}>Reintentar</button></section>;
+  return <section className="catalog-feedback error-feedback"><span className="feedback-symbol" aria-hidden="true">!</span><p role="alert">{detail ? 'No se pudo cargar la ficha' : 'No se pudo cargar el catálogo'}</p><p>{detail ? 'La información de la obra no está disponible ahora. Puedes reintentar o volver al catálogo.' : 'Comprueba que el servidor local está disponible y vuelve a intentarlo.'}</p><button className="button-primary" onClick={retry}>Reintentar</button></section>;
 }
 export function NotFound({ work = false, back = '/explorar' }) {
-  return <main id="contenido" tabIndex={-1} className="catalog-main"><section className="catalog-feedback not-found"><span className="feedback-symbol" aria-hidden="true"><SearchIcon /></span><span className="section-kicker">No encontrado</span><h1>{work ? 'No encontramos esta obra' : 'Esta página no existe'}</h1><p>Explora las obras de demostración disponibles en el catálogo.</p><a className="text-link" href={back}>Volver al catálogo <ArrowIcon /></a></section></main>;
+  return <main id="contenido" tabIndex={-1} className="catalog-main"><section className="catalog-feedback not-found"><span className="feedback-symbol" aria-hidden="true"><SearchIcon /></span><span className="section-kicker">No encontrado</span><h1>{work ? 'No encontramos esta obra' : 'Esta página no existe'}</h1><p>{work ? 'No encontramos esa obra en la colección de demostración. Puedes volver al catálogo conservando tu búsqueda.' : 'Explora las obras de demostración disponibles en el catálogo.'}</p><a className="text-link" href={back}>Volver al catálogo <ArrowIcon /></a></section></main>;
 }

@@ -1,0 +1,89 @@
+{
+  "phase": "despues",
+  "base_url": "http://localhost:5173",
+  "detail_mobile_positions": {
+    "titleTop": 328.171875,
+    "coverTop": 442.4375
+  },
+  "art_nodes": [
+    34,
+    31,
+    36,
+    43,
+    34,
+    30
+  ],
+  "responsive": [
+    {
+      "width": 1440,
+      "path": "/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "path": "/explorar",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "path": "/obras/archivo-aurora",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "path": "/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "path": "/explorar",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "path": "/obras/archivo-aurora",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "path": "/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "path": "/explorar",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "path": "/obras/archivo-aurora",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/explorar",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/obras/archivo-aurora",
+      "overflow": false
+    }
+  ],
+  "rotation_filters": "passed",
+  "long_partial_invalid_fixtures_retry": "passed",
+  "decorative_art_text_survives": "passed",
+  "reduced_motion": [
+    "0s",
+    "none",
+    "none",
+    "auto"
+  ],
+  "page_errors": [],
+  "external_requests": []
+}

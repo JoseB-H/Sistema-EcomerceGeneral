@@ -83,3 +83,7 @@ Conserva el alcance sintético y las restricciones anteriores, sin cambios de AP
 ## Frontend V2 Inicio/Explorar — Incremento3 (2026-11-06 UTC)
 
 RF-01/02/03 y HU-001/002: separación editorial, catálogo y ficha conservados; géneros a través de búsqueda existente, sin endpoint ni regla nueva. RNF-14/21/22/23/26/27/29: datos e ilustraciones propios, responsive/teclado/foco, componentes y regresiones.45 Backend/45 Frontend, ambos builds y Chromium dev/preview aprobados; [evidencia](FRONTEND-V2-INCREMENTO-3-PRUEBAS.md). No acredita todos los RF/RNF completos, persistencia real, AA integral ni aceptación humana de la V2. Commit de entrega: `feat(frontend): add V2 home and dedicated explore view`, solo rama local `feat/frontend-v2-editorial`.
+
+## Frontend V2 arte/ficha/móvil — Incremento4 (2026-11-06 UTC)
+
+RF-01/02/03, HU-001/002; RNF-14/21/22/23/26/27/29: presentación de obras propias, semántica/legibilidad/móvil, preservación de API e historial y regresiones.45 Backend/58 Frontend, ambos builds y Chromium dev/preview con fixtures controlados aprobados. [Pruebas/comparativas](FRONTEND-V2-INCREMENTO-4-PRUEBAS.md). No acredita lectura/seguimiento/comercio ni todos los RNF completos. Commit de entrega `feat(frontend): refine V2 original covers detail and mobile layouts`, rama local; revisión del usuario e Incremento5 pendientes.
