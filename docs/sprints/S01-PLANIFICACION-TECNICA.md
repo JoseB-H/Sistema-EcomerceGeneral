@@ -3,7 +3,7 @@
 **Identificador:** S01  
 **Proyecto:** Sistema-EcomerceGeneral · Servicios Cloud  
 **Fecha de preparación:** 2026-11-03  
-**Estado:** planificación solicitada y autorizada por el usuario. La ejecución, fechas, capacidad y compromiso del Sprint Backlog aún no se han confirmado.  
+**Estado:** ejecución técnica autorizada por el usuario; incremento implementado y probado, pendiente de revisión/aceptación. Fechas, capacidad y compromiso formal del Sprint Backlog siguen sin confirmarse.
 **Sprint Goal propuesto:** demostrar el arranque reproducible de **tres contenedores independientes** (Frontend React/Vite, Backend Node/Express y Database PostgreSQL) y su comunicación segura mediante Docker Compose, sin funcionalidad comercial.
 
 ## 1. Alcance del sprint
@@ -89,8 +89,12 @@ Registro/login, catálogo manga/manhwa, portada o capítulos, favoritos, histori
 - [x] Objetivo técnico y solicitud de planificación aceptados por el usuario.
 - [x] Alcance de la primera tarea descrito.
 - [ ] Fechas, capacidad y Sprint Backlog comprometidos.
-- [ ] Implementación iniciada en Codex.
-- [ ] Pruebas operativas ejecutadas.
+- [x] Implementación técnica realizada en rama de desarrollo.
+- [x] Pruebas operativas ejecutadas y registradas en el reporte.
 - [ ] Review y retrospectiva realizados.
 
 **Siguiente:** [Tarea T01 para Codex](../codex/TAREA-T01-CONTENEDORES.md) y [Plan inicial](../29-PLAN-INICIO-DESARROLLO.md).
+
+## Actualización de ejecución autorizada — 2026-11-04
+
+El usuario autorizó implementar las seis tareas desde main b32ee01, en rama feat/s01-infraestructura-docker. Ya existen frontend técnico, Backend SQL, tres servicios Compose y pruebas de errores/recuperación y persistencia; ver [reporte real](S01-REPORTE-PRUEBAS.md). Se mantiene pendiente revisión/aceptación del PR y del sprint. No se inventan calendario, capacidad, Sprint Review ni retrospectiva. Esta actualización sustituye únicamente el estado anterior de implementación iniciada y pruebas operativas; no autoriza funcionalidades comerciales.

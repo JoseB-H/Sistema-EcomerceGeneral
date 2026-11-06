@@ -1,0 +1,59 @@
+services:
+  database:
+    build: ./Database
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Completar POSTGRES_DB en .env}
+      POSTGRES_USER: ${POSTGRES_USER:?Completar POSTGRES_USER en .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Completar POSTGRES_PASSWORD en .env}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks: [data]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 3s
+      start_period: 10s
+      retries: 12
+  backend:
+    build: ./Backend
+    init: true
+    environment:
+      NODE_ENV: production
+      PORT: '3000'
+      PGHOST: database
+      PGPORT: '5432'
+      PGDATABASE: ${POSTGRES_DB:?Completar POSTGRES_DB en .env}
+      PGUSER: ${POSTGRES_USER:?Completar POSTGRES_USER en .env}
+      PGPASSWORD: ${POSTGRES_PASSWORD:?Completar POSTGRES_PASSWORD en .env}
+    networks: [app, data]
+    depends_on:
+      database:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, node, -e, 'fetch("http://127.0.0.1:3000/api/health").then(r=>process.exit(r.status===200?0:1)).catch(()=>process.exit(1))']
+      interval: 5s
+      timeout: 5s
+      start_period: 10s
+      retries: 12
+  frontend:
+    build: ./Frontend
+    ports:
+      - '127.0.0.1:${FRONTEND_PORT:-8080}:80'
+    networks: [app]
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, wget, -Y, 'off', -q, -O, /dev/null, 'http://127.0.0.1/']
+      interval: 5s
+      timeout: 3s
+      start_period: 10s
+      retries: 12
+networks:
+  app:
+    driver: bridge
+  data:
+    driver: bridge
+    internal: true
+volumes:
+  postgres_data:

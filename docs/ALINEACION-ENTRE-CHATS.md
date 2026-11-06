@@ -38,3 +38,7 @@ Cuando haya un acuerdo relevante en el chat de Servicios Cloud, registrarlo aqu�
 
 ## Nota de publicación
 El repositorio es público. Las diapositivas de clase y la bóveda completa **no deben subirse automáticamente**: revisar derechos de publicación y datos privados antes de incluirlas.
+
+## S01 — autorización técnica recibida (2026-11-04)
+
+El usuario autorizó ejecutar las seis tareas del plan integrado en `b32ee01`, en `feat/s01-infraestructura-docker`. Se adoptan pantalla de diagnóstico React/Vite servida con Nginx, proxy `/api`, Express con contrato 200/503 y consulta SQL real, dos redes y PostgreSQL con volumen persistente sin puerto publicado. Se mantienen las precauciones de D:/Docker Desktop y de propiedad de recursos de prueba. No implica aprobar módulos de negocio, fechas, aceptación final ni cierre del sprint.

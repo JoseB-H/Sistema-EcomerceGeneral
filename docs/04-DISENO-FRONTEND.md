@@ -1,6 +1,6 @@
 # Diseño del Frontend — React + Vite
 
-**Estado:** guía de arquitectura, sin módulos ni pantallas aprobados.
+**Estado:** pantalla técnica S01 aprobada, implementada y probada; módulos de negocio pendientes de aprobación.
 
 ## Responsabilidad del componente
 Presentar información y permitir interacciones con el usuario a través de una API HTTP. No contiene lógica de integridad del servidor ni credenciales privadas.
@@ -49,3 +49,15 @@ flowchart LR
 Identidad visual, pantalla inicial, lista de rutas, formularios, controles de accesibilidad prioritarios, autenticación y estados de sesión, necesidades de catálogo o compra y contenido legal. Ninguno se encuentra aprobado.
 
 Véase [Contratos API](07-CONTRATOS-API-Y-FLUJOS.md) y [Requisitos](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md).
+
+## S01 — pantalla técnica implementada
+
+`Frontend/src/App.jsx` presenta únicamente diagnóstico, sin módulos comerciales. El cliente usa `/api/health` relativo, no-store, valida HTTP 200 y JSON sano. Carga, éxito y error accesibles con status/alert; reintento deshabilitado durante carga. Cancelación al desmontar, límite de 4000 ms e ignorar respuestas obsoletas evitan éxitos tardíos. `npm --prefix Frontend test`: 11/11; `npm --prefix Frontend run build` aprobado. No se ha validado aún en contenedores/navegador real.
+
+### Docker S01
+
+Build multi-stage Vite y Nginx oficial fijado; sin node_modules de desarrollo en runtime. `/api/` mantiene la ruta y no entra al fallback SPA. Healthcheck wget usa `-Y off` solo para loopback, porque BusyBox heredaba el proxy HTTP cloud y devolvía 403 sin alcanzar Nginx; el proxy externo y CA siguen activos.
+
+### Verificación de integración S01
+
+El navegador Chromium real carga los assets construidos y muestra salud con respuesta de Backend/PostgreSQL. Las pruebas de integración verifican `/api/unknown` como 404 JSON, no HTML SPA, y proxy 502/504 cuando Backend está detenido. El estado de UI se actualiza al reintentar; no se usa polling ni salud simulada.
