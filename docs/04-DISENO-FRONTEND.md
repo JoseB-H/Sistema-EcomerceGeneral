@@ -79,3 +79,9 @@ Header y hero acceden al mismo buscador; footer enlaza solo rutas existentes. Al
 Cuatro pruebas nuevas de acceso/navegación/foco: **35 Frontend aprobadas**. Chromium verificó 1440/768/390/320 px, teclado, proporción, contraste, búsqueda/ficha/historial y estados sin errores JavaScript. `Frontend/test/browser/dark-catalog-smoke.py` permite repetir la comprobación con Playwright opcional y servidores nativos activos. Evidencia y límites en [reporte del rediseño](UI-AZUL-NOCTURNO.md).
 
 Revisión de presentación: el selector de tablet se amplió a 170px para mostrar “Todos los formatos” completo. Una comprobación Chromium de espacio para la opción seleccionada reprodujo el recorte antes del cambio y pasó después; suites completas 45 Backend/35 Frontend y ambos builds aprobados.
+
+## Sistema Visual V2 — Incremento2
+
+`CatalogApp.jsx` importa tokens → base → responsive. Tokens se acotan a body.catalog-mode/catalog-shell, sin tema global ni modificación de App.css. Palette/semánticos, tipografía, espaciados, tamaños, radios, profundidad y movimiento centralizados; breakpoints existentes1199/800/599/359 en un CSS exclusivo. Componentes, props, rutas, API y arte original intactos. Metadatos informativos≥12px, campos48px con interior compatible y foco visible también en destinos tabIndex.
+
+45 Backend/35 Frontend, ambos builds y Chromium4anchuras aprobados; build S01 idéntico por SHA256. Guía32 documenta el sistema y reporte Incremento2 conserva capturas antes/después. Objetivo AA, no certificación. Sin push/PR ni Inicio/Explorar nuevos; detener antes de Incremento3. [Guía](32-GUIA-VISUAL-FRONTEND-V2.md) · [Evidencia](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md).

@@ -1,0 +1,43 @@
+{
+  "viewports": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "cover_ratio": 0.75
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "cover_ratio": 0.75
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "cover_ratio": 0.75
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "cover_ratio": 0.75
+    }
+  ],
+  "contrast": {
+    "body": 18.1,
+    "secondary": 7.38,
+    "button": 4.94,
+    "field": 17.27,
+    "border": 3.8,
+    "focus": 7.87
+  },
+  "svg_gradient_ids": 21,
+  "keyboard_and_history": "passed",
+  "loading_error_empty_retry_404_health503": "passed",
+  "reduced_motion": [
+    "0s",
+    "none",
+    "none",
+    "auto"
+  ],
+  "page_errors": [],
+  "external_requests": []
+}

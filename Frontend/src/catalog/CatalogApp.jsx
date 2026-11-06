@@ -4,7 +4,9 @@ import { catalogApi } from './catalog-client.js';
 import CatalogPage from './CatalogPage.jsx';
 import WorkDetailPage from './WorkDetailPage.jsx';
 import { NotFound, SearchIcon, VerseMark } from './components.jsx';
+import './tokens.css';
 import './catalog.css';
+import './catalog-responsive.css';
 
 export default function CatalogApp({ api = catalogApi }) {
   const { pathname, search } = window.location;

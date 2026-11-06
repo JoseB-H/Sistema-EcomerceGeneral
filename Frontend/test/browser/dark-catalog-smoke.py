@@ -62,6 +62,24 @@ with sync_playwright() as p:
             bounds = link.bounding_box()
             assert bounds['height'] >= 44 and bounds['width'] >= 44, (name, bounds)
         assert page.get_by_role('searchbox').count() == 1
+        readable = page.locator('.card-meta, .card-genre, .card-action, .catalog-search label, .hero-note, .demo-banner, .footer-identity > p').evaluate_all('''nodes => nodes.map(node => ({
+            text: node.textContent.trim(), size: parseFloat(getComputedStyle(node).fontSize)
+        }))''')
+        assert all(item['size'] >= 12 for item in readable), (name, readable)
+        for control in page.locator('.catalog-search input, .catalog-search select').all():
+            space = control.evaluate('''node => {
+                const style = getComputedStyle(node);
+                const canvas = document.createElement('canvas').getContext('2d');
+                canvas.font = style.font;
+                const metrics = canvas.measureText('ÁgjTodos los formatos');
+                const computedLine = parseFloat(style.lineHeight);
+                const line = Number.isNaN(computedLine)
+                    ? metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent : computedLine;
+                return {height: node.getBoundingClientRect().height,
+                    inner: node.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom),
+                    line};
+            }''')
+            assert space['height'] >= 44 and space['inner'] >= space['line'], (name, space)
         selected_label = page.get_by_role('combobox').evaluate('''node => {
           const style = getComputedStyle(node);
           const canvas = document.createElement('canvas');
@@ -87,6 +105,9 @@ with sync_playwright() as p:
     header_search.focus()
     page.keyboard.press('Enter')
     expect(page.get_by_role('searchbox')).to_be_focused()
+    field_bounds = page.get_by_role('searchbox').bounding_box()
+    header_bounds = page.get_by_role('banner').bounding_box()
+    assert field_bounds['y'] >= header_bounds['y'] + header_bounds['height'], (field_bounds, header_bounds)
     assert page.get_by_role('searchbox').evaluate('(node) => getComputedStyle(node).outlineStyle') == 'solid'
     page.get_by_role('link', name='Explorar catálogo').focus()
     page.keyboard.press('Enter')
@@ -169,7 +190,11 @@ with sync_playwright() as p:
     expect(page.get_by_role('heading', name='Esta página no existe')).to_be_visible()
     page.goto(base + '/estado')
     expect(page.get_by_role('alert')).to_contain_text('No se pudo comprobar la conexión')
-    assert page.locator('main').evaluate('(node) => getComputedStyle(node).backgroundColor') == 'rgb(19, 29, 48)'
+    surface = page.locator('.catalog-shell').evaluate('(node) => getComputedStyle(node).getPropertyValue("--surface").trim()')
+    actual_surface = page.locator('main').evaluate('(node) => getComputedStyle(node).backgroundColor')
+    expected_surface = page.evaluate('''color => { const node=document.createElement('span');node.style.backgroundColor=color;
+        document.body.append(node);const result=getComputedStyle(node).backgroundColor;node.remove();return result; }''', surface)
+    assert actual_surface == expected_surface
     assert page.get_by_text('Backend y PostgreSQL disponibles').count() == 0
     page.get_by_role('button', name='Reintentar').click()
     expect(page.get_by_role('alert')).to_be_visible()

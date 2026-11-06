@@ -1,15 +1,17 @@
 # Índice documental — Sistema-EcomerceGeneral
 
-> Estado: diseño del producto en refinamiento, incremento técnico S01 y prototipo sintético HU-001/HU-002 implementados en ramas para revisión. Última revisión: 2026-11-04.
+> Estado: diseño del producto en refinamiento, incremento técnico S01 y prototipo sintético HU-001/HU-002 implementados en ramas para revisión. Última revisión: 2026-11-05.
 
 ## Continuidad Frontend V2 — entrega local
 
 - [Bitácora vigente y autorización limitada](00-BITACORA-DE-CONTINUIDAD.md).
 - [Especificación visual V2](31-YITVERSE-DISENO-VISUAL-V2.md): plan aprobado; Figma pendiente.
-- [Plan de cinco incrementos](superpowers/plans/2026-11-05-frontend-v2-editorial.md): solo Incremento1 ejecutable actualmente.
+- [Plan de cinco incrementos](superpowers/plans/2026-11-05-frontend-v2-editorial.md): Inc1 aceptado e Inc2 autorizado; detener antes de Inc3.
+- [Guía visual Frontend V2](32-GUIA-VISUAL-FRONTEND-V2.md).
+- [Pruebas y comparativas del Incremento2](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md).
 - [Recuperación Git Windows](RECUPERACION-GIT-WINDOWS.md): conservar original/respaldo y usar destinos nuevos.
 
-Esta rama/documentación del Incremento1 no se ha publicado. No interpretar los enlaces locales como disponibilidad de `feat/frontend-v2-editorial` en GitHub.
+Esta rama/documentación de Incrementos1–2 no se ha publicado. No interpretar los enlaces locales como disponibilidad de `feat/frontend-v2-editorial` en GitHub.
 
 ## Documentación actualmente publicada
 - [Marco Scrum](16-MARCO-SCRUM.md): sprints, backlog y eventos.

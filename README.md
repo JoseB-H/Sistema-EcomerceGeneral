@@ -13,7 +13,7 @@ Proyecto académico **Servicios Cloud**. Este repositorio es el punto de referen
 
 El catálogo local incluye ahora el [rediseño azul nocturno](docs/UI-AZUL-NOCTURNO.md), con capturas y pruebas para revisión en `feat/ui-azul-nocturno`, derivada de la rama del prototipo.
 
-El plan Frontend V2 está aprobado, pero solo el Incremento1 documental se ejecuta en la rama **local** `feat/frontend-v2-editorial`. Sin publicación/PR ni cambios visuales. Ver [bitácora](docs/00-BITACORA-DE-CONTINUIDAD.md), [V2](docs/31-YITVERSE-DISENO-VISUAL-V2.md) y [recuperación segura Git Windows](docs/RECUPERACION-GIT-WINDOWS.md).
+El Incremento1 `daf3c85` fue aceptado y el Incremento2 actualiza exclusivamente el sistema visual en la rama **local** `feat/frontend-v2-editorial`. Sin publicación/PR ni nuevas rutas. [Guía visual V2](docs/32-GUIA-VISUAL-FRONTEND-V2.md) y [comparativas/pruebas](docs/FRONTEND-V2-INCREMENTO-2-PRUEBAS.md). Ver [bitácora](docs/00-BITACORA-DE-CONTINUIDAD.md), [V2](docs/31-YITVERSE-DISENO-VISUAL-V2.md) y [recuperación segura Git Windows](docs/RECUPERACION-GIT-WINDOWS.md).
 
 ## Antes de empezar
 

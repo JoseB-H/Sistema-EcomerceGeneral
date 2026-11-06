@@ -4,7 +4,7 @@
 
 ## Punto de continuidad vigente — Frontend V2
 
-Plan aprobado; **solo Incremento1 documental autorizado**, en rama local `feat/frontend-v2-editorial`. Código y rutas actuales sin cambios. Incremento2, publicación y PR requieren nueva aprobación. Ver [bitácora](00-BITACORA-DE-CONTINUIDAD.md), [especificación V2](31-YITVERSE-DISENO-VISUAL-V2.md) y registro de este incremento al final. Figma sigue pendiente.
+Incremento1 `daf3c85` aceptado; **solo Incremento2 Sistema Visual V2 autorizado**, implementado para revisión en rama local `feat/frontend-v2-editorial`. Rutas/lógica/API intactas. Incremento3, publicación y PR requieren nueva aprobación. Ver [bitácora](00-BITACORA-DE-CONTINUIDAD.md), [especificación V2](31-YITVERSE-DISENO-VISUAL-V2.md) y registro de este incremento al final. Figma sigue pendiente.
 
 ## Estado verificado
 - Repositorio `JoseB-H/Sistema-EcomerceGeneral` disponible en GitHub.
@@ -119,3 +119,11 @@ Implementado en `feat/ui-azul-nocturno`, desde catálogo `4794803`: header/hero 
 **Comprobaciones nuevas:** `git fsck --full` sin errores; 45 Backend y 35 Frontend aprobadas (0 fallos/omitidas), builds normal/local salida0, diff solo Markdown y enlaces locales correctos. Revisión documental independiente realizada; se corrigieron la mención Leer/Seguir y guardas de cambio de carpeta. **Límites:** la importación selectiva no crea un padre merge de main y futuras integraciones pueden requerir reconciliar las notas nuevas; no se ejecuta Windows/Robocopy ni Docker; no se acredita respaldo local, Figma o PostgreSQL nativo. La evidencia histórica de navegador/S01 sigue separada de este incremento documental.
 
 **Siguiente tarea:** entregar este resultado y esperar revisión del usuario. Incremento2 preparado por el plan, no iniciado ni autorizado para ejecución. Commit previsto: `docs(v2): reconcile continuity and frontend baseline`.
+
+## Frontend V2 — Incremento2, 2026-11-05 (America/Bogota)
+
+**Rama/base:** `feat/frontend-v2-editorial` desde `daf3c85`. Bundle previo de trabajo local verificado con restauración real; no se tocan respaldos Windows. **Terminado:** tokens/tema/presentación y responsive de las vistas existentes, sin rutas nuevas. **Archivos:** tokens.css, catalog.css, catalog-responsive.css, imports de CatalogApp, prueba Chromium y guía32/reporte/capturas; bitácora31/estado/plan/alineación/índice/README/diseño Frontend actualizados.
+
+**Pruebas:**45 Backend y35 Frontend aprobadas, builds normal/local0, build S01 byte a byte idéntico, Chromium1440/768/390/320 sin desbordes ni errores JS, legibilidad/campos/teclado/foco/contraste/reduced-motion/estados aprobados. **Conservado:** seis SVG, catálogo/API, handlers/rutas, Backend/Database/Docker y dependencias.
+
+**Límites:** objetivo WCAG AA con comprobación acotada; no auditoría integral/lector de pantalla/Windows/PG nativo. Figma pendiente. Sin push/PR. **Siguiente tarea:** revisar el resultado y esperar nueva autorización antes de Incremento3. Ver [guía visual](32-GUIA-VISUAL-FRONTEND-V2.md) y [pruebas/capturas](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md).

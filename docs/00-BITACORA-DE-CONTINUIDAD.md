@@ -6,13 +6,13 @@ actualizado: 2026-11-05
 # Bitácora de continuidad — YitVerse
 
 > [!important] Leer primero al reanudar cualquier chat
-> **Plan Frontend V2 aprobado; ejecución autorizada únicamente del Incremento1 (continuidad y rama).** El catálogo y el diseño azul ya están implementados. Componentes/rutas V2, publicación e Incremento2 requieren la siguiente aprobación. Figma sigue pendiente, no aprobado.
+> **Incremento1 `daf3c85` aceptado y exclusivamente Incremento2 autorizado/completado para revisión local.** El sistema visual se centraliza/aplica sobre las pantallas actuales. No se crean nuevas rutas, no se publica y el Incremento3 requiere una nueva aprobación. Figma sigue pendiente, no aprobado.
 
 ## Estado de los frentes
 
 | Frente | Responsable / espacio | Estado comprobable | Retomar desde |
 | --- | --- | --- | --- |
-| Frontend V2 | Usuario + Codex; Figma como referencia pendiente | Plan de cinco incrementos aprobado; solo Incremento1 documental autorizado | [[31-YITVERSE-DISENO-VISUAL-V2]] |
+| Frontend V2 | Usuario + Codex; Figma como referencia pendiente | Inc1 aceptado; Inc2 sistema visual local en revisión; Inc3 no iniciado | [[31-YITVERSE-DISENO-VISUAL-V2]] |
 | Visión y requisitos del producto | Documentación en GitHub/Obsidian | Visión, RF, RNF y trazabilidad documentados; decisiones de negocio aún pendientes | [[20-VISION-FUNCIONAL-YITVERSE]] |
 | Arquitectura Docker | Codex | Implementación y evidencia histórica S01 conservadas; no reejecutadas en este incremento | [[sprints/S01-REPORTE-PRUEBAS]] |
 | Obsidian y respaldo | GitHub + Obsidian Git local | Copia Markdown versionada en GitHub; sincronización del equipo aún no verificada | [[30-OBSIDIAN-GITHUB-SINCRONIZACION]] |
@@ -20,7 +20,9 @@ actualizado: 2026-11-05
 ## Último acuerdo con el usuario
 **Fecha: 2026-11-05 (America/Bogota).**
 
-**Acuerdo vigente:** usuario aprueba los cinco incrementos y las decisiones provisionales sobre selección de demostración, continuar explorando no personalizado y categorías existentes. Autoriza ejecutar **solo el Incremento1**, con commit local. Prohíbe cambiar visuales/rutas/Backend/Database/Docker, publicar la rama, abrir PR o comenzar el Incremento2.
+**Acuerdo del Incremento1 (histórico, ya aceptado en `daf3c85`):** usuario aprueba los cinco incrementos y las decisiones provisionales sobre selección de demostración, continuar explorando no personalizado y categorías existentes. Autoriza ejecutar **solo el Incremento1**, con commit local. Prohíbe cambiar visuales/rutas/Backend/Database/Docker, publicar la rama, abrir PR o comenzar el Incremento2.
+
+**Acuerdo vigente:** el usuario acepta `daf3c85` y autoriza exclusivamente Incremento2: tokens/componentes/tema responsive, conservación de rutas/API/SVG y accesibilidad, comparativas antes/después y commit local. No autoriza push/PR ni Incremento3.
 
 **Antecedente conservado:**
 
@@ -34,7 +36,7 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 - Portadas con mayor detalle y personalidad, no simples formas geométricas.
 - Jerarquía clara: destacados, continuar explorando **no personalizado**, **Selección de demostración** sin fechas inventadas y categorías derivadas de géneros existentes; decisiones del plan aprobado, aún sin implementar en V2.
 - Vistas objetivo: Home, Explorar, Detalle, Home móvil y mini guía de estilos.
-- Figma es una referencia pendiente: el plan aprobado usa Markdown provisional, sin atribuir aprobación a sus mockups. El Incremento1 no modifica vistas y el Incremento2 espera autorización.
+- Figma es una referencia pendiente: el plan aprobado usa Markdown provisional, sin atribuir aprobación a sus mockups. El Incremento1 documental está aceptado; el Incremento2 solo actualiza el sistema visual existente y el Incremento3 espera autorización.
 
 ## Qué no debe hacerse al reanudar
 - No confundir la planificación técnica de tres contenedores con el punto de avance visual.
@@ -57,7 +59,7 @@ Después pidió explícitamente **registrar en Obsidian las tareas, cambios y pu
 | 2026-11-05 | Figma | Creado archivo editable «YitVerse — Dirección Visual V2 · Editorial Dark» | [Abrir Figma](https://www.figma.com/design/dCLgExm48T9Ui6sTcEIhwu) |
 | 2026-11-05 | Respaldo | Iniciada esta bitácora y la especificación visual V2 en GitHub | Notas Markdown versionadas |
 
-**Próxima acción vigente:** entregar el Incremento1 para revisión del usuario; esperar aprobación expresa antes del Incremento2. No publicar esta rama ni abrir PR. La secuencia de diseño Figma anterior se conserva como antecedente, sin asumir pantallas terminadas.
+**Próxima acción vigente:** entregar el Incremento2 para revisión del usuario; esperar aprobación expresa antes del Incremento3. No publicar esta rama ni abrir PR. La secuencia de diseño Figma anterior se conserva como antecedente, sin asumir pantallas terminadas.
 
 
 ## Incidente Git local — 2026-11-05
@@ -92,3 +94,14 @@ La recuperación del Git local debe esperar a que la copia de seguridad se compl
 - **Verificaciones nuevas:** `git fsck --full` sin errores; 45/45 Backend y 35/35 Frontend aprobadas; builds normal/local salida0; diff solo Markdown y enlaces comprobados. Ningún archivo de aplicación/configuración cambió. Chromium/S01 conservan su evidencia anterior; no se repitieron en este incremento documental.
 - **Problemas/límites:** importación selectiva sin conflictos actuales, pero una integración futura con main puede requerir reconciliar estos documentos añadidos en ambas ramas; recuperación/respaldo Windows no verificados; notas principales antes dispersas entre ramas; rama V2 solo local. Figma, PostgreSQL nativo y aceptación del sprint no acreditados.
 - **Siguiente tarea:** revisión del Incremento1 por el usuario. Incremento2 preparado como plan, no iniciado.
+
+## Incremento2 — Sistema Visual V2 (2026-11-05)
+
+- **Rama local:** `feat/frontend-v2-editorial`, base `daf3c85`; commit de entrega local, sin push/PR.
+- **Recuperación previa:** bundle cloud de `daf3c85` verificado y restaurado en un clon real antes de modificar estilos; ver [evidencia](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md). No se accedió al equipo Windows.
+- **Implementado:** tokens de paleta/estados, escala tipográfica, espacios/dimensiones, radios, bordes/sombras, interacción y foco; CSS responsive separado con los umbrales existentes. Negro profundo/azul aplicado a las pantallas actuales y metadatos informativos de al menos12px.
+- **Archivos:** tokens/base/responsive, imports CSS de `CatalogApp.jsx`, smoke Chromium ampliado, guía32, reporte/capturas/mediciones, esta bitácora, especificación31, estado, plan, alineación, índice, README y diseño Frontend.
+- **Conservado:** las seis ilustraciones originales, datos/API, handlers/rutas, accesibilidad, Backend/Database/Docker y dependencias. Sin Inicio/Explorar nuevos ni reconstrucción de componentes.
+- **Pruebas reales:** 45/45 Backend,35/35 Frontend, ambos builds0; S01 idéntico por SHA256 antes/después. Chromium1440/768/390/320 sin desbordamiento, contraste/teclado/reduced-motion/estados/recuperación aprobados, cero errores JS. Comparativas de vistas existentes antes/después versionadas.
+- **Pendiente/límites:** revisión visual humana, Figma, Windows/lectores de pantalla/PG nativo y auditoría WCAG completa. La rama sigue solo local.
+- **Siguiente tarea:** revisar Incremento2; no iniciar Incremento3 hasta nueva aprobación. [Guía visual](32-GUIA-VISUAL-FRONTEND-V2.md) y [comparativas](FRONTEND-V2-INCREMENTO-2-PRUEBAS.md).

@@ -56,3 +56,9 @@ El usuario solicita preparar, implementar y publicar una interfaz oscura editori
 El usuario aprueba los cinco incrementos y las decisiones provisionales del [plan Frontend V2](superpowers/plans/2026-11-05-frontend-v2-editorial.md), pero autoriza ejecutar **solo Incremento1: continuidad y rama**, con commit local. `feat/frontend-v2-editorial` nace de `127aa8a`; se analizó main `ae3f8e8` frente al ancestro `b32ee01` y solo añade bitácora/31. Se incorporan estas notas sin fusión completa ni sustitución del estado técnico de UI.
 
 Se conserva código, catálogo/API, rutas, ilustraciones, accesibilidad, Backend/Database/Docker y sus evidencias. La recuperación Windows usa nueva carpeta y respaldo adicional sin alterar originales; no se accede a ese equipo desde cloud. La rama no se publica ni se abre PR. Figma continúa pendiente; aprobar el plan no acredita mockups finales ni autoriza Incremento2. El siguiente paso es revisión del usuario y autorización expresa.
+
+## Frontend V2 — autorización exclusiva del Incremento2 (2026-11-05)
+
+El usuario acepta `daf3c85` y autoriza solo el sistema visual: tokens de paleta/estados, tipografía, espacios, dimensiones, radios, sombras/interacción y responsive. Se mantiene `feat/frontend-v2-editorial`, sin push/PR, y se detiene antes del Incremento3. Rutas/lógica/API, Backend/Database/Docker, dependencias y seis SVG originales no cambian; Figma no se considera aprobado. Antes de editar se verificó un bundle cloud de `daf3c85` mediante clonación/restauración real íntegra, sin acceder a respaldos Windows.
+
+Decisión técnica: las condiciones de media queries CSS no aceptan variables; los umbrales existentes se centralizan en `catalog-responsive.css` y sus valores de diseño en `tokens.css`, sin dependencias de compilación nuevas. No se crea una nueva ruta para la guía visual.

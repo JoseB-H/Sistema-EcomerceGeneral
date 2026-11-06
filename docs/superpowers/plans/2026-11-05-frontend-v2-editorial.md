@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task **respetando la autorización de ejecución por incremento del usuario**. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Estado:** PLAN APROBADO por el usuario el 2026-11-05, incluidas las decisiones provisionales. **Solo el Incremento1 tiene autorización de ejecución.** Incrementos2–5 esperan revisión y nueva aprobación. No hay mockups Figma aprobados ni diseño final acreditado. La rama y su commit permanecerán locales; push/PR expresamente prohibidos en esta entrega.
+**Estado:** PLAN APROBADO por el usuario el 2026-11-05, incluidas las decisiones provisionales. **Incremento1 aceptado y exclusivamente Incremento2 autorizado por el usuario.** Incrementos3–5 esperan nueva aprobación. No hay mockups Figma aprobados ni diseño final acreditado. La rama y su commit permanecerán locales; push/PR expresamente prohibidos en esta entrega.
 
 **Goal:** Evolucionar el frontend existente hacia Inicio, Explorar, Detalle y adaptación móvil V2, con una guía visual común, conservando catálogo/API y las garantías funcionales.
 
@@ -85,13 +85,13 @@ En **cada incremento** se actualizan `docs/00-BITACORA-DE-CONTINUIDAD.md`, `docs
 
 ## Incremento2 — sistema visual y componentes
 
-**Interfaces:** tokens locales consumidos por las clases existentes; APIs/props de datos intactas.
+**Interfaces:** tokens locales consumidos por las clases existentes; APIs/props de datos intactas. Umbrales de viewport en `catalog-responsive.css`, sin variables inválidas en media queries ni nuevas dependencias. Incremento2 verificado; entrega local pendiente del commit/revisión del usuario.
 
-- [ ] Extraer tokens y aplicar negro/azul, jerarquía y medidas propuestas. Mantener WorkCard/WorkCover/SearchForm/estados; evitar reestructurar componentes por comodidad.
-- [ ] Crear guía visual con paleta, tipografía, espacios, botones/campos, tarjetas, estados y regla de movimiento reducido. Es una especificación del prototipo, no prueba de aprobación Figma.
-- [ ] Verificar estilos con Chromium/contraste/foco y capturas, más suite Frontend y ambos builds. No añadir tests que solo repitan literales CSS.
-- [ ] Mantener `.catalog-shell` como límite; el build técnico S01 no recibe el tema V2.
-- [ ] Actualizar los tres documentos obligatorios y guía visual. Commit: `refactor(frontend): centralize V2 visual tokens and components`.
+- [x] Extraer tokens y aplicar negro/azul, jerarquía y medidas propuestas. Mantener WorkCard/WorkCover/SearchForm/estados; evitar reestructurar componentes por comodidad.
+- [x] Crear guía visual con paleta, tipografía, espacios, botones/campos, tarjetas, estados y regla de movimiento reducido. Es una especificación del prototipo, no prueba de aprobación Figma.
+- [x] Verificar estilos con Chromium/contraste/foco y capturas, más suite Frontend y ambos builds. No añadir tests que solo repitan literales CSS.
+- [x] Mantener `.catalog-shell` como límite; el build técnico S01 no recibe el tema V2.
+- [x] Actualizar los tres documentos obligatorios y guía visual. Commit: `refactor(frontend): centralize V2 visual tokens and components`.
 
 ## Incremento3 — Inicio y Explorar con datos existentes
 
@@ -134,4 +134,4 @@ En **cada incremento** se actualizan `docs/00-BITACORA-DE-CONTINUIDAD.md`, `docs
 
 ## Punto de parada actual
 
-El usuario aprobó el plan y autorizó **únicamente Incremento1**, completado documentalmente en esta entrega local. La rama `feat/frontend-v2-editorial` se creó desde `127aa8a`; solo se incorporan/reconcilian documentos y se entrega un commit local. **No se modifica código, no se publica ni abre PR y no se avanza al Incremento2 hasta una nueva aprobación del usuario.**
+El usuario aceptó el Incremento1 `daf3c85` y autorizó **exclusivamente Incremento2**, completado para revisión local. La rama `feat/frontend-v2-editorial` se creó desde `127aa8a`; en Incremento2 se centraliza/aplica el sistema visual conservando lógica, rutas, API y SVG. **No se publica ni abre PR y no se avanza al Incremento3 sin nueva aprobación.**
