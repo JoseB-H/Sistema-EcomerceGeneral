@@ -13,6 +13,8 @@ Proyecto académico **Servicios Cloud**. Este repositorio es el punto de referen
 
 El catálogo local incluye ahora el [rediseño azul nocturno](docs/UI-AZUL-NOCTURNO.md), con capturas y pruebas para revisión en `feat/ui-azul-nocturno`, derivada de la rama del prototipo.
 
+El plan Frontend V2 está aprobado, pero solo el Incremento1 documental se ejecuta en la rama **local** `feat/frontend-v2-editorial`. Sin publicación/PR ni cambios visuales. Ver [bitácora](docs/00-BITACORA-DE-CONTINUIDAD.md), [V2](docs/31-YITVERSE-DISENO-VISUAL-V2.md) y [recuperación segura Git Windows](docs/RECUPERACION-GIT-WINDOWS.md).
+
 ## Antes de empezar
 
 - [Instrucciones para Codex](AGENTS.md)
@@ -37,7 +39,7 @@ Evitar abrir como bóveda la misma carpeta activa de desarrollo de Codex para qu
 
 ## Ejecutar el prototipo local actual, sin Docker
 
-Requisitos: Git y Node.js 24 LTS/npm. En PowerShell, desde `D:\Proyectos\YitVerse\YitVerse-Desarrollo`, usar dos terminales:
+Requisitos: Git y Node.js 24 LTS/npm. En PowerShell, **solo desde un clon nuevo verificado**, por ejemplo `D:\Proyectos\YitVerse\YitVerse-Frontend-V2-Limpio`, usar dos terminales. No ejecutar en el repositorio original afectado ni en el respaldo; seguir primero la guía de recuperación enlazada arriba. La base pública clonable es `feat/ui-azul-nocturno`; V2 sigue local.
 
 ```powershell
 # Terminal 1
@@ -61,12 +63,12 @@ Las instrucciones siguientes documentan el laboratorio previo y sus precauciones
 
 Requisitos gratuitos: Git, Node.js 24 LTS/npm y motor Docker con Compose v2 y contenedores Linux. No hace falta instalar PostgreSQL en Windows. Revisar los términos de Docker Desktop para el uso propio; en Linux puede usarse Docker Engine.
 
-Checkout Windows recomendado: `D:\Proyectos\YitVerse\YitVerse-Desarrollo`. La sesión cloud utiliza `/workspace` y no puede acceder al disco D: del usuario. Tener el repositorio en D: **no garantiza** que Docker Desktop/WSL guarde imágenes, caché y volúmenes allí: pueden seguir ocupando C:. Antes de pruebas grandes, revisar espacio y configurar la ubicación de datos desde los ajustes soportados de Docker Desktop para la versión/backend instalado. No mover manualmente imágenes, volúmenes ni discos virtuales WSL. No se ha acreditado aquí una instalación Windows ni una migración de almacenamiento.
+Referencia histórica del laboratorio S01: no reutilizar su checkout Windows durante la recuperación; para el desarrollo actual usar una carpeta nueva verificada. La sesión cloud utiliza `/workspace` y no puede acceder al disco D: del usuario. Tener el repositorio en D: **no garantiza** que Docker Desktop/WSL guarde imágenes, caché y volúmenes allí: pueden seguir ocupando C:. Antes de pruebas grandes, revisar espacio y configurar la ubicación de datos desde los ajustes soportados de Docker Desktop para la versión/backend instalado. No mover manualmente imágenes, volúmenes ni discos virtuales WSL. No se ha acreditado aquí una instalación Windows ni una migración de almacenamiento.
 
 PowerShell, desde la copia de desarrollo de esta rama:
 
 ```powershell
-Set-Location 'D:\Proyectos\YitVerse\YitVerse-Desarrollo'
+Set-Location -LiteralPath 'D:\Proyectos\YitVerse\YitVerse-Frontend-V2-Limpio' -ErrorAction Stop
 # Solo si .env aún no existe:
 if (-not (Test-Path '.env')) { Copy-Item '.env.example' '.env' }
 # Editar .env y completar POSTGRES_PASSWORD con una contraseña local de laboratorio.

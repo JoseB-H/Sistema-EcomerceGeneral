@@ -2,6 +2,10 @@
 
 **Fecha de arranque de coordinación:** 2026-11-03
 
+## Punto de continuidad vigente — Frontend V2
+
+Plan aprobado; **solo Incremento1 documental autorizado**, en rama local `feat/frontend-v2-editorial`. Código y rutas actuales sin cambios. Incremento2, publicación y PR requieren nueva aprobación. Ver [bitácora](00-BITACORA-DE-CONTINUIDAD.md), [especificación V2](31-YITVERSE-DISENO-VISUAL-V2.md) y registro de este incremento al final. Figma sigue pendiente.
+
 ## Estado verificado
 - Repositorio `JoseB-H/Sistema-EcomerceGeneral` disponible en GitHub.
 - Estructura objetivo de tres contenedores acordada.
@@ -101,3 +105,17 @@ Cierre técnico del prototipo local: 45 pruebas Backend y 31 Frontend aprobadas;
 ## Rediseño azul nocturno — 2026-11-04
 
 Implementado en `feat/ui-azul-nocturno`, desde catálogo `4794803`: header/hero editorial, seis portadas SVG propias 3:4, ficha/estados oscuros, footer, responsive y movimiento reducido. No cambian API, datos, búsqueda, filtros, historial ni reintento; sin módulos nuevos. 45 pruebas Backend y 35 Frontend aprobadas, ambos builds correctos y Chromium 1440/768/390/320 px sin desbordes ni errores JS. Contraste/foco/reduced-motion medidos; no equivalen a certificación WCAG. Ver [capturas, reproducción y límites](UI-AZUL-NOCTURNO.md). Olympus no accesible por proxy403; Windows/PG nativo siguen pendientes. Revisión/aceptación visual del usuario pendiente; no se fusiona ni modifica main o PR #3 y Docker no se ejecuta.
+
+## Frontend V2 — Incremento1, 2026-11-05 (America/Bogota)
+
+**Rama:** `feat/frontend-v2-editorial`, desde UI `127aa8a`. **Alcance:** continuidad y documentación; no se implementan visuales/rutas V2. Plan general aprobado, ejecución2–5 detenida.
+
+**Documentación reconciliada:** main `ae3f8e8` añade solo bitácora y especificación31 desde `b32ee01`. Se importan esas dos notas y se actualizan con la implementación/evidencia existentes en UI. Los pendientes que main aún describía no se interpretan como pérdida del código de las ramas. No se hizo merge completo ni se sobrescribió código.
+
+**Archivos:** `00-BITACORA-DE-CONTINUIDAD.md`, `31-YITVERSE-DISENO-VISUAL-V2.md`, este estado, `ALINEACION-ENTRE-CHATS.md`, `00-INDICE-DOCUMENTAL.md`, `../README.md`, `LOCAL-DEV-CATALOGO.md`, `RECUPERACION-GIT-WINDOWS.md` y el plan `superpowers/plans/2026-11-05-frontend-v2-editorial.md`.
+
+**Terminado:** rama creada, documentación de fases reconciliada, reglas de recuperación Git con respaldo/ruta nuevos y guía de ejecución corregida. La rama es solo local; sin push/PR. Catálogo, datos/API, arte, accesibilidad y rutas `/`, `/obras/:id`, `/estado` conservados.
+
+**Comprobaciones nuevas:** `git fsck --full` sin errores; 45 Backend y 35 Frontend aprobadas (0 fallos/omitidas), builds normal/local salida0, diff solo Markdown y enlaces locales correctos. Revisión documental independiente realizada; se corrigieron la mención Leer/Seguir y guardas de cambio de carpeta. **Límites:** la importación selectiva no crea un padre merge de main y futuras integraciones pueden requerir reconciliar las notas nuevas; no se ejecuta Windows/Robocopy ni Docker; no se acredita respaldo local, Figma o PostgreSQL nativo. La evidencia histórica de navegador/S01 sigue separada de este incremento documental.
+
+**Siguiente tarea:** entregar este resultado y esperar revisión del usuario. Incremento2 preparado por el plan, no iniciado ni autorizado para ejecución. Commit previsto: `docs(v2): reconcile continuity and frontend baseline`.

@@ -2,43 +2,26 @@
 
 **Modalidad autorizada:** HU-001/HU-002 en `feat/local-dev-catalogo`, desde `feat/s01-infraestructura-docker` (`e672e2e`). Docker está pausado para este incremento; se conserva el laboratorio S01 y no se modifica ni fusiona `main` o el PR #3. [Diseño](superpowers/specs/2026-11-04-local-dev-catalogo-design.md), [plan](superpowers/plans/2026-11-04-local-dev-catalogo.md) y [pruebas](LOCAL-DEV-CATALOGO-PRUEBAS.md).
 
-Esta rama añade el [rediseño azul nocturno](UI-AZUL-NOCTURNO.md). Los comandos de checkout siguientes apuntan a `feat/ui-azul-nocturno`, derivada de la rama de catálogo original; no la sustituyen ni modifican PR #3.
+En `feat/frontend-v2-editorial` el Incremento1 es únicamente documental: conserva el [rediseño azul nocturno](UI-AZUL-NOCTURNO.md) y no modifica las rutas o componentes. Esta rama V2 existe solo en cloud, sin push/PR; todavía no puede clonarse desde GitHub. Los comandos de recuperación usan la base pública `feat/ui-azul-nocturno`.
 
-## Requisitos y copia de trabajo
+## Requisitos y copia de trabajo segura
 
-Git y Node.js **24 LTS** con npm. Todas las dependencias utilizadas son gratuitas; no hay servicios externos obligatorios. No instalar Docker ni PostgreSQL para probar el catálogo sintético. PostgreSQL sigue siendo la tecnología prevista para persistencia.
+Git y Node.js **24 LTS** con npm. Dependencias gratuitas, sin servicios externos obligatorios. No instalar Docker ni PostgreSQL para probar el catálogo sintético; PostgreSQL sigue previsto para persistencia.
 
-La ubicación prevista en Windows es `D:\Proyectos\YitVerse\YitVerse-Desarrollo`. El código se verificó en Linux cloud; no se accedió a D: ni se ejecutó Windows. Mantener libre espacio en D: y en la ubicación de la caché de npm, que puede estar en C: (`npm config get cache`). No mover ni borrar recursos Docker/WSL para ejecutar este prototipo.
+Antes de clonar o ejecutar en Windows, leer [recuperación segura de Git](RECUPERACION-GIT-WINDOWS.md): conservar la carpeta de desarrollo original y el respaldo existente, verificar los cambios locales en otro destino nuevo y clonar en una ruta que no exista. No reparar objetos ni sobrescribir carpetas. La copia de seguridad Windows permanece sin verificación desde cloud.
 
-Para **un destino que todavía no existe**, PowerShell:
+Ruta nueva propuesta: `D:\Proyectos\YitVerse\YitVerse-Frontend-V2-Limpio`, solo si está libre. No usar `D:\Proyectos\YitVerse\YitVerse-Desarrollo` para ejecutar estos comandos. La guía de recuperación contiene la clonación y controles de integridad de la base azul publicada. No descargar `feat/frontend-v2-editorial` mientras no se autorice y confirme su publicación; no intentar compensarlo fusionando main.
 
-```powershell
-git clone --branch feat/ui-azul-nocturno --single-branch https://github.com/JoseB-H/Sistema-EcomerceGeneral.git 'D:\Proyectos\YitVerse\YitVerse-Desarrollo'
-Set-Location 'D:\Proyectos\YitVerse\YitVerse-Desarrollo'
-node --version
-npm --version
-```
+El laboratorio cloud está en `/workspace/YitVerse-Frontend-V2-Revision` y no accede a D: ni a la carpeta de respaldo del equipo. El almacenamiento npm puede seguir usando C: (`npm config get cache`); comprobar espacio antes de instalar. No mover/borrar datos Docker o WSL para este desarrollo.
 
-Para una copia existente, revisar primero `git status --short --branch`. Conservar cualquier cambio propio antes de cambiar de rama; no usar reset ni limpieza forzada. Con el árbol limpio:
-
-```powershell
-Set-Location 'D:\Proyectos\YitVerse\YitVerse-Desarrollo'
-git fetch origin refs/heads/feat/ui-azul-nocturno:refs/remotes/origin/feat/ui-azul-nocturno
-# Si la rama local aún no existe:
-git switch --no-track --create feat/ui-azul-nocturno origin/feat/ui-azul-nocturno
-# Si ya existe, usar en su lugar:
-# git switch feat/ui-azul-nocturno
-# git merge --ff-only origin/feat/ui-azul-nocturno
-```
-
-La creación local usa `--no-track` para funcionar también en clones previos de una sola rama; las actualizaciones se hacen con el fetch y merge explícitos anteriores. Estos comandos no requieren cambiar `main` ni la rama del PR #3.
+Después de clonar y verificar **la copia nueva**, comprobar `git status --short --branch` antes de cualquier actualización. Si hay cambios propios, conservarlos y detener el cambio de rama; no usar limpieza ni reset para saltar ese control. main y PR #3 no se modifican.
 
 ## Arranque en dos terminales PowerShell
 
 Terminal 1, Express:
 
 ```powershell
-Set-Location 'D:\Proyectos\YitVerse\YitVerse-Desarrollo'
+Set-Location -LiteralPath 'D:\Proyectos\YitVerse\YitVerse-Frontend-V2-Limpio' -ErrorAction Stop
 npm --prefix Backend ci
 npm --prefix Backend run dev
 ```
@@ -46,7 +29,7 @@ npm --prefix Backend run dev
 Terminal 2, Vite:
 
 ```powershell
-Set-Location 'D:\Proyectos\YitVerse\YitVerse-Desarrollo'
+Set-Location -LiteralPath 'D:\Proyectos\YitVerse\YitVerse-Frontend-V2-Limpio' -ErrorAction Stop
 npm --prefix Frontend ci
 npm --prefix Frontend run dev
 ```
@@ -64,7 +47,7 @@ Este comando alternativo se verificó en Linux con catálogo 200, salud 503 y ci
 
 No es necesario crear un `.env`. El aviso de Node de que no encontró `.env` es esperado si no se creó el archivo opcional. El script nativo lee únicamente `Backend/.env` y las variables heredadas del proceso; **no lee el `.env` Docker de la raíz**. No copiar ese archivo a Backend.
 
-Rutas del navegador:
+Rutas actuales del navegador (sin cambios por Incremento1; Inicio/Explorar separados todavía no están implementados):
 
 | Ruta | Resultado |
 | --- | --- |

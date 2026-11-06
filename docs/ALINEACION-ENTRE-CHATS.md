@@ -50,3 +50,9 @@ El usuario autorizó pausar Docker para el desarrollo actual y crear `feat/local
 ## Rediseño visual azul nocturno autorizado — 2026-11-04
 
 El usuario solicita preparar, implementar y publicar una interfaz oscura editorial, con paleta azul explícita, sobre rama derivada de feat/local-dev-catalogo. Rama elegida feat/ui-azul-nocturno. Se cambia la preferencia verde/clara provisional; se conservan HU-001/HU-002, datos ficticios, API, navegación y ejecución nativa. No se autoriza comercio ni se modifica Docker, main o PR #3. Olympus no fue accesible por proxy403: se usa la organización descrita, sin copiar material ni afirmar inspección visual. Diseño/plan 2026-11-04-ui-azul-nocturno documentan decisiones del implementador para revisión.
+
+## Frontend V2 — plan aprobado y autorización limitada (2026-11-05)
+
+El usuario aprueba los cinco incrementos y las decisiones provisionales del [plan Frontend V2](superpowers/plans/2026-11-05-frontend-v2-editorial.md), pero autoriza ejecutar **solo Incremento1: continuidad y rama**, con commit local. `feat/frontend-v2-editorial` nace de `127aa8a`; se analizó main `ae3f8e8` frente al ancestro `b32ee01` y solo añade bitácora/31. Se incorporan estas notas sin fusión completa ni sustitución del estado técnico de UI.
+
+Se conserva código, catálogo/API, rutas, ilustraciones, accesibilidad, Backend/Database/Docker y sus evidencias. La recuperación Windows usa nueva carpeta y respaldo adicional sin alterar originales; no se accede a ese equipo desde cloud. La rama no se publica ni se abre PR. Figma continúa pendiente; aprobar el plan no acredita mockups finales ni autoriza Incremento2. El siguiente paso es revisión del usuario y autorización expresa.
