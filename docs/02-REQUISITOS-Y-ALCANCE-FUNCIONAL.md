@@ -48,7 +48,7 @@ Las funcionalidades de una misma cuenta que también compra no justifican crear 
 ### 3.3 Lector y progreso
 | ID | Requisito funcional — el sistema deberá… | Estado | Prio. | HU |
 |---|---|---|---|---|
-| RF-11 | Habilitar lectura digital dentro de la plataforma **solo sobre contenidos con permiso/licencia verificable**. | BL | A | HU-007 |
+| RF-11 | Habilitar lectura digital dentro de la plataforma **solo sobre contenidos con permiso/licencia verificable**. | Parcial local autorizado; oferta real BL | A | HU-007 |
 | RF-12 | Guardar y recuperar avance de lectura por usuario y contenido, según granularidad aprobada. | VC | A | HU-005, HU-007 |
 | RF-13 | Permitir continuar una lectura previamente iniciada cuando el acceso siga autorizado. | VC | M | HU-005 |
 | RF-14 | Registrar eventos de actividad de lectura que puedan validarse, sin equiparar «abrir» con «leer». | PR | A | HU-008 |
@@ -93,6 +93,7 @@ Las funcionalidades de una misma cuenta que también compra no justifican crear 
 - Métodos de registro/recuperación y datos obligatorios requieren aprobación (DEC-17).
 
 ### RF-11 a RF-14 — lector
+- **Incremento local autorizado 2026-11-06:** RF-11 implementado parcialmente para revisión: capítulos propios/expresamente autorizados, CLI privado, manifiestos externos a Git, lista numérica y lector vertical. [Alcance y evidencias](36-LECTOR-CAPITULOS-LOCALES.md). La declaración/comprobante se valida técnicamente; el administrador debe comprobar el derecho real antes de importar. RF-12/13/14, progreso, cuentas, XP y distribución pública siguen pendientes; no se declara HU-007 completa ni se asigna un sprint automáticamente.
 - El contenido **no autorizado** no puede abrirse como lectura íntegra desde la plataforma.
 - Reabrir una lectura autorizada recupera el progreso guardado sin confundirlo con XP ganada.
 - Se debe definir si el avance es por capítulo, página o ambos (DEC-19) y cómo tratar lectura externa (DEC-01).

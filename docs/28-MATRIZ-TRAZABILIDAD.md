@@ -19,7 +19,7 @@ Esta tabla permite que Codex identifique requisitos funcionales afectados, histo
 | RF-08 | Favoritos | HU-004 | RNF-10, RNF-19, RNF-21 | Refinamiento |
 | RF-09 | Seguimiento | HU-005 | RNF-10, RNF-19, RNF-21 | Refinamiento |
 | RF-10 | Historial de lectura | HU-006 | RNF-10, RNF-13, RNF-21 | Refinamiento |
-| RF-11 | Lector autorizado | HU-007 | RNF-13, RNF-14, RNF-21 | Bloqueado derechos |
+| RF-11 | Lector autorizado | HU-007 | RNF-11/12/13/14/21/22/23/26/27/28/29 | Parcial local para revisión; oferta real pendiente |
 | RF-12 | Guardar progreso | HU-005, HU-007 | RNF-10, RNF-19 | Refinamiento |
 | RF-13 | Continuar lectura | HU-005 | RNF-10, RNF-21 | Refinamiento |
 | RF-14 | Registrar evento validable | HU-008 | RNF-16, RNF-20 | Propuesto |
@@ -55,6 +55,8 @@ Para llevar un RF de «Refinamiento» a «En sprint» se requiere: criterio de a
 Una idea registrada en Obsidian entra al Product Backlog para revisión; **no genera un sprint automáticamente**. No cerrar una historia basándose solo en documentación.
 
 ## 5. Próximo refinamiento
+
+**Incremento autorizado 2026-11-06:** lector y CLI local en rama `feat/lector-capitulos-local`, fuente lavanda `af2a6e5`. Pruebas de importación/ZIP/CRC/límites/orden/duplicados/recuperación/API/privacidad y lector responsive en [guía36](36-LECTOR-CAPITULOS-LOCALES.md), [reporte Chromium](assets/lector-local/verificacion.json). RF-12/13/14 no se implementan; HU-007 completa no se cierra. DEC-01/18 quedan acotadas a material propio/autorizado y modo vertical local; permisos de terceros, progreso y despliegue real mantienen decisiones pendientes.
 Priorizar resolución de [DEC-01 — modalidad legal de lectura](25-DECISIONES-PENDIENTES.md), [DEC-09 a DEC-12 — XP y economía](25-DECISIONES-PENDIENTES.md), el alcance de pedidos y la selección del primer MVP.
 
 ## S01 — evidencia técnica del incremento

@@ -63,3 +63,10 @@ desktop.ini
 # Bytecode generado por las herramientas de verificación Python
 __pycache__/
 *.py[cod]
+
+# Defensa adicional; el importador exige almacenamiento fuera de cualquier checkout Git.
+.reader-content/
+.reader-imports/
+reader-private/
+*.cbz
+*.zip

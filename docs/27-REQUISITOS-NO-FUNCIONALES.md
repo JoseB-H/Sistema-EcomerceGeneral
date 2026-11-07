@@ -4,6 +4,8 @@
 **Estado:** restricciones técnicas confirmadas y propuestas medibles pendientes de aceptación. La evidencia técnica S01 y del prototipo local se registra con sus límites; no equivale a aceptación global de todos los RNF.
 
 ## 1. Objetivo y estado
+
+**Evidencia acotada 2026-11-06:** el [lector local](36-LECTOR-CAPITULOS-LOCALES.md) aplica RNF-11/12/13/14 (archivos, privacidad y procedencia), RNF-21/22/23 (responsive/teclado/errores) y RNF-26/27/28/29 (módulos, pruebas y recuperación). Declaración y hash del comprobante no acreditan jurídicamente derechos ni sustituyen ACL, autenticación o auditoría completa de accesibilidad. Windows, distribución pública y PostgreSQL nativo pendientes. No cambia la aceptación global de RNF ni la infraestructura.
 Los RNF determinan **cómo** debe comportarse la solución y cuáles son sus condiciones de calidad, seguridad y operación. Los RF se definen en [Requisitos Funcionales](02-REQUISITOS-Y-ALCANCE-FUNCIONAL.md).
 
 Estados:

@@ -1,5 +1,7 @@
 # Desarrollo local temporal — catálogo y detalle
 
+**Ampliación autorizada 2026-11-06:** la rama nueva `feat/lector-capitulos-local` añade capítulos/lector y CLI privado desde lavanda `af2a6e5`, conservando este modo de ejecución y los seis registros. [Guía36: Windows, importación, almacenamiento, recuperación y límites](36-LECTOR-CAPITULOS-LOCALES.md). Docker y PostgreSQL no cambian; `/api/health` sigue informando 503 sin base nativa configurada. Las restricciones anteriores contra lectura describen el alcance histórico del catálogo; únicamente el lector local ahora autorizado las amplía, sin progreso ni oferta real.
+
 **Modalidad autorizada:** HU-001/HU-002 en `feat/local-dev-catalogo`, desde `feat/s01-infraestructura-docker` (`e672e2e`). Docker está pausado para este incremento; se conserva el laboratorio S01 y no se modifica ni fusiona `main` o el PR #3. [Diseño](superpowers/specs/2026-11-04-local-dev-catalogo-design.md), [plan](superpowers/plans/2026-11-04-local-dev-catalogo.md) y [pruebas](LOCAL-DEV-CATALOGO-PRUEBAS.md).
 
 En `feat/frontend-v2-editorial`, Incrementos1–4 aceptados técnicamente e **Incremento5 verificado para revisión de integración**. La rama ya está publicada en GitHub, inicialmente7caff17; el cierre se publica en la misma rama. Incluye Inicio/Explorar/ficha, arte propio, API y estados. [Entrega33, pruebas y capturas](33-ENTREGA-FRONTEND-V2.md). Docker/PG S01 se revalidaron aisladamente, sin cambiar el modo nativo ni convertir el catálogo en persistente.

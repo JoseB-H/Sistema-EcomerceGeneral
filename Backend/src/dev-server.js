@@ -2,6 +2,7 @@ import { createApp } from './app.js';
 import { readLocalConfig } from './local-config.js';
 import { createPool, createDatabaseCheck } from './database.js';
 import { createDemoCatalogRepository } from './catalog/demo-repository.js';
+import { createReaderRepository } from './reader/repository.js';
 
 let config;
 try {
@@ -12,7 +13,7 @@ try {
 }
 const pool = config.database ? createPool(config.database) : null;
 const checkDatabase = pool ? createDatabaseCheck(pool) : async () => { throw new Error('PostgreSQL not configured'); };
-const server = createApp({ checkDatabase, catalogRepository: createDemoCatalogRepository() })
+const server = createApp({ checkDatabase, catalogRepository: createDemoCatalogRepository(), readerRepository: createReaderRepository({ root: process.env.YITVERSE_CONTENT_ROOT }) })
   .listen(config.port, '127.0.0.1', () => {
     console.info({ event: 'local_listening', port: config.port, catalog: 'synthetic', postgresqlConfigured: !!pool });
   });

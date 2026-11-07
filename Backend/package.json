@@ -9,11 +9,15 @@
   "scripts": {
     "test": "node --test test/*.test.js",
     "start": "node src/server.js",
-    "dev": "node --watch --env-file-if-exists=.env src/dev-server.js"
+    "dev": "node --watch --env-file-if-exists=.env src/dev-server.js",
+    "reader:import": "node scripts/import-chapter.mjs",
+    "reader:demo": "node scripts/generate-reader-demo.mjs"
   },
   "dependencies": {
     "express": "5.3.0",
-    "pg": "8.23.1"
+    "pg": "8.23.1",
+    "sharp": "0.35.5",
+    "yauzl": "3.4.0"
   },
   "devDependencies": {
     "supertest": "7.3.1"

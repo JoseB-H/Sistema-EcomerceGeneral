@@ -2,6 +2,8 @@
 
 **Estado:** preguntas pendientes; no completar respuestas por inferencia.
 
+**Decisión expresa acotada — 2026-11-06:** usuario autoriza lector vertical local, CLI administrado y material propio o expresamente autorizado con comprobante privado. Resuelve DEC-01/DEC-18 únicamente para este incremento; [guía36](36-LECTOR-CAPITULOS-LOCALES.md). DEC-02 conserva seis obras/arte originales y capítulos sintéticos; DEC-03 (permisos reales de terceros), DEC-19 (progreso), operación pública y economía siguen pendientes. La verificación técnica del comprobante no certifica su validez jurídica.
+
 ## A. Derechos y contenido (bloqueante para lector)
 | ID | Pregunta / alternativas | Impacto |
 | --- | --- | --- |

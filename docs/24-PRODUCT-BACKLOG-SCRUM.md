@@ -28,7 +28,7 @@ Las historias expresan intención y su prioridad es **propuesta**. Ninguna tarea
 | HU-004 | Como lector, quiero marcar favoritos y retomarlos posteriormente | E-02 | Alta | Borrador |
 | HU-005 | Como lector, quiero seguir obras y saber en qué capítulo me quedé | E-02 | Alta | Borrador |
 | HU-006 | Como lector, quiero ver el historial de mi actividad de lectura | E-02 | Media | Borrador |
-| HU-007 | Como lector autorizado, quiero abrir contenido legalmente disponible y registrar mi avance | E-03 | Dependiente de licencias | Bloqueada por decisión |
+| HU-007 | Como lector autorizado, quiero abrir contenido legalmente disponible y registrar mi avance | E-03 | Dependiente de licencias | Lectura local parcial para revisión; avance y oferta real pendientes |
 | HU-008 | Como lector, quiero ganar XP por una actividad elegible una sola vez | E-04 | Alta, después de HU-007 o alternativa aprobada | Borrador |
 | HU-009 | Como lector, quiero conocer nivel actual y progreso restante | E-04 | Media | Borrador |
 | HU-010 | Como lector, quiero recibir YitCoins al alcanzar hitos aprobados | E-05 | Media | Borrador |
@@ -57,6 +57,10 @@ Implementado en `feat/local-dev-catalogo`, desde S01 `e672e2e`; [diseño/alcance
 - Dado un usuario autenticado, cuando guarda una obra, esta aparece en su biblioteca.
 - La misma obra no aparece duplicada en favoritos para la misma cuenta.
 - Quitar favorito no borra historial ni XP.
+
+### HU-007 — incremento de lector local autorizado (2026-11-06)
+
+Solicitud expresa: capítulos propios/autorizados, importación administrada por CLI sin uploads públicos ni descargas, validación de archivos, orden numérico, duplicados rechazados, almacenamiento privado recuperable, lista en ficha y lectura vertical anterior/siguiente. Implementado en `feat/lector-capitulos-local` desde lavanda `af2a6e5`, sin publicación; [guía y criterios verificables](36-LECTOR-CAPITULOS-LOCALES.md). Los seis títulos siguen siendo ficticios y la demostración es arte/texto original generado localmente. Progreso/identidad/XP, licencias de terceros y operación pública no se autorizan aquí. No se cierra la historia completa, ni se crea/acepta otro sprint.
 
 ### HU-005 — Seguimiento
 - El usuario puede retomar desde el avance registrado.

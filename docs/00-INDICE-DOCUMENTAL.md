@@ -75,6 +75,7 @@ Contratos y operación de módulos futuros requieren refinamiento. Consultar las
 - **Verificado:** implementación con resultados de prueba reproducibles.
 
 ## Navegación rápida
+- [Lector local e importación administrada](36-LECTOR-CAPITULOS-LOCALES.md): operación Windows, seguridad, respaldo, API y capturas de la demostración original.
 - Coordinación entre chats: [ALINEACION-ENTRE-CHATS](ALINEACION-ENTRE-CHATS.md).
 - Situación real del repositorio: [ESTADO-DEL-PROYECTO](ESTADO-DEL-PROYECTO.md).
 - Instrucciones globales a Codex: [AGENTS](../AGENTS.md).
