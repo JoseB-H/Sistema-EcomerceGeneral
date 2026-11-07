@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { writeFile, readFile, readdir, mkdir, symlink } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
-import { fixture, zip } from './helpers/reader.js';
+import { fixture, zip, animatedPng } from './helpers/reader.js';
 import { importChapter, recoverImport, importStatus } from '../src/reader/importer.js';
 import { chapterNumber, compareChapters } from '../src/reader/validation.js';
 import { openStore, withLock, unlockStore } from '../src/reader/store.js';
@@ -48,10 +48,23 @@ test('accepts JPEG and WebP by decoding and normalizing to PNG', async t => {
   }
 });
 
+test('rejects APNG animation even when the decoder exposes only its first frame', async t => {
+  const f = await fixture(t), input = path.join(f.base, '1.png'), apng = animatedPng(f.png);
+  assert.equal((await sharp(apng).metadata()).width, 48); // Real decodable APNG, not a fake magic header.
+  await writeFile(input, apng);
+  await assert.rejects(importChapter({ ...f.options, input }), /animation/i);
+});
+
 test('accepts verified CBZ with numeric order and optional containing directory', async t => {
   const f = await fixture(t), input = path.join(f.base, 'chapter.cbz');
   await writeFile(input, zip([{ name: 'pages/', attributes: 0x41ed0010 }, { name: 'pages/10.png', data: f.png }, { name: 'pages/2.png', data: f.png }]));
   assert.equal((await importChapter({ ...f.options, input })).pageCount, 2);
+});
+
+test('verifies CRC of ZIP directory entries as well as image entries', async t => {
+  const f = await fixture(t), input = path.join(f.base, 'chapter.cbz');
+  await writeFile(input, zip([{ name: 'pages/', attributes: 0x41ed0010, checksum: 123 }, { name: 'pages/1.png', data: f.png }]));
+  await assert.rejects(importChapter({ ...f.options, input }), /CRC/);
 });
 
 test('accepts deflated ZIP and rejects excessive compression ratio before decoding', async t => {

@@ -12,6 +12,17 @@ export async function normalizeImage(bytes, filename, limits) {
   if (bytes.length > limits.imageBytes) fail('Image byte limit exceeded');
   const expected = { '.png': 'png', '.jpg': 'jpeg', '.jpeg': 'jpeg', '.webp': 'webp' }[path.extname(filename).toLowerCase()];
   if (!expected || signature(bytes) !== expected) fail('Image extension/type mismatch');
+  // libvips can silently expose APNG as a single static frame: inspect its actual chunks too.
+  if (expected === 'png') {
+    let offset = 8;
+    while (offset < bytes.length) {
+      if (offset + 12 > bytes.length) fail('Truncated PNG chunk');
+      const size = bytes.readUInt32BE(offset), type = bytes.toString('ascii', offset + 4, offset + 8);
+      if (offset + size + 12 > bytes.length) fail('Truncated PNG chunk');
+      if (['acTL', 'fcTL', 'fdAT'].includes(type)) fail('PNG animation rejected');
+      offset += size + 12;
+    }
+  }
   const options = { limitInputPixels: limits.pixels, failOn: 'warning', animated: true };
   const metadata = await sharp(bytes, options).metadata();
   if (metadata.format !== expected || (metadata.pages ?? 1) !== 1 || metadata.width > limits.width || metadata.height > limits.height || metadata.width * metadata.height > limits.pixels) fail('Image dimensions or animation rejected');

@@ -39,3 +39,24 @@ export function zip(entries) {
   end.writeUInt32LE(directory.length, 12); end.writeUInt32LE(offset, 16);
   return Buffer.concat([...local, directory, end]);
 }
+
+function pngChunk(type, data) {
+  const name = Buffer.from(type), length = Buffer.alloc(4), checksum = Buffer.alloc(4);
+  length.writeUInt32BE(data.length); checksum.writeUInt32BE(crc32(Buffer.concat([name, data])));
+  return Buffer.concat([length, name, data, checksum]);
+}
+export function animatedPng(png) {
+  const frames = Buffer.alloc(8); frames.writeUInt32BE(2);
+  const header = png.subarray(16, 29), idat = [];
+  for (let i = 8; i < png.length;) {
+    const length = png.readUInt32BE(i), type = png.toString('ascii', i + 4, i + 8);
+    if (type === 'IDAT') idat.push(png.subarray(i + 8, i + 8 + length));
+    i += length + 12;
+  }
+  const frame = sequence => {
+    const data = Buffer.alloc(26); data.writeUInt32BE(sequence); header.copy(data, 4, 0, 8);
+    data.writeUInt16BE(1, 20); data.writeUInt16BE(10, 22); return data;
+  };
+  const sequence = Buffer.alloc(4); sequence.writeUInt32BE(2);
+  return Buffer.concat([png.subarray(0, 8), pngChunk('IHDR', header), pngChunk('acTL', frames), pngChunk('fcTL', frame(0)), pngChunk('IDAT', Buffer.concat(idat)), pngChunk('fcTL', frame(1)), pngChunk('fdAT', Buffer.concat([sequence, ...idat])), pngChunk('IEND', Buffer.alloc(0))]);
+}

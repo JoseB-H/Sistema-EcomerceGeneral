@@ -10,7 +10,7 @@ export async function archivePages(bytes, limits) {
     await new Promise((resolve, reject) => {
       let total = 0, count = 0;
       zip.on('error', reject); zip.on('end', resolve);
-      zip.on('entry', entry => {
+      zip.on('entry', async entry => {
         try {
           if (++count > limits.entries) fail('ZIP entry limit exceeded');
           const name = entry.fileName;
@@ -26,7 +26,10 @@ export async function archivePages(bytes, limits) {
           if (!(entry.generalPurposeBitFlag & 8) && (bytes.readUInt32LE(offset + 14) !== entry.crc32 || bytes.readUInt32LE(offset + 18) !== entry.compressedSize || bytes.readUInt32LE(offset + 22) !== entry.uncompressedSize)) fail('ZIP local CRC/size mismatch');
           total += entry.uncompressedSize;
           if (entry.uncompressedSize > limits.imageBytes || total > limits.expandedBytes || entry.uncompressedSize / Math.max(1, entry.compressedSize) > limits.ratio) fail('ZIP expansion limit exceeded');
-          if (directory) { if (entry.uncompressedSize !== 0) fail('Invalid ZIP directory'); }
+          if (directory) {
+            if (entry.uncompressedSize !== 0) fail('Invalid ZIP directory');
+            await readEntry(zip, entry, limits); // Empty directories still require valid compression/CRC.
+          }
           else { pageNumber(name.split('/').at(-1)); entries.push(entry); if (entries.length > limits.pages) fail('Page limit exceeded'); }
           zip.readEntry();
         } catch (error) { reject(error); }
@@ -40,16 +43,18 @@ export async function archivePages(bytes, limits) {
       names.add(entry.fileName); numbers.add(n);
     }
     entries.sort((a, b) => pageNumber(a.fileName.split('/').at(-1)) - pageNumber(b.fileName.split('/').at(-1)));
-    return { entries, async read(entry) {
-      const stream = await new Promise((resolve, reject) => zip.openReadStream(entry, (error, s) => error ? reject(error) : resolve(s)));
-      let total = 0, crc = 0; const chunks = [];
-      for await (const chunk of stream) {
-        total += chunk.length;
-        if (total > limits.imageBytes || total > entry.uncompressedSize) { stream.destroy(); fail('ZIP actual byte limit exceeded'); }
-        crc = crc32(chunk, crc); chunks.push(chunk);
-      }
-      if (total !== entry.uncompressedSize || crc !== entry.crc32) fail('ZIP size or CRC mismatch');
-      return Buffer.concat(chunks, total);
-    }, close: () => zip.close() };
+    return { entries, read: entry => readEntry(zip, entry, limits), close: () => zip.close() };
   } catch (error) { zip.close(); throw error; }
+}
+
+async function readEntry(zip, entry, limits) {
+  const stream = await new Promise((resolve, reject) => zip.openReadStream(entry, (error, s) => error ? reject(error) : resolve(s)));
+  let total = 0, crc = 0; const chunks = [];
+  for await (const chunk of stream) {
+    total += chunk.length;
+    if (total > limits.imageBytes || total > entry.uncompressedSize) { stream.destroy(); fail('ZIP actual byte limit exceeded'); }
+    crc = crc32(chunk, crc); chunks.push(chunk);
+  }
+  if (total !== entry.uncompressedSize || crc !== entry.crc32) fail('ZIP size or CRC mismatch');
+  return Buffer.concat(chunks, total);
 }
