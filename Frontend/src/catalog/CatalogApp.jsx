@@ -10,8 +10,11 @@ import './tokens.css';
 import './catalog.css';
 import './HomePage.css';
 import './catalog-responsive.css';
+import { readerApi } from '../reader/reader-client.js';
+import ReaderPage from '../reader/ReaderPage.jsx';
+import '../reader/reader.css';
 
-export default function CatalogApp({ api = catalogApi }) {
+export default function CatalogApp({ api = catalogApi, readingApi = readerApi }) {
   const { pathname, search } = window.location;
   useEffect(() => {
     document.body.classList.add('catalog-mode');
@@ -21,13 +24,18 @@ export default function CatalogApp({ api = catalogApi }) {
   const isHome = pathname === '/' && !isCatalog;
   let page;
   const match = pathname.match(/^\/obras\/([^/]+)\/?$/);
+  const readerMatch = pathname.match(/^\/obras\/([^/]+)\/capitulos\/([^/]+)\/?$/);
   if (isCatalog) page = <CatalogPage api={api} search={search} />;
   else if (isHome) page = <HomePage api={api} />;
   else if (pathname === '/estado') page = <div id="contenido" tabIndex={-1} className="health-view"><HealthPage /></div>;
-  else if (match) {
+  else if (readerMatch) {
+    let id, number;
+    try { id = decodeURIComponent(readerMatch[1]); number = decodeURIComponent(readerMatch[2]); } catch { /* invalid route */ }
+    page = id && number ? <ReaderPage api={readingApi} id={id} number={number} search={search} /> : <NotFound />;
+  } else if (match) {
     let id;
     try { id = decodeURIComponent(match[1]); } catch { /* malformed URL becomes a not-found page */ }
-    page = id ? <WorkDetailPage api={api} id={id} search={search} /> : <NotFound work />;
+    page = id ? <WorkDetailPage api={api} readingApi={readingApi} id={id} search={search} /> : <NotFound work />;
   } else page = <NotFound />;
   return <div className="catalog-shell">
     <a href="#contenido" className="skip-link">Saltar al contenido</a>
@@ -37,9 +45,9 @@ export default function CatalogApp({ api = catalogApi }) {
       <a className="header-search" href={isHome || isCatalog ? '#catalog-query' : '/explorar#catalog-query'} aria-label="Buscar en el catálogo"><SearchIcon /><span>Buscar obras</span></a>
       <span className="local-pill">Prototipo local</span>
     </div></header>
-    <div className="demo-banner"><strong><span aria-hidden="true">✦ </span>Datos de demostración</strong><span>Todas las obras son ficticias. No se guardan cambios.</span></div>
+    <div className="demo-banner"><strong><span aria-hidden="true">✦ </span>Datos de demostración</strong><span>Todas las obras son ficticias. No se guardan cambios personales.</span></div>
     {page}
-    <section className="discovery-invitation" aria-labelledby="invitation-heading"><span className="invitation-mark" aria-hidden="true"><VerseMark /></span><div><p className="section-kicker">Un universo por descubrir</p><h2 id="invitation-heading">Tu próxima historia te espera</h2><p>Explora nuestra colección de mundos ficticios y encuentra uno que despierte tu curiosidad.</p></div><a className="button-primary" href="/explorar">Descubrir el catálogo <ArrowIcon /></a></section>
+    {!readerMatch && <section className="discovery-invitation" aria-labelledby="invitation-heading"><span className="invitation-mark" aria-hidden="true"><VerseMark /></span><div><p className="section-kicker">Un universo por descubrir</p><h2 id="invitation-heading">Tu próxima historia te espera</h2><p>Explora nuestra colección de mundos ficticios y encuentra uno que despierte tu curiosidad.</p></div><a className="button-primary" href="/explorar">Descubrir el catálogo <ArrowIcon /></a></section>}
     <footer className="catalog-footer"><div className="footer-identity"><a className="brand" href="/" aria-label="YitVerse, inicio"><span className="brand-symbol"><VerseMark /></span><span>Yit<span className="brand-light">Verse</span></span></a><p>Historias que abren otros mundos.</p></div><nav aria-label="Enlaces de YitVerse"><a href="/">Inicio</a><a href="/explorar">Explorar</a><a href="/estado">Estado de conexión</a></nav><p className="footer-note">Catálogo sintético<br />Hecho para imaginar.</p></footer>
   </div>;
 }

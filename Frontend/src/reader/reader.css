@@ -1,0 +1,39 @@
+.catalog-shell .chapter-section { margin-top: var(--space-12); padding: var(--space-8); border: 1px solid var(--line); border-radius: var(--radius-surface); background: var(--surface); }
+.catalog-shell .chapter-section-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4); }
+.catalog-shell .chapter-section h2 { font-size: var(--type-section); margin: var(--space-2) 0; }
+.catalog-shell .chapter-badge { color: var(--info-text); background: var(--info-surface); border: 1px solid var(--info-line); padding: var(--space-2) var(--space-3); border-radius: var(--radius-pill); font-size: var(--type-caption); }
+.catalog-shell .chapter-explanation, .catalog-shell .chapter-empty, .catalog-shell .reader-disclaimer { color: var(--muted); line-height: var(--leading-body); }
+.catalog-shell .chapter-start { margin-block: var(--space-4) var(--space-6); }
+.catalog-shell .chapter-list { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-2); }
+.catalog-shell .chapter-list a { display: flex; justify-content: space-between; gap: var(--space-4); align-items: center; min-height: var(--control-size); padding: var(--space-4); background: var(--surface-input); border: 1px solid var(--line); border-radius: var(--radius-control); color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+.catalog-shell .chapter-list a span { color: var(--muted); text-align: right; }
+.catalog-shell .chapter-list a:hover { border-color: var(--detail); background: var(--info-surface); }
+.catalog-shell .reader-main { max-width: 62rem; padding-bottom: var(--space-12); }
+.catalog-shell .reader-heading { margin-block: var(--space-8); max-width: 100%; }
+.catalog-shell .reader-heading h1 { font-size: clamp(1.6rem, 4vw, 2.75rem); line-height: 1.2; overflow-wrap: anywhere; margin-block: var(--space-3); }
+.catalog-shell .reader-subtitle { color: var(--ink-soft); font-size: var(--type-subheading); overflow-wrap: anywhere; }
+.catalog-shell .reader-disclaimer { font-size: var(--type-ui); }
+.catalog-shell .reader-controls { display: flex; flex-direction: column; gap: var(--space-2); margin-block: var(--space-6); }
+.catalog-shell .reader-controls select { width: 100%; max-width: 32rem; min-height: var(--control-size); padding: var(--space-3); border: 1px solid var(--control-line); border-radius: var(--radius-control); background: var(--surface-input); color: var(--ink); font: inherit; text-overflow: ellipsis; }
+.catalog-shell .reader-navigation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); margin-block: var(--space-6); }
+.catalog-shell .reader-nav-link, .catalog-shell .reader-boundary { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: var(--space-2); padding: var(--space-4); min-height: var(--control-size); border-radius: var(--radius-control); text-align: center; overflow-wrap: anywhere; }
+.catalog-shell .reader-nav-link { color: var(--ink); text-decoration: none; background: var(--surface-raised); border: 1px solid var(--control-line); transition: background var(--duration-interactive) var(--ease-interactive); }
+.catalog-shell .reader-nav-link:hover { background: var(--info-surface); border-color: var(--detail); }
+.catalog-shell .reader-boundary { color: var(--muted); border: 1px solid var(--line); font-size: var(--type-ui); }
+.catalog-shell .reader-pages { max-width: 52.5rem; margin-inline: auto; }
+.catalog-shell .reader-page { margin: 0; min-width: 0; }
+.catalog-shell .reader-page img { width: 100%; height: auto; display: block; background: var(--surface); }
+.catalog-shell .reader-page figcaption { text-align: center; font-size: var(--type-caption); color: var(--muted); padding: var(--space-3); background: var(--surface-input); }
+.catalog-shell .reader-feedback, .catalog-shell .reader-image-error { padding: var(--space-8); border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); overflow-wrap: anywhere; line-height: var(--leading-body); }
+.catalog-shell .reader-feedback [role="alert"], .catalog-shell .reader-image-error [role="alert"] { color: var(--error); }
+.catalog-shell .reader-end { text-align: center; color: var(--ink-soft); margin-top: var(--space-8); }
+.catalog-shell .reader-all-link { display: block; padding: var(--space-4); text-align: center; color: var(--cyan); }
+@media (max-width: 599px) {
+  .catalog-shell .chapter-section { padding: var(--space-4); }
+  .catalog-shell .chapter-list a { align-items: start; flex-direction: column; gap: var(--space-2); }
+  .catalog-shell .chapter-list a span { text-align: left; }
+  .catalog-shell .chapter-start { display: flex; text-align: center; }
+  .catalog-shell .reader-nav-link, .catalog-shell .reader-boundary { padding: var(--space-3) var(--space-2); font-size: var(--type-ui); }
+  .catalog-shell .reader-feedback, .catalog-shell .reader-image-error { padding: var(--space-4); }
+}
+@media (prefers-reduced-motion: reduce) { .catalog-shell .reader-nav-link { transition: none; } }

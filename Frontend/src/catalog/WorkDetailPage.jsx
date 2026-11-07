@@ -2,8 +2,9 @@ import { useCallback } from 'react';
 import { exploreHref } from './catalog-navigation.js';
 import { useResource } from './use-resource.js';
 import { WorkCover, LoadingState, ErrorState, NotFound, formatLabel, titleLabel } from './components.jsx';
+import ChapterList from '../reader/ChapterList.jsx';
 
-export default function WorkDetailPage({ api, id, search }) {
+export default function WorkDetailPage({ api, readingApi, id, search }) {
   const load = useCallback(signal => api.detail(id, { signal }), [api, id]);
   const resource = useResource(load);
   const params = new URLSearchParams(search);
@@ -22,8 +23,9 @@ export default function WorkDetailPage({ api, id, search }) {
       <div className="detail-copy">
         <section className="detail-genres" aria-labelledby="work-genres-heading"><h2 id="work-genres-heading">Géneros</h2>{genres.length ? <ul className="genre-tags">{genres.map(genre => <li key={genre}>{genre}</li>)}</ul> : <p className="missing-metadata">Géneros no especificados.</p>}</section>
         <section className="synopsis" aria-labelledby="synopsis-heading"><h2 id="synopsis-heading">Sinopsis</h2><p>{work.synopsis.trim() ? work.synopsis : 'Sinopsis no disponible en esta demostración.'}</p></section>
-        <aside className="demo-detail-note"><h2>Acerca de este ejemplo</h2><p>Esta obra y su sinopsis son ficticias. La ficha permite explorar el prototipo; no incluye capítulos ni opciones de compra.</p></aside>
+        <aside className="demo-detail-note"><h2>Acerca de este ejemplo</h2><p>Esta obra y su sinopsis son ficticias. Los capítulos aparecen únicamente si se ha importado material propio o autorizado en el entorno local. No hay opciones de compra.</p></aside>
       </div>
     </article>}
+    {resource.status === 'ready' && readingApi && <ChapterList api={readingApi} id={id} search={search} />}
   </main>;
 }
