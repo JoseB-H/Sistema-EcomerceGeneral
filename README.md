@@ -1,6 +1,6 @@
 # Sistema-EcomerceGeneral
 
-**Frente visual actual:** rediseño editorial lavanda, rama local `feat/ui-editorial-lavanda` desde2142e26. [Entrega35 y capturas reales para revisión](docs/35-REDISENO-EDITORIAL-LAVANDA.md).134pruebas, ambos builds y seis smokes Chromium aprobados; API/seis obras/SVG/infraestructura preservados. Sin publicación/PR; Figma y aceptación estética pendientes. Los apartados siguientes conservan los antecedentes de integración/ejecución.
+**Frente actual:** lector vertical e importación administrada local, rama `feat/lector-capitulos-local` desde lavanda `af2a6e5`. [Guía36: Windows, seguridad, recuperación y capturas reales](docs/36-LECTOR-CAPITULOS-LOCALES.md). Catálogo/API/seis obras/SVG conservados; capítulos y comprobantes fuera de Git. Sin publicación, PR ni merge de esta rama; no se modifica Docker/Database/Figma. PostgreSQL nativo y revisión humana/estética pendientes. Los apartados siguientes conservan antecedentes de integración/ejecución; la guía36 amplía el catálogo únicamente con el lector autorizado.
 
 Proyecto académico **Servicios Cloud**. Este repositorio es el punto de referencia compartido entre Codex (desarrollo), Obsidian/Vaultcraft (documentación) y el chat «Servicios Cloud» (decisiones del curso).
 

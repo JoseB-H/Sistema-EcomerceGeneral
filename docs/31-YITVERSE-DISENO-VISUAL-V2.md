@@ -2,12 +2,14 @@
 tags: [yitverse, diseno, figma, v2, interfaz]
 tipo: especificacion-visual
 estado: rediseño-lavanda-verificado-pendiente-aprobacion-visual
-actualizado: 2026-11-06
+actualizado: 2026-11-07
 ---
 # YitVerse — Dirección visual V2
 
 > [!info] Punto de continuidad
-> El frente actual es la adaptación editorial lavanda de la referencia ZIP confirmada por el usuario, en `feat/ui-editorial-lavanda` desde2142e26. Código47e8ae3 y [capturas/verificación35](35-REDISENO-EDITORIAL-LAVANDA.md): Hero panorámico, géneros y seis destacadas, sin cambiar API/arte/infraestructura. Los cinco incrementos anteriores e integración34 se conservan. Resultado estético y Figma pendientes; sin push/PR/merge.
+> El frente actual añade **lector local autorizado** en `feat/lector-capitulos-local`, desde lavanda `af2a6e5`, sin publicar. Conserva el diseño/arte del [rediseño35](35-REDISENO-EDITORIAL-LAVANDA.md) y los cinco incrementos/integración anteriores. [Guía y capturas36](36-LECTOR-CAPITULOS-LOCALES.md): capítulos en ficha y lectura vertical responsive con tokens lavanda. Backend ampliado únicamente para CLI/API local de lectura, sin cambios Docker/Database. Figma y resultado estético siguen pendientes de revisión humana.
+
+**Ampliación expresa,2026-11-07UTC:** componentes `ChapterList`/`ReaderPage`, ruta `/obras/:id/capitulos/:numero`, orden numérico, navegación/reintento y foco visible. Solo acciones implementadas, sin progreso/favoritos/biblioteca/cuentas. No se inventan métricas ni disponibilidad editorial: capítulos propios de demostración o autorizados mediante administración local. Ocho capturas de320/390/768/1440; pruebas completas198 y dos builds. La sección de invitación editorial se omite en lector para priorizar el contenido; shell/header/footer se conservan.
 
 ## Identidad visual de la iteración
 

@@ -1,0 +1,79 @@
+{
+  "background": "rgb(16, 16, 23)",
+  "responsive": [
+    {
+      "width": 1440,
+      "path": "/",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "path": "/explorar",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "path": "/obras/archivo-aurora",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "path": "/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "path": "/explorar",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "path": "/obras/archivo-aurora",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "path": "/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "path": "/explorar",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "path": "/obras/archivo-aurora",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/explorar",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/obras/archivo-aurora",
+      "overflow": false
+    }
+  ],
+  "featuredColumns": [
+    6,
+    3,
+    2,
+    2
+  ],
+  "realApiWorks": 6,
+  "console": {
+    "expected_network_errors": {},
+    "expected_browser_errors": {
+      "favicon.ico:404": 1
+    },
+    "unexpected": []
+  }
+}

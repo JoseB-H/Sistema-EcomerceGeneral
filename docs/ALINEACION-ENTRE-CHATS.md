@@ -2,7 +2,15 @@
 
 **Proyecto compartido:** [Sistema-EcomerceGeneral](https://github.com/JoseB-H/Sistema-EcomerceGeneral)
 
-## Acuerdo vigente — rediseño editorial lavanda, 2026-11-06 America/Bogota
+## Acuerdo vigente — lector local autorizado, 2026-11-07 UTC
+
+Usuario autoriza exclusivamente Incremento1 de capítulos propios/expresamente autorizados: lector vertical, lista en ficha, orden/anterior/siguiente e importador CLI privado con recuperación. Rama `feat/lector-capitulos-local` desde lavanda `af2a6e5`; no modificar/publicar ramas originales, main/integración, Docker, PostgreSQL o Figma. No hay permiso para push, PR, merge, nuevas funcionalidades, scraping, descargas o APIs editoriales.
+
+Implementación funcional local: Backend `35ef875` + seguridad `e442596`, Frontend `9e558b2`, precedidos por diseño `fb39cc2`. [Guía36](36-LECTOR-CAPITULOS-LOCALES.md), pruebas Backend89/Frontend88/guardas15/consola6 (**198**, sin Docker operativo), ambos builds y Chromium dev/preview en320/390/768/1440. Seis obras/SVG y API conservados; capítulos/derechos privados externos a Git, solo capturas de demostración original versionadas. No afirmar conexión PostgreSQL ni validación jurídica automática del permiso. Revisión independiente y bundle final se registran al cerrar; revisión humana y publicación pendientes. La bitácora enlaza el estado vigente; antecedentes permanecen históricos.
+
+**Alcance documental:** RF-11/HU-007 se implementan solo parcialmente en local. Progreso/cuentas/XP/distribución real y licencias ajenas siguen pendientes; DEC-01/18 se acotan por esta solicitud expresa. No se asigna ni acepta un sprint automáticamente. Figma y la aceptación estética lavanda siguen pendientes, aunque se haya autorizado desarrollar el lector.
+
+## Antecedente — rediseño editorial lavanda, 2026-11-06 America/Bogota
 
 Usuario confirma usar Practicas-main.zip solo como referencia visual, preservando proyecto/React/Vite/Express/API/PostgreSQL, seis obras e ilustraciones originales. Nueva rama feat/ui-editorial-lavanda desde integration/frontend-v2-main/2142e26. No adoptar SQLite/lector/biblioteca/ratings/capítulos/datos/arte/deps del ZIP; no main/Docker/Figma/GitHub ni PR antes de revisión visual.
 

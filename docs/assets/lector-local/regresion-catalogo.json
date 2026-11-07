@@ -1,0 +1,84 @@
+{
+  "home_viewports": [
+    {
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "overflow": false
+    }
+  ],
+  "direct_reload_paths": [
+    "/",
+    "/explorar",
+    "/explorar?q=%C3%93RBITA&format=manhwa",
+    "/?q=%C3%93RBITA&format=manhwa",
+    "/?format=manhwa",
+    "/?q=&format=",
+    "/obras/archivo-aurora?q=Aurora&format=manga",
+    "/no-existe",
+    "/estado"
+  ],
+  "home_states_and_genres": "passed",
+  "viewports": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "cover_ratio": 0.75
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "cover_ratio": 0.75
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "cover_ratio": 0.75
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "cover_ratio": 0.75
+    }
+  ],
+  "contrast": {
+    "body": 17.16,
+    "secondary": 8.43,
+    "button": 5.41,
+    "field": 16.86,
+    "border": 4.4,
+    "focus": 10.78
+  },
+  "svg_gradient_ids": 18,
+  "keyboard_and_history": "passed",
+  "loading_error_empty_retry_404_health503": "passed",
+  "reduced_motion": [
+    "0s",
+    "none",
+    "none",
+    "auto"
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "console": {
+    "expected_network_errors": {
+      "ERR_FAILED": 2,
+      "404": 1,
+      "503": 3
+    },
+    "expected_browser_errors": {
+      "favicon.ico:404": 1
+    },
+    "unexpected": []
+  }
+}

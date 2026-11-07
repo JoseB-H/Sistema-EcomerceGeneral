@@ -140,7 +140,28 @@ PostgreSQL sigue siendo la tecnología prevista: futura migración de obras/cap�
 
 ## Evidencias de esta entrega
 
+| Verificación ejecutada | Resultado |
+| --- | --- |
+| `cd Backend; npm test` | **89/89**:45 existentes,33 importación/seguridad/recuperación,9 API,2 CLI/generador |
+| `cd Frontend; npm test` | **88/88**:68 existentes,12 contrato de lector,8 componentes/rutas/navegación |
+| `node --test scripts/compose-helper.test.mjs` | **15/15**, transporte simulado, sin Docker real |
+| `python3 -m unittest discover -s Frontend/test/browser -p '*_test.py'` | **6/6**, utilidades de consola |
+| Total de pruebas automatizadas | **198/198**, cero omitidas en esas suites;64 nuevas sobre las134 de lavanda |
+| `npm run build` y `npm run build:local` en Frontend | Ambos salida0, pantalla técnica y prototipo/lector respectivamente |
+| `reader-smoke.py` en Vite5173 y preview4173 | Dos smokes:320/390/768/1440, imágenes reales, orden1/2/10, vecinos, historial, selector, recarga, retorno filtrado, vacío/404/503/reintento, foco y movimiento reducido |
+| Smokes existentes:dark-catalog,detail-mobile,editorial | Tres regresiones en desarrollo aprobadas; Inicio/Explorar/ficha/estado, búsqueda, filtros y seis SVG conservados |
+| Copia/restauración privada del almacén sintético | Tres capítulos/nueve páginas, manifiestos/comprobantes/hashes verificados en directorio externo nuevo |
+| Reinicio real del Backend propio | Almacén sin modificar; mismos capítulos1/2/10 y nueve páginas, smoke Chromium completo aprobado tras reinicio |
+
+**No ejecutadas:**10 pruebas operativas Docker de integración y1 de persistencia S01; Docker queda intacto. Tampoco Windows/Docker Desktop/D:, PostgreSQL nativo, Firefox/WebKit, dispositivos físicos, pruebas de pérdida de alimentación ni auditoría integral de accesibilidad/lector de pantalla. Los503/404 de los smokes de error son fixtures HTTP explícitos; la indisponibilidad PostgreSQL503 sí corresponde a la configuración real sin base de datos.
+
+Commits funcionales locales: `35ef875` (Backend/importador), `9e558b2` (Frontend/lector), `e442596` (seguridad final), precedidos por `fb39cc2` (diseño/plan). El commit documental de cierre se identifica con `git log -1 --format="%H %s" -- docs/36-LECTOR-CAPITULOS-LOCALES.md`; el bundle/manifiesto externo registra su SHA exacto sin dependencia circular dentro del mismo commit.
+
+**Revisión independiente:** sobre el rango completo se detectaron APNG que sharp interpretaba como imagen estática y CRC omitido en directorios ZIP. Ambos se reprodujeron mediante pruebas rojas, se corrigieron en `e442596` y se verificaron en89 pruebas Backend. El mismo revisor verificó el diff correctivo: APNG rechazado, PNG válido aceptado, directorios ZIP stored/deflate válidos aceptados, CRC/payload corruptos rechazados; **sin hallazgos abiertos**. Las exclusiones del revisor se mantienen explícitamente fuera de autorización: autenticación/DRM/multiusuario, dictamen jurídico automático, progreso/comercio/URL/uploads, protección ante administrador malicioso/fallo físico, Windows/ACL y accesibilidad integral. Capturas y continuidad sí se incluyen en la entrega, no se descartan como tareas futuras.
+
 Pruebas y revisión final se registran en la bitácora/estado y en `docs/assets/lector-local/verificacion.json`. Las capturas contienen exclusivamente la demostración original, nunca comprobantes ni rutas privadas. Se prueban tres capítulos `1,2,10` de Órbita de papel, tres páginas cada uno; los saltos son deliberados para probar números y **no** anuncian capítulos de una serie comercial.
+
+Informes versionados: [dev](assets/lector-local/verificacion.json), [preview](assets/lector-local/verificacion-preview.json), [regresión catálogo](assets/lector-local/regresion-catalogo.json), [detalle](assets/lector-local/regresion-detalle.json), [editorial](assets/lector-local/regresion-editorial.json) y [SHA-256 de capturas/commit funcional](assets/lector-local/capturas.json). La revisión de patrones y nombres privados no encontró credenciales o archivos de contenido/comprobantes en los cambios; es una comprobación acotada, no garantía frente a cualquier secreto posible.
 
 | Capturas reales | Escritorio | Tablet | Móvil | Mínimo |
 | --- | --- | --- | --- | --- |

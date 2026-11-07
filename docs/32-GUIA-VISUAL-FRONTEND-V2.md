@@ -1,5 +1,9 @@
 # Guía visual Frontend V2 — sistema editorial lavanda
 
+**Ampliación2026-11-07UTC:** `feat/lector-capitulos-local` desde lavanda `af2a6e5` añade lista y lector. `Frontend/src/reader/reader.css` se carga después de estilos de catálogo; reutiliza tokens existentes y sus breakpoints, con adaptación propia a599px y movimiento reducido. Sin cambios en SVG/tokens/infraestructura, ni aprobación estética implícita. [Guía y capturas36](36-LECTOR-CAPITULOS-LOCALES.md).
+
+La nueva ruta nativa `/obras/:id/capitulos/:numero` mantiene enlaces/filtros y return a ficha. Navegación duplicada al principio/final, selector etiquetado, límites textuales en lugar de enlaces inactivos, imágenes con dimensiones intrínsecas y reintento accesible. Se omite CTA de descubrimiento en lectura; se conservan header/footer. Las seis obras son ficticias y solo aparecen capítulos reales del almacén local; no hay progreso personal. Contraste/teclado/foco y cuatro viewports verificados en Chromium, sin afirmar auditoría integral WCAG o transcripciones de imágenes.
+
 **Actualización:** 2026-11-06, America/Bogota. Rama local `feat/ui-editorial-lavanda`, desde2142e26; código47e8ae3. Dirección violeta/lavanda del ZIP confirmada, con arte/API propios conservados. [Entrega visual35](35-REDISENO-EDITORIAL-LAVANDA.md). Se mantienen como históricos los cinco incrementos originales y la integración34; sin push/PR y pendiente aprobación estética/Figma.
 
 ## Organización y alcance
@@ -83,7 +87,7 @@ Los cuatro umbrales conservados son1199/800/599/359px. Con `prefers-reduced-moti
 
 `WorkCard`, `WorkCover`, `SearchForm` y estados se reutilizan en Inicio y Explorar. `Hero` se extrae como componente: datos reales del primer registro, portada SVG original, fondo NightArtwork y enlaces reales a ficha/Explorar. Antes de cargar o ante error/vacío muestra una invitación genérica, sin obra inventada. El foco del fragmento se comparte dentro de SearchForm. Botones: normal violeta, hover más oscuro, foco lavanda, activo sin sombra y deshabilitado cuando ya lo requiere el diagnóstico. Selección de formato conserva borde y superficie informativa visibles.
 
-Carga conserva `role=status`; error conserva `role=alert` y Reintentar; vacío mantiene Limpiar búsqueda;404 mantiene el regreso. `/estado` usa la misma superficie y semántica local. Se agregan únicamente Inicio y Explorar; no lectura, seguimiento, historial personal o comercio.
+Carga conserva `role=status`; error conserva `role=alert` y Reintentar; vacío mantiene Limpiar búsqueda;404 mantiene el regreso. `/estado` usa la misma superficie y semántica local. En el Incremento3 se agregaron únicamente Inicio y Explorar; el lector local fue autorizado posteriormente y se documenta en guía36. Seguimiento, historial personal y comercio siguen pendientes.
 
 Contraste/teclado/movimiento reducido se miden en Chromium; objetivo WCAG AA, sin declarar una auditoría integral ni certificación. Windows y lectores de pantalla no se verificaron en esta entrega.
 

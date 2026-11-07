@@ -1,0 +1,48 @@
+{
+  "captured_at_utc": "2026-11-07T05:25:21.801232+00:00",
+  "functional_commit": "e442596ef6996bfb62d06659b0d94bab05cb8dbd",
+  "browser": "Chromium 155.0.8059.79 built on Debian GNU/Linux 13 (trixie)",
+  "content": "Original synthetic demonstration only. No private authorization records or storage paths.",
+  "screenshots": [
+    {
+      "file": "capitulos-1440.png",
+      "bytes": 701352,
+      "sha256": "3a57a358be85d4c93c1ae27441bb98bb5e9607c1ffbe9d7df3785c2b884bb41c"
+    },
+    {
+      "file": "capitulos-320.png",
+      "bytes": 395000,
+      "sha256": "7d6588fc56bf0c068f7cd9887cc23446eee763ad2c39747a1742ce9bb56a7602"
+    },
+    {
+      "file": "capitulos-390.png",
+      "bytes": 424849,
+      "sha256": "f062160040d11cde6aafccf69bc34f44dd12a15783c70d5f207ff5aca688f66f"
+    },
+    {
+      "file": "capitulos-768.png",
+      "bytes": 479589,
+      "sha256": "efa4ff51a6390c3758fbd910d598695aec6b383950789cc044415bd0ee684fb2"
+    },
+    {
+      "file": "lector-1440.png",
+      "bytes": 765922,
+      "sha256": "a4ee9dba0e11dab8301f8f2d4189d3686fddd39cdca94de55a11fb741079a65d"
+    },
+    {
+      "file": "lector-320.png",
+      "bytes": 221877,
+      "sha256": "dee6af19ea26f6a1cd6256696e65b09e54416c4bbfe3115089b8205d4fd53f9b"
+    },
+    {
+      "file": "lector-390.png",
+      "bytes": 277088,
+      "sha256": "556695d34220790d96bf40f2cc20e4bc875809bcaf51c33bb62ec74d9c29d225"
+    },
+    {
+      "file": "lector-768.png",
+      "bytes": 590970,
+      "sha256": "9868ad9e06543d12c60e980ad8ff91677878b2f4a7bf0ed3bc68a9aa300b6886"
+    }
+  ]
+}

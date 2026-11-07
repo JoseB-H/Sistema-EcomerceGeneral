@@ -1,18 +1,29 @@
 ---
 tags: [yitverse, continuidad, historial, respaldo]
 tipo: bitacora
-actualizado: 2026-11-06
+actualizado: 2026-11-07
 ---
 # Bitácora de continuidad — YitVerse
 
 > [!important] Leer primero al reanudar cualquier chat
-> **Frente vigente: rediseño editorial lavanda**, en rama local `feat/ui-editorial-lavanda`, desde integración2142e26. Adaptación visual de Practicas-main.zip confirmada por el usuario, conservando API/seis obras/SVG. Código47e8ae3,134 pruebas, ambos builds y seis smokes Chromium aprobados. [Capturas y continuidad35](35-REDISENO-EDITORIAL-LAVANDA.md). Pendiente aprobación estética; sin push/PR/merge ni Figma aprobado.
+> **Frente vigente: capítulos autorizados y lector local**, en rama nueva `feat/lector-capitulos-local`, desde lavanda `af2a6e5`. Backend `35ef875` + seguridad `e442596`, Frontend `9e558b2`; diseño `fb39cc2`. Lista/lector/CLI privado implementados y verificados: **198 pruebas**, ambos builds y Chromium dev/preview a320/390/768/1440. [Guía, operación y capturas36](36-LECTOR-CAPITULOS-LOCALES.md). Detener después de este incremento para revisión humana; **sin push, PR ni merge**. Figma/aceptación estética pendientes, sin cambios en Docker/Database/Windows/ramas originales.
+
+## Entrega del lector — 2026-11-07 UTC
+
+- **Archivos:** `Backend/src/reader/`, scripts administrados, pruebas/importador/API, inyección opcional `app.js`/`dev-server.js`, env.example/lockfile/gitignore; `Frontend/src/reader/`, integración ficha/ruta existente, pruebas cliente/componentes y smoke; guía36, RF/HU/RNF/trazabilidad/decisiones/índice y notas de continuidad. Se preservan los seis SVG y contratos del catálogo.
+- **Funcionamiento:** material propio/autorizado desde JPG/PNG/WebP/directorio/ZIP/CBZ, validación real, normalización, orden y duplicados, fuente/comprobante/hash privados, staging/lock/rename y recuperación explícita. Capítulos en ficha; lector responsive con anterior/siguiente/selector y reintentos. Tres capítulos ficticios originales de Órbita de papel (1,2,10), tres páginas cada uno, fuera de Git.
+- **Verificación:** Backend89 (45 existentes+44 nuevas), Frontend88 (68+20), guardas15 y consola6;198 aprobadas. Dos builds y dos smokes nuevos dev/preview. Ocho capturas reales de listado/lector y JSON en `docs/assets/lector-local/`; fixtures503/404 se identifican, sin errores JS inesperados/desbordes. PostgreSQL ausente informa503 real, no afecta lectura local.
+- **Problemas resueltos:** sandbox bloqueó red/sockets y creó puntos de montaje .git vacíos; uso de permisos aprobados del entorno conservando proxy/TLS y comprobación de metadatos Git reales. Revisión adversaria halló discrepancias ZIP, páginas sin READY y recuperación incompleta; se añadieron reproducciones rojas y validaciones. Transacciones sin identidad se preservan y no ocultan otras en status; bloqueos truncados no se fuerzan.
+- **Límites:** CLI local de confianza, derechos comprobados por administrador, sin autenticación pública/DRM ni progreso personal. Windows/ACL/antivirus, PostgreSQL nativo, Docker operativo, otros navegadores y accesibilidad integral pendientes. Los alt de página no sustituyen transcripciones completas. No se valida fallo físico de alimentación/disco.
+- **Próxima tarea:** revisión humana del lector/importador y capturas. No iniciar otro incremento ni publicar sin autorización. Código y recursos privados separados; respaldo Git final y manifiesto externo se entregan tras commit, sin alterar bundles/respaldos anteriores.
+- **Revisión final:** un revisor independiente encontró APNG no detectado por metadata.pages y CRC de carpetas ZIP omitido. Reproducción roja, rechazo explícito de APNG y verificación de streams de directorio en `e442596`;89Backend aprobadas tras corrección. Las exclusiones de autenticación/DRM/dictamen jurídico/progreso/comercio/URL/uploads/fallo físico/Windows/AAintegral se conservan como fuera de alcance o pendientes expresas. Capturas y continuidad se entregan aquí.
+- **Cierre de revisión:** el mismo revisor validó las correcciones y no dejó hallazgos abiertos. Regresiones Chromium existentes pasaron; el lector pasó también después de reinicio real de Backend. Restauración privada:22 archivos con SHA-256 idénticos,3 capítulos/9 páginas verificadas. Los recursos de contenido siguen fuera de Git; solo capturas originales de demostración e informes se versionan. Commit documental final consultable en historial de guía36 y manifiesto externo del bundle.
 
 ## Estado de los frentes
 
 | Frente | Responsable / espacio | Estado comprobable | Retomar desde |
 | --- | --- | --- | --- |
-| Frontend V2 | Usuario + Codex; Figma como referencia pendiente | Rediseño lavanda verificado técnicamente; revisión estética pendiente, rama local sin publicación | [[35-REDISENO-EDITORIAL-LAVANDA]] |
+| Frontend V2 / lector | Usuario + Codex; Figma como referencia pendiente | Lector local y CLI en rama nueva para revisión; lavanda original preservada, aprobación estética pendiente | [[36-LECTOR-CAPITULOS-LOCALES]] |
 | Visión y requisitos del producto | Documentación en GitHub/Obsidian | Visión, RF, RNF y trazabilidad documentados; decisiones de negocio aún pendientes | [[20-VISION-FUNCIONAL-YITVERSE]] |
 | Arquitectura Docker | Codex | S01 integrado por PR #3/merge b8daf70; Windows/Docker Desktop/D: pendiente bajo limitación aceptada; validación nueva separada en34 | [[34-REVISION-COORDINADA-INTEGRACION]] |
 | Obsidian y respaldo | GitHub + Obsidian Git local | Copia Markdown versionada en GitHub; sincronización del equipo aún no verificada | [[30-OBSIDIAN-GITHUB-SINCRONIZACION]] |

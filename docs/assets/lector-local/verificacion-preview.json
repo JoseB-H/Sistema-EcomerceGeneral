@@ -1,0 +1,58 @@
+{
+  "base_url": "http://127.0.0.1:4173",
+  "viewports": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "page_ratio": "800:1400",
+      "navigation_filters_history_reload": "passed"
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "page_ratio": "800:1400",
+      "navigation_filters_history_reload": "passed"
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "page_ratio": "800:1400",
+      "navigation_filters_history_reload": "passed"
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "page_ratio": "800:1400",
+      "navigation_filters_history_reload": "passed"
+    }
+  ],
+  "fixture_chapters": [
+    "1",
+    "2",
+    "10"
+  ],
+  "original_pages_per_chapter": 3,
+  "catalog_records": 6,
+  "postgresql": "unavailable (expected 503)",
+  "keyboard_focus_reduced_motion": "passed",
+  "empty_missing_retry": "passed",
+  "media_retry": "passed",
+  "console": {
+    "expected_network_errors": {
+      "404": 1,
+      "503": 2
+    },
+    "expected_browser_errors": {
+      "favicon.ico:404": 1
+    },
+    "unexpected": []
+  },
+  "javascript_errors": [],
+  "external_requests": [],
+  "limitations": [
+    "viewport simulation, not physical mobile devices",
+    "Chromium only",
+    "no native PostgreSQL or Docker validation",
+    "no full screen-reader/a11y audit"
+  ]
+}

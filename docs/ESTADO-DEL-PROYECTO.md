@@ -2,7 +2,17 @@
 
 **Fecha de arranque de coordinación:** 2026-11-03
 
-## Punto vigente — rediseño editorial lavanda
+## Punto vigente — Incremento1 de lector local
+
+**Fecha:**2026-11-07 UTC. **Rama:**`feat/lector-capitulos-local`, desde lavanda `af2a6e5`; diseño `fb39cc2`, Backend `35ef875`/`e442596` y Frontend `9e558b2`. Lista de capítulos, lector vertical anterior/siguiente/selector, importador CLI y almacenamiento privado con validación/recuperación implementados para revisión. Seis obras/SVG, API/catálogo, búsqueda/filtros/historial y rutas existentes conservados. Sin progreso personal/cuentas/comercio/API externa/uploads públicos.
+
+**198/198:**89Backend+88Frontend+15guardas+6consola; ambos builds y smokes nuevos Chromium dev/preview a320/390/768/1440, ocho capturas reales y [guía36](36-LECTOR-CAPITULOS-LOCALES.md). Material y comprobantes externos a Git; capturas solo de la demostración propia. Revisión técnica final y bundle se documentan al cerrar. **Sin push, PR ni merge**; ramas originales, Docker, Database, Figma y respaldos Windows intactos.
+
+Revisión independiente cerrada: APNG/CRC de directorios corregidos en`e442596`, comprobados de nuevo por el revisor, sin hallazgos abiertos. Copia privada del almacén restaurada (22 archivos con SHA-256 iguales,9 páginas) y reinicio real de Backend verificados. El commit documental final y bundle se identifican en el manifiesto externo entregado, sin tocar respaldos anteriores.
+
+Pendiente: revisión humana, Windows/ACL/dispositivos reales, PostgreSQL nativo, pruebas Docker operativas, Firefox/WebKit y accesibilidad integral/transcripciones. No declarar validación jurídica de licencias, diseño Figma ni Sprint1 aceptados. Detener tras este incremento; no publicar ni continuar funcionalidades sin autorización.
+
+## Antecedente — rediseño editorial lavanda
 
 **Rama local:** feat/ui-editorial-lavanda desde2142e26; código47e8ae3. Confirmada referencia ZIP únicamente visual. Tema lavanda, Hero panorámico, géneros, seis destacadas, atajos y CTA implementados; API, rutas/URL, SVG, Backend/Database/Docker y deps conservados. **134/134**, ambos builds y seis smokes Chromium dev/preview320/390/768/1440 aprobados,14capturas nuevas. [Entrega35](35-REDISENO-EDITORIAL-LAVANDA.md).
 
